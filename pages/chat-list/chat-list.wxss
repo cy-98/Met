@@ -1,0 +1,7 @@
+/* pages/chat-list/chat-list.wxss */
+@import "view/chat-item.wxss";
+.chat-item-user-name{
+  margin-left: 25rpx;
+  font-size: 40rpx;
+  height: 40rpx;
+}
