@@ -28,6 +28,7 @@ export default class IMOperator {
         if (!msg) {
           return;
         }
+        let msgItem;
         msg.messages.forEach(item => {
           // 说明是私聊
           let messages = getApp().globalData.messages;
@@ -40,7 +41,7 @@ export default class IMOperator {
             msgObj.isMy = false;
             msgObj.content = item.content.msg_body.text;
             msgObj.duration = 0;
-            const msgItem = this.createNormalChatItem(msgObj);
+            msgItem = this.createNormalChatItem(msgObj);
             this._latestTImestamp = item.content.create_time;
             // 添加到用户的消息中 不一定是当前的用户的
             messages.forEach(conversation => {
@@ -50,7 +51,7 @@ export default class IMOperator {
             })
           }
           getApp().globalData.messages = messages;
-
+          // 判断当前的来的消息是否是聊天界面的用户消息 如果是当前的用户消息 就展示出来
           if(item.from_username === this.getFriendId()){
             cbOk && cbOk(msgItem);
           }else{

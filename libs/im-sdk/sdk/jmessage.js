@@ -5,7 +5,7 @@ var utilMd5 = require('../../../utils/md5util.js');
 export default class WebSocketHandlerImp extends IIMHandler {
   constructor() {
     super();
-    this. 
+    this._onSocketOpen(); 
     this._onSocketMessage();
     this._onSocketError();
     this._onSocketClose();
@@ -32,8 +32,8 @@ export default class WebSocketHandlerImp extends IIMHandler {
       console.info("success");
 
       this.jim.login({
-        'username':"abc123",
-        "password":"123Ghhhh",
+        'username':"asdf",
+        "password":"1234",
       }).onSuccess(data => {
         console.info(data);
         console.info("login success");
@@ -59,6 +59,8 @@ export default class WebSocketHandlerImp extends IIMHandler {
         this.jim.onMsgReceive(data => {
           console.info("接收到消息开始处理");
           console.info(data);
+          //有些界面没有设置onMsgRecListener
+          // 先全局存储消息  之后页面需要处理消息的 需要设置一下 消息监听接口
           this.onMsgRecListener && this.onMsgRecListener(data);
           console.info("处理消息结束");
         });
@@ -204,6 +206,12 @@ export default class WebSocketHandlerImp extends IIMHandler {
       console.info(data);
       success && success(data);
     })
+  }
+
+  updateUnread(username){
+    this.jim.resetUnreadCount({
+      'username':username
+    });
   }
 
 

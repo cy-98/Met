@@ -44,6 +44,7 @@ Page({
       this.imOperator.getMsgHistory((msg) => {
         this.msgManager.showMsg({ msg })
       });
+      getApp().getIMHandler().updateUnread(con.name);
     },
     initData() {
         let that = this;
