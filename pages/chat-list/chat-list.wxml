@@ -1,5 +1,10 @@
 <!-- <import src="view/chat-item.wxml"/> -->
 <import src="view/chat-item-head.wxml"/>
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">导航栏</view>
+</cu-custom>
+
 <block wx:for="{{conversations}}" wx:key="conversationId" wx:for-item="item">
 
     <view class="chat-item-style" bindtap="conversationClick" data-item="{{item}}" hover-class="press-style">
