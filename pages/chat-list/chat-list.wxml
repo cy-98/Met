@@ -1,8 +1,7 @@
 <!-- <import src="view/chat-item.wxml"/> -->
 <import src="view/chat-item-head.wxml"/>
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-	<view slot="backText">返回</view>
-	<view slot="content">导航栏</view>
+<cu-custom bgColor="bg-gradual-pink">
+	<view slot="content">消息</view>
 </cu-custom>
 
 <block wx:for="{{conversations}}" wx:key="conversationId" wx:for-item="item">

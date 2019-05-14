@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-gradual-purple" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">动态</view></cu-custom>
+<cu-custom bgColor="bg-gradual-purple"><view slot="content">动态</view></cu-custom>
 
 <view class="cu-card dynamic {{isCard?'no-card':''}}">
   <view class="cu-item shadow">

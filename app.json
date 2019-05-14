@@ -5,8 +5,8 @@
     "pages/chat-input/chat-input",
     "pages/friends/friends",
     "pages/mine/index",
-    "pages/dynamic/index",
-    "pages/dynamic/list",
+    "pages/dynamic/index/index",
+    "pages/dynamic/list/list",
     "pages/auth/auth"
   ],
   "window": {
@@ -21,7 +21,7 @@
     "color": "#7f8389",
     "list": [
       {
-        "pagePath": "pages/dynamic/list",
+        "pagePath": "pages/dynamic/list/list",
         "text":"动态",
         "iconPath": "image/tabbar/chat_list_unselected.png",
         "selectedIconPath": "image/tabbar/chat_list.png"
