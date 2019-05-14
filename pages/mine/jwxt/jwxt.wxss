@@ -28,3 +28,6 @@
   mix-blend-mode: screen;  
   height: 100rpx;   
 }
+.lg{
+  margin-top: 30rpx;
+}

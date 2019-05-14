@@ -1,0 +1,5 @@
+/* pages/mine/setting/setting.wxss */
+
+.margin-hori{
+  margin:auto 10rpx auto 10rpx;
+}

@@ -1,11 +1,11 @@
-// pages/mine/jwxt/jwxt.js
+// pages/mine/setting/setting.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    date: '2000-12-25'
   },
 
   /**
@@ -62,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  DateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
   }
 })

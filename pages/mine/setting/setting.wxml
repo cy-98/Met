@@ -1,0 +1,57 @@
+<!--pages/mine/setting/setting.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">设置</view></cu-custom>
+<view class="cu-form-group margin-top">
+		<view class="title">头像</view>
+		<view class="cu-avatar radius bg-gray"></view>
+	</view>
+<view class="cu-form-group">
+		<view class="title ">昵称</view>
+		<input placeholder="请输入你的昵称" class=''></input>
+	</view>
+  <view class="cu-form-group margin-top">
+		<view class="title">性别</view>
+    <view>
+    <radio-group>
+      男<radio class='blue radio margin-hori'></radio>
+      女<radio class='pink radio margin-hori'></radio>
+    </radio-group>
+    </view>
+    </view>
+
+  <view class="cu-form-group">
+		<view class="title">生日日期</view>
+		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+			<view class="picker">
+				{{date}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">情感状态</view>
+    <view>
+    <radio-group>
+      单身中<radio class='green radio margin-hori'></radio>
+      恋爱中<radio class='red radio margin-hori'></radio>
+    </radio-group>
+
+    </view>
+		
+	</view>
+	<view class="cu-form-group">
+		<view class='title'>个性签名</view>
+    <input placeholder='请展示你的签名' class=''></input>
+	</view>
+	<view class="cu-form-group margin-top">
+		<view class="title">学校</view>
+    <view>{{person.school}}</view>
+	</view>
+  <view class="cu-form-group">
+    <view>专业</view>
+    <view>{{person.major}}</view>
+  </view>
+  <view class="cu-form-group margin-top">
+		<view class="title">打卡天数</view>
+    <view>{{person.punch}}</view>
+	</view>
+  
+	

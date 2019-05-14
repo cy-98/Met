@@ -9,7 +9,8 @@
     "pages/dynamic/index/index",
     "pages/dynamic/list/list",
     "pages/auth/auth",
-    "pages/mine/jwxt/jwxt"
+    "pages/mine/jwxt/jwxt",
+    "pages/mine/setting/setting"
   ],
   "window": {
     "backgroundTextStyle": "light",

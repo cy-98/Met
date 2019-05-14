@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    person: {
+      school: "中国矿业大学",
+      major: "安全工程专业",
+      punch: "1天",
+      name:"邢远"
+    }
   },
 
   /**

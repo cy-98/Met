@@ -2,7 +2,7 @@
 
 <view class="UCenter-bg">
     <image src="/images/logo.png" class="{{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
-    <view class="text-xl">我的昵称</view>
+    <view class="text-xl">{{person.name}}</view>
     <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class></view>
