@@ -1,7 +1,6 @@
 {
   "usingComponents": {},
   "nav_obj":{
-    "beforeScrollCss":"png",
-    "afterScrollCss":""
+
   }
 }

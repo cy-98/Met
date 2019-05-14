@@ -7,7 +7,7 @@ input{
 }
 
 .extra-btn-style{
-    width: 85rpx;
+    width: 79rpx;
     height: 100rpx;
     padding:25rpx 15rpx;
     display: flex;
@@ -37,13 +37,15 @@ input{
 }
 
 .chat-input-style{
+    height: 64rpx;
     border-radius:10rpx;
     border:1rpx solid gainsboro;
     margin-top:14rpx;
-    margin-bottom: 13rpx;
-    padding:35rpx;
+    margin-bottom: 20rpx;
     min-height: 51rpx;
     background-color: #EFEFEF;
+    padding-left: 15rpx;
+    line-height: 64rpx;
 }
 
 .chat-input-send-button-style{

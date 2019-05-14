@@ -1,5 +1,6 @@
 Page({
   data: {
+    
     cardCur: 0,
     swiperList: [{
       id: 0,
