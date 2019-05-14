@@ -30,9 +30,12 @@ Page({
         let con = JSON.parse(options.conversation);
         console.log(con);
         this.initData();
-        wx.setNavigationBarTitle({
-            title: con.nickName || ''
-        });
+        // wx.setNavigationBarTitle({
+        //     title: con.nickName || ''
+        // });
+        this.setData({
+          title:con.nickName || ''
+        })
         this.imOperator = new IMOperator(this, con);
         this.UI = new UI(this);
         this.msgManager = new MsgManager(this);

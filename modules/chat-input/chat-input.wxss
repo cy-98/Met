@@ -7,8 +7,8 @@ input{
 }
 
 .extra-btn-style{
-    width: 50rpx;
-    height: 50rpx;
+    width: 85rpx;
+    height: 100rpx;
     padding:25rpx 15rpx;
     display: flex;
     flex-shrink:0;
@@ -41,7 +41,7 @@ input{
     border:1rpx solid gainsboro;
     margin-top:14rpx;
     margin-bottom: 13rpx;
-    padding:10rpx;
+    padding:35rpx;
     min-height: 51rpx;
     background-color: #EFEFEF;
 }

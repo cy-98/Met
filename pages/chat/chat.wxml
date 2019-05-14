@@ -3,6 +3,8 @@
 <import src="../../modules/chat-input/chat-input.wxml"/>
 <import src="../../modules/chat-page/chat-page-status.wxml"/>
 
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">{{title}}</view></cu-custom>
+
 <template is="chat-page-status" data="{{chatStatue,chatStatusContent}}"/>
 
 <scroll-view
