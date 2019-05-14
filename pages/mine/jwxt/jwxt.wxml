@@ -1,0 +1,19 @@
+<!--pages/mine/jwxt/jwxt.wxml-->
+
+<view class="UCenter-bg">
+    <image src="/images/logo.png" class="{{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
+    <view class="text-xl">我的昵称</view>
+    <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <view class></view>
+  <view class="cu-form-group margin-top">
+		<view class="title" type="text">学号</view>
+		<input placeholder="请输入你的学号"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">密码</view>
+		<input placeholder="请输入教务系统密码" type="password"></input>
+	</view>
+  <view class="margin-tb-sm text-center">
+    <button class='margin-tb-sm lg round bg-green shadow button-hover' role="button">提交</button>
+  </view>

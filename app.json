@@ -8,7 +8,8 @@
     "pages/mine/index",
     "pages/dynamic/index/index",
     "pages/dynamic/list/list",
-    "pages/auth/auth"
+    "pages/auth/auth",
+    "pages/mine/jwxt/jwxt"
   ],
   "window": {
     "backgroundTextStyle": "light",
