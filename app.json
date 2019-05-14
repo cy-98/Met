@@ -6,7 +6,8 @@
     "pages/friends/friends",
     "pages/mine/index",
     "pages/dynamic/index",
-    "pages/dynamic/list"
+    "pages/dynamic/list",
+    "pages/auth/auth"
   ],
   "window": {
     "backgroundTextStyle": "light",
