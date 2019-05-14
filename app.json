@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/chat-list/chat-list",
     "pages/chat/chat",
     "pages/chat-input/chat-input",
@@ -21,30 +22,29 @@
     "color": "#7f8389",
     "list": [
       {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "image/tabbar/friend_unselected.png",
+        "selectedIconPath": "image/tabbar/friend.png"
+      },
+      {
         "pagePath": "pages/dynamic/list/list",
-        "text":"动态",
+        "text": "动态",
         "iconPath": "image/tabbar/chat_list_unselected.png",
         "selectedIconPath": "image/tabbar/chat_list.png"
       },
       {
         "pagePath": "pages/chat-list/chat-list",
-        "text": "会话列表",
+        "text": "消息",
         "iconPath": "image/tabbar/chat_list_unselected.png",
         "selectedIconPath": "image/tabbar/chat_list.png"
       },
       {
-        "pagePath": "pages/friends/friends",
-        "text": "好友列表",
+        "pagePath": "pages/mine/index",
+        "text": "我的",
         "iconPath": "image/tabbar/friend_unselected.png",
         "selectedIconPath": "image/tabbar/friend.png"
-      },
-      {
-        "pagePath":"pages/mine/index",
-        "text":"我的",
-        "iconPath":"image/tabbar/friend_unselected.png",
-        "selectedIconPath": "image/tabbar/friend.png"
       }
-      
     ]
   },
   "sitemapLocation": "sitemap.json",
