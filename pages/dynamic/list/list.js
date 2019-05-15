@@ -12,14 +12,29 @@ Page({
   tabSelect(e) {
     this.setData({
       TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    });
+  },
 
+  swiperchange: function (e) {
+    var that = this
+    console.log(e.detail.current)
+    that.setData({
+      TabCur: e.detail.current
+    })
   },
 
   /**
