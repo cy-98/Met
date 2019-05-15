@@ -47,7 +47,7 @@
 .info_wrapper{
   transition: 0.3s;
   width: 200vw;
-  height: auto;
+  height: 40vh;
   position: relative;
 }
 .scroll_left{
@@ -56,8 +56,16 @@
 .scroll_right{
   left: 0;
 }
-.photowall{
+.text-center{
+  text-align: center;
 
-
-
+}
+.hoby{
+  margin-top: 20rpx;
+  height: 80rpx;
+  width: 300rpx;
+  margin: 0 auto;
+}
+.content{ width: 100%; height: auto; overflow: hidden; margin: 50rpx auto;}
+.cu-tag{ padding: 4rpx 10rpx; margin: 20rpx; border-radius: 4rpx; float: left; color: #fff; font-size: 28rpx;
 }
