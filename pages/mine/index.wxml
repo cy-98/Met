@@ -42,10 +42,10 @@
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <view class="content" bindtap="showQrcode">
-        <text class="cuIcon-appreciatefill text-red"></text>
+      <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
+        <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">学校认证</text>
-      </view>
+      </navigator>
     </view>
     <view class="cu-item arrow">
       <button class="cu-btn content" open-type="feedback">
@@ -54,7 +54,7 @@
       </button>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/test/list" hover-class="none">
+      <navigator class="content" url="/pages/mine/setting/setting" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">设置</text>
       </navigator>

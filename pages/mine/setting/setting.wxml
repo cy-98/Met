@@ -6,15 +6,16 @@
 	</view>
 <view class="cu-form-group">
 		<view class="title ">昵称</view>
-		<input placeholder="请输入你的昵称" class=''></input>
+		<input placeholder="请输入你的昵称" class='' style='text-align:right;'></input>
 	</view>
   <view class="cu-form-group margin-top">
 		<view class="title">性别</view>
     <view>
-    <radio-group>
+    男
+    <!-- <radio-group>
       男<radio class='blue radio margin-hori'></radio>
       女<radio class='pink radio margin-hori'></radio>
-    </radio-group>
+    </radio-group> -->
     </view>
     </view>
 
@@ -32,6 +33,7 @@
     <radio-group>
       单身中<radio class='green radio margin-hori'></radio>
       恋爱中<radio class='red radio margin-hori'></radio>
+      保密<radio class='red radio margin-hori'></radio>
     </radio-group>
 
     </view>
@@ -39,7 +41,7 @@
 	</view>
 	<view class="cu-form-group">
 		<view class='title'>个性签名</view>
-    <input placeholder='请展示你的签名' class=''></input>
+    <input placeholder='请展示你的签名' class='' style='text-align:right;'></input>
 	</view>
 	<view class="cu-form-group margin-top">
 		<view class="title">学校</view>
