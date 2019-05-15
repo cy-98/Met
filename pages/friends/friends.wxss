@@ -10,9 +10,10 @@ page {
   position: fixed;
   right: 0px;
   bottom: 0px;
-  padding: 20rpx 20rpx 20rpx 60rpx;
+
   display: flex;
   align-items: center;
+  margin-right: 0;
 }
 
 .indexBar .indexBar-box {
