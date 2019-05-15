@@ -1,39 +1,36 @@
-// pages/dynamic/list.js
+// pages/mine/user/info.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    TabCur: 0,
-    scrollLeft: 0
+    index:0,
+    scroll_left:'scroll_left',
+    scroll_right:'scroll_right',
+    checked:'checked bg-green',
+    unchecked:'',
+    ranIndex: Math.floor(Math.random() *5),
+    bgColor: [
+      'bg-gradual-orange', 'bg-gradual-blue', 'bg-gradual-red', 'bg-gradual-green', 'bg-gradual-pink'
+    ]
   },
-  tabSelect(e) {
+  
+  tapchange:function(e){
+    // this.index = e.target.dataset.id;
+
+    console.log(e);
     this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
-    })
+      index:e.target.dataset.id
+    });
+
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          clientHeight: res.windowHeight
-        });
-      }
-    });
-  },
 
-  swiperchange: function (e) {
-    var that = this
-    console.log(e.detail.current)
-    that.setData({
-      TabCur: e.detail.current
-    })
   },
 
   /**
