@@ -11,7 +11,8 @@
     "pages/dynamic/add/add",
     "pages/auth/auth",
     "pages/mine/jwxt/jwxt",
-    "pages/mine/setting/setting"
+    "pages/mine/setting/setting",
+    "pages/mine/question/question"
   ],
   "window": {
     "backgroundTextStyle": "light",

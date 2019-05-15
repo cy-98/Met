@@ -24,10 +24,10 @@
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
-      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
-        <text class="cuIcon-github text-grey"></text>
-        <text class="text-grey">我的问题</text>
-      </view>
+      <navigator class="content" url="/pages/mine/question/question" hover-class="none">
+        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">我的提问</text>
+      </navigator>
     </view>
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/about/about" hover-class="none">
