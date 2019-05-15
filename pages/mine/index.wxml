@@ -36,12 +36,6 @@
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/log/log" hover-class="none">
-        <text class="cuIcon-formfill text-green"></text>
-        <text class="text-grey">记事本</text>
-      </navigator>
-    </view>
-    <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">学校认证</text>
@@ -60,10 +54,10 @@
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/test/list" hover-class="none">
-        <text class="cuIcon-creativefill text-orange"></text>
+      <button class="cu-btn content" open-type="contact">
+        <text class="cuIcon-btn text-olive"></text>
         <text class="text-grey">问题反馈</text>
-      </navigator>
+      </button>
     </view>
   </view>
   <view class="cu-tabbar-height"></view>
