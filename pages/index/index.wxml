@@ -48,3 +48,22 @@
       <text>{{item.name}}</text>
     </view>
   </view>
+
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 今日课程
+    </view>
+  </view>
+  <view class="cu-timeline">
+  <view class="cu-item cur cuIcon-noticefill">
+    <view class="content bg-green shadow-blur">
+      <text>1-2</text> 【教三B401】计算机网络
+    </view>
+  </view>
+  <view class="cu-item text-red cuIcon-attentionforbidfill">
+    <view class="content bg-red shadow-blur">
+      <text>3-4</text> 【教五B201】操作系统
+    </view>
+  </view>
+</view>
