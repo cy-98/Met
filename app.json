@@ -8,6 +8,7 @@
     "pages/mine/index",
     "pages/dynamic/index/index",
     "pages/dynamic/list/list",
+    "pages/dynamic/add/add",
     "pages/auth/auth",
     "pages/mine/jwxt/jwxt",
     "pages/mine/setting/setting"

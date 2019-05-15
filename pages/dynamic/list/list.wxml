@@ -1,5 +1,20 @@
 <cu-custom bgColor="bg-gradual-purple"><view slot="content">动态</view></cu-custom>
 
+<scroll-view scroll-x class="bg-gradual-purple nav text-center">
+  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
+    <text class="cuIcon-camerafill"></text> 推荐
+  </view>
+  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
+    <text class="cuIcon-upstagefill"></text> 关注
+  </view>
+  <view class="cu-item {{2==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="2">
+    <text class="cuIcon-clothesfill"></text> 表白墙
+  </view>
+  <view class="cu-item {{3==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="3">
+    <text class="cuIcon-clothesfill"></text> 吐槽墙
+  </view>
+</scroll-view>
+
 <view class="cu-card dynamic {{isCard?'no-card':''}}">
   <view class="cu-item shadow">
     <view class="cu-list menu-avatar">
