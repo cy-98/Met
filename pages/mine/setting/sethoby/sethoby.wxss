@@ -1,0 +1,11 @@
+/* pages/mine/setting/sethoby/sethoby.wxss */
+.border{
+  border: 3rpx dotted rgb(91, 198, 240);
+  display: inline-block;
+  padding: 10rpx;
+  position: position;
+  margin: 0 auto;
+}
+.boxshadow{
+  box-shadow: 0rpx 0rpx 10rpx #b0b0b0;
+}

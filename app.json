@@ -12,6 +12,7 @@
     "pages/auth/auth",
     "pages/mine/jwxt/jwxt",
     "pages/mine/setting/setting",
+    "pages/mine/setting/sethoby/sethoby",
     "pages/mine/user/info",
     "pages/mine/question/question"
   ],

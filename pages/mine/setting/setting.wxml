@@ -51,6 +51,13 @@
     <view>专业</view>
     <view>{{person.major}}</view>
   </view>
+  <!-- 兴趣 -->
+  <view class="cu-form-group margin-top">
+		<view class="title">兴趣爱好</view>
+    <view class='morebtn'>></view>
+	</view>
+  <!-- 兴趣 -->
+
   <view class="cu-form-group margin-top">
 		<view class="title">打卡天数</view>
     <view>{{person.punch}}</view>

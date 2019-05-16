@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     randomOpacity:[],
     random:Math.floor(Math.random()*5),
     opacity:[0.28,0.33,0.35,0.75,0.86,0.9,0.8],
@@ -17,16 +18,13 @@ Page({
       "#00BFFF", "#68A2D5", "#FF69B4", "#DB7093", "#CD3278", "#607B8B"],
     //标签云
     labArr: ['曾小贤', '胡一菲', '吕子乔', '陈美嘉', '唐悠悠', '关谷神奇', '张益达', '诺澜', '雨墨', '陆展博','远爷','弟弟','弟中弟'],
-    // 标签云
+    //页面切换
     index:0,
     scroll_left:'scroll_left',
     scroll_right:'scroll_right',
     checked:'checked bg-green',
     unchecked:'',
     ranIndex: Math.floor(Math.random() *5),
-    bgColor: [
-      'bg-gradual-orange', 'bg-gradual-blue', 'bg-gradual-red', 'bg-gradual-green', 'bg-gradual-pink'
-    ]
   },
   
   tapchange:function(e){

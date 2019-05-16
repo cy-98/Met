@@ -1,0 +1,15 @@
+<!--pages/mine/setting/sethoby/sethoby.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">兴趣圈</view></cu-custom>
+<view class="grid col-3 padding-sm cu-form-group">
+  <view class=" padding-sm" wx:for="{{Taggroup}}" wx:key>
+    <view class="bg-{{item.color}} padding radius boxshadow text-center shadow-blur">
+      <view class="text-lg">{{item.title}}</view>
+      <view class="margin-top-sm text-Abc">{{item.name}}</view>
+    </view>
+  </view>
+</view>
+<view class='cu-form-group ' >
+  <view class='border padding-sm' bindtap='showInput'>+自定义标签</view>
+  <input style='text-align:right' placeholder='输入你的个性标签'></input>
+</view>
+
