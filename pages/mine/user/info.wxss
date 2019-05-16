@@ -69,9 +69,12 @@
 .cu-tag{ padding: 4rpx 10rpx; margin: 20rpx; border-radius: 4rpx; float: left; color: #fff; font-size: 28rpx;
 }
 #swiper{
-  height: 80%;
+  overflow:visible;
 }
 .radius.padding{
   margin: 20rpx;
   padding: 40rpx 26rpx;
+}
+.answer{
+  text-align: right;
 }

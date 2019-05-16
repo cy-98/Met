@@ -44,6 +44,7 @@ Page({
         //标签列表
         tags = that.data.Taggroup,
         tagsLen = tags.length;
+    console.log(tags)
     let i = 0;
         //TO DO
     do{
