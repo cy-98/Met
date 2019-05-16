@@ -32,7 +32,7 @@
             <!-- 标签云 -->
             <view class=' content'>
               <block wx:for="{{labArr}}" wx:key="key" wx:for-index="key" wx:for-item="v">
-                <view class='cu-tag' data-key="{{key}}" style="opacity:{{randomOpacity[key]}};; background-color:{{randomColorArr[key]}}">{{v}}</view>
+                <view class=' cu-tag  padding radius text-center shadow-blur' data-key="{{key}}" style="opacity:{{randomOpacity[key]}};; background-color:{{randomColorArr[key]}}">{{v}}</view>
               </block>
             </view>
           </view>

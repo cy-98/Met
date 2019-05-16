@@ -36,7 +36,6 @@
 .margin-top-sm{
   padding: 5rpx;
   transition:  ease 0.2s;
-
   height: 60rpx;
   line-height: 60rpx;
 }
@@ -71,4 +70,8 @@
 }
 #swiper{
   height: 80%;
+}
+.radius.padding{
+  margin: 20rpx;
+  padding: 40rpx 26rpx;
 }
