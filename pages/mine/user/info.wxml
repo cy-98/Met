@@ -16,31 +16,41 @@
     </view> 
   </view>
   </scroll-view>
-  <swiper-item>
+  <swiper-item id="swiper">
     <scroll-view class='info_wrapper scroll_left {{index==0?scroll_right:scroll_left}}'>
       <view class='float'>
-        <view class="cu-form-group">
-		      <view class='title'>个性签名</view>
-          <input placeholder='请展示你的签名' class='' style='text-align:right;'></input>
-	      </view>
-        <view class="cu-form-group">
-          <view class='title'> <view>学校专业</view></view><view>安全工程</view>
-	      </view>
-        <view class="text-center cu-form-group">	      
-        <!-- 标签云 -->
-          <view class=' content'>
-            <block wx:for="{{labArr}}" wx:key="key" wx:for-index="key" wx:for-item="v">
-              <view class='cu-tag' data-key="{{key}}" style="opacity:{{randomOpacity[key]}};; background-color:{{randomColorArr[key]}}">{{v}}</view>
-            </block>
+        <!-- 左边的页面 -->
+          <view class="cu-form-group">
+          <!-- 个签 -->
+            <view class='title'>个性签名</view>
+              <input placeholder='请展示你的签名' class='' style='text-align:right;                 '></input></view>
+          <!-- 专业 -->
+          <view class="cu-form-group">
+            <view class='title'> <view>学校专业</view></view><view>安全工程</view>
           </view>
-        </view>
+          <view class="text-center cu-form-group">	      
+            <!-- 标签云 -->
+            <view class=' content'>
+              <block wx:for="{{labArr}}" wx:key="key" wx:for-index="key" wx:for-item="v">
+                <view class='cu-tag' data-key="{{key}}" style="opacity:{{randomOpacity[key]}};; background-color:{{randomColorArr[key]}}">{{v}}</view>
+              </block>
+            </view>
+          </view>
+          <view class='cu-form-group'>
+            <view>问题1</view><input style='background:#fff;'></input>
+          </view>
+          <view class='cu-form-group'>
+            <view>问题2</view><input style='background:#fff;'></input>
+          </view>
+          <view class='cu-form-group'>
+            <view>问题3</view><input style='background:#fff;'></input>
+          </view>
       </view>
       <view class='float'>
-        <view class=''>
+        <!-- 右边的页面 -->
+          <view class=''>
 
-        </view>
+          </view>
       </view>
-
-
     </scroll-view>
   </swiper-item>

@@ -47,7 +47,7 @@
 .info_wrapper{
   transition: 0.3s;
   width: 200vw;
-  height: 40vh;
+
   position: relative;
 }
 .scroll_left{
@@ -68,4 +68,7 @@
 }
 .content{ width: 100%; height: auto; overflow: hidden; margin: 50rpx auto;}
 .cu-tag{ padding: 4rpx 10rpx; margin: 20rpx; border-radius: 4rpx; float: left; color: #fff; font-size: 28rpx;
+}
+#swiper{
+  height: 80%;
 }
