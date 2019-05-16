@@ -6,6 +6,21 @@
 [![Dependency status](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://img.shields.io/badge/dependencies-none-brightgreen.svg)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/unmagic/wechat-im/blob/master/LICENSE)
 
+
+## TODO LIST
+- 用户兴趣添加页面
+- 用户信息问题展示
+- 添加 添加动态的按钮
+- 首页推荐活动列表
+- 活动列表页 ----- 内含作品列表
+- 活动详情页（可以弄一个弹窗进行报名）
+- 我的报名活动列表页
+- 作品详情页 ——（加投票动作）
+- 上传作品页
+- 打卡页面
+- 我的邀请页面（可以做一些礼物什么鬼的）
+
+
 ### 微信小程序即时通讯
 
 开发这个项目付出了我很多心血，如果对你有帮助和启发的话，希望在`GitHub`上给个`star`！也是对我工作的支持和肯定！
