@@ -8,4 +8,6 @@
 }
 .boxshadow{
   box-shadow: 0rpx 0rpx 10rpx #b0b0b0;
+  margin: 2rpx;
+  padding: 0rpx;
 }
