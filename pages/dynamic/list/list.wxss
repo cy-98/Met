@@ -10,17 +10,17 @@
   font-size: 30rpx;
   line-height: 100rpx;
   font-weight: 1200;
-  width: 80rpx;
-  height: 80rpx;
-  background: #e0dddd;
+  width: 70rpx;
+  height: 70rpx;
+  background: #8d3ee7;
   text-align: center;
   box-shadow: 0rpx 0rpx 20rpx rgb(241, 237, 237);
 }
 .more::after{
   content: '';
   display: inline-block;
-  width: 10rpx;
-  height: 60rpx;
+  width: 4rpx;
+  height: 38rpx;
   background: #fff;
   position: absolute;
   left: 50%;top: 50%;transform: translate(-50%,-50%);
@@ -29,8 +29,8 @@
 .more::before{
   content:'';
   display: inline-block;
-  width: 60rpx;
-  height: 10rpx;
+  width: 38rpx;
+  height: 4rpx;
   background: #fff;
   position: absolute;
   left: 50%;top: 50%;transform: translate(-50%,-50%);
