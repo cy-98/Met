@@ -1,0 +1,20 @@
+<!--pages/index/activity/activity.wxml-->
+<scroll-view scroll-y class="scrollPage">
+  <cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/cjkz2329.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">近日活动</view>
+</cu-custom>
+  <!-- <cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/cjkz2329.jpg">
+      <view slot="content">近日活动</view>
+  </cu-custom> -->
+  <view class="cu-card">
+    <view class="cu-item bg-img shadow-blur" style="background-image:url({{item.img}})" bindtap="toChild" data-url="{{item.url}}" wx:for="{{list}}" wx:key>
+      <view class="cardTitle">
+        {{item.title}}
+      </view>
+      <view class='time'>{{item.time}}</view>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>
+</scroll-view>
+

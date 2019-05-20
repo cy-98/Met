@@ -1,0 +1,24 @@
+<!--pages/index/activity/actdetails/details.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">{{itme.name}}</view>
+</cu-custom>
+<swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  </swiper-item>
+</swiper>
+<view class='cu-form-group'>
+
+  <textarea>
+    以下为活动介绍
+
+    详情：
+    地点：
+    
+  </textarea>
+</view>
+<view class='cu-form-group'>
+  <view>时间:{{item.time}}</view> <view>地点{{item.site}}</view><view>人数:{{item.number}}</view>
+</view>

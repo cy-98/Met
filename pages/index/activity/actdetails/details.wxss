@@ -1,0 +1,4 @@
+/* pages/index/activity/actdetails/details.wxss */
+.screen-swiper{
+  margin-top: 40rpx;
+}
