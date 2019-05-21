@@ -22,3 +22,19 @@
 <view class='cu-form-group'>
   <view>时间:{{item.time}}</view> <view>地点{{item.site}}</view><view>人数:{{item.number}}</view>
 </view>
+
+  <view class='cu-form-group'>
+    <view>
+      <button class='cu-btn line-blue  button-hover'>创建队伍</button>
+    </view>
+    <view>
+      <button class='cu-btn line-green  button-hover'>加入队伍</button>
+    </view>
+    <view>
+      <button class='cu-btn line-red  button-hover'>活动报名</button>
+    </view>
+  </view>
+
+
+
+

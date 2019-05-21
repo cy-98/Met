@@ -2,3 +2,9 @@
 .screen-swiper{
   margin-top: 40rpx;
 }
+.right{
+  float: right;
+}
+input{
+  text-align: right;
+}
