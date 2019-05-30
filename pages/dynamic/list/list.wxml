@@ -16,7 +16,7 @@
   </view>
   
 </scroll-view>
-<view class='round more' url="{{}}"></view>
+<view class='round more' bindtap='addDynamic'></view>
 
 <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" class='videoSwiper'  current="{{TabCur}}"  duration="200" bindchange="swiperchange">
 
