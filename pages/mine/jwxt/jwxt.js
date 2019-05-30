@@ -1,11 +1,13 @@
 // pages/mine/jwxt/jwxt.js
+var utils = require('../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    stuId:null,
+    password:null
   },
 
   /**
@@ -13,6 +15,53 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  bindStuIdInput: function (e) {
+    this.setData({
+      stuId: e.detail.value
+    })
+  },
+  bindPasswordInput:function(e){
+    this.setData({
+      password: e.detail.value
+    })
+  },
+  formSubmit: function (e){
+    console.info(this.data.stuId);
+    console.info(this.data.password);
+    if(!this.data.stuId){
+      wx.showModal({
+        title: '学号填一下',
+        content: '没有填学号',
+      });
+      return;
+    }
+    if (!this.data.password) {
+      wx.showModal({
+        title: '密码填一下',
+        content: '没有填密码',
+      });
+      return;
+    }
+
+    console.info(e);
+    let data = {
+      formId:e.detail.formId,
+      stuId:this.data.stuId,
+      password:this.data.password
+    };
+    utils.req('user/verify', data, function(res){
+      console.info(res);
+      if(res.code === 200){
+        wx.switchTab({
+          url: '/pages/index/index',
+        });
+      }else{
+        wx.showToast({
+          title: '登录失败，检查账户密码是否正确',
+        });
+      }
+    });
   },
 
   /**

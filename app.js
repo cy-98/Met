@@ -1,9 +1,10 @@
 //app.js
 import AppIMDelegate from "./delegate/app-im-delegate";
-
+var utils = require('./utils/util.js');
 App({
   globalData: {
     userInfo: {},
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     conversations: [],
     messges: [],
     ColorList: [{
@@ -87,6 +88,68 @@ App({
     return this.appIMDelegate.getIMHandlerDelegate();
   },
   onLaunch(options) {
+    let that = this;
+
+    wx.checkSession({
+      success: function () {
+        //存在登陆态
+        console.info("已经登录了");
+      },
+      fail: function () {
+        //不存在登陆态
+        wx.login({
+          success: res => {
+            // 发送 res.code 到后台换取 openId, sessionKey, unionId
+            wx.request({
+              url: utils.rootUrl + 'login?code=' + res.code,
+              success: function (data) {
+                console.log(data);
+                if (data.data['code'] === 400) {
+                  wx.showToast({
+                    title: 'token请求失败',
+                  });
+                } else if (data.data['code'] === 200) {
+                  wx.setStorageSync('token', data.data['data']);
+                  console.info("存储token成功");
+                  // wx.getSetting({
+                  //   success(res) {
+                  //     if (res.authSetting['scope.userInfo']) {
+                  //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                  //       wx.getUserInfo({
+                  //         success: function (res) {
+                  //           console.log(res.userInfo);
+                  //           that.globalData.userInfo = res.userInfo;
+                  //           wx.setStorageSync("userInfo", res.userInfo);
+                  //         }
+                  //       })
+                  //     }
+                  //   }
+                  // })
+
+                }
+              },
+              fail: function () {
+
+              }
+            })
+          }
+        });
+      }
+    });
+
+    // console.info("hello");
+    let userInfo = wx.getStorageSync("userInfo");
+    console.info(userInfo);
+    if (this.globalData.canIUse && !userInfo) {
+      wx.redirectTo({
+        url: '/pages/auth/auth',
+      })
+    }
+
+
+
+
+
     this.appIMDelegate = new AppIMDelegate(this);
     this.appIMDelegate.onLaunch(options);
 
