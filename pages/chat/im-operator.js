@@ -14,8 +14,10 @@ export default class IMOperator {
   constructor(page, opts) {
     this._opts = opts;
     this._latestTImestamp = 0; //最新消息的时间戳
-    this._myHeadUrl = getApp().globalData.userInfo.avatar;
+    this._myHeadUrl = wx.getStorageSync('userInfo').avatarUrl;
     this._otherHeadUrl = this._opts.avatar;
+    let that = this;
+
   }
 
   getFriendId() {
@@ -142,6 +144,10 @@ export default class IMOperator {
     duration
   } = {}) {
     if (!content) return;
+
+
+
+
     const currentTimestamp = Date.now();
     const time = dealChatTime(currentTimestamp, this._latestTImestamp);
     let obj = {
@@ -171,6 +177,8 @@ export default class IMOperator {
     thisTime = 0
   } = {}) {
     if (!content) return;
+
+  
     // const currentTimestamp = Date.now();
     const time = dealChatTime(thisTime, lastTime);
     console.info(time);

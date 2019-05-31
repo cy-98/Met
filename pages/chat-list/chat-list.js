@@ -36,7 +36,7 @@ Page({
    // 这个是消息回调接口 当前是消息列表 如果获取消息 会进行一系列的操作
   onShow() {
 
-    getApp().getIMHandler()   .setOnReceiveMessageListener({
+    getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
         console.info(data);
         if (data.event === "msg_sync") {

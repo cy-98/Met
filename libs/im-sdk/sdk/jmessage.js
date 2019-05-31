@@ -32,8 +32,8 @@ export default class WebSocketHandlerImp extends IIMHandler {
       console.info("success");
 
       this.jim.login({
-        'username':"asdf",
-        "password":"1234",
+        'username':"abc123",
+        "password":"123456",
       }).onSuccess(data => {
         console.info(data);
         console.info("login success");
@@ -213,6 +213,49 @@ export default class WebSocketHandlerImp extends IIMHandler {
       'username':username
     });
   }
+
+  updateUserInfo(userInfo){
+    console.info(userInfo);
+    console.info("更新极光用户数据")
+    this.jim.updateSelfInfo({
+      'region': userInfo.avatar,
+      'nickname': userInfo.nickname,
+      'extras':{'avatar':userInfo.avatar}
+    }).onSuccess(function (data) {
+      console.info(data);
+      //data.code 返回码
+      //data.message 描述
+    }).onFail(function (data) {
+      //同上
+    });
+
+  }
+  getUserInfo({userId, success}){
+    this.jim.getUserInfo({
+      'username': userId,
+    }).onSuccess(function (data) {
+      console.info(data);
+      success && success(data);
+      //data.code 返回码
+      //data.message 描述
+      //data.user_info.username
+      //data.user_info.appkey
+      //data.user_info.nickname
+      //data.user_info.avatar 头像
+      //data.user_info.birthday 生日，默认空
+      //data.user_info.gender 性别 0 - 未知， 1 - 男 ，2 - 女
+      //data.user_info.signature 用户签名
+      //data.user_info.region 用户所属地区
+      //data.user_info.address 用户地址
+      //data.user_info.mtime 用户信息最后修改时间
+      //data.extras 自定义json字段
+    }).onFail(function (data) {
+      //data.code 返回码
+      //data.message 描述
+    });
+  }
+
+
 
 
 

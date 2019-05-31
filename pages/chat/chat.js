@@ -17,7 +17,9 @@ Page({
         chatItems: [],
         latestPlayVoicePath: '',
         isAndroid: true,
-        chatStatue: 'open'
+        chatStatue: 'open',
+        avatar:"",
+      imOperator: null
     },
 
     /**
@@ -35,18 +37,39 @@ Page({
         // });
         this.setData({
           title:con.nickName || ''
-        })
-        this.imOperator = new IMOperator(this, con);
-        this.UI = new UI(this);
-        this.msgManager = new MsgManager(this);
-
-        this.imOperator.onSimulateReceiveMsg((msg) => {
-            this.msgManager.showMsg({msg})
         });
-        this.UI.updateChatStatus('正在聊天中...');
-      this.imOperator.getMsgHistory((msg) => {
-        this.msgManager.showMsg({ msg })
+
+      var that = this;
+      console.info("con");
+      console.info(con);
+      console.info("con end");
+      getApp().getIMHandler().getUserInfo({
+        userId: con.username, success: function (res) {
+          // 使用region代替avatar
+          console.info(res.user_info.region);
+          // that._opts._otherHeadUrl = res.user_info.region;
+          con['avatar'] = res.user_info.region;
+          console.info("con");
+          console.info(con);
+          console.info("con end");
+          that.setData({
+            avatar:res.user_info.region
+          });
+          that.imOperator = new IMOperator(that, con);
+          that.UI = new UI(that);
+          that.msgManager = new MsgManager(that);
+
+          that.imOperator.onSimulateReceiveMsg((msg) => {
+            that.msgManager.showMsg({ msg })
+          });
+          that.UI.updateChatStatus('正在聊天中...');
+          that.imOperator.getMsgHistory((msg) => {
+            that.msgManager.showMsg({ msg })
+          });
+        }
       });
+        
+        
       getApp().getIMHandler().updateUnread(con.name);
     },
     initData() {
