@@ -1,3 +1,4 @@
+var COS = require('cos-wx-sdk-v5');
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -79,5 +80,5 @@ module.exports = {
   formatTime: formatTime,
   getReq : getReq,
   req:req,
-  rootUrl:rootUrl,
+  rootUrl:rootUrl
 }

@@ -82,7 +82,8 @@ App({
         name: 'white',
         color: '#ffffff'
       },
-    ]
+    ],
+    cos:null
   },
   getIMHandler() {
     return this.appIMDelegate.getIMHandlerDelegate();

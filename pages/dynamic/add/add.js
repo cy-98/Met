@@ -1,4 +1,6 @@
 // pages/dynamic/add/add.js
+let utils = require("../../../utils/util.js");
+
 Page({
 
   /**
@@ -6,8 +8,107 @@ Page({
    */
   data: {
     imgList: [],
-    index: null,
+    index: 0,
     picker: ['表白墙', '吐槽墙', '随便说说'],
+    content:"",
+    annous:false
+  },
+
+  ChooseImage:function(){
+    var that = this;
+    wx.chooseImage({
+      count: 4, //默认9
+      sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album'], //从相册选择
+      success: (res) => {
+
+        res.tempFilePaths.forEach(function (item) {
+          wx.uploadFile({
+            url: 'https://school.chpz527.cn/api/upload',
+            filePath: item,
+            name: 'file',
+            success: function (res) {
+              console.log(JSON.parse(res.data));
+              var data = JSON.parse(res.data)
+              that.setData({
+                imgList: that.data.imgList.concat(data.file_name)
+              })
+            },
+            fail: function () {
+              util.isError('图片上传失败', that);
+            }
+          })
+        });
+
+      }
+    });
+  },
+  ViewImage(e) {
+    wx.previewImage({
+      urls: this.data.imgList,
+      current: e.currentTarget.dataset.url
+    });
+  },
+  DelImg(e) {
+    wx.showModal({
+      title: '删除图片',
+      content: '确定要删除这个图片吗？',
+      cancelText: '再看看',
+      confirmText: '再见',
+      success: res => {
+        if (res.confirm) {
+          this.data.imgList.splice(e.currentTarget.dataset.index, 1);
+          this.setData({
+            imgList: this.data.imgList
+          })
+        }
+      }
+    })
+  },
+  textareaAInput(e){
+    console.info(e);
+    this.setData({
+      'content':e.detail.value
+    });
+  },
+  PickerChange(e){
+    console.info(e);
+    this.setData({index:e.detail.value});
+  },
+  changeAnnous(e){
+    console.info(e);
+    this.setData({
+      annous:e.detail.value
+    });
+  },
+
+  formSubmit: function(e){
+    console.info(e);
+    if(!this.data.content || this.data.content == ""){
+      wx.showToast({
+        title: '内容不能为空',
+      });
+    }
+    let data = {
+      content : this.data.content,
+      images: this.data.imgList.join(","),
+      type: this.data.index,
+      anonymous: this.data.annous ? 1 : 0
+    }
+
+    utils.req("dynamic", data, res => {
+      console.info(res);
+      if(res.code === 200){
+        wx.switchTab({
+          url: '/pages/dynamic/list/list',
+        });
+      }else{
+        wx.showToast({
+          title: '发布失败',
+        });
+      }
+    });
+
   },
 
   /**
@@ -18,51 +119,9 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })
