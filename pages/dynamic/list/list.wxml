@@ -26,8 +26,8 @@
 
   <view wx:for="{{dynamics}}" wx:key="item">
 
-    <dynamic nickname="{{item.nickname}}" time="{{item.time}}" good="{{item.good}}" watch="{{item.watch}}" comment-num="{{item.commentNum}}" images="{{item.images}}" content="{{item.content}}"></dynamic>
-        <!-- <template is="dynamic" data="{{...item}}"></template> -->
+
+        <template is="dynamic" data="{{...item}}"></template>
   </view>
   
      </scroll-view>

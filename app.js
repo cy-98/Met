@@ -112,20 +112,6 @@ App({
                 } else if (data.data['code'] === 200) {
                   wx.setStorageSync('token', data.data['data']);
                   console.info("存储token成功");
-                  // wx.getSetting({
-                  //   success(res) {
-                  //     if (res.authSetting['scope.userInfo']) {
-                  //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-                  //       wx.getUserInfo({
-                  //         success: function (res) {
-                  //           console.log(res.userInfo);
-                  //           that.globalData.userInfo = res.userInfo;
-                  //           wx.setStorageSync("userInfo", res.userInfo);
-                  //         }
-                  //       })
-                  //     }
-                  //   }
-                  // })
 
                 }
               },
@@ -138,7 +124,6 @@ App({
       }
     });
 
-    // console.info("hello");
     let userInfo = wx.getStorageSync("userInfo");
     console.info(userInfo);
     if (this.globalData.canIUse && !userInfo) {

@@ -1,6 +1,6 @@
   <template name="dynamic">
 
-    <view class="cu-card dynamic no-card">
+    <view class="cu-card dynamic">
       <view class="cu-item shadow">
         <view class="cu-list menu-avatar">
           <view class="cu-item">

@@ -19,7 +19,7 @@ Page({
         'images':[]
       },
       {
-        'nickname': '张三',
+        'nickname': '李四',
         'content': "你可真棒",
         'time': '2019-12-12',
         'watch': 25,
