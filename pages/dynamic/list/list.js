@@ -6,7 +6,29 @@ Page({
    */
   data: {
     TabCur: 0,
-    scrollLeft: 0
+    scrollLeft: 0,
+    dynamics:[
+      {
+        'nickname':'张三',
+        'content':"你可真棒",
+        'time':'2019-12-12',
+        'watch':25,
+        'good':'12',
+        'commentNum':'12',
+        'avatar':'',
+        'images':[]
+      },
+      {
+        'nickname': '张三',
+        'content': "你可真棒",
+        'time': '2019-12-12',
+        'watch': 25,
+        'good': '12',
+        'commentNum': '12',
+        'avatar': '',
+        'images': []
+      }
+    ]
   },
   tabSelect(e) {
     this.setData({

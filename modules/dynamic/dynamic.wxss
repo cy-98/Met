@@ -1,0 +1,6 @@
+/* pages/dynamic/list.wxss */
+.cu-card .no-card > .cu.item{
+  margin-bottom: 10rpx;
+  border-radius: 0rpx;
+  margin-top: 20rpx;
+}

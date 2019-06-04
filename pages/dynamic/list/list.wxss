@@ -1,4 +1,13 @@
 /* pages/dynamic/list.wxss */
+
+@import "../../../modules/dynamic/dynamic.wxss";
+
+.cu-card .no-card > .cu.item{
+  margin-bottom: 10rpx;
+  border-radius: 0rpx;
+  margin-top: 20rpx;
+}
+
 .videoSwiper{
   position: relative;
 
