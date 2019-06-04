@@ -91,13 +91,13 @@ App({
   onLaunch(options) {
     let that = this;
 
-    wx.checkSession({
-      success: function () {
-        //存在登陆态
-        console.info("已经登录了");
-      },
-      fail: function () {
-        //不存在登陆态
+    // wx.checkSession({
+    //   success: function () {
+    //     //存在登陆态
+    //     console.info("已经登录了");
+    //   },
+    //   fail: function () {
+    //     //不存在登陆态
         wx.login({
           success: res => {
             // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -121,12 +121,12 @@ App({
             })
           }
         });
-      }
-    });
+    //   }
+    // });
 
     let userInfo = wx.getStorageSync("userInfo");
     console.info(userInfo);
-    if (this.globalData.canIUse && !userInfo) {
+    if (!userInfo) {
       wx.redirectTo({
         url: '/pages/auth/auth',
       })
