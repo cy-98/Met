@@ -1,4 +1,6 @@
 // pages/mine/index.js
+let utils = require("../../utils/util.js");
+let app = getApp()
 Page({
   //TODO:  改变我的页面上部头像大小变化
   /**
@@ -6,10 +8,10 @@ Page({
    */
   data: {
     person: {
-      school: "中国矿业大学",
-      major: "安全工程专业",
-      punch: "1天",
-      name:"邢远"
+      school: "",
+      major: "",
+      name:"",
+      avatar:"/images/logo.png"
     }
   },
 
@@ -17,7 +19,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let userInfo = wx.getStorageSync("userInfo");
+    this.setData({
+      person:{
+        school:userInfo.school,
+        major:userInfo.major,
+        name:userInfo.name,
+        avatar:userInfo.avatar
+      }
+    })
   },
 
   /**

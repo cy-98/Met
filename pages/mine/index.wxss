@@ -19,9 +19,17 @@
   opacity: 0.8;
 }
 
+.UCenter-bg .head{
+  width:220rpx;
+  height: 220rpx;
+  border-radius: 50%;
+  margin-bottom: 45rpx;
+}
+
 .UCenter-bg image {
-  width: 350rpx;
+  width:350rpx;
   height: 350rpx;
+
 }
 
 .UCenter-bg .gif-wave{

@@ -22,6 +22,7 @@ Page({
       utils.getReq('user', {}, function(res){
         app.getIMHandler().updateUserInfo(res.data);
         console.info(res.data.stuId);
+        wx.setStorageSync("userInfo", res.data);
         if(!res.data.stuId){
           console.info("data");
           wx.redirectTo({

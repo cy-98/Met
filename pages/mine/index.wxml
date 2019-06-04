@@ -1,7 +1,7 @@
 <!--pages/mine/index.wxml-->
 <scroll-view scroll-y class="scrollPage">
   <view class="UCenter-bg">
-    <image src="/images/logo.png" class="{{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
+    <image src="{{person.avatar}}" class="{{nav_obj.beforeScrollCss}} head  " mode="aspectFit"></image>
     <view class="text-xl">{{person.name}}</view>
     <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
