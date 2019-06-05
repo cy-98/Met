@@ -16,10 +16,12 @@
 
 
 </view>
-<view class='cu-form-group ' >
-  <input style='text-align:left;' placeholder='输入你的个性标签'></input>
-  <view class='border padding-sm' bindtap='showInput'>+自定义标签</view>
-</view>
+<form bindsubmit='addTag' >
+  <view class='cu-form-group ' >
+    <input bindinput='inputTag' style='text-align:left;' placeholder='输入你的个性标签'></input>
+    <button form-type='submit' class='border cu-tag padding-sm' bindtap='addTag'>+添加标签</button>
+  </view>
+</form>
 
 <view class="cu-bar bg-white margin-top">
   <view class="action">

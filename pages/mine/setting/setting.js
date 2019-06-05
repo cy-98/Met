@@ -1,4 +1,3 @@
-// pages/mine/setting/setting.js
 let utils = require("../../../utils/util.js");
 let network = require("../../../utils/network.js");
 Page({

@@ -14,6 +14,11 @@ Page({
       avatar:"/images/logo.png"
     }
   },
+  sethoby:function(){
+    wx.redirectTo({
+      url: '../../../setting/sethoby/sethoby',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

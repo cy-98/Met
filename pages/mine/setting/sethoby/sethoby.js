@@ -1,11 +1,13 @@
 // pages/mine/setting/sethoby/sethoby.js
 const app = getApp(); //获取全局的颜色列表
+var network = require("../../../../utils/network.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    inputTag:'',
     //标签背景颜色
     colorList: [{
       title: '嫣红',
@@ -69,7 +71,8 @@ Page({
       color: '#ffffff'
     }],
     //标签列表
-    taggroup: [{
+    taggroup: [
+      {
         title: '爱往里睡'
       },
       {
@@ -117,6 +120,27 @@ Page({
     ],
   },
 
+  //标签输入
+  inputTag:function(e){
+    this.setData({
+      inputTag:e.detaile.value
+    })
+  },
+  //添加标签
+  addTag:function(){
+    let list = this.data.taggroup;
+    list.push({title:this.data.inputTag})
+    network.addTag({
+      content:this.data.inputTag,
+      success:function(res){
+        console.log('添加兴趣')
+      },
+      fail:function(){
+        console.log('fail')
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -134,8 +158,7 @@ Page({
     do {
       let random = Math.floor(Math.random() * tagsLen);
       tags[i].color = colorList[random].name
-      console.log(tags[i])
-      console.log(colorList[random])
+     
       i++
     } while (i < tagsLen);
 
