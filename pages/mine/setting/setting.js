@@ -32,7 +32,7 @@ Page({
       })
   },
   //更改签名
-  changepro:function(e){
+  changeprofile:function(e){
     this.setData({
       profile:e.detail.value
     })
@@ -57,19 +57,19 @@ Page({
       avatar: this.data.avatar,
       nickname: this.data.nickname,
       gender: this.data.gender==="男"?0:1,
-      birthday: this.data.birthday,
+      birthday: this.data.birthday+"00:00:00",
       love: this.data.love,
       profile: this.data.profile,
       school: this.data.school,
       major: this.data.major,
       age:18
     }
-
+    //
     network.updateUserInfo({userInfo:data, success:res => {
-      console.info("yijinggengxinle");
+      console.info(res);
       wx.setStorage({
         key: 'userInfo',
-        data: data,
+        data: this.data,
       })
       wx.switchTab({
         url: '/pages/mine/index',
@@ -82,7 +82,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   //获取
-  onLoad: function (options) {
+  onLoad: 
+    function (options) {
       let userInfo = wx.getStorageSync("userInfo");
       console.log(userInfo)
       this.setData({
