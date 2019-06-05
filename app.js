@@ -124,12 +124,22 @@ App({
     //   }
     // });
 
-    let userInfo = wx.getStorageSync("userInfo");
+    let userInfo = wx.getStorageSync("userInfo") || false  ;
     console.info(userInfo);
     if (!userInfo) {
-      wx.redirectTo({
+      console.info(userInfo);
+      wx.reLaunch({
         url: '/pages/auth/auth',
-      })
+        success:function(){
+          console.info("success")
+        },
+        fail: function(){
+          console.info("fail")
+        },
+        complete: function(){
+          console.info()
+        }
+      });
     }
 
 

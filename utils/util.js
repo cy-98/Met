@@ -27,16 +27,17 @@ function req(url, data, su, fa) {
       'token': wx.getStorageSync('token')
     },
     success: function (res) {
-      if (res.statusCode < 399)
+      if (res.statusCode < 399){
         return typeof su == "function" && su(res.data);
+      }
       else {
-        showError(res.data.errMsg);
+        showError(res.data.msg);
         return typeof fa == "function" && fa(res.data)
       }
 
     },
     fail: function (error) {
-      showError(error.data.errMsg);
+      showError(error.data.msg);
       return typeof fa == "function" && fa(error)
     }
   })
@@ -68,9 +69,9 @@ function getReq(url, data, su, fa) {
   })
 }
 
-function showError(errMsg) {
+function showError(msg) {
   wx.showToast({
-    title: errMsg,
+    title: msg,
     icon: 'none'
   })
 }
