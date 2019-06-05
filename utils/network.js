@@ -10,9 +10,16 @@ function updateUserInfo({userInfo, success, fail}){
       fail && fail(res);
   });
 }
-
+function getUserInfo({success}){
+  util.getReq("user",{},function(res){
+    wx.setStorageSync("userInfo", res.data);
+    console.log(res.data)
+    success && success(res);
+  });
+}
 
 
 module.exports = {
-  updateUserInfo:updateUserInfo
+  updateUserInfo:updateUserInfo,
+  getUserInfo:getUserInfo
 }

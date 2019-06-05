@@ -56,21 +56,14 @@ Page({
     let data = {
       avatar: this.data.avatar,
       nickname: this.data.nickname,
-      gender: this.data.gender==="男"?0:1,
-      birthday: this.data.birthday+"00:00:00",
+      birthday: this.data.birthday,
       love: this.data.love,
-      profile: this.data.profile,
-      school: this.data.school,
-      major: this.data.major,
-      age:18
+      profile: this.data.profile
     }
-    //
+    //post
     network.updateUserInfo({userInfo:data, success:res => {
-      console.info(res);
-      wx.setStorage({
-        key: 'userInfo',
-        data: this.data,
-      })
+      console.info("已经醒了");
+      wx.setStorageSync("userInfo", this.data)
       wx.switchTab({
         url: '/pages/mine/index',
       })
@@ -84,12 +77,15 @@ Page({
   //获取
   onLoad: 
     function (options) {
+      network.getUserInfo({success:function(){
+        console.log("网络获取储存到本地")
+      }});
       let userInfo = wx.getStorageSync("userInfo");
       console.log(userInfo)
       this.setData({
         avatar:userInfo.avatar,
         nickname:userInfo.nickname,
-        gender: userInfo.gender===0?"男":"女",
+        gender: userInfo.gender===1?"男":"女",
         birthday: userInfo.birthday.split("T")[0],
         love: userInfo.love,
         profile: userInfo.profile,
