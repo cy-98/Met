@@ -70,6 +70,7 @@ Page({
       name: 'white',
       color: '#ffffff'
     }],
+    myTags:[],
     //标签列表
     taggroup: [
       {
@@ -123,28 +124,62 @@ Page({
   //标签输入
   inputTag:function(e){
     this.setData({
-      inputTag:e.detaile.value
+      inputTag:e.detail.value
     })
   },
   //添加标签
   addTag:function(){
-    let list = this.data.taggroup;
-    list.push({title:this.data.inputTag})
+    let list = this.data.myTags;
+    let trim = this.data.inputTag.replace(/\s*/g, "")
+    if (!trim){
+      wx.showToast({
+        title: '请输入内容',
+      });
+      return 
+    }else{
+      list.push({ title: trim });
+      console.log(list);
+      this.setData({
+        myTags:list
+      })
+      network.addTag({
+        content: trim,
+        success: function (res) {
+          console.log('添加兴趣')
+        },
+        fail: function () {
+          console.log('fail')
+        }
+      })
+    }
+    
+  },
+  //添加选中的标签
+  selectTag:function(e){
+    let myTags = this.data.myTags;
+    myTags.push({title:e.currentTarget.dataset.title});
+    this.setData({
+      myTags:myTags
+    })
     network.addTag({
-      content:this.data.inputTag,
-      success:function(res){
-        console.log('添加兴趣')
+      content: e.currentTarget.dataset.title,
+      success: function (res) {
+        console.log('选择兴趣')
       },
-      fail:function(){
+      fail: function () {
         console.log('fail')
       }
     })
-
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+
+
+
+
     //妄想实现随机颜色
     let that = this;
     //颜色列表
@@ -165,7 +200,21 @@ Page({
 
     that.setData({
       taggroup: tags
+    });
+
+  let userInfo = wx.getStorageSync("userInfo");
+  console.info(userInfo);
+  let myTags = [];
+  let tag = userInfo.interest || [];
+  tag.forEach(item => {
+    myTags.push({
+      title:item
     })
+  });
+  this.setData({
+    myTags:myTags
+  })
+
   },
   //妄想实现随机颜色
 

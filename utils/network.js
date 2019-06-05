@@ -28,6 +28,10 @@ function addTag ({content,success,fail}){
     }
   })
 }
+//获取兴趣标签
+function getTag(){
+  
+}
 
 
 

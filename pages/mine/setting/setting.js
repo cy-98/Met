@@ -81,16 +81,19 @@ Page({
       }});
       let userInfo = wx.getStorageSync("userInfo");
       console.log(userInfo)
-      this.setData({
-        avatar:userInfo.avatar,
-        nickname:userInfo.nickname,
-        gender: userInfo.gender===1?"男":"女",
-        birthday: userInfo.birthday.split("T")[0],
-        love: userInfo.love,
-        profile: userInfo.profile,
-        school: userInfo.school,
-        major: userInfo.major
-      })
+      if(!!userInfo){
+        this.setData({
+          avatar: userInfo.avatar,
+          nickname: userInfo.nickname,
+          gender: userInfo.gender === 1 ? "男" : "女",
+          birthday: userInfo.birthday.split("T")[0],
+          love: userInfo.love,
+          profile: userInfo.profile,
+          school: userInfo.school,
+          major: userInfo.major
+        })
+      }
+      
   },
 
   /**

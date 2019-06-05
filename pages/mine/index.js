@@ -15,8 +15,8 @@ Page({
     }
   },
   sethoby:function(){
-    wx.redirectTo({
-      url: '../../../setting/sethoby/sethoby',
+    wx.navigateTo({
+      url: '/pages/mine/setting/sethoby/sethoby',
     })
   },
 
