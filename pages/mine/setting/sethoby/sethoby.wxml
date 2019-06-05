@@ -1,5 +1,12 @@
 <!--pages/mine/setting/sethoby/sethoby.wxml-->
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">兴趣圈</view></cu-custom>
+
+<view class="cu-bar bg-white margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-blue"></text>推荐标签
+  </view>
+</view>
+
 <view class="padding-sm cu-form-group">
   <!-- <view class="padding-sm boxshadow" wx:for="{{taggroup}}" wx:key>
     <view class="bg-{{item.color}} padding radius text-center shadow-blur">
@@ -31,7 +38,7 @@
 
 <view class="padding-sm cu-form-group">
   <view class="padding-sm flex flex-wrap">
-    <view class="padding-xs" wx:for="{{myTags}}" wx:key  wx:if="{{item.color!='white'}}">
+    <view class="padding-xs" data-item='{{item}}' data-index='{{index}}' bindtap='deleteTag' wx:for="{{myTags}}" wx:key  wx:if="{{item.color!='white'}}">
       <view class="cu-tag line-{{item.color}}">{{item.title}}</view>
     </view>
   </view>

@@ -16,6 +16,52 @@ function getUserInfo({success}){
     success && success(res);
   });
 }
+// 获取别人的信息
+function getOtherInfo({userId, success, fail}){
+  util.getReq("user/" + userId, {}, function(res){
+    console.info(res);
+    if(res.code === 200){
+      success && success(res);
+    }else{
+      fail && fail(res);
+    }
+  });
+}
+// 获取推荐的动态
+function getRecommendDynamic({success, fail}){
+  util.getReq("dynamic/recommend", {}, function(res){
+    console.info(res);
+    if(res.code === 200){
+      success && success(res);
+    }else{
+      fail && fail(res);
+    }
+  })
+}
+// 获取关注用户的动态
+function getFollowDynamic({success, fail}){
+  util.getReq("dynamic/follow", {}, function(res){
+    console.info(res);
+    if(res.code === 200){
+      success && success(res);
+    }else{
+      fail && fail(res);
+    }
+  })
+}
+// 更新问题
+function updateQuestion({data, success, fail}){
+  util.req("question", data, res => {
+    console.info(res);
+    if(res.code == 200){
+      success && success(res);
+    }else{
+      fail && fail(res);
+    }
+  })
+}
+
+
 
 //添加兴趣标签
 function addTag ({content,success,fail}){
@@ -28,6 +74,17 @@ function addTag ({content,success,fail}){
     }
   })
 }
+
+function deleteTag({content, success, fail}){
+  util.deleteReq("interest", {content:content}, res => {
+    console.info(res);
+    if(res.code === 200)
+      success && success(res);
+    else
+      fail && fail(res);
+  });
+}
+
 //获取兴趣标签
 function getTag(){
   
@@ -38,5 +95,7 @@ function getTag(){
 module.exports = {
   updateUserInfo:updateUserInfo,
   getUserInfo:getUserInfo,
-  addTag:addTag
+  addTag:addTag,
+  deleteTag:deleteTag,
+  getOtherInfo:getOtherInfo
 }

@@ -14,8 +14,8 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-let rootUrl = "http://111.231.90.198:8888/";
-// let rootUrl = "http://127.0.0.1:8888/";
+// let rootUrl = "http://111.231.90.198:8888/";
+let rootUrl = "http://127.0.0.1:8888/";
 
 function req(url, data, su, fa) {
   wx.request({
@@ -69,6 +69,33 @@ function getReq(url, data, su, fa) {
   })
 }
 
+
+function deleteReq(url, data, su, fa) {
+  wx.request({
+    url: rootUrl + url,
+    data: data,
+    method: 'delete',
+    header: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'token': wx.getStorageSync('token')
+    },
+    success: function (res) {
+      if (res.statusCode < 399)
+        return typeof su == "function" && su(res.data);
+      else {
+        showError(res.data.msg);
+        return typeof fa == "function" && fa(res.data)
+      }
+
+    },
+    fail: function (error) {
+      showError(error.data.msg);
+      return typeof fa == "function" && fa(error)
+    }
+  })
+}
+
+
 function showError(msg) {
   wx.showToast({
     title: msg,
@@ -81,5 +108,6 @@ module.exports = {
   formatTime: formatTime,
   getReq : getReq,
   req:req,
+  deleteReq: deleteReq,
   rootUrl:rootUrl
 }
