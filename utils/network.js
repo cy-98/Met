@@ -49,6 +49,19 @@ function getFollowDynamic({success, fail}){
     }
   })
 }
+
+function getOtherDynamic({userId, success, fail}){
+  util.getReq("/user/" + userId + "/dynamic", {}, res => {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
+
 // 更新问题
 function updateQuestion({data, success, fail}){
   util.req("question", data, res => {
@@ -67,6 +80,16 @@ function getMyQuestion({success, fail}){
     if(res.code === 200){
       success && success(res);
     }else{
+      fail && fail(res);
+    }
+  });
+}
+function getOtherQuestion({userId, success, fail}){
+  util.getReq("/user/"+userId+"/question", {}, res => {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
       fail && fail(res);
     }
   });
@@ -110,5 +133,7 @@ module.exports = {
   deleteTag:deleteTag,
   getOtherInfo:getOtherInfo,
   updateQuestion:updateQuestion,
-  getMyQuestion:getMyQuestion
+  getMyQuestion:getMyQuestion,
+  getOtherQuestion:getOtherQuestion,
+  getOtherDynamic: getOtherDynamic
 }
