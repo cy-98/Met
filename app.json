@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/index/timetable/timetable",
+    "pages/index/exam/exam",
     "pages/index/activity/activity",
     "pages/index/activity/actdetails/details",
     "pages/chat-list/chat-list",

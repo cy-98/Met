@@ -81,7 +81,7 @@
 
   <view class="cu-item cur cuIcon-noticefill" wx:for="{{timetables}}" wx:key="item">
     <view class="content bg-green shadow-blur">
-      <text>{{item.start}}-{{item.step + item.start}}</text> 【{{item.room}}】{{item.name}}
+      <text>{{item.start}}-{{item.step + item.start - 1}}</text> 【{{item.room}}】{{item.name}}
     </view>
   </view>
 </view>

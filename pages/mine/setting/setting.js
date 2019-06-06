@@ -81,11 +81,11 @@ Page({
       }});
       let userInfo = wx.getStorageSync("userInfo");
       console.log(userInfo)
-      if(!!userInfo){
+      if(userInfo){
         this.setData({
           avatar: userInfo.avatar,
           nickname: userInfo.nickname,
-          gender: userInfo.gender === 1 ? "男" : "女",
+          gender: userInfo.gender,
           birthday: userInfo.birthday.split("T")[0],
           love: userInfo.love,
           profile: userInfo.profile,
@@ -94,7 +94,13 @@ Page({
         })
       }
       
-  },
+    }, 
+    loveChange: function(e){
+      console.info(e);
+      this.setData({
+        love:e.detail.value
+      })
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
