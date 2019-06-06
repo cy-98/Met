@@ -19,8 +19,9 @@ Page({
     iconList: [{
       icon: 'cardboardfill',
       color: 'red',
-      badge: 120,
-      name: 'VR'
+      badge: 0,
+      name: '课表',
+      url : '/pages/index/timetable/timetable'
     }, {
       icon: 'recordfill',
       color: 'orange',
