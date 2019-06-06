@@ -26,7 +26,8 @@ Page({
       icon: 'recordfill',
       color: 'orange',
       badge: 1,
-      name: '录像'
+      name: '录像',
+        url: '/pages/index/exam/exam'
     }, {
       icon: 'picfill',
       color: 'yellow',

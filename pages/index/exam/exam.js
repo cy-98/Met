@@ -1,18 +1,30 @@
 // pages/index/exam/exam.js
+var network = require("../../../utils/network.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    exams:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let exams = wx.getStorageSync("exams") || null;
+    if(!exams){
+      network.getExam({success: res => {
+        this.setData({
+          exams:res.data
+        });
+      }});
+    }else{
+      this.setData({
+        exams:exams
+      });
+    }
   },
 
   /**

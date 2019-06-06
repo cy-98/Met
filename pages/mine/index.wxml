@@ -30,12 +30,6 @@
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/about/about" hover-class="none">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">附近的人</text>
-      </navigator>
-    </view>
-    <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">学校认证</text>

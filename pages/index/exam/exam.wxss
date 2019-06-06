@@ -1,1 +1,36 @@
 /* pages/index/exam/exam.wxss */
+.panel{
+  background-color: #fff;
+  padding: 10rpx;
+  margin-bottom: 5rpx;
+}
+
+.exam{
+  margin: 15rpx;
+}
+.exam-time{
+    font-size: 48rpx;
+  text-align: center;
+}
+.exam-name{
+  font-size: 38rpx;
+  text-align: center;
+}
+
+
+.exam-content{
+  line-height: 50rpx;
+  font-size: 28rpx;
+}
+.exam-time-image{
+  height: 35rpx;
+  width: 35rpx;
+  float: left;
+  margin-right: 20rpx;
+}
+.exam-room-image{
+  height: 35rpx;
+  width: 35rpx;
+  float: left;
+  margin-right: 20rpx;
+}

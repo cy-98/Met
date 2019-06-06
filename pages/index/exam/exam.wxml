@@ -1,2 +1,29 @@
 <!--pages/index/exam/exam.wxml-->
-<text>pages/index/exam/exam.wxml</text>
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">课表</view>
+</cu-custom>
+
+<view wx:for="{{exams}}" wx:for-index="idx" wx:key="item" wx:for-item="item">
+<view class='panel'>
+  <view class='exam'>
+    <view class='exam-time'>
+      {{item.relese}}
+    </view>
+    <view class='exam-name'>
+      {{item.name}}
+    </view>
+    <view class='exam-content'>
+      <view>
+        <image class='exam-time-image' src='/images/shijian.png'></image>
+        <view class='exam-content'>{{item.time}}</view>
+      </view>
+      <view class='exam-room'>
+        <image class='exam-room-image' src='/images/dingwei.png'></image>
+        <view class='exam-content'>{{item.room}}</view>
+      </view>
+    </view>
+
+  </view>
+</view>
+</view>
