@@ -1,5 +1,6 @@
 // pages/mine/index.js
 let utils = require("../../utils/util.js");
+let network = require("../../utils/network.js")
 let app = getApp()
 Page({
   //TODO:  改变我的页面上部头像大小变化
@@ -7,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     person: {
       school: "",
       major: "",
@@ -24,6 +26,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取问题
+
+    
+    
+    
+    //获取别人的信息
     let userInfo = wx.getStorageSync("userInfo");
     this.setData({
       person:{

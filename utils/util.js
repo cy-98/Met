@@ -14,8 +14,8 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-// let rootUrl = "http://111.231.90.198:8888/";
-let rootUrl = "http://127.0.0.1:8888/";
+let rootUrl = "http://111.231.90.198:8888/";
+// let rootUrl = "http://127.0.0.1:8888/";
 
 function req(url, data, su, fa) {
   wx.request({

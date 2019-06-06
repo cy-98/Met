@@ -79,3 +79,9 @@
   text-align: center;
   padding: 15rpx;
 }
+.avatar{
+  width:220rpx;
+  height: 220rpx;
+  border-radius: 50%;
+  margin-bottom: 45rpx;
+}
