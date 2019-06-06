@@ -1,6 +1,7 @@
+var network = require("../../utils/network.js");
 Page({
   data: {
-    
+    timetables:[],
     cardCur: 0,
     swiperList: [{
       id: 0,
@@ -70,8 +71,45 @@ Page({
     skin: false
   },
   onLoad() {
+    let currWeek = 15;
     this.towerSwiper('swiperList');
     // 初始化towerSwiper 传已有的数组名即可
+    let timetable = wx.getStorageSync("timetable") || null;
+    let timetables = [];
+
+    let today = (new Date()).getDay();
+
+    if(!timetable){
+      network.getTimeTable({success: res => {
+        res.data.forEach(item => {
+          if (today === item.day) {
+            item.week_list.forEach(week => {
+              if (week === currWeek) {
+                timetables.push(item);
+              }
+            })
+          }
+        });
+      }, fail:res => {
+
+      }});
+    }else{
+      timetable.forEach(item => {
+        if(today === item.day){
+          item.week_list.forEach(week => {
+            if(week === currWeek){
+              timetables.push(item);
+            }
+          })
+        }
+      });
+    }
+    this.setData({
+      timetables:timetables
+    })
+
+    
+
   },
   DotStyle(e) {
     this.setData({
