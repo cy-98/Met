@@ -61,6 +61,17 @@ function updateQuestion({data, success, fail}){
   })
 }
 
+function getMyQuestion({success, fail}){
+  util.getReq("question", {}, res => {
+    console.info(res);
+    if(res.code === 200){
+      success && success(res);
+    }else{
+      fail && fail(res);
+    }
+  });
+}
+
 
 
 //添加兴趣标签
@@ -97,5 +108,7 @@ module.exports = {
   getUserInfo:getUserInfo,
   addTag:addTag,
   deleteTag:deleteTag,
-  getOtherInfo:getOtherInfo
+  getOtherInfo:getOtherInfo,
+  updateQuestion:updateQuestion,
+  getMyQuestion:getMyQuestion
 }

@@ -3,22 +3,24 @@
   <view slot="backText">返回</view>
   <view slot="content">问题列表</view>
 </cu-custom>
+
+<form report-submit='true' bindsubmit='formSubmit'>
 <view class="cu-form-group margin-top">
   <view class="title" type="text">问题1</view>
-  <input placeholder="请输入你的问题1"></input>
+  <input bindinput='input1' placeholder="请输入你的问题1" value='{{question1}}'></input>
 </view>
 
 <view class="cu-form-group">
-  <view class="title" type="text">问题2</view>
-  <input placeholder="请输入你的问题2"></input>
+  <view class="title"  type="text">问题2</view>
+  <input bindinput='input2' placeholder="请输入你的问题2" value='{{question2}}'></input>
 </view>
 
 <view class="cu-form-group">
-  <view class="title" type="text">问题3</view>
-  <input placeholder="请输入你的问题3"></input>
+  <view class="title"  type="text">问题3</view>
+  <input bindinput='input3' placeholder="请输入你的问题3" value='{{question3}}'></input>
 </view>
-
-
   <view class="margin-tb-sm text-center">
-    <button class='margin-tb-sm lg round bg-green shadow button-hover' role="button">提交</button>
+    <button class='margin-tb-sm lg round bg-green shadow button-hover' form-type='submit'>提交</button>
   </view>
+</form>
+
