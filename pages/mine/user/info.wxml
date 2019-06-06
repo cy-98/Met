@@ -56,8 +56,8 @@
       </view>
       <view class='float'>
         <!-- 右边的页面 -->
-          <view class=''>
-
+          <view class='dynamic'>
+              
           </view>
       </view>
     </scroll-view>

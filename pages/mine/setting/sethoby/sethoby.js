@@ -137,7 +137,10 @@ Page({
       });
       return 
     }else{
-      list.push({ title: trim });
+      let color = this.data.colorList[Math.floor(Math.random() * this.data.colorList.length)]
+      list.push({ title: trim,
+                  color: color.name
+       });
       console.log(list);
       this.setData({
         myTags:list
@@ -146,6 +149,7 @@ Page({
         content: trim,
         success: function (res) {
           console.log('添加兴趣')
+
         },
         fail: function () {
           console.log('fail')
@@ -157,7 +161,12 @@ Page({
   //添加选中的标签
   selectTag:function(e){
     let myTags = this.data.myTags;
-    myTags.push({title:e.currentTarget.dataset.title});
+    let color = this.data.colorList[Math.floor(Math.random() * this.data.colorList.length)].name
+    console.log(color)
+    myTags.push({
+      title:e.currentTarget.dataset.title,
+      color:color
+    });
     this.setData({
       myTags:myTags
     })
@@ -175,25 +184,44 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+    let that = this;
+    //获取标签
+    network.getUserInfo({ success:res =>{
+      console.log(res);
+      let userInfo = wx.getStorageSync("userInfo");
 
+      let myTags = [];
+      let tag = userInfo.interest || [];
+      //添加颜色
+
+      tag.forEach(item => {
+        let randex = Math.floor(Math.random() * tags.length);
+        let color = colorList[randex].name;
+        myTags.push({
+          color: color,
+          title: item
+        })
+      });
+      this.setData({
+        myTags: myTags
+      })
+
+    }});
 
 
 
     //妄想实现随机颜色
-    let that = this;
+    
     //颜色列表
-    console.info(that);
     let colorList = that.data.colorList;
     //标签列表
     let tags = that.data.taggroup;
     let tagsLen = tags.length;
-    console.info(tags);
+
     let i = 0;
     do {
-      let random = Math.floor(Math.random() * tagsLen);
+      let random = Math.floor(Math.random() * colorList.length);
       tags[i].color = colorList[random].name
-     
       i++
     } while (i < tagsLen);
 
@@ -202,23 +230,12 @@ Page({
       taggroup: tags
     });
 
-  let userInfo = wx.getStorageSync("userInfo");
-  console.info(userInfo);
-  let myTags = [];
-  let tag = userInfo.interest || [];
-  tag.forEach(item => {
-    myTags.push({
-      title:item
-    })
-  });
-  this.setData({
-    myTags:myTags
-  })
+
 
   },
   //妄想实现随机颜色
 
-
+  //删除标签
   deleteTag:function(e){
 
 
