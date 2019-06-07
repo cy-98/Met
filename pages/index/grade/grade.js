@@ -1,4 +1,4 @@
-// pages/index/exam/exam.js
+// pages/index/grade/grade.js
 var network = require("../../../utils/network.js");
 Page({
 
@@ -6,34 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    exams:[]
+    grades:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let exams = wx.getStorageSync("exams") || null;
-    if(!exams){
-      network.getExam({success: res => {
-        res.data.forEach(item => {
-          let openDate = new Date(item.time).getTime();
-          let day = Math.trunc((openDate - new Date().getTime()) / (1000 * 60 * 60 * 24) + 1);
-          if (day >= 0) {
-            item.relese = "剩余" + day + "天";
-          } else {
-            item.relese = "已结束";
-          }
-        })
-        this.setData({
-          exams:res.data
-        });
-      }});
-    }else{
+    network.getGrade({success : res => {
       this.setData({
-        exams:exams
-      });
-    }
+        grades:res.data
+      })
+    }});
   },
 
   /**

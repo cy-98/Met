@@ -1,7 +1,7 @@
 var network = require("../../utils/network.js");
 Page({
   data: {
-    timetables:[],
+    timetables: [],
     cardCur: 0,
     swiperList: [{
       id: 0,
@@ -21,18 +21,19 @@ Page({
       color: 'red',
       badge: 0,
       name: '课表',
-      url : '/pages/index/timetable/timetable'
+      url: '/pages/index/timetable/timetable'
     }, {
       icon: 'recordfill',
       color: 'orange',
       badge: 1,
-      name: '录像',
-        url: '/pages/index/exam/exam'
+      name: '考试',
+      url: '/pages/index/exam/exam'
     }, {
       icon: 'picfill',
       color: 'yellow',
       badge: 0,
-      name: '图像'
+      name: '成绩',
+      url: '/pages/index/grade/grade'
     }, {
       icon: 'noticefill',
       color: 'olive',
@@ -81,25 +82,28 @@ Page({
 
     let today = (new Date()).getDay();
 
-    if(!timetable){
-      network.getTimeTable({success: res => {
-        res.data.forEach(item => {
-          if (today === item.day) {
-            item.week_list.forEach(week => {
-              if (week === currWeek) {
-                timetables.push(item);
-              }
-            })
-          }
-        });
-      }, fail:res => {
+    if (!timetable) {
+      network.getTimeTable({
+        success: res => {
+          res.data.forEach(item => {
+            if (today === item.day) {
+              item.week_list.forEach(week => {
+                if (week === currWeek) {
+                  timetables.push(item);
+                }
+              })
+            }
+          });
+        },
+        fail: res => {
 
-      }});
-    }else{
+        }
+      });
+    } else {
       timetable.forEach(item => {
-        if(today === item.day){
+        if (today === item.day) {
           item.week_list.forEach(week => {
-            if(week === currWeek){
+            if (week === currWeek) {
               timetables.push(item);
             }
           })
@@ -107,10 +111,10 @@ Page({
       });
     }
     this.setData({
-      timetables:timetables
+      timetables: timetables
     })
 
-    
+
 
   },
   DotStyle(e) {

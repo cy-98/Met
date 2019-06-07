@@ -1,7 +1,7 @@
 <!--pages/index/exam/exam.wxml-->
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">课表</view>
+  <view slot="content">成绩</view>
 </cu-custom>
 
 <view wx:for="{{exams}}" wx:for-index="idx" wx:key="item" wx:for-item="item">

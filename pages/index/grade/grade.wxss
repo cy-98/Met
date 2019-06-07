@@ -1,0 +1,25 @@
+/* pages/index/grade/grade.wxss */
+.panel{
+  background-color: #fff;
+  padding: 10rpx;
+  margin-bottom: 5rpx;
+}
+
+.record{
+  height: 50rpx;
+  margin: 5rpx;
+}
+.record-content{
+  float: left;
+  margin-left: 20rpx;
+}
+.record-gpa{
+  font-size: 28rpx;
+}
+.record-value{
+  float: right;
+  line-height: 50rpx;
+}
+.clear{
+  clear: both;
+}

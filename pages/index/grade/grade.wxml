@@ -1,0 +1,29 @@
+<!--pages/index/grade/grade.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">考试</view>
+</cu-custom>
+
+<view class='panel'>
+    <view wx:for="{{grades}}" wx:for-index="idx" wx:key="item" wx:for-item="item">
+          <view class='record'>
+
+        <view class='record-content'>
+          <view class='record-name'>
+            {{item.name}}
+          </view>
+          <view>
+            <view class='record-gpa'>绩点：{{item.gpa}}</view>
+          </view>
+        </view>
+
+
+        <view class='record-value'>
+          {{item.grade}}分
+        </view>
+
+      </view>
+      <view class='clear'></view>
+    </view>
+
+</view>
