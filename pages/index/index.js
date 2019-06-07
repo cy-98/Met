@@ -25,7 +25,7 @@ Page({
     }, {
       icon: 'recordfill',
       color: 'orange',
-      badge: 1,
+      badge: 0,
       name: '考试',
       url: '/pages/index/exam/exam'
     }, {
@@ -37,38 +37,9 @@ Page({
     }, {
       icon: 'noticefill',
       color: 'olive',
-      badge: 22,
-      name: '通知'
-    }, {
-      icon: 'upstagefill',
-      color: 'cyan',
       badge: 0,
-      name: '排行榜'
-    }, {
-      icon: 'clothesfill',
-      color: 'blue',
-      badge: 0,
-      name: '皮肤'
-    }, {
-      icon: 'discoverfill',
-      color: 'purple',
-      badge: 0,
-      name: '发现'
-    }, {
-      icon: 'questionfill',
-      color: 'mauve',
-      badge: 0,
-      name: '帮助'
-    }, {
-      icon: 'commandfill',
-      color: 'purple',
-      badge: 0,
-      name: '问答'
-    }, {
-      icon: 'brandfill',
-      color: 'mauve',
-      badge: 0,
-      name: '版权'
+      name: '兴趣',
+      url : '/pages/mine/setting/sethoby/sethoby'
     }],
     gridCol: 4,
     skin: false

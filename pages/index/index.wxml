@@ -25,11 +25,11 @@
 
 
 
-<view class="cu-bar bg-white solid-bottom margin-top">
+<!-- <view class="cu-bar bg-white solid-bottom margin-top">
   <view class="action">
     <text class="cuIcon-title text-orange "></text> 工具箱
   </view>
-</view>
+</view> -->
 <view class="cu-modal {{modalName=='gridModal'?'show':''}}" bindtap="hideModal">
   <view class="cu-dialog" catchtap>
     <radio-group class="block" bindchange="gridchange">
