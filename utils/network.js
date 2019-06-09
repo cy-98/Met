@@ -38,11 +38,8 @@ function getOtherInfo({
   });
 }
 // 获取推荐的动态
-function getRecommendDynamic({
-  success,
-  fail
-}) {
-  util.getReq("dynamic/recommend", {}, function(res) {
+function getRecommendDynamic({data,success,fail}) {
+  util.getReq("dynamic/recommend", data, function(res) {
     console.info(res);
     if (res.code === 200) {
       success && success(res);
@@ -66,12 +63,43 @@ function getFollowDynamic({
   })
 }
 
+function getTypeDynamic({
+  type,
+  data,
+  success,
+  fail
+}){
+  util.getReq("dynamic/type/" + type, data, function (res) {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  })
+}
+
 function getOtherDynamic({
   userId,
   success,
   fail
 }) {
   util.getReq("/user/" + userId + "/dynamic", {}, res => {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
+function getDynamic({
+  id,
+  success,
+  fail
+}){
+  util.getReq("dynamic/" + id, {}, res => {
     console.info(res);
     if (res.code === 200) {
       success && success(res);
@@ -238,5 +266,10 @@ module.exports = {
   getOtherDynamic: getOtherDynamic,
   getTimeTable:getTimeTable,
   getExam:getExam,
-  getGrade:getGrade
+  getGrade:getGrade,
+  getRecommendDynamic:getRecommendDynamic,
+  getDynamic: getDynamic,
+  getFollowDynamic: getFollowDynamic,
+  getTypeDynamic: getTypeDynamic
+
 }

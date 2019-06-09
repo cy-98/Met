@@ -1,4 +1,6 @@
 // pages/dynamic/list.js
+var network = require("../../../utils/network.js");
+import dynamic from '../../../modules/dynamic/dynamic.js';
 Page({
 
   /**
@@ -7,28 +9,11 @@ Page({
   data: {
     TabCur: 0,
     scrollLeft: 0,
-    dynamics:[
-      {
-        'nickname':'张三',
-        'content':"你可真棒",
-        'time':'2019-12-12',
-        'watch':25,
-        'good':'12',
-        'commentNum':'12',
-        'avatar':'',
-        'images':[]
-      },
-      {
-        'nickname': '李四',
-        'content': "你可真棒",
-        'time': '2019-12-12',
-        'watch': 25,
-        'good': '12',
-        'commentNum': '12',
-        'avatar': '',
-        'images': []
-      }
-    ]
+    pages:[1,1,1,1],
+    dynamics:[],
+    followDynamic:[],
+    expressDynamic:[],
+    talkDynamic:[]
   },
   tabSelect(e) {
     this.setData({
@@ -48,12 +33,91 @@ Page({
         });
       }
     });
+
+
+    // 获取相关数据
+    network.getRecommendDynamic({data:{page:1, size:10},success: res => {
+      res.data.data.forEach(item => {
+        item.nickname = item.user.nickname,
+        item.avatar = item.user.avatar,
+        item.commentNum = item.comments.length,
+        item.good = item.liker.length,
+        item.watch = (new Date().getTime()) % 100
+      })
+      this.setData({
+        dynamics:res.data.data
+      })
+    }});
+
+    network.getFollowDynamic({
+      data: { page: 1, size: 10 }, success: res => {
+        res.data.data.forEach(item => {
+          item.nickname = item.user.nickname,
+            item.avatar = item.user.avatar,
+            item.commentNum = item.comments.length,
+            item.good = item.liker.length,
+            item.watch = (new Date().getTime()) % 100
+        })
+        this.setData({
+          followDynamic: res.data.data
+        })
+      }
+    });
+
+    network.getTypeDynamic({
+      type:0,
+      data: { page: 1, size: 10 }, success: res => {
+        res.data.data.forEach(item => {
+          item.nickname = item.user.nickname,
+            item.avatar = item.user.avatar,
+            item.commentNum = item.comments.length,
+            item.good = item.liker.length,
+            item.watch = (new Date().getTime()) % 100
+        })
+        this.setData({
+          expressDynamic: res.data.data
+        })
+      }
+    });
+    network.getTypeDynamic({
+      type: 1,
+      data: { page: 1, size: 10 }, success: res => {
+        res.data.data.forEach(item => {
+          item.nickname = item.user.nickname,
+            item.avatar = item.user.avatar,
+            item.commentNum = item.comments.length,
+            item.good = item.liker.length,
+            item.watch = (new Date().getTime()) % 100
+        })
+        this.setData({
+          talkDynamic: res.data.data
+        })
+      }
+    });
+
+
+
   },
   addDynamic: function() {
     console.info("add dynamic");
     wx.navigateTo({
       url: '/pages/dynamic/add/add',
     })
+  },
+  clickContent(e){
+    dynamic.clickContent(e);
+    // console.info(e);
+    // wx.navigateTo({
+    //   url: '/pages/dynamic/index/index?id=' + e.currentTarget.dataset.item.id,
+    // })
+  },
+  clickAvatar: function(e){
+    // console.info(e);
+    // console.info("avatar");
+    dynamic.clickAvatar(e);
+  },
+  clickImages: function(e){
+    dynamic.clickImages(e);
   },
 
   swiperchange: function(e) {

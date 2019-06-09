@@ -49,10 +49,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.info(options);
     let that = this;
     //获取别人的信息
     network.getOtherInfo({
-      userId: '5cf5be36cff47e0006f936dd',
+      userId: options.id,
       success: function(res) {
         console.log('获取成功');
         let interest = res.data.interest;
@@ -96,7 +97,7 @@ Page({
 
     //获取别人的问题
     network.getOtherQuestion({
-      userId: '5cf5be36cff47e0006f936dd',
+      userId: options.id,
       success: function(res) {
         console.log('获取问题成功');
         let questions = res.data.questions

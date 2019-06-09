@@ -3,9 +3,11 @@
     <view class="cu-card dynamic">
       <view class="cu-item shadow">
         <view class="cu-list menu-avatar">
-          <view class="cu-item">
-            <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
-            <view class="content flex-sub">
+          <view class="cu-item" data-user='{{user.id}}' bindtap='clickAvatar'>
+          
+              <image class='cu-avatar round lg' src='{{avatar}}'></image>
+            
+            <view class="content flex-sub" >
               <view>{{nickname}}</view>
               <view class="text-gray text-sm flex justify-between">
                 {{time}}
@@ -13,12 +15,13 @@
             </view>
           </view>
         </view>
-        <view class="text-content">
+        <view class="text-content" data-id="{{id}}" bindtap='clickContent'>
           {{content}}
         </view>
         <view class="grid flex-sub padding-lr col-3 grid-square">
-          <view class="bg-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="9" wx:key="{{index}}">
-          </view>
+          <view class='bg-img' wx:for="{{images}}" wx:key="{{item}}">
+            <image src='{{item}}' data-current='{{item}}' data-all='{{images}}' bindtap='clickImages'></image>
+          </view> 
         </view>
         <view class="text-gray text-sm text-right padding">
           <text class="cuIcon-attentionfill margin-lr-xs"></text> {{watch}}

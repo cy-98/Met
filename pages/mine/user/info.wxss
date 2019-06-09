@@ -19,10 +19,10 @@
   opacity: 0.8;
 }
 
-.UCenter-bg image {
+/* .UCenter-bg image {
   width: 350rpx;
   height: 350rpx;
-}
+} */
 
 .UCenter-bg .gif-wave{
   position: absolute;
