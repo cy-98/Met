@@ -1,1 +1,32 @@
 /* pages/dynamic/index.wxss */
+/* 列表 */
+.cu-item{
+  width: 100%;
+  padding-right: 30rpx;
+}
+/* 图标 */
+.icon-comment{
+  font-size: 34rpx;
+}
+form{
+  width: 100%;
+}
+.comment{
+  display: flex;
+  width: 100%;
+}
+.comment-input{
+  flex: 1;
+  height: 60rpx;
+  padding-left: 10rpx;
+  border: 2rpx solid #f1f1f1;
+}
+.comment-btn{
+  border-radius: 4rpx;
+  height: 60rpx;
+}
+.comment-form{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
