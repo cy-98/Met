@@ -48,9 +48,9 @@
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <button class="cu-btn content" open-type="contact">
+      <button class="cu-btn content" bindtap='feedback' >
         <text class="cuIcon-btn text-olive"></text>
-        <text class="text-grey">问题反馈</text>
+        <text class="text-grey">谁回答了我的提问</text>
       </button>
     </view>
   </view>

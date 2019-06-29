@@ -1,0 +1,15 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">谁回答了我的试卷</view></cu-custom>
+<!-- wx:for -->
+<view class='cu-form-group'><view class='cu-tag bg-red'>WO的问题</view><view class='cu-tag bg-blue'>TA:{{username}}</view></view>
+<view class='cu-form-group'>
+  <view>问题1: </view><view> 谁动了我的奶酪</view>
+</view>
+<view class='cu-form-group'>
+  <view>回答: </view><view> 我动得！{{answer}}</view>
+</view>
+<!-- wx:for -->
+<view class='cu-form-group bg-gray text-center'>我的回答</view>
+<view class='cu-form-group'><view class='cu-tag bg-blue'>TA的问题</view><view class='cu-tag bg-red'>TA:{{username}}</view></view>
+<view class='cu-form-group'>
+  <view>你在哪里！ </view><view> 我搁着呢！</view>
+</view>

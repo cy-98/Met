@@ -2,7 +2,6 @@
 var network = require("../../../utils/network.js");
 // var util = require("../../../utils/util.js")
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -96,34 +95,79 @@ Page({
       avart: "https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png",
       nickname: "扭曲丛林",
       content: "矿大的日子",
-      time: "2019.9.19"
+      time: "2019.9.19",
+      index:'0',
+      answer: [{
+        nickname: "黑色玫瑰",
+        content: "北大的日子",
+        time: "2020.19.9"
+      }]
     }]
   },
   //显示评论
-  comment: function() {
+  comment: function(e) {
+    console.log(e)
+    
+    //判断回复或者评论
     this.setData({
-      commentHidden: !this.data.commentHidden
+      commentType: { type: e.currentTarget.dataset.class, 
+                     index: e.currentTarget.dataset.index},
+      commentHidden: !this.data.commentHidden//关闭输入框
     })
   },
-  //更改评论
+  //输入评论
   changeInput:function(e){
     this.setData({
       comment: e.detail.value
     })
   },
   //提交评论
-  submit: function() {
-    let users = this.data.users;
-    users.push({
-      avart: "https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png",
-      nickname: "newUser",
-      content: this.data.comment,
-      time: Date()
-    })
-    this.setData({
-      users:users
+  submit:function(){
+    let self = this;
+    let comment = this.data.comment;
+    let user = ''
+    //获取用户信息
+    wx.getStorage('userInfo',res => {
+      user = res.nickname
     })
   },
+  // submit: function() {
+  //   let users = this.data.users;
+  //   let self = this;
+  //   //添加评论  或者 添加回复
+  //   //评论
+  //   function commentFn () {
+  //     users.push({
+  //       avart: "https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png",
+  //       nickname: "newUser",
+  //       content: self.data.comment,
+  //       time: Date(),
+  //       index:users.length,
+  //       answer:[]
+  //     })
+  //     self.setData({
+  //       users: users,
+  //       commentHidden: !self.data.commentHidden
+  //     })
+  //   }
+  //   //回复
+  //   function answerFn () {
+  //     console.log(self.data.users[self.data.commentType.index].answer)
+  //     let answer = self.data.users[self.data.commentType.index].answer;
+  //     console.log(self.data.commentType.index)
+  //     users[self.data.commentType.index].answer.push(({
+  //       nickname: "用户名称",
+  //       content: self.data.comment,
+  //       time: "2020.19.9"
+  //     }))
+  //     self.setData({
+  //       users:users,
+  //       commentHidden: !self.data.commentHidden
+  //     })
+  //   }
+  //   this.data.commentType === 'comment'?commentFn():answerFn()
+    
+  // },
   //点赞
   like:function(){
     
@@ -143,6 +187,7 @@ Page({
         })
       }
     });
+
   },
 
 })

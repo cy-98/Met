@@ -246,6 +246,23 @@ function deleteTag({
       fail && fail(res);
   });
 }
+function commitComment ({
+  id,
+  success,
+  fail
+}){
+  util.getReq("dynamic",
+  {id:id,
+   comment:comment},res=>{
+     console.log(res);
+     if(res.code === 200 ){
+       success && success(res)
+     }else{
+       fail && fail(res)
+     }
+   });
+
+}
 
 //获取兴趣标签
 function getTag() {
@@ -270,6 +287,7 @@ module.exports = {
   getRecommendDynamic:getRecommendDynamic,
   getDynamic: getDynamic,
   getFollowDynamic: getFollowDynamic,
-  getTypeDynamic: getTypeDynamic
+  getTypeDynamic: getTypeDynamic,
+  commitComment:commitComment
 
 }

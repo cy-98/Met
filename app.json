@@ -19,7 +19,8 @@
     "pages/mine/setting/setting",
     "pages/mine/setting/sethoby/sethoby",
     "pages/mine/user/info",
-    "pages/mine/question/question"
+    "pages/mine/question/question",
+    "pages/mine/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,50 +1,18 @@
-// pages/mine/index.js
-let utils = require("../../utils/util.js");
-let network = require("../../utils/network.js")
-let app = getApp()
+// pages/mine/feedback/feedback.js
 Page({
-  //TODO:  改变我的页面上部头像大小变化
+
   /**
    * 页面的初始数据
    */
   data: {
-    person: {
-      school: "",
-      major: "",
-      name:"",
-      avatar:"/images/logo.png"
-    }
-  },
-  sethoby:function(){
-    wx.navigateTo({
-      url: '/pages/mine/setting/sethoby/sethoby',
-    })
-  },
-  feedback:function(){
-    wx.navigateTo({
-      url: '/pages/mine/feedback/feedback',
-    })
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取问题
 
-    
-    
-    
-    //获取别人的信息
-    let userInfo = wx.getStorageSync("userInfo");
-    this.setData({
-      person:{
-        school:userInfo.school,
-        major:userInfo.major,
-        name:userInfo.name,
-        avatar:userInfo.avatar
-      }
-    })
   },
 
   /**
@@ -79,7 +47,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
