@@ -25,7 +25,10 @@
         </view>
         <view class="text-gray text-sm text-right padding">
           <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{good}}
-          <text class="cuIcon-messagefill margin-lr-xs"></text> {{commentNum}}
+          <text class="cuIcon-messagefill margin-lr-xs" bindtap='comment' ></text> {{commentNum}}
+        </view>
+        <view class='cu-form-group'>
+          <view>user : </view> <view></view>
         </view>
       </view>
     </view>

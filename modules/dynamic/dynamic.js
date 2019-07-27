@@ -17,6 +17,7 @@ var dynamic = {
       current:e.currentTarget.dataset.current,
       urls: e.currentTarget.dataset.all,
     })
-  }
+  },
+  
 }
 export default dynamic;

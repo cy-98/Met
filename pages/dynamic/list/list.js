@@ -98,6 +98,9 @@ Page({
 
 
   },
+  comment:function(){
+    
+  },
   addDynamic: function() {
     console.info("add dynamic");
     wx.navigateTo({

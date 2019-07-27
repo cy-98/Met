@@ -35,10 +35,9 @@ Page({
    */
    // 这个是消息回调接口 当前是消息列表 如果获取消息 会进行一系列的操作
   onShow() {
-
+    console.log('onshow')
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
-        console.info(data);
         if (data.event === "msg_sync") {
           data.messages.forEach(msg => {
             let hasItem = false;
@@ -55,7 +54,7 @@ Page({
                     
                   }
                 });
-
+                console.log('showed')
                 let type = msg.content.msg_body.extras.type;
                 if (type === undefined || type === "text")
                   con.latestMsg = msg.content.msg_body.text;
