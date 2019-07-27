@@ -12,7 +12,9 @@ Page({
       school: "",
       major: "",
       name:"",
-      avatar:"/images/logo.png"
+      avatar:"/images/logo.png",
+      attention:"",
+      fans:""
     }
   },
   sethoby:function(){

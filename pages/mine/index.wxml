@@ -9,7 +9,7 @@
     <view class="flex flex-sub flex-direction solid-right">
       <view class="text-xxl text-orange">{{visitTotal}}</view>
       <view class="margin-top-sm">
-        <text class="cuIcon-attentionfill"></text> 关注</view>
+        <text class="cuIcon-attentionfill"></text> 关注{{person.attention}}</view>
     </view>
     <view class="flex flex-sub flex-direction solid-right">
       <view class="text-xxl text-blue">{{starCount}}</view>
@@ -19,7 +19,7 @@
     <view class="flex flex-sub flex-direction">
       <view class="text-xxl text-green">{{forksCount}}</view>
       <view class="margin-top-sm">
-        <text class="cuIcon-fork"></text> 粉丝</view>
+        <text class="cuIcon-fork"></text> fans{{person.fans}}</view>
     </view>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
