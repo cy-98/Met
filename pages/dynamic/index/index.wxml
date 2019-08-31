@@ -22,7 +22,7 @@
       </view>
     </view>
     <view class="text-gray text-sm text-right padding">
-      <text class="cuIcon-appreciatefill margin-lr-xs icon-comment" bindtap='like'></text> {{dynamic.liker.length||2}}
+      <!-- <text class="cuIcon-appreciatefill margin-lr-xs icon-comment" bindtap='like'></text> {{dynamic.liker.length||2}} -->
       <text data-class='comment' class="cuIcon-messagefill margin-lr-xs icon-comment" bindtap='comment'></text>
     </view>
     <view class="cu-list menu-avatar comment solids-top" wx:for="{{dynamic.comment}}">
@@ -39,13 +39,18 @@
               <text data-class='answer'data-index='{{item.index}}' class="icon-comment cuIcon-messagefill text-gray margin-left-sm" bindtap='comment'></text>
             </view>
           </view>
-          <!-- 回复 -->
-              <view class="content" wx:for="{{users.answer}}">
+
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+  <!-- 回复 -->
+              <view class="content" wx:key="{{item}}" wx:for="{{dynamic.comments}}">
                 <view class="text-grey">{{item.nickname}}</view>
                 <view class="text-gray text-content text-df">
                   {{item.content}}
                 </view>
-                
                 <view class="margin-top-sm flex justify-between">
                   <view class="text-gray  text-df">{{item.time}}</view>
                   <view style='text-align:right;'>
@@ -54,11 +59,6 @@
                 </view>
               </view>
               <!-- 回复 -->
-        </view>
-      </view>
-    </view>
-  </view>
-</view>
 <!-- 评论框 -->
 <view class='cu-form-group comment-form' hidden='{{commentHidden}}' >
   <form bindsubmit='submit'>

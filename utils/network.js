@@ -246,6 +246,21 @@ function deleteTag({
       fail && fail(res);
   });
 }
+function addComment(id,{content, reply, replyUser}){
+  let data = {"content":content};
+  if(reply && replyUser){
+    data["reply"] = reply;
+    data["replyUser"] = replyUser;
+  }
+  util.req('/dynamic/'+id+'/comment',data, function (res) {
+    console.log(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  })
+}
 function commitComment ({
   id,
   success,
@@ -288,6 +303,7 @@ module.exports = {
   getDynamic: getDynamic,
   getFollowDynamic: getFollowDynamic,
   getTypeDynamic: getTypeDynamic,
-  commitComment:commitComment
+  commitComment:commitComment,
+  addComment:addComment
 
 }

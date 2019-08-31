@@ -89,6 +89,7 @@ App({
     return this.appIMDelegate.getIMHandlerDelegate();
   },
   onLaunch(options) {
+    console.log(this.userInfo)
     let that = this;
 
     // wx.checkSession({

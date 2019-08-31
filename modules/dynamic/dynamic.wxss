@@ -4,3 +4,15 @@
   border-radius: 0rpx;
   margin-top: 20rpx;
 }
+.comment-wrapper{
+  border-top: #eee 1px solid; 
+}
+.cu-form-group{
+  display: flex;
+}
+.user{
+  display: inline;
+}
+.flshr{
+  flex:1;
+}

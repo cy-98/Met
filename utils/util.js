@@ -34,7 +34,6 @@ function req(url, data, su, fa) {
         showError(res.data.msg);
         return typeof fa == "function" && fa(res.data)
       }
-
     },
     fail: function (error) {
       showError(error.data.msg);

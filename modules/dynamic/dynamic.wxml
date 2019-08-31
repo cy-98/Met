@@ -4,9 +4,7 @@
       <view class="cu-item shadow">
         <view class="cu-list menu-avatar">
           <view class="cu-item" data-user='{{user.id}}' bindtap='clickAvatar'>
-          
               <image class='cu-avatar round lg' src='{{avatar}}'></image>
-            
             <view class="content flex-sub" >
               <view>{{nickname}}</view>
               <view class="text-gray text-sm flex justify-between">
@@ -24,11 +22,13 @@
           </view> 
         </view>
         <view class="text-gray text-sm text-right padding">
-          <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{good}}
-          <text class="cuIcon-messagefill margin-lr-xs" bindtap='comment' ></text> {{commentNum}}
+          <text class="cuIcon-messagefill margin-lr-xs" data-id="{{id}}"bindtap='clickContent' ></text> {{comments.length}}
         </view>
-        <view class='cu-form-group'>
-          <view>user : </view> <view></view>
+        <view wx:if='{{comments.length!==0}}' class='cu-form-group comment-wrapper'>
+          <view wx:for='{{comments}}'>
+            <view class="user">{{item.user.nickname}}</view>
+            <view class="flshr">{{item.content}}</view>
+          </view>
         </view>
       </view>
     </view>

@@ -1,6 +1,7 @@
 // pages/dynamic/index.js
 var network = require("../../../utils/network.js");
 // var util = require("../../../utils/util.js")
+
 Page({
   /**
    * 页面的初始数据
@@ -107,7 +108,6 @@ Page({
   //显示评论
   comment: function(e) {
     console.log(e)
-    
     //判断回复或者评论
     this.setData({
       commentType: { type: e.currentTarget.dataset.class, 
@@ -125,11 +125,12 @@ Page({
   submit:function(){
     let self = this;
     let comment = this.data.comment;
-    let user = ''
+    let usrInfo;
+    network.getUserInfo({success:(res)=>{
+      usrInfo = res.data;
+      network.addComment(this.data.dynamic.id,{content:comment})
+    }})
     //获取用户信息
-    wx.getStorage('userInfo',res => {
-      user = res.nickname
-    })
   },
   // submit: function() {
   //   let users = this.data.users;
@@ -177,14 +178,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.info(options);
+    console.log(options)
     network.getDynamic({
       id: options.id,
       success: res => {
-        res.data.createTime = res.data.createTime.split('T')[0] + "."+ res.data.createTime.split('T')[1].split('+')[0]
+        res.data.createTime = res.data.createTime.split('T')[0] + "."+ res.data.createTime.split('T')[1].split('+')[0];
         this.setData({
           dynamic: res.data
         })
+        console.log(this.data.dynamic.comments)
       }
     });
 
