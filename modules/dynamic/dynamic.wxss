@@ -5,14 +5,25 @@
   margin-top: 20rpx;
 }
 .comment-wrapper{
-  border-top: #eee 1px solid; 
+  border-top: #ddd 0.5px solid; 
+}
+.cu-form-group+.cu-form-group{
+  border: 0;
 }
 .cu-form-group{
-  display: flex;
+  border:0;
+  width: 100;
+  font-size: 0.8rem;
+  min-height: 20px;
+  padding: 1px;
+  background: none;
 }
 .user{
-  display: inline;
+  padding-left:15px;
+  color: #38f;
+  display: inline-block;
 }
 .flshr{
-  flex:1;
-}
+  flex: 1;
+  padding-left:10px;
+} 

@@ -94,13 +94,13 @@
 </view>
 
 <view class="cu-list menu-avatar">
-  <view class="cu-item">
-    <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+  <view class="cu-item"  wx:for="{{recommend}}" wx:key="item">
+    <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
     <view class="content">
-      <view class="text-grey">凯尔</view>
+      <view class="text-grey">{{item.nickname}}</view>
       <view class="text-gray text-sm flex">
         <text class="text-cut">
-							<text class="margin-right-xs"></text> 都喜欢打篮球
+							<text class="margin-right-xs"></text> {{item.profile}}
         </text>
       </view>
     </view>

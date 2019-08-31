@@ -39,10 +39,11 @@ Page({
       color: 'olive',
       badge: 0,
       name: '兴趣',
-      url : '/pages/mine/setting/sethoby/sethoby'
+      url: '/pages/mine/setting/sethoby/sethoby'
     }],
     gridCol: 4,
-    skin: false
+    skin: false,
+    recommend:[]
   },
   onLoad() {
     let currWeek = 15;
@@ -50,9 +51,7 @@ Page({
     // 初始化towerSwiper 传已有的数组名即可
     let timetable = wx.getStorageSync("timetable") || null;
     let timetables = [];
-
     let today = (new Date()).getDay();
-
     if (!timetable) {
       network.getTimeTable({
         success: res => {
@@ -81,11 +80,24 @@ Page({
         }
       });
     }
+    //获取推荐的人
+    network.getRecommend({
+      success: (res) => {
+        let recommend = res.data.data;
+        this.setData({
+          recommend:recommend
+        })
+        console.log(this.data.recommend)
+
+      },
+      fail: (res) => {
+        console.log(res)
+      }
+    })
+
     this.setData({
       timetables: timetables
     })
-
-
 
   },
   DotStyle(e) {

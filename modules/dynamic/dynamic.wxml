@@ -24,10 +24,12 @@
         <view class="text-gray text-sm text-right padding">
           <text class="cuIcon-messagefill margin-lr-xs" data-id="{{id}}"bindtap='clickContent' ></text> {{comments.length}}
         </view>
-        <view wx:if='{{comments.length!==0}}' class='cu-form-group comment-wrapper'>
-          <view wx:for='{{comments}}'>
-            <view class="user">{{item.user.nickname}}</view>
-            <view class="flshr">{{item.content}}</view>
+        <view class='comment-wrapper'>
+          <view wx:if='{{comments.length!==0}}' style="background-color: #fff;" >
+            <view class="cu-form-group" wx:if="{{index<3}}" wx:for='{{comments}}'>
+              <view  class="user">{{item.user.nickname}}:</view>
+              <view class="flshr">{{item.content}}</view>
+            </view>
           </view>
         </view>
       </view>

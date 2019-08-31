@@ -108,6 +108,20 @@ function getDynamic({
     }
   });
 }
+//获取推荐的人
+function getRecommend({success,fail}){
+
+  util.getReq('user/recommend',{},res=>{
+    console.log(res);
+    if (res.code == 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+ 
+  });
+
+}
 
 
 // 更新问题
@@ -139,7 +153,6 @@ function getMyQuestion({
     }
   });
 }
-
 function getOtherQuestion({
   userId,
   success,
@@ -246,20 +259,19 @@ function deleteTag({
       fail && fail(res);
   });
 }
-function addComment(id,{content, reply, replyUser}){
+function addComment({id, content, reply, replyUser, success}){
   let data = {"content":content};
   if(reply && replyUser){
     data["reply"] = reply;
     data["replyUser"] = replyUser;
   }
   util.req('/dynamic/'+id+'/comment',data, function (res) {
-    console.log(res);
-    if (res.code === 200) {
+    console.info(res);
+    if (res.code === 200)
       success && success(res);
-    } else {
+    else
       fail && fail(res);
-    }
-  })
+  });
 }
 function commitComment ({
   id,
@@ -304,6 +316,7 @@ module.exports = {
   getFollowDynamic: getFollowDynamic,
   getTypeDynamic: getTypeDynamic,
   commitComment:commitComment,
-  addComment:addComment
+  addComment:addComment,
+  getRecommend:getRecommend
 
 }

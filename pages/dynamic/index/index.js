@@ -1,6 +1,7 @@
 // pages/dynamic/index.js
 var network = require("../../../utils/network.js");
 // var util = require("../../../utils/util.js")
+let app = getApp();
 
 Page({
   /**
@@ -15,95 +16,10 @@ Page({
     bgColor: [
       'bg-gradual-orange', 'bg-gradual-blue', 'bg-gradual-yellow', 'bg-gradual-red', 'bg-gradual-green', 'bg-gradual-pink', 'bg-gradual-white'
     ],
-    ColorList: [{
-        title: '嫣红',
-        name: 'red',
-        color: '#e54d42'
-      },
-      {
-        title: '桔橙',
-        name: 'orange',
-        color: '#f37b1d'
-      },
-      {
-        title: '明黄',
-        name: 'yellow',
-        color: '#fbbd08'
-      },
-      {
-        title: '橄榄',
-        name: 'olive',
-        color: '#8dc63f'
-      },
-      {
-        title: '森绿',
-        name: 'green',
-        color: '#39b54a'
-      },
-      {
-        title: '天青',
-        name: 'cyan',
-        color: '#1cbbb4'
-      },
-      {
-        title: '海蓝',
-        name: 'blue',
-        color: '#0081ff'
-      },
-      {
-        title: '姹紫',
-        name: 'purple',
-        color: '#6739b6'
-      },
-      {
-        title: '木槿',
-        name: 'mauve',
-        color: '#9c26b0'
-      },
-      {
-        title: '桃粉',
-        name: 'pink',
-        color: '#e03997'
-      },
-      {
-        title: '棕褐',
-        name: 'brown',
-        color: '#a5673f'
-      },
-      {
-        title: '玄灰',
-        name: 'grey',
-        color: '#8799a3'
-      },
-      {
-        title: '草灰',
-        name: 'gray',
-        color: '#aaaaaa'
-      },
-      {
-        title: '墨黑',
-        name: 'black',
-        color: '#333333'
-      },
-      {
-        title: '雅白',
-        name: 'white',
-        color: '#ffffff'
-      },
-    ],
-    dynamic: {},
-    users: [{
-      avart: "https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png",
-      nickname: "扭曲丛林",
-      content: "矿大的日子",
-      time: "2019.9.19",
-      index:'0',
-      answer: [{
-        nickname: "黑色玫瑰",
-        content: "北大的日子",
-        time: "2020.19.9"
-      }]
-    }]
+    ColorList: app.globalData.ColorList,
+    replyUser:null,
+    cmtAt:'评论',
+    dynamic: {}
   },
   //显示评论
   comment: function(e) {
@@ -116,59 +32,60 @@ Page({
     })
   },
   //输入评论
-  changeInput:function(e){
+  inputChange:function(e){
+
     this.setData({
       comment: e.detail.value
     })
   },
   //提交评论
-  submit:function(){
-    let self = this;
-    let comment = this.data.comment;
-    let usrInfo;
-    network.getUserInfo({success:(res)=>{
-      usrInfo = res.data;
-      network.addComment(this.data.dynamic.id,{content:comment})
-    }})
-    //获取用户信息
+  submit: function () {
+    let that = this;
+      let req_data = {
+        content: that.data.comment,
+      }
+      //评论回复其他买家，否则认为回复卖家
+      if (that.data.replyUser != null) {
+        let cuuser = that.data.replyUser;
+        let cuId = that.data.replyUser.id;
+        let cuName = that.data.replyUser.nickname;
+        req_data["reply"] = 1;
+        req_data["replyUser"] = cuId;
+      }
+    network.addComment({id:that.data.dynamic.id, content:req_data["content"],
+     reply:req_data["reply"],replyUser:req_data["replyUser"], success: (res) => {
+      console.info(res);
+      console.log(that.data.dynamic.comments);
+      let user = {
+        avatar: this.data.userInfo.avatar,
+        nickname: that.data.userInfo.nickname
+      }
+      let comment = {
+        content: req_data.content,
+        user: user,
+        createTime: new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+      }
+      let dynamic = that.data.dynamic;
+      console.log(dynamic)
+      dynamic.comments.push(comment);
+      that.setData({
+        dynamic:dynamic,
+        comment:"",
+        replyUser:null
+      });
+    }});
+
   },
-  // submit: function() {
-  //   let users = this.data.users;
-  //   let self = this;
-  //   //添加评论  或者 添加回复
-  //   //评论
-  //   function commentFn () {
-  //     users.push({
-  //       avart: "https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png",
-  //       nickname: "newUser",
-  //       content: self.data.comment,
-  //       time: Date(),
-  //       index:users.length,
-  //       answer:[]
-  //     })
-  //     self.setData({
-  //       users: users,
-  //       commentHidden: !self.data.commentHidden
-  //     })
-  //   }
-  //   //回复
-  //   function answerFn () {
-  //     console.log(self.data.users[self.data.commentType.index].answer)
-  //     let answer = self.data.users[self.data.commentType.index].answer;
-  //     console.log(self.data.commentType.index)
-  //     users[self.data.commentType.index].answer.push(({
-  //       nickname: "用户名称",
-  //       content: self.data.comment,
-  //       time: "2020.19.9"
-  //     }))
-  //     self.setData({
-  //       users:users,
-  //       commentHidden: !self.data.commentHidden
-  //     })
-  //   }
-  //   this.data.commentType === 'comment'?commentFn():answerFn()
-    
-  // },
+  // 回复
+  commentAt:function(e){
+    console.log(e)
+    let user = e.currentTarget.dataset.user;
+    this.setData({
+      replyUser:user,
+      cmtAt:'@'+ user.nickname
+    })
+    console.log(this.data.replyUser)
+  },
   //点赞
   like:function(){
     
@@ -178,15 +95,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
+    let userInfo;
+    wx.getStorage({
+      key: 'userInfo',
+      success: (res)=>{
+        userInfo = res.data;
+        this.setData({
+          userInfo: userInfo
+        })
+        console.log(this.data.userInfo.avatar)
+      },
+      fail:(res)=>{
+        console.log(res)
+      }
+    })
     network.getDynamic({
       id: options.id,
       success: res => {
-        res.data.createTime = res.data.createTime.split('T')[0] + "."+ res.data.createTime.split('T')[1].split('+')[0];
+        res.data.createTime = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+        if(res.data.comments)
+        res.data.comments.forEach(item => {
+          item.createTime = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+        })
         this.setData({
           dynamic: res.data
         })
-        console.log(this.data.dynamic.comments)
       }
     });
 
