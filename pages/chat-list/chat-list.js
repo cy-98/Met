@@ -50,8 +50,7 @@ Page({
                 con.mtime = Date.now();
                 getApp().globalData.messages.forEach(c => {
                   if (c.from_username === msg.from_username) {
-                    c.msgs.push(msg);
-                    
+                    c.msgs.push(msg); 
                   }
                 });
                 console.log('showed')
@@ -62,10 +61,7 @@ Page({
                   con.latestMsg = "[语音]";
                 else if (type === "image")
                   con.latestMsg = "[图片]";
-
-
               }
-             
               con.timeStr =  msgShowTime(con.mtime);
             });
             // 如果不是消息列表的消息 我们进行添加一个新的消息进来
@@ -79,15 +75,11 @@ Page({
               conversation.nikeName = msg.from_username;
               conversation.unread_msg_count = conversation.unread_msg_count === undefined ? 1 : conversation.unread_msg_count++;
               conversations.push(conversation);
-
             }
             conversations.sort((a, b)=> {
               return b.mtime - a.mtime;
             });
-
             getApp().globalData.conversations = conversations;
-          
-
             this.setData({
               conversations: conversations
             });
@@ -111,9 +103,7 @@ Page({
     let conversations = getApp().globalData.conversations;
     let messages = getApp().globalData.messages;
     this.setLastMessage(conversations, messages);
-
     // this.setData({conversations: getApp().globalData.conversations});
-
   },
   getConversationsItem(item) {
     let {
@@ -146,7 +136,6 @@ Page({
       messages.forEach(con => {
         let type = con.msgs[con.msgs.length - 1].content.msg_body.extras.type;
         if (con.from_username === conversation.username) {
-
           console.info(type);
           if (type === undefined || type === "text")
             conversation.latestMsg = con.msgs[con.msgs.length - 1].content.msg_body.text;

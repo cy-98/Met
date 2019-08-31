@@ -105,7 +105,7 @@
       </view>
     </view>
     <view class="action">
-      <button class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>关注</button>
+      <button bindtap="attent" id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>{{item.toAttent}}</button>
     </view>
   </view>
 

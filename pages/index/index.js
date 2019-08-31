@@ -45,6 +45,23 @@ Page({
     skin: false,
     recommend:[]
   },
+  //关注推荐的人
+  attent(e){
+    let id = e.currentTarget.id;
+    console.log(e);
+    let index = e.currentTarget.dataset.index;
+    let personClicked = this.data.recommend[index];
+    // pers 关注
+    network.attentOthers({
+      id:id,
+      success:(res)=>{
+        console.log(res)
+      },
+      fail:(res)=>{
+        console.log(res)
+      }
+    })
+  },
   onLoad() {
     let currWeek = 15;
     this.towerSwiper('swiperList');
@@ -80,6 +97,7 @@ Page({
         }
       });
     }
+
     //获取推荐的人
     network.getRecommend({
       success: (res) => {

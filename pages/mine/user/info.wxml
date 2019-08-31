@@ -38,20 +38,11 @@
             </view>
           </view>
 
-            <view class='text-center bg-orange'>TA的问题</view>
 
-          <!-- 问题1 -->
-          <view wx:for="{{questions}}" >
-            <view class='cu-form-group' >{{item}}</view>
-            <view class='cu-form-group'>
-            <input  placeholder='你的答案'></input>
-            </view>
-          </view>
-          
-          <!-- 问题2 -->
 
           <view class="padding flex flex-direction bg-white ">
-            <button class="cu-btn bg-red margin-tb-sm lg">提交</button>
+            <button bindtap="sendMessage" class="cu-btn bg-red margin-tb-sm lg">发消息</button>
+            <button bindtap="addFriend" class="cu-btn bg-blue margin-tb-sm lg">加好友</button>
           </view>
 
       </view>

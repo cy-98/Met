@@ -1,7 +1,7 @@
 <cu-custom bgColor="{{bgColor[ranIndex]}}" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">动态</view></cu-custom>
 <view class='page'>
 <view class="cu-card dynamic {{isCard?'no-card':''}}">
-  <view class="cu-item shadow">
+  <view style="padding-bottom:20px;" class="cu-item shadow">
     <view class="cu-list menu-avatar">
       <view class="cu-item">
         <image src='{{dynamic.user.avatar}}' class='cu-avatar round lg'></image>

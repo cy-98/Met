@@ -37,6 +37,9 @@ function getOtherInfo({
     }
   });
 }
+
+
+
 // 获取推荐的动态
 function getRecommendDynamic({data,success,fail}) {
   util.getReq("dynamic/recommend", data, function(res) {
@@ -108,9 +111,23 @@ function getDynamic({
     }
   });
 }
+//关注推荐的人
+function attentOthers({
+  id,
+  success,
+  fail
+}){
+  util.req("/user/follow", {userId:id}, res => {
+    console.log(res);
+    if (res.code == 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  })
+}
 //获取推荐的人
 function getRecommend({success,fail}){
-
   util.getReq('user/recommend',{},res=>{
     console.log(res);
     if (res.code == 200) {
@@ -167,8 +184,6 @@ function getOtherQuestion({
     }
   });
 }
-
-
 function getTimeTable({
   success,
   fail
@@ -222,6 +237,7 @@ function getExam({
     }
   });
 }
+
 
 
 
@@ -317,6 +333,7 @@ module.exports = {
   getTypeDynamic: getTypeDynamic,
   commitComment:commitComment,
   addComment:addComment,
-  getRecommend:getRecommend
+  getRecommend:getRecommend,
+  attentOthers:attentOthers
 
 }
