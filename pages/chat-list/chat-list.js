@@ -41,6 +41,11 @@ Page({
     console.log('onshow')
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
+
+        let totalUnread = 0;
+        this.setData({
+          totalUnread:totalUnread
+        })
         console.log(this.data.totalUnread);
         if (data.event === "msg_sync") {
           data.messages.forEach(msg => {
@@ -67,7 +72,7 @@ Page({
                   con.latestMsg = "[图片]";
               }
               con.timeStr =  msgShowTime(con.mtime);
-              let totalUnread = this.data.totalUnread;
+
               totalUnread += con.unread_msg_count
               this.setData({
                 totalUnread:totalUnread
@@ -78,7 +83,6 @@ Page({
               let conversation = {}
               conversation.name = msg.from_username;
               conversation.username = msg.from_username;
-              // conversation.appkey = ;
               conversation.type = msg.msg_type;
               conversation.mtime = Date.now();
               conversation.nikeName = msg.from_username;

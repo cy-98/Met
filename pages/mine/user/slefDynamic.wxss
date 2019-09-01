@@ -1,1 +1,2 @@
 /* pages/mine/user/slefDynamic.wxss */
+@import "../../../modules/dynamic/dynamic.wxss";

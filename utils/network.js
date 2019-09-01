@@ -190,8 +190,8 @@ function getTimeTable({
   fail
 }) {
   util.getReq("timetable", {
-    year: 2018,
-    term: 2
+    year: 2019,
+    term: 1
   }, res => {
     console.info(res);
     if (res.code === 200) {
@@ -208,8 +208,8 @@ function getGrade({
   fail
 }) {
   util.getReq("grade", {
-    year: 2018,
-    term: 2
+    year: 2019,
+    term: 1
   }, res => {
     console.info(res);
     if (res.code === 200) {
@@ -226,8 +226,8 @@ function getExam({
   fail
 }) {
   util.getReq("exam", {
-    year: 2018,
-    term: 2
+    year: 2019,
+    term: 1
   }, res => {
     console.info(res);
     if (res.code === 200) {

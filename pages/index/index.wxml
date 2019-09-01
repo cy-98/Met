@@ -84,6 +84,10 @@
       <text>{{item.start}}-{{item.step + item.start - 1}}</text> 【{{item.room}}】{{item.name}}
     </view>
   </view>
+  <view wx:if="{{timetables.length == 0}}" style="padding:15rpx;text-align:center;align-items:center;justify-content:center;color:#979795">
+    今日没有课程~~好好浪吧
+  </view>
+
 </view>
 
 
