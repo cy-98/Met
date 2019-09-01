@@ -371,6 +371,6 @@ module.exports = {
   addComment:addComment,
   getRecommend:getRecommend,
   attentOthers:attentOthers,
-  getUserFollower: getUserFollower
-
+  getUserFollower: getUserFollower,
+  getUserFollow: getUserFollow
 }
