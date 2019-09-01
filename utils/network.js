@@ -241,6 +241,41 @@ function getExam({
 
 
 
+/**
+ * 得到粉丝信息
+ */
+function getUserFollower({
+  success,fail
+}){
+  util.getReq("/user/follower", {}, res => {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
+/**
+ *  获取自己的关注信息
+ */
+function getUserFollow({
+  success, fail
+}) {
+  util.getReq("/user/follow", {}, res => {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
+
+
+
 
 
 //添加兴趣标签
@@ -335,6 +370,7 @@ module.exports = {
   commitComment:commitComment,
   addComment:addComment,
   getRecommend:getRecommend,
-  attentOthers:attentOthers
+  attentOthers:attentOthers,
+  getUserFollower: getUserFollower
 
 }

@@ -1,4 +1,5 @@
 const app = getApp();
+var network = require("../../utils/network.js");
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
@@ -13,7 +14,17 @@ Page({
     this.setData({
       list: list,
       listCur: list[0]
+    });
+
+    network.getUserFollower({
+      success:res => {
+
+      },
+      fail: res => {
+
+      }
     })
+
   },
   onReady() {
     let that = this;

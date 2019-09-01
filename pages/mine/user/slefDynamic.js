@@ -8,20 +8,9 @@ Page({
      * 页面的初始数据
      */
   data: {
-    TabCur: 0,
-    scrollLeft: 0,
-    pages: [1, 1, 1, 1],
     dynamics: [],
-    followDynamic: [],
-    expressDynamic: [],
-    talkDynamic: []
 },
-  tabSelect(e) {
-    this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -37,8 +26,8 @@ Page({
 
 
     // 获取相关数据
-    network.getRecommendDynamic({
-      data: { page: 1, size: 10 }, success: res => {
+    network.getOtherDynamic({
+      userId:wx.getStorageSync("userInfo").id, success: res => {
         console.log(res)
         res.data.data.forEach(item => {
           item.nickname = item.user.nickname,
@@ -53,62 +42,11 @@ Page({
       }
     });
 
-    network.getFollowDynamic({
-      data: { page: 1, size: 10 }, success: res => {
-        console.log(res.data)
-        res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
-            item.commentNum = item.comments.length,
-            item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100
-        });
-        this.setData({
-          followDynamic: res.data.data
-        })
-      }
-    });
-
-    network.getTypeDynamic({
-      type: 0,
-      data: { page: 1, size: 10 }, success: res => {
-        res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
-            item.commentNum = item.comments.length,
-            item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100
-        })
-        this.setData({
-          expressDynamic: res.data.data
-        })
-      }
-    });
-    network.getTypeDynamic({
-      type: 1,
-      data: { page: 1, size: 10 }, success: res => {
-        res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
-            item.commentNum = item.comments.length,
-            item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100
-        })
-        this.setData({
-          talkDynamic: res.data.data
-        })
-      }
-    });
 
 
 
   },
-  addDynamic: function () {
-    console.info("add dynamic");
-    wx.navigateTo({
-      url: '/pages/dynamic/add/add',
-    })
-  },
+
   clickContent(e){
     dynamic.clickContent(e);
     // console.info(e);

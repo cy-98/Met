@@ -11,11 +11,13 @@
       <view class="margin-top-sm">
         <text class="cuIcon-attentionfill"></text> 关注{{person.attention}}</view>
     </view>
-    <view class="flex flex-sub flex-direction solid-right">
-      <view class="text-xxl text-blue">{{starCount}}</view>
-      <view class="margin-top-sm">
-        <text class="cuIcon-favorfill"></text> 动态</view>
-    </view>
+    <navigator class="content" url="/pages/mine/user/slefDynamic" hover-class="none">
+      <view class="flex flex-sub flex-direction solid-right">
+        <view class="text-xxl text-blue">{{starCount}}</view>
+        <view class="margin-top-sm">
+          <text class="cuIcon-favorfill"></text> 动态</view>
+      </view>
+    </navigator>
     <view class="flex flex-sub flex-direction">
       <view class="text-xxl text-green">{{forksCount}}</view>
       <view class="margin-top-sm">
