@@ -37,12 +37,12 @@ form{
 }
 
 .good_cell, .good_swiper, .good_cmt {
-  margin: 0 20rpx;
+  padding: 15 15rpx;
   display: flex;
 }
 
 .good_cmt {
-  padding: 20rpx 0;
+  padding: 20rpx 10rpx;
   align-items: flex-start;
   background: #fff;
 }
@@ -50,6 +50,7 @@ form{
 .good_cell {
   padding: 15rpx 0;
   align-items: center;
+  background-color: #fff;
 }
 
 .good_swiper {
@@ -129,7 +130,7 @@ form{
   width: 475rpx;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
-  background-color: #fff;
+  background-color: #ddd;
   display: flex;
 }
 
@@ -138,7 +139,7 @@ form{
   height: 70rpx;
   font-size: 13px;
   margin: 0 25rpx;
-  background-color: rgb(255, 255, 255);
+  background-color: #ddd;
 }
 
 .comment_btn_wrap {

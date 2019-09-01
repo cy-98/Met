@@ -1,6 +1,6 @@
 <cu-custom bgColor="{{bgColor[ranIndex]}}" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">动态</view></cu-custom>
 <view class='page'>
-<view class="cu-card dynamic {{isCard?'no-card':''}}">
+<view class="cu-card dynamic no-card">
   <view style="padding-bottom:20px;" class="cu-item shadow">
     <view class="cu-list menu-avatar">
       <view class="cu-item">
@@ -47,7 +47,7 @@
         <view class="comment_in_wrap cell_flex">
           <input class="comment_in" placeholder='{{cmtAt}}' bindinput='inputChange' value='{{comment}}'></input>
         </view>
-        <view class="comment_btn_wrap bg-blue" bindtap='submit'>发送</view>
+        <view class="comment_btn_wrap {{bgColor[ranIndex]}}" bindtap='submit'>发送</view>
       </view>
     </view>
     <!---->

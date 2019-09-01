@@ -12,9 +12,9 @@ Page({
     //评论内容
     comment: '',
     //随机颜色
-    ranIndex: Math.floor(Math.random() * 10),
+    ranIndex: Math.floor(Math.random() * 6),
     bgColor: [
-      'bg-gradual-orange', 'bg-gradual-blue', 'bg-gradual-yellow', 'bg-gradual-red', 'bg-gradual-green', 'bg-gradual-pink', 'bg-gradual-white'
+      'bg-gradual-orange', 'bg-gradual-blue', 'bg-gradual-yellow', 'bg-gradual-red', 'bg-gradual-green', 'bg-gradual-pink'
     ],
     ColorList: app.globalData.ColorList,
     replyUser:null,
