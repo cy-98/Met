@@ -1,46 +1,52 @@
-  <template name="dynamic">
+<template name="dynamic">
 
-    <view class="cu-card dynamic no-card ">
-      <view class="cu-item shadow">
-        <view class="cu-list menu-avatar">
-          <view class="cu-item" data-user='{{user.id}}' bindtap='clickAvatar'>
-              <image class='cu-avatar round lg' src='{{avatar}}'></image>
-            <view class="content flex-sub" >
-              <view>{{nickname}}</view>
-              <view class="text-gray text-sm flex justify-between">
-                {{time}}
-              </view>
+  <view class="cu-card dynamic no-card ">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar">
+        <view class="cu-item" data-user='{{user.id}}' bindtap='clickAvatar'>
+          <image class='cu-avatar round lg' src='{{avatar}}'></image>
+          <view class="content flex-sub">
+            <view>{{nickname}}</view>
+            <view class="text-gray text-sm flex justify-between">
+              {{time}}
             </view>
           </view>
         </view>
+      </view>
+
+ 
+      <view style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '>
         <view class="text-content" data-id="{{id}}" bindtap='clickContent'>
           {{content}}
         </view>
-        <view class="grid flex-sub padding-lr col-3 grid-square">
+        <view class="grid flex-sub padding-tb col-3 grid-square">
           <view class='bg-img' wx:for="{{images}}" wx:key="{{item}}">
             <image src='{{item}}' data-current='{{item}}' data-all='{{images}}' bindtap='clickImages'></image>
-          </view> 
+          </view>
         </view>
 
         <view>
-                <view class="text-gray text-sm padding" style='float:left'>
-                  {{createTime}}
-                  </view>
-                <view class="text-gray text-sm text-right padding">
-                  <text class="cuIcon-messagefill margin-lr-xs" data-id="{{id}}" bindtap='clickContent' ></text> {{comments.length}}
-                </view>
+          <view class="text-gray text-sm" style='float:left;padding-bottom:10rpx;'>
+            {{createTime}}
+          </view>
+          <view class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
+            <text class="cuIcon-messagefill margin-lr-xs" data-id="{{id}}" bindtap='clickContent'></text> {{comments.length}}
+          </view>
         </view>
 
-        <view class='comment-wrapper'>
-          <view wx:if='{{comments.length!==0}}' style="background-color: #fff;" >
+        <view class='comment-wrapper' data-id="{{id}}" bindtap='clickContent'>
+          <view wx:if='{{comments.length!==0}}' style="background-color: #fff;">
             <view class="cu-form-group" wx:if="{{index<3}}" wx:for='{{comments}}'>
-              <view  class="user">{{item.user.nickname}}:</view>
+              <view class="user">{{item.user.nickname}}:</view>
               <view class="flshr">{{item.content}}</view>
             </view>
           </view>
         </view>
       </view>
+
+
     </view>
+  </view>
 
 
-  </template>
+</template>

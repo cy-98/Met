@@ -5,7 +5,6 @@
   margin-top: 20rpx;
 }
 .comment-wrapper{
-  border-bottom: #eee 15rpx solid; 
   padding-bottom: 10rpx;
 }
 .cu-form-group+.cu-form-group{
@@ -20,7 +19,7 @@
   background: none;
 }
 .user{
-  padding-left:15px;
+  /* padding-left:15px; */
   color: #38f;
   display: inline-block;
 }

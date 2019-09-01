@@ -53,10 +53,11 @@ function getRecommendDynamic({data,success,fail}) {
 }
 // 获取关注用户的动态
 function getFollowDynamic({
+  data,
   success,
   fail
 }) {
-  util.getReq("dynamic/follow", {}, function(res) {
+  util.getReq("dynamic/follow", data, function(res) {
     console.info(res);
     if (res.code === 200) {
       success && success(res);
