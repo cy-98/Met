@@ -35,6 +35,9 @@ Page({
    */
    // 这个是消息回调接口 当前是消息列表 如果获取消息 会进行一系列的操作
   onShow() {
+    wx.hideTabBarRedDot({
+      index: 2,
+    })
     console.log('onshow')
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
