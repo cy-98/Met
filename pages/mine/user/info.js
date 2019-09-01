@@ -11,6 +11,7 @@ Page({
     profile:'',
     major:'',
     avatar:'',
+    stuId:"",
     //问题列表
     questions: [],
     randomOpacity: [],
@@ -25,7 +26,7 @@ Page({
       "#00BFFF", "#68A2D5", "#FF69B4", "#DB7093", "#CD3278", "#607B8B"
     ],
     //标签云
-    labArr: ['睡不死就往死里睡', '快去学习', '随身携带大量零食', '我这么帅我不能死', '唐悠悠', '关谷神奇', '张益达', '诺澜', '这些默认值', '陆展博', '远爷', '弟弟', '这真的是一个弟弟'],
+    labArr: [],
     //页面切换
     index: 0,
     scroll_left: 'scroll_left',
@@ -45,7 +46,15 @@ Page({
 
   },
   sendMessage:function(){
+    let con = {
+      "username":this.data.stuId,
+      "avatar":this.data.avatar,
+      "nickName":this.data.nickname
+    };
 
+    wx.navigateTo({
+      url: '/pages/chat/chat?conversation=' + JSON.stringify(con),
+    })
   },
   addFriend:function(){
 
@@ -67,7 +76,8 @@ Page({
           avatar : res.data.avatar,
           nickname : res.data.nickname,
           profile : res.data.profile,
-          major : res.data.major
+          major : res.data.major,
+          stuId:res.data.stuId
         })
         //实现随机颜色
         console.log(that)
@@ -100,20 +110,20 @@ Page({
     })
     console.log(options);
 
-    //获取别人的问题
-    network.getOtherQuestion({
-      userId: options.id,
-      success: function(res) {
-        console.log('获取问题成功');
-        let questions = res.data.questions
-        that.setData({
-          questions:questions
-        })
-      },
-      fail: function() {
-        console.log('获取问题失败');
-      }
-    })
+    // //获取别人的问题
+    // network.getOtherQuestion({
+    //   userId: options.id,
+    //   success: function(res) {
+    //     console.log('获取问题成功');
+    //     let questions = res.data.questions
+    //     that.setData({
+    //       questions:questions
+    //     })
+    //   },
+    //   fail: function() {
+    //     console.log('获取问题失败');
+    //   }
+    // })
 
 
 

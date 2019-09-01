@@ -20,7 +20,6 @@ Page({
       };
       utils.req('user', userInfo, function(res){console.info(res)});
       utils.getReq('user', {}, function(res){
-        app.getIMHandler().updateUserInfo(res.data);
         console.info(res.data.stuId);
         wx.setStorageSync("userInfo", res.data);
         if(!res.data.stuId){
@@ -29,6 +28,9 @@ Page({
             url: '/pages/mine/jwxt/jwxt',
           });
         }else{
+          getApp().getIMHandler().login({username:res.data.stuId, avatar:res.data.avatar});
+          // app.getIMHandler().updateUserInfo(res.data);
+
           wx.switchTab({
             url: '/pages/dynamic/list/list',
           });

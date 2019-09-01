@@ -29,68 +29,68 @@ export default class WebSocketHandlerImp extends IIMHandler {
       "flag":1     //flag  :  是否启用消息漫游记录  0 ： 否  1 ： 是
     }).onSuccess(data =>  {
       //TODO
-      console.info("success");
-
-      this.jim.login({
-        'username':"abc123",
-        "password":"123456",
-      }).onSuccess(data => {
-        console.info(data);
-        console.info("login success");
-
-        this.jim.getConversation().onSuccess(data => {
-          console.info(data);
-          getApp().globalData.conversations = data.conversations;
-          this.onMsgListListener && this.onMsgListListener(data.conversations);
-          // wx.setStorage({
-          //   key: 'conversations',
-          //   data: data.conversations,
-          // });
-        }).onFail(data => {
-          console.error(data);
-        });
-
-        this.jim.onSyncConversation(data => {
-          console.info(data);
-          getApp().globalData.messages = data;
-          
-        });
-
-        this.jim.onMsgReceive(data => {
-          console.info("接收到消息开始处理");
-          console.info(data);
-          //有些界面没有设置onMsgRecListener
-          // 先全局存储消息  之后页面需要处理消息的 需要设置一下 消息监听接口
-          this.onMsgRecListener && this.onMsgRecListener(data);
-          console.info("处理消息结束");
-        });
-
-
-      }).onFail(data => {
-        console.info("login err");
-        console.info(data);
-        if(data.code === 880103){
-          this.jim.register({
-            'username':'abc123',
-            'password':'123Ghhhh',
-            'address': '深圳'
-          }).onSuccess(function(data){
-            console.info(data);
-            console.info("注册成功");
-          }).onFail(function(data){
-            console.error("注册失败");
-            console.error(data);
-          });
-        }
-      });
-
-
-
+      console.info("init success");
+      let userInfo = wx.getStorageSync("userInfo");
+      console.info(userInfo);
+      this.login({username:userInfo.stuId, avatar:userInfo.avatar, success:res => {}, fail:res=>{}});
 
     }).onFail(function (data) {
       //TODO
-      console.info("fail");
+      console.info("init fail");
     });  
+  }
+
+  login({username, avatar, success, fail}){
+
+    this.jim.login({
+      'username': username,
+      "password": "123456",
+    }).onSuccess(data => {
+      console.info(data);
+      console.info("login success");
+
+      this.jim.getConversation().onSuccess(data => {
+        console.info(data);
+        getApp().globalData.conversations = data.conversations;
+        this.onMsgListListener && this.onMsgListListener(data.conversations);
+      }).onFail(data => {
+        console.error(data);
+      });
+
+      this.jim.onSyncConversation(data => {
+        console.info(data);
+        getApp().globalData.messages = data;
+
+      });
+
+      this.jim.onMsgReceive(data => {
+        console.info("接收到消息开始处理");
+        console.info(data);
+        //有些界面没有设置onMsgRecListener
+        // 先全局存储消息  之后页面需要处理消息的 需要设置一下 消息监听接口
+        this.onMsgRecListener && this.onMsgRecListener(data);
+        console.info("处理消息结束");
+      });
+
+
+    }).onFail(data => {
+      console.info("login err");
+      console.info(data);
+      if (data.code === 880103) {
+        this.jim.register({
+          'username': username,
+          'password': '123456',
+          'address': avatar
+        }).onSuccess(function (data) {
+          console.info(data);
+          console.info("注册成功");
+        }).onFail(function (data) {
+          console.error("注册失败");
+          console.error(data);
+        });
+      }
+    });
+
   }
 
   /*
@@ -250,6 +250,7 @@ export default class WebSocketHandlerImp extends IIMHandler {
       //data.user_info.mtime 用户信息最后修改时间
       //data.extras 自定义json字段
     }).onFail(function (data) {
+      console.info(data);
       //data.code 返回码
       //data.message 描述
     });
