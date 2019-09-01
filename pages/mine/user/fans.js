@@ -6,15 +6,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    fans:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+    console.log('fans onload')
     network.getUserFollower({
-      success:(res)=> console.log(res),
+      success:(res)=>{
+        let users = res.data;
+        this.setData({
+          fans: users
+        })
+      },
       fail:(res)=> consolelog(res)
     })
   },

@@ -35,12 +35,12 @@ Page({
    */
    // 这个是消息回调接口 当前是消息列表 如果获取消息 会进行一系列的操作
   onShow() {
+    this.setData({
+      totalUnread:0
+    })
     console.log('onshow')
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
-        this.setData({
-          totalUnread:0
-        });
         console.log(this.data.totalUnread);
         if (data.event === "msg_sync") {
           data.messages.forEach(msg => {
