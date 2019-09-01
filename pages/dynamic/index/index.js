@@ -90,6 +90,13 @@ Page({
   like:function(){
     
   },
+  clickImages: function (e) {
+    console.info(e);
+    wx.previewImage({
+      current: e.currentTarget.dataset.current,
+      urls: e.currentTarget.dataset.all,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -112,11 +119,12 @@ Page({
     network.getDynamic({
       id: options.id,
       success: res => {
-        res.data.createTime = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
-        if(res.data.comments)
-        res.data.comments.forEach(item => {
-          item.createTime = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
-        })
+        res.data.createTime = res.data.createTime.replace(/T/g, ' ').substr(0, 19);
+        if(res.data.comments){
+          res.data.comments.forEach(item => {
+            item.createTime = item.createTime.replace(/T/g, ' ').substr(0, 19);
+          });
+        }
         this.setData({
           dynamic: res.data
         })
