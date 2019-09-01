@@ -1,5 +1,6 @@
 // pages/mine/user/info.js
 var network = require('../../../utils/network.js')
+import dynamic from '../../../modules/dynamic/dynamic.js';
 Page({
 
   /**
@@ -34,6 +35,7 @@ Page({
     checked: 'checked bg-green',
     unchecked: '',
     ranIndex: Math.floor(Math.random() * 5),
+    dynamics:[]
   },
 
   tapchange: function(e) {
@@ -59,6 +61,23 @@ Page({
   addFriend:function(){
 
   },
+
+  clickContent(e) {
+    dynamic.clickContent(e);
+    // console.info(e);
+    // wx.navigateTo({
+    //   url: '/pages/dynamic/index/index?id=' + e.currentTarget.dataset.item.id,
+    // })
+  },
+  clickAvatar: function (e) {
+    // console.info(e);
+    // console.info("avatar");
+    dynamic.clickAvatar(e);
+  },
+  clickImages: function (e) {
+    dynamic.clickImages(e);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -80,7 +99,6 @@ Page({
           stuId:res.data.stuId
         })
         //实现随机颜色
-        console.log(that)
         var labLen = that.data.labArr.length,
           colorArr = that.data.colorArr,
           colorLen = colorArr.length,
@@ -103,6 +121,26 @@ Page({
           randomColorArr: randomColorArr,
           randomOpacity: randomOpacity
         });
+
+        console.info(options);
+        // 获取相关数据
+        network.getOtherDynamic({
+           userId:options.id , success: res => {
+            res.data.data.forEach(item => {
+              item.nickname = item.user.nickname,
+                item.avatar = item.user.avatar,
+                item.commentNum = item.comments.length,
+                item.good = item.liker.length,
+                item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+            });
+            console.info(res.data.data);
+            that.setData({
+              dynamics: res.data.data
+            });
+          }
+        });
+
+
       },
       fail: function() {
         console.log('获取失败');

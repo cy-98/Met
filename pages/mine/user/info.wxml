@@ -1,4 +1,6 @@
 <!--pages/mine/user/info.wxml-->
+<import src="../../../modules/dynamic/dynamic.wxml" />
+
 <cu-custom bgColor="bg-gradual-green" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">用户信息</view></cu-custom>
 <scroll-view scroll-y class="">
   <view class="UCenter-bg">
@@ -49,7 +51,11 @@
       <view class='float'>
         <!-- 右边的页面 -->
           <view class='dynamic'>
-              
+            <view wx:for="{{dynamics}}" wx:key="item">
+              <view data-item="{{item}}">
+                <template is="dynamic" data="{{...item}}"></template>
+              </view>
+            </view>
           </view>
       </view>
     </scroll-view>

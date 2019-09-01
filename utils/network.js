@@ -88,7 +88,7 @@ function getOtherDynamic({
   success,
   fail
 }) {
-  util.getReq("/user/" + userId + "/dynamic", {}, res => {
+  util.getReq("user/" + userId + "/dynamic", {}, res => {
     console.info(res);
     if (res.code === 200) {
       success && success(res);
