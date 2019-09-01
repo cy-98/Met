@@ -3,16 +3,18 @@
   <view slot="backText">返回</view>
 </cu-custom>
 <view class="cu-list menu-avatar">
-  <view class="cu-item" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
+  <view class="cu-item" wx:for="{{users}}" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
     <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
     <view class="content">
-      <view class="text-grey">名称</view>
+      <view class="text-grey">{{item.nickname}}</view>
       <view class="text-gray text-sm flex">
         <text class="text-cut">
-							<text class="margin-right-xs"></text>profile
+							<text class="margin-right-xs"></text>{{item.profile}}
         </text>
       </view>
     </view>
   </view>
-
 </view>
+
+<view wx:if="{{users.length != 0}}" style="width:100%;" class="cu-tag bg-blue">快去关注别人
+吧！</view>
