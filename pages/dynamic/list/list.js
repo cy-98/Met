@@ -42,8 +42,9 @@ Page({
         item.avatar = item.user.avatar,
         item.commentNum = item.comments.length,
         item.good = item.liker.length,
-        item.watch = (new Date().getTime()) % 100
-      })
+        item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+      });
+      console.info(res.data.data);
       this.setData({
         dynamics:res.data.data
       })
@@ -56,7 +57,8 @@ Page({
             item.avatar = item.user.avatar,
             item.commentNum = item.comments.length,
             item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100
+            item.watch = (new Date().getTime()) % 100,
+          item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
         })
         this.setData({
           followDynamic: res.data.data
@@ -72,7 +74,8 @@ Page({
             item.avatar = item.user.avatar,
             item.commentNum = item.comments.length,
             item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100
+            item.watch = (new Date().getTime()) % 100,
+            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
         })
         this.setData({
           expressDynamic: res.data.data
@@ -87,8 +90,9 @@ Page({
             item.avatar = item.user.avatar,
             item.commentNum = item.comments.length,
             item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100
-        })
+            item.watch = (new Date().getTime()) % 100,
+            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+        });
         this.setData({
           talkDynamic: res.data.data
         })

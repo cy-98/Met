@@ -1,6 +1,6 @@
   <template name="dynamic">
 
-    <view class="cu-card dynamic">
+    <view class="cu-card dynamic no-card ">
       <view class="cu-item shadow">
         <view class="cu-list menu-avatar">
           <view class="cu-item" data-user='{{user.id}}' bindtap='clickAvatar'>
@@ -21,9 +21,16 @@
             <image src='{{item}}' data-current='{{item}}' data-all='{{images}}' bindtap='clickImages'></image>
           </view> 
         </view>
-        <view class="text-gray text-sm text-right padding">
-          <text class="cuIcon-messagefill margin-lr-xs" data-id="{{id}}"bindtap='clickContent' ></text> {{comments.length}}
+
+        <view>
+                <view class="text-gray text-sm padding" style='float:left'>
+                  {{createTime}}
+                  </view>
+                <view class="text-gray text-sm text-right padding">
+                  <text class="cuIcon-messagefill margin-lr-xs" data-id="{{id}}" bindtap='clickContent' ></text> {{comments.length}}
+                </view>
         </view>
+
         <view class='comment-wrapper'>
           <view wx:if='{{comments.length!==0}}' style="background-color: #fff;" >
             <view class="cu-form-group" wx:if="{{index<3}}" wx:for='{{comments}}'>
