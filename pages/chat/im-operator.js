@@ -39,10 +39,10 @@ export default class IMOperator {
             if (item.content.msg_type === undefined) item.content.msg_type === "text";
 
             let msgObj = {};
-            msgObj.type = item.content.msg_type;
+            msgObj.type = item.content.msg_body.extras.type;
             msgObj.isMy = false;
             msgObj.content = item.content.msg_body.text;
-            msgObj.duration = 0;
+            msgObj.duration = item.content.msg_body.extras.duration;
             msgItem = this.createNormalChatItem(msgObj);
             this._latestTImestamp = item.content.create_time;
             // 添加到用户的消息中 不一定是当前的用户的
