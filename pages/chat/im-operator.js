@@ -14,7 +14,7 @@ export default class IMOperator {
   constructor(page, opts) {
     this._opts = opts;
     this._latestTImestamp = 0; //最新消息的时间戳
-    this._myHeadUrl = wx.getStorageSync('userInfo').avatarUrl;
+    this._myHeadUrl = wx.getStorageSync('userInfo').avatar;
     this._otherHeadUrl = this._opts.avatar;
     let that = this;
 

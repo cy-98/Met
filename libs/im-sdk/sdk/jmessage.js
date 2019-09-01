@@ -32,7 +32,7 @@ export default class WebSocketHandlerImp extends IIMHandler {
       console.info("init success");
       let userInfo = wx.getStorageSync("userInfo");
       console.info(userInfo);
-      this.login({username:userInfo.stuId, avatar:userInfo.avatar, success:res => {}, fail:res=>{}});
+      this.login({username:userInfo.stuId, avatar:userInfo.avatar, nickname:userInfo.nickname,success:res => {}, fail:res=>{}});
 
     }).onFail(function (data) {
       //TODO
@@ -40,7 +40,7 @@ export default class WebSocketHandlerImp extends IIMHandler {
     });  
   }
 
-  login({username, avatar, success, fail}){
+  login({ username, avatar, nickname, success, fail}){
 
     this.jim.login({
       'username': username,
@@ -62,6 +62,7 @@ export default class WebSocketHandlerImp extends IIMHandler {
         getApp().globalData.messages = data;
 
       });
+      this.updateUserInfo({avatar:avatar, nickname:nickname});
 
       this.jim.onMsgReceive(data => {
         console.info("接收到消息开始处理");
@@ -214,13 +215,12 @@ export default class WebSocketHandlerImp extends IIMHandler {
     });
   }
 
-  updateUserInfo(userInfo){
-    console.info(userInfo);
+  updateUserInfo({avatar, nickname}){
     console.info("更新极光用户数据")
     this.jim.updateSelfInfo({
-      'region': userInfo.avatar,
-      'nickname': userInfo.nickname,
-      'extras':{'avatar':userInfo.avatar}
+      'region': avatar,
+      'nickname': nickname,
+      'extras':{'avatar':avatar}
     }).onSuccess(function (data) {
       console.info(data);
       //data.code 返回码

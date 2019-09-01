@@ -102,6 +102,8 @@ Page({
 
     let conversations = getApp().globalData.conversations;
     let messages = getApp().globalData.messages;
+    console.info(messages);
+
     this.setLastMessage(conversations, messages);
     // this.setData({conversations: getApp().globalData.conversations});
   },
