@@ -1,4 +1,5 @@
 // pages/mine/user/fans.js
+const network = require("../../../utils/network.js");
 Page({
 
   /**
@@ -12,7 +13,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    network.getUserFollower({
+      success:(res)=> console.log(res),
+      fail:(res)=> consolelog(res)
+    })
   },
 
   /**

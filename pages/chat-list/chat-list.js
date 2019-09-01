@@ -79,6 +79,10 @@ Page({
             conversations.sort((a, b)=> {
               return b.mtime - a.mtime;
             });
+            //显示tabbar红点
+            wx.showTabBarRedDot({
+              index: 2,
+            })
             getApp().globalData.conversations = conversations;
             this.setData({
               conversations: conversations
@@ -159,9 +163,9 @@ Page({
       return b.mtime - a.mtime;
     })
     //
-    wx.showTabBarRedDot({
-      index: 2,
-    })
+    //wx.showTabBarRedDot({
+    //  index: 2,
+    //})
     this.setData({
       conversations: converstaions
     });
