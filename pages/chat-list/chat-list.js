@@ -11,9 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    conversations: []
+    conversations: [],
+    totalUnread:0
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -66,6 +66,11 @@ Page({
                   con.latestMsg = "[图片]";
               }
               con.timeStr =  msgShowTime(con.mtime);
+              let totalUnread = this.data.totalUnread;
+              totalUnread += con.unread_msg_count
+              this.setData({
+                totalUnread:totalUnread
+              })
             });
             // 如果不是消息列表的消息 我们进行添加一个新的消息进来
             if (!hasItem) {
@@ -83,9 +88,13 @@ Page({
               return b.mtime - a.mtime;
             });
             //显示tabbar红点
-            wx.showTabBarRedDot({
-              index: 2,
-            })
+            if(this.data.totalUnread !== 0){
+              console.log('未读')
+              wx.setTabBarBadge({
+                index: 2,
+                text: this.data.totalUnread+'',
+              })
+            }
             getApp().globalData.conversations = conversations;
             this.setData({
               conversations: conversations
