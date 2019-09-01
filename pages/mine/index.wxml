@@ -23,12 +23,12 @@
     </view>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view class="cu-item arrow">
+    <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/question/question" hover-class="none">
         <image src="/images/logo.png" class="png" mode="aspectFit"></image>
         <text class="text-grey">我的提问</text>
       </navigator>
-    </view>
+    </view> -->
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
@@ -47,12 +47,12 @@
         <text class="text-grey">设置</text>
       </navigator>
     </view>
-    <view class="cu-item arrow">
+    <!-- <view class="cu-item arrow">
       <button class="cu-btn content" bindtap='feedback' >
         <text class="cuIcon-btn text-olive"></text>
         <text class="text-grey">谁回答了我的提问</text>
       </button>
-    </view>
+    </view> -->
   </view>
   <view class="cu-tabbar-height"></view>
 </scroll-view>

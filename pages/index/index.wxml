@@ -74,7 +74,7 @@
 
 <view class="cu-bar bg-white solid-bottom margin-top">
   <view class="action">
-    <text class="cuIcon-title text-blue text-orange ">今日课程-Lesson</text>
+    <text class="cuIcon-title text-orange "></text>今日课程
   </view>
 </view>
 <view class="cu-timeline">
@@ -94,7 +94,7 @@
 </view>
 
 <view class="cu-list menu-avatar">
-  <view class="cu-item"  wx:for="{{recommend}}" wx:key="item">
+  <view class="cu-item"  wx:for="{{recommend}}" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
     <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
     <view class="content">
       <view class="text-grey">{{item.nickname}}</view>

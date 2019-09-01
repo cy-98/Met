@@ -46,14 +46,15 @@ Page({
       getApp().getIMHandler().getUserInfo({
         userId: con.username, success: function (res) {
           // 使用region代替avatar
-          console.info(res.user_info.region);
+          console.info("good");
+          console.info(res);
           // that._opts._otherHeadUrl = res.user_info.region;
-          con['avatar'] = res.user_info.region;
+          con['avatar'] = res.user_info.address;
           console.info("con");
           console.info(con);
           console.info("con end");
           that.setData({
-            avatar:res.user_info.region
+            avatar:res.user_info.address
           });
           that.imOperator = new IMOperator(that, con);
           that.UI = new UI(that);

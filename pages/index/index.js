@@ -118,6 +118,20 @@ Page({
     })
 
   },
+  clickUser(e){
+    console.info(e);
+    let user = e.currentTarget.dataset.user;
+    let con = {
+      "username": user.stuId,
+      "avatar": user.avatar,
+      "nickName": user.nickname
+    };
+
+    wx.navigateTo({
+      url: '/pages/chat/chat?conversation=' + JSON.stringify(con),
+    })
+  },
+
   DotStyle(e) {
     this.setData({
       DotStyle: e.detail.value

@@ -155,15 +155,7 @@ export default class WebSocketHandlerImp extends IIMHandler {
     console.info(content);
     let type = content.type;
     this._sendTextMsg({content, success, fail});
-    // switch(type){
-    //   case "text":
-    //     // console.info(content.content);
-    //     this._sendTextMsg({content, success, fail});
-    //     break;
-    //   case "image":
-    //     this._sendImageMsg({content, success, fail});
-    //     break;
-    // }
+
     console.info("发送消息good");
   }
 
@@ -218,7 +210,7 @@ export default class WebSocketHandlerImp extends IIMHandler {
   updateUserInfo({avatar, nickname}){
     console.info("更新极光用户数据")
     this.jim.updateSelfInfo({
-      'region': avatar,
+      'address': avatar,
       'nickname': nickname,
       'extras':{'avatar':avatar}
     }).onSuccess(function (data) {
@@ -236,19 +228,7 @@ export default class WebSocketHandlerImp extends IIMHandler {
     }).onSuccess(function (data) {
       console.info(data);
       success && success(data);
-      //data.code 返回码
-      //data.message 描述
-      //data.user_info.username
-      //data.user_info.appkey
-      //data.user_info.nickname
-      //data.user_info.avatar 头像
-      //data.user_info.birthday 生日，默认空
-      //data.user_info.gender 性别 0 - 未知， 1 - 男 ，2 - 女
-      //data.user_info.signature 用户签名
-      //data.user_info.region 用户所属地区
-      //data.user_info.address 用户地址
-      //data.user_info.mtime 用户信息最后修改时间
-      //data.extras 自定义json字段
+
     }).onFail(function (data) {
       console.info(data);
       //data.code 返回码
