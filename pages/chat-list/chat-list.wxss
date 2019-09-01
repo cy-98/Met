@@ -5,3 +5,8 @@
   font-size: 40rpx;
   height: 40rpx;
 }
+.info-head{
+    margin:31rpx 34rpx 31rpx 34rpx;
+    
+    background-size: 100% 100%;
+}

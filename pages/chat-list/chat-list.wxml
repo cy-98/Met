@@ -3,7 +3,16 @@
 <cu-custom bgColor="bg-gradual-pink">
 	<view slot="content">消息</view>
 </cu-custom>
-
+<block>
+<view class="chat-item-style" bindtap="conversationClick" hover-class="press-style">
+      <view  class="chat-head-style info-head menu-avatar round lg" style="background-image: url(../../../images/tabbar/plugin.png);"></view>
+        <view class="chat-item-content-super-style" style="flex:1">
+            <view class="chat-item-name-style">动态通知</view>
+            <text class="chat-item-content-style">xxx评论了你的动态</text>
+        </view>
+    </view>
+    <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%"/>
+</block>
 <block wx:for="{{conversations}}" wx:key="conversationId" wx:for-item="item">
 
     <view class="chat-item-style" bindtap="conversationClick" data-item="{{item}}" hover-class="press-style">

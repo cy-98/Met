@@ -1,0 +1,16 @@
+
+<block wx:key="conversationId" wx:for-item="item">
+
+    <view class="chat-item-style" bindtap="conversationClick" data-item="{{item}}" hover-class="press-style">
+        <template is="chat-item-head" data="{{headUrl:item.avatar,unread:item.unread_msg_count}}"/>
+        <view class="chat-item-content-super-style">
+            <view class="chat-item-name-style">{{item.nickName}}</view>
+            <!--<image src="./../../image/chat/send_fail.png" style="width: 28rpx;height: 28rpx;margin-right: 6rpx;"/>-->
+            <text class="chat-item-content-style">{{item.latestMsg}}</text>
+        </view>
+        <view class="chat-item-status-super-style">
+            <view class="chat-item-time-style">{{item.timeStr}}</view>
+        </view>
+    </view>
+    <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%"/>
+</block>
