@@ -18,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this
   },
 
   toChat(e) {
@@ -35,12 +35,13 @@ Page({
    */
    // 这个是消息回调接口 当前是消息列表 如果获取消息 会进行一系列的操作
   onShow() {
-    wx.hideTabBarRedDot({
-      index: 2,
-    })
     console.log('onshow')
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
+        this.setData({
+          totalUnread:0
+        });
+        console.log(this.data.totalUnread);
         if (data.event === "msg_sync") {
           data.messages.forEach(msg => {
             let hasItem = false;
@@ -88,8 +89,9 @@ Page({
               return b.mtime - a.mtime;
             });
             //显示tabbar红点
+            console.log(this.data.totalUnread)
             if(this.data.totalUnread !== 0){
-              console.log('未读')
+              console.log(this.data.totalUnread);
               wx.setTabBarBadge({
                 index: 2,
                 text: this.data.totalUnread+'',
