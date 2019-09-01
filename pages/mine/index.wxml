@@ -6,11 +6,14 @@
     <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class="padding flex text-center text-grey bg-white shadow-warp">
-    <view class="flex flex-sub flex-direction solid-right">
+  <navigator class="content" url="/pages/mine/user/myAttention" hover-class="none">
+    <view class="flex flex-sub flex-direction solid-right" >
       <view class="text-xxl text-orange">{{visitTotal}}</view>
       <view class="margin-top-sm">
         <text class="cuIcon-attentionfill"></text> 关注{{person.attention}}</view>
     </view>
+  </navigator>
+    
     <navigator class="content" url="/pages/mine/user/slefDynamic" hover-class="none">
       <view class="flex flex-sub flex-direction solid-right">
         <view class="text-xxl text-blue">{{starCount}}</view>
@@ -18,11 +21,14 @@
           <text class="cuIcon-favorfill"></text> 动态</view>
       </view>
     </navigator>
-    <view class="flex flex-sub flex-direction">
+    <navigator class="content" url="/pages/mine/user/fans" hover-class="none">
+      <view class="flex flex-sub flex-direction">
       <view class="text-xxl text-green">{{forksCount}}</view>
       <view class="margin-top-sm">
         <text class="cuIcon-fork"></text> fans{{person.fans}}</view>
     </view>
+    </navigator>
+    
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <!-- <view class="cu-item arrow">

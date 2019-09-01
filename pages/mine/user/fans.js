@@ -1,4 +1,4 @@
-// pages/mine/user/myAttention.js
+// pages/mine/user/fans.js
 Page({
 
   /**
@@ -56,17 +56,11 @@ Page({
   onReachBottom: function () {
 
   },
-  clickUser(e) {
-    // 跳转用户界面
 
-    let user = e.currentTarget.dataset.user;
-    let con = {
-      "username": user.stuId,
-      "avatar": user.avatar,
-      "nickName": user.nickname
-    };
-    wx.navigateTo({
-      url: '/pages/chat/chat?conversation=' + JSON.stringify(con),
-    })
-  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

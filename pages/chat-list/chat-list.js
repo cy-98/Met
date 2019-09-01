@@ -158,6 +158,10 @@ Page({
     converstaions.sort((a, b)=>{
       return b.mtime - a.mtime;
     })
+    //
+    wx.showTabBarRedDot({
+      index: 2,
+    })
     this.setData({
       conversations: converstaions
     });
