@@ -329,8 +329,8 @@ function deleteTag({
       fail && fail(res);
   });
 }
-function addComment({id, content, reply, replyUser, success}){
-  let data = {"content":content};
+function addComment({id, formId , content, reply, replyUser, success}){
+  let data = {"content":content, formId:formId };
   if(reply && replyUser){
     data["reply"] = reply;
     data["replyUser"] = replyUser;

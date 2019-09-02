@@ -66,7 +66,6 @@ Page({
     })
   },
   textareaAInput(e){
-    console.info(e);
     this.setData({
       'content':e.detail.value
     });
@@ -83,7 +82,8 @@ Page({
   },
 
   formSubmit: function(e){
-    console.info(e);
+    console.info(e.detail.formId);
+    let formId = e.detail.formId;
     if(!this.data.content || this.data.content == ""){
       wx.showToast({
         title: '内容不能为空',
@@ -93,7 +93,8 @@ Page({
       content : this.data.content,
       images: this.data.imgList.join(","),
       type: this.data.index,
-      anonymous: this.data.annous ? 1 : 0
+      anonymous: this.data.annous ? 1 : 0,
+      formId:formId
     }
 
     utils.req("dynamic", data, res => {
