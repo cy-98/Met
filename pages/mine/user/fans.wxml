@@ -13,5 +13,5 @@
       </view>
     </view>
   </view>
-
 </view>
+<view wx:if="{{users.length != 0}}" style="width:100%;" class="cu-tag bg-pink">还没有粉丝哦~</view>
