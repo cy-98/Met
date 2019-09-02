@@ -343,6 +343,9 @@ function commitComment ({
 
 }
 
+/**
+ * 开学时间获取当前周获取
+ */
 function getOpenSchool({
   success,
   fail
@@ -357,6 +360,36 @@ function getOpenSchool({
       }
     });
 
+}
+
+/**
+ * 获取用户的所有消息
+ */
+function getMessages({success,fail}){
+  util.getReq("/user/message",
+    {}, res => {
+      console.log(res);
+      if (res.code === 200) {
+        success && success(res)
+      } else {
+        fail && fail(res)
+      }
+    });
+
+}
+
+/**
+ * 读取一条消息 传入消息的id
+ */
+function readMessage({msgId, success, fail}){
+  util.req("/user/message/" + msgId + "/read",{}, res => {
+      console.log(res);
+      if (res.code === 200) {
+        success && success(res)
+      } else {
+        fail && fail(res)
+      }
+    });
 }
 
 
@@ -392,5 +425,7 @@ module.exports = {
   attentOthers:attentOthers,
   getUserFollower: getUserFollower,
   getUserFollow: getUserFollow,
-  getOpenSchool: getOpenSchool
+  getOpenSchool: getOpenSchool,
+  getMessages: getMessages,
+  readMessage: readMessage
 }

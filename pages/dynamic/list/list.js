@@ -33,75 +33,10 @@ Page({
         });
       }
     });
-
-
-    // 获取相关数据
-    network.getRecommendDynamic({data:{page:1, size:10},success: res => {
-      res.data.data.forEach(item => {
-        item.nickname = item.user.nickname,
-        item.avatar = item.user.avatar,
-        item.commentNum = item.comments.length,
-        item.good = item.liker.length,
-        item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
-      });
-      console.info(res.data.data);
-      this.setData({
-        dynamics:res.data.data
-      })
-    }});
-
-    network.getFollowDynamic({
-      data: { page: 1, size: 10 }, success: res => {
-        res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
-            item.commentNum = item.comments.length,
-            item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100,
-          item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
-        })
-        this.setData({
-          followDynamic: res.data.data
-        })
-      }
-    });
-
-    network.getTypeDynamic({
-      type:0,
-      data: { page: 1, size: 10 }, success: res => {
-        res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
-            item.commentNum = item.comments.length,
-            item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100,
-            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
-        })
-        this.setData({
-          expressDynamic: res.data.data
-        })
-      }
-    });
-    network.getTypeDynamic({
-      type: 1,
-      data: { page: 1, size: 10 }, success: res => {
-        res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
-            item.commentNum = item.comments.length,
-            item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100,
-            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
-        });
-        this.setData({
-          talkDynamic: res.data.data
-        })
-      }
-    });
-
-
-
-
+    this.getFollowDynamic(1,10);
+    this.getRecommendDynamic(1,10);
+    this.getTypeDynamic(0,1,10);
+    this.getTypeDynamic(1,1,10);
   },
   comment:function(){
     
@@ -114,18 +49,78 @@ Page({
   },
   clickContent(e){
     dynamic.clickContent(e);
-    // console.info(e);
-    // wx.navigateTo({
-    //   url: '/pages/dynamic/index/index?id=' + e.currentTarget.dataset.item.id,
-    // })
   },
   clickAvatar: function(e){
-    // console.info(e);
-    // console.info("avatar");
     dynamic.clickAvatar(e);
   },
   clickImages: function(e){
     dynamic.clickImages(e);
+  },
+
+  getRecommendDynamic: function(page, size){
+    // 获取相关数据
+    network.getRecommendDynamic({
+      data: { page: page, size: size }, success: res => {
+        res.data.data.forEach(item => {
+          item.nickname = item.user.nickname,
+            item.avatar = item.user.avatar,
+            item.commentNum = item.comments.length,
+            item.good = item.liker.length,
+            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+        });
+        console.info(res.data.data);
+        let dynamics = this.data.dynamics || [];
+        
+        this.setData({
+          dynamics: dynamics.concat(res.data.data)
+        })
+      }
+    });
+  },
+  getFollowDynamic: function(page,size){
+    network.getFollowDynamic({
+      data: { page: page, size: size }, success: res => {
+        res.data.data.forEach(item => {
+          item.nickname = item.user.nickname,
+            item.avatar = item.user.avatar,
+            item.commentNum = item.comments.length,
+            item.good = item.liker.length,
+            item.watch = (new Date().getTime()) % 100,
+            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+        });
+        let followDynamic = this.data.followDynamic || [];
+        this.setData({
+          followDynamic: followDynamic.concat(res.data.data)
+        })
+      }
+    });
+  },
+  getTypeDynamic: function(type, page, size){
+    network.getTypeDynamic({
+      type: type,
+      data: { page: page, size: size }, success: res => {
+        res.data.data.forEach(item => {
+          item.nickname = item.user.nickname,
+            item.avatar = item.user.avatar,
+            item.commentNum = item.comments.length,
+            item.good = item.liker.length,
+            item.watch = (new Date().getTime()) % 100,
+            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+        });
+        if(type === 0){
+          let expressDynamic = this.data.expressDynamic|| [];
+          this.setData({
+            expressDynamic: expressDynamic.concat(res.data.data)
+          });
+        }else if(type === 1){
+          let talkDynamic = this.data.talkDynamic || [];
+          this.setData({
+            talkDynamic: talkDynamic.concat(res.data.data)
+          });
+        }
+
+      }
+    });
   },
 
   swiperchange: function(e) {
@@ -175,7 +170,26 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    let pages = this.data.pages;
+    let curr = this.data.TabCur;
+    console.info(curr);
+    switch (curr){
+      case 0:
+        this.getRecommendDynamic(++pages[0], 10);
+        break;
+      case 1:
+        this.getFollowDynamic(++pages[1], 10);
+        break;
+      case 2:
+        this.getTypeDynamic(0, ++pages[2], 10);
+        break;
+      case 3:
+        this.getTypeDynamic(1, ++pages[3], 10);
+        break;
+    }
+    this.setData({
+      pages:pages
+    })
   },
 
   /**
