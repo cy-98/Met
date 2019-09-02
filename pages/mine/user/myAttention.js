@@ -1,6 +1,6 @@
 // pages/mine/user/myAttention.js
-const network = require('../../../utils/network.js')
-
+const network = require('../../../utils/network.js');
+import dynamic from '../../../modules/dynamic/dynamic.js';
 Page({
 
   /**
@@ -26,7 +26,9 @@ Page({
       }
     })
   },
-
+  clickUser(e) {
+    dynamic.clickAvatar(e);
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
