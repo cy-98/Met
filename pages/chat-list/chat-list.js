@@ -20,25 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let  unReadDynamic = 0;
-    network.getMessages({
-      success:(res)=>{
-        res.data.forEach(item=>{
-          if(item.hasRead === false){
-            unReadDynamic += 1;
-          }
-        })
-        this.setData({
-          unReadDynamic:unReadDynamic,
-          contents:res.data
-        })
-      },
-      fail:(res)=>{
-        console.log(res.data)
-      }
-    })
-    //判断最后一条
-
+    
   },
 
   toChat(e) {
@@ -93,9 +75,20 @@ Page({
               con.timeStr =  msgShowTime(con.mtime);
 
               totalUnread += con.unread_msg_count
+
+              //判断最后一条
+              console.log(this.data.totalUnread);
+              let unReadDynamic = this.data.unReadDynamic;
               this.setData({
-                totalUnread:totalUnread
-              })
+                totalUnread: totalUnread + unReadDynamic
+              });
+              if (this.data.totalUnread !== 0) {
+                wx.setTabBarBadge({
+                  index: 2,
+                  text: this.data.totalUnread + '',
+                })
+              };
+
             });
             // 如果不是消息列表的消息 我们进行添加一个新的消息进来
             if (!hasItem) {
@@ -113,17 +106,14 @@ Page({
             });
             //显示tabbar红点
             console.log(this.data.totalUnread)
-            if(this.data.totalUnread !== 0){
-              console.log(this.data.totalUnread);
-              wx.setTabBarBadge({
-                index: 2,
-                text: this.data.totalUnread+'',
-              })
-            }
+            
             getApp().globalData.conversations = conversations;
             this.setData({
               conversations: conversations
             });
+
+ 
+
           });
         }
 
@@ -147,6 +137,34 @@ Page({
 
     this.setLastMessage(conversations, messages);
     // this.setData({conversations: getApp().globalData.conversations});
+
+    //动态通知
+    let unReadDynamic = 0;
+    network.getMessages({
+      success: (res) => {
+        res.data.forEach(item => {
+          if (item.hasRead === false) {
+            unReadDynamic += 1;
+          }
+        });
+        this.setData({
+          unReadDynamic: unReadDynamic,
+          contents: res.data
+        });
+        //判断最后一条
+        console.log(this.data.totalUnread);
+        if (this.data.totalUnread !== 0) {
+          wx.setTabBarBadge({
+            index: 2,
+            text: this.data.totalUnread + '',
+          })
+        };
+      },
+      fail: (res) => {
+        console.log(res.data)
+      }
+    })
+
   },
   getConversationsItem(item) {
     let {
@@ -180,6 +198,7 @@ Page({
   },
   // 设置最新的消息
   setLastMessage(converstaions, messages) {
+    let unread = 0;
     converstaions.forEach(conversation => {
       messages.forEach(con => {
         let type = con.msgs[con.msgs.length - 1].content.msg_body.extras.type;
@@ -198,16 +217,26 @@ Page({
 
         }
       });
+      unread += conversation.unread_msg_count;
+
+
     });
+
+    let unReadDynamic = this.data.unReadDynamic;
+    this.setData({
+      totalUnread: unread + unReadDynamic
+    });
+    if (this.data.totalUnread !== 0) {
+      wx.setTabBarBadge({
+        index: 2,
+        text: this.data.totalUnread + '',
+      })
+    };
 
     console.info(converstaions);
     converstaions.sort((a, b)=>{
       return b.mtime - a.mtime;
     })
-    //
-    //wx.showTabBarRedDot({
-    //  index: 2,
-    //})
     this.setData({
       conversations: converstaions
     });

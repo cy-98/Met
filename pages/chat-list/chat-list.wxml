@@ -10,7 +10,7 @@
             <view class="chat-item-name-style">动态通知</view>
             <text class="chat-item-content-style">{{contents[0].content}}</text>
         </view>
-        <view class="redDot bg-red" wx:if='{{!unReadDynamic===0}}'>{{unReadDynamic}}</view>
+        <view class="redDot bg-red" wx:if="{{unReadDynamic!==0}}">{{unReadDynamic}}</view>
     </view>
     <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%"/>
 </block>
