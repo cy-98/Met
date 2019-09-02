@@ -1,4 +1,5 @@
 var network = require("../../utils/network.js");
+
 Page({
   data: {
     timetables: [],
@@ -127,16 +128,9 @@ Page({
 
   },
   clickUser(e){
-    console.info(e);
-    let user = e.currentTarget.dataset.user;
-    let con = {
-      "username": user.stuId,
-      "avatar": user.avatar,
-      "nickName": user.nickname
-    };
-
+    console.log(e)
     wx.navigateTo({
-      url: '/pages/chat/chat?conversation=' + JSON.stringify(con),
+      url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.user,
     })
   },
 

@@ -3,7 +3,7 @@
   <view class="UCenter-bg">
     <image src="{{person.avatar}}" class="{{nav_obj.beforeScrollCss}} head  " mode="aspectFit"></image>
     <view class="text-xl">{{person.name}}</view>
-    <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+    <!-- <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image> -->
   </view>
   <view class="padding flex text-center text-grey bg-white shadow-warp">
   <navigator class="content" url="/pages/mine/user/myAttention" hover-class="none">
