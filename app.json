@@ -39,8 +39,8 @@
       {
         "pagePath": "pages/index/index",
         "text": "主页",
-        "iconPath": "image/tabbar/friend_unselected.png",
-        "selectedIconPath": "image/tabbar/friend.png"
+        "iconPath": "images/icon/icon_label.png",
+        "selectedIconPath": "images/icon/icon_mine.png"
       },
       {
         "pagePath": "pages/dynamic/list/list",

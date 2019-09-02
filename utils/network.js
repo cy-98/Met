@@ -343,6 +343,25 @@ function commitComment ({
 
 }
 
+function getOpenSchool({
+  success,
+  fail
+}) {
+  util.getReq("openSchool",
+    {}, res => {
+      console.log(res);
+      if (res.code === 200) {
+        success && success(res)
+      } else {
+        fail && fail(res)
+      }
+    });
+
+}
+
+
+
+
 //获取兴趣标签
 function getTag() {
 
@@ -372,5 +391,6 @@ module.exports = {
   getRecommend:getRecommend,
   attentOthers:attentOthers,
   getUserFollower: getUserFollower,
-  getUserFollow: getUserFollow
+  getUserFollow: getUserFollow,
+  getOpenSchool: getOpenSchool
 }
