@@ -112,7 +112,7 @@ function getDynamic({
     }
   });
 }
-//关注推荐的人
+//关注
 function attentOthers({
   id,
   success,
@@ -127,6 +127,24 @@ function attentOthers({
     }
   })
 }
+/**
+ * 取消关注
+ */
+function cancelAttentOthers({
+  id, success, fail
+}){
+  util.req("/user/unfollow", { userId: id }, res => {
+    console.log(res);
+    if (res.code == 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  })
+}
+
+
+
 //获取推荐的人
 function getRecommend({success,fail}){
   util.getReq('user/recommend',{},res=>{
@@ -423,6 +441,7 @@ module.exports = {
   addComment:addComment,
   getRecommend:getRecommend,
   attentOthers:attentOthers,
+  cancelAttentOthers: cancelAttentOthers,
   getUserFollower: getUserFollower,
   getUserFollow: getUserFollow,
   getOpenSchool: getOpenSchool,

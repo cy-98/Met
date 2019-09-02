@@ -13,6 +13,9 @@ Page({
     major:'',
     avatar:'',
     stuId:"",
+    grade:"",
+    userId:"",
+    follower:false,
     //问题列表
     questions: [],
     randomOpacity: [],
@@ -58,20 +61,32 @@ Page({
       url: '/pages/chat/chat?conversation=' + JSON.stringify(con),
     })
   },
-  addFriend:function(){
-
+  focus:function(){
+    network.attentOthers({
+      id:this.data.userId,
+      success: res =>{
+        this.setData({
+          follower:true
+        })
+      }
+    })
+  },
+  cancelFocus: function(){
+    network.cancelAttentOthers({
+      id: this.data.userId,
+      success: res => { 
+        this.setData({
+          follower:false
+        })
+      }
+    })
   },
 
   clickContent(e) {
     dynamic.clickContent(e);
-    // console.info(e);
-    // wx.navigateTo({
-    //   url: '/pages/dynamic/index/index?id=' + e.currentTarget.dataset.item.id,
-    // })
   },
   clickAvatar: function (e) {
-    // console.info(e);
-    // console.info("avatar");
+
     dynamic.clickAvatar(e);
   },
   clickImages: function (e) {
@@ -96,7 +111,11 @@ Page({
           nickname : res.data.nickname,
           profile : res.data.profile,
           major : res.data.major,
-          stuId:res.data.stuId
+          stuId:res.data.stuId,
+          grade: res.data.grade,
+          gender:res.data.gender,
+          follower: res.data.focus,
+          userId:res.data.id
         })
         //实现随机颜色
         var labLen = that.data.labArr.length,
