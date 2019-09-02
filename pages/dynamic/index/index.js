@@ -10,7 +10,7 @@ Page({
   data: {
     commentHidden: true,
     //评论内容
-    comment: '',
+    comment: [],
     //随机颜色
     ranIndex: Math.floor(Math.random() * 6),
     bgColor: [
