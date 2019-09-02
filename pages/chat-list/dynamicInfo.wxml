@@ -1,0 +1,17 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view bindtap="back">返回</view>
+</cu-custom>
+<view class="cu-list menu-avatar" wx:for="{{contents}}" bindtap="intoDynamic" data-id="{{item.id}}" data-url="{{item.url}}">
+  <view class="cu-item" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
+    <view class="cu-avatar round lg" style="background-image:url({{item.fromUser.avatar}});"></view>
+    <view class="content">
+      <view class="text-grey">{{item.content}}</view>
+      <view class="text-gray text-sm flex" style="width:100%;">
+        <text class="text-cut">
+							<text class="margin-right-xs"></text>{{item.createTime}}
+        </text>
+      </view>
+    </view>
+    <view class="redDot bg-red" wx:if="{{!item.hasRead}}">1</view>
+  </view>
+</view>

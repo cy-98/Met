@@ -4,12 +4,13 @@
 	<view slot="content">消息</view>
 </cu-custom>
 <block>
-<view class="chat-item-style" bindtap="conversationClick" hover-class="press-style">
+<view class="chat-item-style" bindtap="infoClick" hover-class="press-style">
       <view  class="chat-head-style info-head menu-avatar round lg" style="background-image: url(../../../images/tabbar/plugin.png);"></view>
         <view class="chat-item-content-super-style" style="flex:1">
             <view class="chat-item-name-style">动态通知</view>
-            <text class="chat-item-content-style">xxx评论了你的动态</text>
+            <text class="chat-item-content-style">{{contents[0].content}}</text>
         </view>
+        <view class="redDot bg-red" wx:if='{{!unReadDynamic===0}}'>{{unReadDynamic}}</view>
     </view>
     <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%"/>
 </block>
