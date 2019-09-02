@@ -384,7 +384,7 @@ function getOpenSchool({
  * 获取用户的所有消息
  */
 function getMessages({success,fail}){
-  util.getReq("/user/message",
+  util.getReq("user/message",
     {}, res => {
       console.log(res);
       if (res.code === 200) {

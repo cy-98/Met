@@ -7,6 +7,7 @@
     "pages/index/activity/activity",
     "pages/index/activity/actdetails/details",
     "pages/chat-list/chat-list",
+    "pages/chat-list/dynamicInfo",
     "pages/chat/chat",
     "pages/chat-input/chat-input",
     "pages/friends/friends",

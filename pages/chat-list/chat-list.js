@@ -2,23 +2,43 @@
 import {
   dealChatTime, msgShowTime
 } from "../../utils/time";
+const network = require('../../utils/network.js')
 /**
  * 会话列表页面
  */
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     conversations: [],
-    totalUnread:0
+    totalUnread:0,
+    contents:[],
+    unReadDynamic:0
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this
+    let  unReadDynamic = 0;
+    network.getMessages({
+      success:(res)=>{
+        res.data.forEach(item=>{
+          if(item.hasRead === false){
+            unReadDynamic += 1;
+          }
+        })
+        this.setData({
+          unReadDynamic:unReadDynamic,
+          contents:res.data
+        })
+      },
+      fail:(res)=>{
+        console.log(res.data)
+      }
+    })
+    //判断最后一条
+
   },
 
   toChat(e) {
@@ -41,7 +61,6 @@ Page({
     console.log('onshow')
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
-
         let totalUnread = 0;
         this.setData({
           totalUnread:totalUnread
@@ -135,6 +154,11 @@ Page({
       ...msg
     } = item;
     return Object.assign(msg, JSON.parse(latestMsg));
+  },
+  infoClick:()=>{
+    wx.navigateTo({
+      url: '/pages/chat-list/dynamicInfo',
+    })
   },
   conversationClick: function(res) {
     console.info(res);
