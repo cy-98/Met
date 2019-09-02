@@ -86,7 +86,6 @@ Page({
     dynamic.clickContent(e);
   },
   clickAvatar: function (e) {
-
     dynamic.clickAvatar(e);
   },
   clickImages: function (e) {

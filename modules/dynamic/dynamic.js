@@ -2,7 +2,7 @@ var dynamic = {
   clickAvatar:function(e){
     console.info(e);
     wx.navigateTo({
-      url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.user,
+      url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.user.id,
     })
   },
   clickContent: function(e){

@@ -54,14 +54,13 @@
 
           <view class="padding flex flex-direction bg-white ">
             <button bindtap="sendMessage" class="cu-btn bg-red margin-tb-sm lg">发消息</button>
-            <view wx:if="{{follower}}">
+            <view wx:if="{{follower}}" class="cu-btn">
               <button bindtap="cancelFocus" class="cu-btn bg-blue margin-tb-sm lg">取消关注</button>
             </view>
-            <view wx:else>
+            <view wx:else class="cu-btn">
             <button bindtap="focus" class="cu-btn bg-blue margin-tb-sm lg">关注</button>
             </view>
           </view>
-
       </view>
       <view class='float'>
         <!-- 右边的页面 -->
