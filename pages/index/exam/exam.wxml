@@ -1,5 +1,5 @@
 <!--pages/index/exam/exam.wxml-->
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">成绩</view>
 </cu-custom>

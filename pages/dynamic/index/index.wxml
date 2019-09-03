@@ -1,4 +1,4 @@
-<cu-custom bgColor="{{bgColor[ranIndex]}}" isBack="{{true}}">
+<cu-custom bgColor="{{bgColor[ranIndex]}}" isCustom="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">动态</view>
 </cu-custom>
@@ -7,11 +7,9 @@
     <view style="padding-bottom:20px;" class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="cu-item">
-          <image wx:if="{{anonymous === 1}}" src='{{dynamic.user.avatar}}' class='cu-avatar round lg'></image>
-          <image wx:else src='{{dynamic.annoyUser.avatar}}' class='cu-avatar round lg'></image>
+          <image src='{{dynamic.anonymous === 0 ?dynamic.user.avatar:dynamic.annoyUser.avatar}}' class='cu-avatar round lg'></image>
           <view class="content flex-sub">
-            <view wx:if="{{anonymous === 1}}">{{dynamic.user.nickname}}</view>
-            <view wx:else>{{dynamic.annoyUser.nickname}}</view>
+            <view>{{dynamic.anonymous === 0 ?dynamic.user.nickname:dynamic.annoyUser.nickname}}</view>
             <view class="text-gray text-sm flex justify-between">
               {{dynamic.createTime}}
             </view>

@@ -198,5 +198,13 @@ Page({
         swiperList: list
       })
     }
+  },
+  onShareAppMessage(){
+
+    return {
+      title: '转发',
+      path: '/pages/index/index',
+      success: function (res) { }
+    }
   }
 })

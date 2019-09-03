@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">课表</view></cu-custom>
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}"><view slot="backText">返回</view><view slot="content">课表</view></cu-custom>
 <view class="top">
   <view wx:for="{{['一','二','三','四','五','六','日']}}" wx:key="item" class="top-text">周{{item}}</view>
 </view>

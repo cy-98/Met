@@ -1,5 +1,5 @@
 <!--pages/index/grade/grade.wxml-->
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">考试</view>
 </cu-custom>

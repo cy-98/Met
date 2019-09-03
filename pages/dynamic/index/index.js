@@ -141,5 +141,13 @@ Page({
     });
 
   },
+  onShareAppMessage() {
+
+    return {
+      title: '转发',
+      path: '/pages/dynamic/index/index?id=' + this.data.dynamic.id,
+      success: function (res) { }
+    }
+  }
 
 })

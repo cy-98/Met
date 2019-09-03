@@ -1,6 +1,6 @@
 <!--pages/mine/user/slefDynamic.wxml-->
 <import src="../../../modules/dynamic/dynamic.wxml" />
-<cu-custom bgColor="bg-gradual-purple"  isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-purple"  isCustom="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">我的动态</view>
 </cu-custom>

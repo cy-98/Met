@@ -1,5 +1,5 @@
 <!--pages/mine/setting/sethoby/sethoby.wxml-->
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">兴趣圈</view></cu-custom>
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}"><view slot="backText">返回</view><view slot="content">兴趣圈</view></cu-custom>
 
 <view class="cu-bar bg-white margin-top">
   <view class="action">
