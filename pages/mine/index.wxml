@@ -10,7 +10,9 @@
     <view class="flex flex-sub flex-direction solid-right" >
       <view class="text-xxl text-orange">{{visitTotal}}</view>
       <view class="margin-top-sm">
-        <text class="cuIcon-attentionfill"></text> 关注{{person.attention}}</view>
+
+        <image style="height:35rpx;width:35rpx" src="../../images/icon/wode.png"></image>
+         <text style="line-height:35rpx;">关注</text> </view>
     </view>
   </navigator>
     
