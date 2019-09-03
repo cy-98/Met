@@ -7,9 +7,11 @@
     <view style="padding-bottom:20px;" class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="cu-item">
-          <image src='{{dynamic.user.avatar}}' class='cu-avatar round lg'></image>
+          <image wx:if="{{anonymous === 1}}" src='{{dynamic.user.avatar}}' class='cu-avatar round lg'></image>
+          <image wx:else src='{{dynamic.annoyUser.avatar}}' class='cu-avatar round lg'></image>
           <view class="content flex-sub">
-            <view>{{dynamic.user.nickname}}</view>
+            <view wx:if="{{anonymous === 1}}">{{dynamic.user.nickname}}</view>
+            <view wx:else>{{dynamic.annoyUser.nickname}}</view>
             <view class="text-gray text-sm flex justify-between">
               {{dynamic.createTime}}
             </view>
