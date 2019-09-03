@@ -3,7 +3,6 @@
   <view slot="backText">返回</view>
   <view slot="content">考试</view>
 </cu-custom>
-
 <view wx:for="{{exams}}" wx:for-index="idx" wx:key="item" wx:for-item="item">
 <view class='panel'>
   <view class='exam'>
@@ -27,3 +26,4 @@
   </view>
 </view>
 </view>
+<view class="bg-blue cu-text" wx:if="{{exams.length == 0}}">最近没考试呀！快去找朋友吧</view>
