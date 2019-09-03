@@ -68,6 +68,13 @@ Page({
             item.commentNum = item.comments.length,
             item.good = item.liker.length,
             item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+            item.anonymous = item.anonymous;
+            if(item.anonymous === 1){
+              item.nickname = item.annonyUser.nickname;
+              item.avatar = item.annonyUser.avatar;
+            }
+
+
         });
         console.info(res.data);
         let dynamics = this.data.dynamics || [];
@@ -86,7 +93,14 @@ Page({
             item.commentNum = item.comments.length,
             item.good = item.liker.length,
             item.watch = (new Date().getTime()) % 100,
-            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+            item.anonymous = item.anonymous;
+            if (item.anonymous === 1) {
+              item.nickname = item.annonyUser.nickname;
+              item.avatar = item.annonyUser.avatar;
+            }
+
+
         });
         let followDynamic = this.data.followDynamic || [];
         this.setData({
@@ -105,7 +119,12 @@ Page({
             item.commentNum = item.comments.length,
             item.good = item.liker.length,
             item.watch = (new Date().getTime()) % 100,
-            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+            item.anonymous = item.anonymous;
+            if (item.anonymous === 1) {
+              item.nickname = item.annonyUser.nickname;
+              item.avatar = item.annonyUser.avatar;
+            }
         });
         if(type === 0){
           let expressDynamic = this.data.expressDynamic|| [];

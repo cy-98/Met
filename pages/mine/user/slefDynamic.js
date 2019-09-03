@@ -34,7 +34,12 @@ Page({
             item.avatar = item.user.avatar,
             item.commentNum = item.comments.length,
             item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100
+            item.watch = (new Date().getTime()) % 100;
+            item.anonymous = item.anonymous;
+            if (item.anonymous === 1) {
+              item.nickname = item.annonyUser.nickname;
+              item.avatar = item.annonyUser.avatar;
+            }
         })
         this.setData({
           dynamics: res.data.data
