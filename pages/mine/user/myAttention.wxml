@@ -16,5 +16,6 @@
   </view>
 </view>
 
-<view wx:if="{{users.length != 0}}" style="width:100%;" class="cu-tag bg-blue">快去关注别人
+<view wx:if="{{users.length == 0}}" style="width:100%;" class="cu-tag bg-blue">快去关注别人
 吧！</view>
+<view wx:else style="width:100%;" class="cu-tag bg-blue">没有更多了</view>

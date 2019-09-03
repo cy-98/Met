@@ -20,7 +20,7 @@ Page({
       success:(res)=>{
         let users = res.data;
         this.setData({
-          fans: users
+          fans: res.data || []
         })
       },
       fail:(res)=> consolelog(res)
