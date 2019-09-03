@@ -4,10 +4,7 @@
   width: 100%;
   padding-right: 30rpx;
 }
-/* 图标 */
-.icon-comment{
-  font-size: 34rpx;
-}
+
 form{
   width: 100%;
 }
@@ -15,27 +12,6 @@ form{
   display: flex;
   width: 100%;
 }
-.comment-input{
-  flex: 1;
-  height: 60rpx;
-  padding-left: 10rpx;
-  border: 2rpx solid #f1f1f1;
-}
-.comment-btn{
-  border-radius: 4rpx;
-  height: 60rpx;
-}
-.comment-form{
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-}
-
-.good_block {
-  background-color: #fff;
-  margin: 0 0 20rpx 0;
-}
-
 .good_cell, .good_swiper, .good_cmt {
   padding: 15 15rpx;
   display: flex;
@@ -89,19 +65,6 @@ form{
 
 /*自定义轮播图dot*/
 
-.dot {
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
-  margin: 0 8rpx;
-  background-color: rgb(178, 178, 178);
-}
-
-.active {
-  background-color: rgb(53, 53, 53);
-}
-
-/*自定义轮播图dot*/
 
 .user_avatar {
   display: inline-block;
@@ -156,6 +119,9 @@ form{
   width: 150rpx;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,9 +129,7 @@ form{
   flex: 1;
   color: #fff;
   font-size: 13px;
-}
-swiper {
-  height: 550rpx;
+  
 }
 
 /*底部导航*/
@@ -204,18 +168,3 @@ swiper {
   height: 56rpx;
 }
 
-/*弹窗蒙层*/
-.mask{
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:999;
-}
-.txt{
-  width:500rpx;
-  height:500rpx;
-  background: #fff;
-}
