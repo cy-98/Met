@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
   <view bindtap="back">返回</view>
 </cu-custom>
 <view class="cu-list menu-avatar" wx:for="{{contents}}" bindtap="intoDynamic" data-id="{{item.id}}" data-url="{{item.url}}">

@@ -12,7 +12,7 @@ Page({
     //评论内容
     comment: [],
     //随机颜色
-    ranIndex: Math.floor(Math.random() * 6),
+    ranIndex: Math.floor(Math.random() * 5),
     bgColor: [
       'bg-gradual-orange', 'bg-gradual-blue', 'bg-gradual-red', 'bg-gradual-green', 'bg-gradual-pink'
     ],
