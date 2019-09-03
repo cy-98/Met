@@ -63,15 +63,14 @@ Page({
     network.getRecommendDynamic({
       data: { page: page, size: size }, success: res => {
         res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
+            item.nickname = item.user.nickname,
+            item.avatar = item.user.avatar
             item.commentNum = item.comments.length,
             item.good = item.liker.length,
             item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
         });
-        console.info(res.data.data);
+        console.info(res.data);
         let dynamics = this.data.dynamics || [];
-        
         this.setData({
           dynamics: dynamics.concat(res.data.data)
         })

@@ -48,7 +48,7 @@ Page({
     this.setData({
       index: e.target.dataset.id
     });
-
+    console.log(this.data.index)
   },
   sendMessage:function(){
     let con = {

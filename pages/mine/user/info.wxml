@@ -19,7 +19,7 @@
     </view> 
   </view>
   </scroll-view>
-  <swiper-item id="swiper">
+  <swiper-item id="swiper" >
     <scroll-view class='info_wrapper scroll_left {{index==0?scroll_right:scroll_left}}'>
       <view class='float'>
         <!-- 左边的页面 -->
@@ -62,7 +62,7 @@
             </view>
           </view>
       </view>
-      <view class='float'>
+      <view class='float' style="display:{{index ==1 ?'block':'none'}};">
         <!-- 右边的页面 -->
           <view class='dynamic'>
             <view wx:for="{{dynamics}}" wx:key="item">

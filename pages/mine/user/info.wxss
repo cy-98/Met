@@ -93,3 +93,6 @@
   border-radius: 50%;
   margin-bottom: 45rpx;
 }
+.cu-form-group{
+  padding:0 14rpx;
+}

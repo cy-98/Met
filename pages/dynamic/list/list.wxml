@@ -2,7 +2,7 @@
 <cu-custom bgColor="bg-gradual-purple">
   <view slot="content">动态</view>
 </cu-custom>
-<scroll-view scroll-x class="bg-gradual-purple nav text-center" bindscrolltoupper="refresh">
+<scroll-view scroll-x class="bg-gradual-purple nav text-center" >
   <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
     <text class="cuIcon-camerafill"></text> 推荐
   </view>
@@ -17,14 +17,11 @@
   </view>
 
 </scroll-view>
-<view class='round more' bindtap='addDynamic'></view>
-
-<swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" class='videoSwiper' current="{{TabCur}}" duration="200" bindchange="swiperchange">
-
+<view class='round more' bindtap='addDynamic' ></view>
+<swiper  style="height: {{clientHeight?clientHeight+'px':'auto'}}" class='videoSwiper' current="{{TabCur}}" duration="200" bindchange="swiperchange">
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot">
-
-      <view wx:for="{{dynamics}}" wx:key="item">
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscrolltolower="scrollbot">
+      <view bindscrolltoupper="refresh" wx:for="{{dynamics}}" wx:key="item">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
         </view>
@@ -33,9 +30,8 @@
   </swiper-item>
   <!-- 关注页面 -->
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot">
-
-      <view wx:for="{{followDynamic}}" wx:key="item">
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscrolltolower="scrollbot">
+      <view bindscrolltoupper="refresh" wx:for="{{followDynamic}}" wx:key="item">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
         </view>
@@ -43,22 +39,18 @@
 
     </scroll-view>
   </swiper-item>
-
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot">
-
-      <view wx:for="{{expressDynamic}}" wx:key="item">
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscrolltolower="scrollbot">
+      <view bindscrolltoupper="refresh" wx:for="{{expressDynamic}}" wx:key="item">
         <view>
           <template is="dynamic" data="{{...item}}"></template>
         </view>
       </view>
     </scroll-view>
   </swiper-item>
-
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot">
-
-      <view wx:for="{{talkDynamic}}" wx:key="item">
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscrolltolower="scrollbot">
+      <view bindscrolltoupper="refresh" wx:for="{{talkDynamic}}" wx:key="item">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
         </view>
