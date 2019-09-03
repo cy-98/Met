@@ -3,7 +3,7 @@
   <view class="cu-card dynamic no-card ">
     <view class="cu-item shadow">
       <view class="cu-list menu-avatar">
-        <view class="cu-item" data-user='{{user.id}}' bindtap='clickAvatar'>
+        <view class="cu-item" data-user='{{user}}' bindtap='clickAvatar'>
           <image class='cu-avatar round lg' src='{{avatar}}'></image>
           <view class="content flex-sub">
             <view>{{nickname}}</view>
