@@ -144,6 +144,7 @@ Page({
         // 获取相关数据
         network.getOtherDynamic({
            userId:options.id , success: res => {
+            
             res.data.data.forEach(item => {
               item.nickname = item.user.nickname,
                 item.avatar = item.user.avatar,

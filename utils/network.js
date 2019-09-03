@@ -98,6 +98,21 @@ function getOtherDynamic({
   });
 }
 
+function getMyDynamic({
+  success,
+  fail
+}) {
+  util.getReq("/user/dynamic", {}, res => {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
+
 function getDynamic({
   id,
   success,
@@ -446,5 +461,6 @@ module.exports = {
   getUserFollow: getUserFollow,
   getOpenSchool: getOpenSchool,
   getMessages: getMessages,
-  readMessage: readMessage
+  readMessage: readMessage,
+  getMyDynamic: getMyDynamic
 }
