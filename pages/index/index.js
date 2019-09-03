@@ -130,7 +130,7 @@ Page({
   clickUser(e){
     console.log(e)
     wx.navigateTo({
-      url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.user,
+      url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.user.id,
     })
   },
 
