@@ -51,18 +51,43 @@ Page({
     let id = e.currentTarget.id;
     console.log(e);
     let index = e.currentTarget.dataset.index;
-    let personClicked = this.data.recommend[index];
     // pers 关注
     network.attentOthers({
       id:id,
       success:(res)=>{
-        console.log(res)
+        console.log(res);
+        let recommend = this.data.recommend;
+        recommend[index].focus = true;
+        this.setData({
+          recommend: recommend
+        })
       },
       fail:(res)=>{
         console.log(res)
       }
     })
   },
+  unAttent(e){
+    let id = e.currentTarget.id;
+    console.log(e);
+    let index = e.currentTarget.dataset.index;
+    // pers 关注
+    network.cancelAttentOthers({
+      id: id,
+      success: (res) => {
+        console.log(res);
+        let recommend = this.data.recommend;
+        recommend[index].focus = false;
+        this.setData({
+          recommend: recommend
+        })
+      },
+      fail: (res) => {
+        console.log(res)
+      }
+    })
+  },
+
   onLoad() {
     network.getOpenSchool({success:res => {
       console.info(res);
@@ -113,6 +138,9 @@ Page({
     network.getRecommend({
       success: (res) => {
         let recommend = res.data.data;
+        recommend.forEach(item => {
+          item.focus = false;
+        });
         this.setData({
           recommend:recommend
         })

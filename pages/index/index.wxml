@@ -98,8 +98,8 @@
 </view>
 
 <view class="cu-list menu-avatar">
-  <view class="cu-item"  wx:for="{{recommend}}" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
-    <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+  <view class="cu-item"  wx:for="{{recommend}}" wx:key="item"  >
+    <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});" data-user='{{item}}' bindtap='clickUser'></view>
     <view class="content">
       <view class="text-grey">{{item.nickname}}</view>
       <view class="text-gray text-sm flex">
@@ -109,7 +109,8 @@
       </view>
     </view>
     <view class="action">
-      <button bindtap="attent" id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>{{item.toAttent}}</button>
+      <button bindtap="attent" wx:if="{{!item.focus}}" id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>关注</button>
+      <button bindtap="unAttent" wx:else id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>取消关注</button>
     </view>
   </view>
 
