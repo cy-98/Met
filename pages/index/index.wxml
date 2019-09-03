@@ -109,8 +109,7 @@
       </view>
     </view>
     <view class="action">
-      <button bindtap="attent" wx:if="{{!item.focus}}" id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>关注</button>
-      <button bindtap="unAttent" wx:else id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>取消关注</button>
+      <button bindtap="{{item.focus ==false?'attent':'unAttent'}}"  id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>{{item.focus == false?'关注':'取消关注'}}</button>
     </view>
   </view>
 

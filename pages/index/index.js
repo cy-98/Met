@@ -55,7 +55,7 @@ Page({
     network.attentOthers({
       id:id,
       success:(res)=>{
-        console.log(res);
+
         let recommend = this.data.recommend;
         recommend[index].focus = true;
         this.setData({
@@ -69,13 +69,12 @@ Page({
   },
   unAttent(e){
     let id = e.currentTarget.id;
-    console.log(e);
+
     let index = e.currentTarget.dataset.index;
     // pers 关注
     network.cancelAttentOthers({
       id: id,
       success: (res) => {
-        console.log(res);
         let recommend = this.data.recommend;
         recommend[index].focus = false;
         this.setData({
