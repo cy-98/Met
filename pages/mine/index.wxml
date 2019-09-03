@@ -25,7 +25,7 @@
       <view class="flex flex-sub flex-direction">
       <view class="text-xxl text-green">{{forksCount}}</view>
       <view class="margin-top-sm">
-        <text class="cuIcon-fork"></text> fans{{person.fans}}</view>
+        <text class="cuIcon-fork"></text> 粉丝{{person.fans}}</view>
     </view>
     </navigator>
     

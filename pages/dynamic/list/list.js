@@ -19,7 +19,8 @@ Page({
     this.setData({
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
-    })
+    });
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -128,7 +129,7 @@ Page({
     console.log(e.detail.current)
     that.setData({
       TabCur: e.detail.current
-    })
+    });
   },
 
   /**
@@ -163,7 +164,36 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    console.info("pull down");
+    let pages = this.data.pages;
+    let curr = this.data.TabCur;
+    console.info(curr);
+    switch (curr) {
+      case 0:
+        this.setData({
+          dynamics:[]
+        });
+        this.getRecommendDynamic(1, 10);
+        break;
+      case 1:
+        this.setData({
+          followDynamic: []
+        });
+        this.getFollowDynamic(1, 10);
+        break;
+      case 2:
+        this.setData({
+          expressDynamic: []
+        });
+        this.getTypeDynamic(0,1, 10);
+        break;
+      case 3:
+        this.setData({
+          talkDynamic: []
+        });
+        this.getTypeDynamic(1, 1, 10);
+        break;
+    }
   },
 
   /**

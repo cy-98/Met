@@ -88,6 +88,7 @@ Page({
       wx.showToast({
         title: '内容不能为空',
       });
+      return;
     }
     let data = {
       content : this.data.content,
@@ -100,9 +101,9 @@ Page({
     utils.req("dynamic", data, res => {
       console.info(res);
       if(res.code === 200){
-        wx.switchTab({
-          url: '/pages/dynamic/list/list',
-        });
+        wx.redirectTo({
+          url: '/pages/dynamic/index/index?id=' + res.data.id,
+        })
       }else{
         wx.showToast({
           title: '发布失败',
