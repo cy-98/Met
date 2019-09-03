@@ -5,17 +5,17 @@
 <scroll-view scroll-y class="">
   <view class="UCenter-bg">
     <image src="{{avatar}}"  class="avatar {{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
-    <view class="text-xl">{{nickname}}</view>
+    <view class="text-xl">{{nickname}} <text class="{{gender === 1 ?'cuIcon-male text-blue':'cuIcon-female text-red'}}"></text></view>
     <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class="flex text-center text-grey bg-white shadow-warp wave">
     <view class="flex flex-sub flex-direction ">
       <view class="margin-top-sm {{index == 0 ? checked : unchecked}}" bindtap='tapchange' data-id='0'>
-        <text class="cuIcon-camerafill"></text>个人信息</view>
+        <text class="cuIcon-people"></text>个人信息</view>
     </view>
      <view class="flex flex-sub flex-direction">
       <view class="margin-top-sm {{index == 1 ? checked : unchecked}}" bindtap='tapchange' data-id='1'>
-        <text class="cuIcon-friendfill"></text> 动态圈</view>
+        <text class="cuIcon-discover"></text> 动态圈</view>
     </view> 
   </view>
   </scroll-view>

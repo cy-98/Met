@@ -4,16 +4,16 @@
 </cu-custom>
 <scroll-view scroll-x class="bg-gradual-purple nav text-center" >
   <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
-    <text class="cuIcon-camerafill"></text> 推荐
+    <text class="cuIcon-hotfill"></text> 推荐
   </view>
   <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
-    <text class="cuIcon-upstagefill"></text> 关注
+    <text class="cuIcon-attentionfill"></text> 关注
   </view>
   <view class="cu-item {{2==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="2">
-    <text class="cuIcon-clothesfill"></text> 表白墙
+    <text class="cuIcon-evaluate_fill"></text> 表白墙
   </view>
   <view class="cu-item {{3==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="3">
-    <text class="cuIcon-clothesfill"></text> 吐槽墙
+    <text class="cuIcon-creativefill"></text> 吐槽墙
   </view>
 
 </scroll-view>

@@ -9,21 +9,24 @@
   <navigator class="content" url="/pages/mine/user/myAttention" hover-class="none">
     <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
-        <image class="iconf" src="../../images/icon/guanzhu-.png"></image>
+        <text class="cuIcon-attentionfill text-orange"></text>
+        <!-- <image class="iconf" src="../../images/icon/guanzhu-.png"></image> -->
          <text style="line-height:38rpx;">关注</text> </view>
     </view>
   </navigator>
     <navigator class="content" url="/pages/mine/user/slefDynamic" hover-class="none">
       <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
-        <image class="iconf" src="../../images/icon/shipin.png"></image>
+      <text class="cuIcon-discoverfill text-orange"></text>
+        <!-- <image class="iconf" src="../../images/icon/shipin.png"></image> -->
          <text style="line-height:38rpx;">动态</text> </view>
     </view>
     </navigator>
     <navigator class="content" url="/pages/mine/user/fans" hover-class="none">
       <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
-        <image class="iconf" src="../../images/icon/wode.png"></image>
+        <text class="cuIcon-peoplefill text-orange"></text>
+        <!-- <image class="iconf" src="../../images/icon/wode.png"></image> -->
          <text style="line-height:38rpx;">粉丝</text> </view>
     </view>
     </navigator>
@@ -50,7 +53,7 @@
     </view>
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/setting/setting" hover-class="none">
-        <text class="cuIcon-creativefill text-orange"></text>
+        <text class="cuIcon-settingsfill text-orange"></text>
         <text class="text-grey">设置</text>
       </navigator>
     </view>

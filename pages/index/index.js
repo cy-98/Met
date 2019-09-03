@@ -18,25 +18,25 @@ Page({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
     }],
     iconList: [{
-      icon: 'cardboardfill',
+      icon: 'newsfill',
       color: 'red',
       badge: 0,
       name: '课表',
       url: '/pages/index/timetable/timetable'
     }, {
-      icon: 'recordfill',
+      icon: 'activityfill',
       color: 'orange',
       badge: 0,
       name: '考试',
       url: '/pages/index/exam/exam'
     }, {
-      icon: 'picfill',
+      icon: 'medalfill',
       color: 'yellow',
       badge: 0,
       name: '成绩',
       url: '/pages/index/grade/grade'
     }, {
-      icon: 'noticefill',
+      icon: 'skinfill',
       color: 'olive',
       badge: 0,
       name: '兴趣',
