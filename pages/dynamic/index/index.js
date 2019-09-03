@@ -75,6 +75,9 @@ Page({
         }
         let dynamic = that.data.dynamic;
         console.log(dynamic)
+        if(!dynamic.comments){
+          dynamic.comments = [];
+        }
         dynamic.comments.push(comment);
         that.setData({
           dynamic: dynamic,
