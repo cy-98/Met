@@ -8,26 +8,23 @@
   <view class="padding flex text-center text-grey bg-white shadow-warp">
   <navigator class="content" url="/pages/mine/user/myAttention" hover-class="none">
     <view class="flex flex-sub flex-direction solid-right" >
-      <view class="text-xxl text-orange">{{visitTotal}}</view>
       <view class="margin-top-sm">
-
-        <image style="height:35rpx;width:35rpx" src="../../images/icon/wode.png"></image>
-         <text style="line-height:35rpx;">关注</text> </view>
+        <image class="iconf" src="../../images/icon/guanzhu-.png"></image>
+         <text style="line-height:38rpx;">关注</text> </view>
     </view>
   </navigator>
-    
     <navigator class="content" url="/pages/mine/user/slefDynamic" hover-class="none">
-      <view class="flex flex-sub flex-direction solid-right">
-        <view class="text-xxl text-blue">{{starCount}}</view>
-        <view class="margin-top-sm">
-          <text class="cuIcon-favorfill"></text> 动态</view>
-      </view>
+      <view class="flex flex-sub flex-direction solid-right" >
+      <view class="margin-top-sm">
+        <image class="iconf" src="../../images/icon/shipin.png"></image>
+         <text style="line-height:38rpx;">动态</text> </view>
+    </view>
     </navigator>
     <navigator class="content" url="/pages/mine/user/fans" hover-class="none">
-      <view class="flex flex-sub flex-direction">
-      <view class="text-xxl text-green">{{forksCount}}</view>
+      <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
-        <text class="cuIcon-fork"></text> 粉丝{{person.fans}}</view>
+        <image class="iconf" src="../../images/icon/wode.png"></image>
+         <text style="line-height:38rpx;">粉丝</text> </view>
     </view>
     </navigator>
     

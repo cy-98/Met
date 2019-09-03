@@ -56,3 +56,6 @@ map,.mapBox{
 .content{
   flex: 1
 }
+.iconf{
+  transform:translateY(4rpx); height:30rpx;width:30rpx;   margin-right:6rpx;
+}

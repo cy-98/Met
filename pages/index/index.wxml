@@ -101,10 +101,10 @@
   <view class="cu-item"  wx:for="{{recommend}}" wx:key="item"  >
     <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});" data-user='{{item}}' bindtap='clickUser'></view>
     <view class="content">
-      <view class="text-grey">{{item.nickname}}</view>
+      <view class="text-grey" data-user='{{item}}' bindtap='clickUser'>{{item.nickname}}</view>
       <view class="text-gray text-sm flex">
         <text class="text-cut">
-							<text class="margin-right-xs"></text> {{item.profile}}
+							<text class="margin-right-xs" data-user='{{item}}' bindtap='clickUser'></text> {{item.profile}}
         </text>
       </view>
     </view>
