@@ -1,4 +1,4 @@
-<import src="../../../modules/dynamic/dynamic.wxml" />
+·<import src="../../../modules/dynamic/dynamic.wxml" />
 <cu-custom bgColor="bg-gradual-purple">
   <view slot="content">动态</view>
 </cu-custom>

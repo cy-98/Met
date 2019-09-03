@@ -21,18 +21,6 @@ Page({
     cmtAt: '评论',
     dynamic: {}
   },
-  //显示评论
-  comment: function(e) {
-    console.log(e)
-    //判断回复或者评论
-    this.setData({
-      commentType: {
-        type: e.currentTarget.dataset.class,
-        index: e.currentTarget.dataset.index
-      },
-      commentHidden: !this.data.commentHidden //关闭输入框
-    })
-  },
   //输入评论
   inputChange: function(e) {
     this.setData({
@@ -41,14 +29,14 @@ Page({
   },
   //提交评论
   submitComment: function(e) {
-    console.log(e)
+    console.log(this.data.replyUser)
     let formId = e.detail.formId;
     let that = this;
     let req_data = {
       content: that.data.comment,
     }
     //评论回复其他买家，否则认为回复卖家
-    if (that.data.replyUser != null) {
+    if (this.data.replyUser != null) {
       let cuuser = that.data.replyUser;
       let cuId = that.data.replyUser.id;
       let cuName = that.data.replyUser.nickname;
@@ -62,16 +50,29 @@ Page({
       reply: req_data["reply"],
       replyUser: req_data["replyUser"],
       success: (res) => {
-        console.info(res);
         console.log(that.data.dynamic.comments);
+        let reply = 0,
+            replyUser = null;
+        console.log(this.data.reply)
+        if(this.data.reply == 1){
+          console.log(this.data.reply)
+          reply = this.data.reply
+          replyUser = this.data.replyUser
+        }
         let user = {
           avatar: this.data.userInfo.avatar,
-          nickname: that.data.userInfo.nickname
+          nickname : this.data.userInfo.nickname,
+        }
+        if(this.data.reply == 1){
+          reply = this.data.reply;
+          replyUser = this.data.replyUser;
         }
         let comment = {
           content: req_data.content,
           user: user,
-          createTime: new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+          createTime: new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, ''),
+          reply: reply,
+          replyUser: replyUser
         }
         let dynamic = that.data.dynamic;
         console.log(dynamic)
@@ -82,6 +83,7 @@ Page({
         that.setData({
           dynamic: dynamic,
           comment: "",
+          cmtAt:"评论",
           replyUser: null
         });
       }
@@ -94,9 +96,10 @@ Page({
     let user = e.currentTarget.dataset.user;
     this.setData({
       replyUser: user,
-      cmtAt: '@' + user.nickname
+      reply:1,
+      cmtAt: '@' + user.nickname,
     })
-    console.log(this.data.replyUser)
+    console.log(this.data.replyUser.name)
   },
   //点赞
   like: function() {
