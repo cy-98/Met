@@ -40,26 +40,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "主页",
-        "iconPath": "images/icon/icon_label.png",
-        "selectedIconPath": "images/icon/icon_mine.png"
+        "iconPath": "images/icon/shouye_unselect.png",
+        "selectedIconPath": "images/icon/shouye.png"
       },
       {
         "pagePath": "pages/dynamic/list/list",
         "text": "动态",
-        "iconPath": "image/tabbar/chat_list_unselected.png",
-        "selectedIconPath": "image/tabbar/chat_list.png"
+        "iconPath": "images/icon/shipin_unselect.png",
+        "selectedIconPath": "images/icon/shipin.png"
       },
       {
         "pagePath": "pages/chat-list/chat-list",
         "text": "消息",
-        "iconPath": "image/tabbar/chat_list_unselected.png",
-        "selectedIconPath": "image/tabbar/chat_list.png"
+        "iconPath": "images/icon/xiaoxi_unselect.png",
+        "selectedIconPath": "images/icon/xiaoxi.png"
       },
       {
         "pagePath": "pages/mine/index",
         "text": "我的",
-        "iconPath": "image/tabbar/friend_unselected.png",
-        "selectedIconPath": "image/tabbar/friend.png"
+        "iconPath": "images/icon/wode_unselect.png",
+        "selectedIconPath": "images/icon/wode.png"
       }
     ]
   },
