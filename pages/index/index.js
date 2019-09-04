@@ -7,15 +7,15 @@ Page({
     swiperList: [{
       id: 0,
       type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+      url: 'https://s2.ax1x.com/2019/09/04/nEdjAg.jpg'
     }, {
       id: 1,
       type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
+        url: 'https://s2.ax1x.com/2019/09/04/nEwn3R.jpg',
     }, {
       id: 2,
       type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
+        url: 'https://s2.ax1x.com/2019/09/04/nEwUgI.jpg'
     }],
     iconList: [{
       icon: 'newsfill',

@@ -53,11 +53,11 @@ Page({
     utils.req('user/verify', data, function(res){
       console.info(res);
       if(res.code === 200){
-        wx.reLaunch({
-          url: '/pages/index/index',
-        })
         wx.showToast({
           title: '登录成功',
+        });
+        wx.reLaunch({
+          url: '/pages/index/index',
         });
       }else{
         wx.showToast({
