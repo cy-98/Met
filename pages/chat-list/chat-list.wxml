@@ -5,7 +5,7 @@
 </cu-custom>
 <block>
 <view class="chat-item-style" bindtap="infoClick" hover-class="press-style">
-      <view  class="chat-head-style info-head menu-avatar round lg" style="background-image: url(../../../images/tabbar/plugin.png);"></view>
+      <view  class="chat-head-style info-head menu-avatar round lg" style="background-image: url(../../../images/icon/tixing-.png);"></view>
         <view class="chat-item-content-super-style" style="flex:1">
             <view class="chat-item-name-style">动态通知</view>
             <text class="chat-item-content-style">{{contents[0].content}}</text>
