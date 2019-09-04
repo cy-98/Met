@@ -3,6 +3,7 @@ var network = require("../../utils/network.js");
 Page({
   data: {
     timetables: [],
+    userInfo:{},
     cardCur: 0,
     swiperList: [{
       id: 0,
@@ -225,6 +226,16 @@ Page({
         swiperList: list
       })
     }
+  },
+  onShow(){
+    this.setData({
+      userInfo:wx.getStorageSync("userInfo")
+    })
+  },
+  toJwxt(){
+    wx.navigateTo({
+      url: '/pages/mine/jwxt/jwxt',
+    })
   },
   onShareAppMessage(){
 

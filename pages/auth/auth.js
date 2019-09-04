@@ -28,7 +28,6 @@ Page({
             url: '/pages/mine/jwxt/jwxt',
           });
         }else{
-          getApp().getIMHandler().login({username:res.data.stuId, avatar:res.data.avatar});
           // app.getIMHandler().updateUserInfo(res.data);
 
           wx.switchTab({
@@ -40,5 +39,13 @@ Page({
 
 
     }
+  },
+  skip:function(e){
+    console.info("点击跳过 很有可能获取不了头像");
+    getApp().globalData.skip = true;
+    console.info(getApp().globalData);
+    wx.reLaunch({
+      url: '/pages/index/index',
+    })
   }
 });

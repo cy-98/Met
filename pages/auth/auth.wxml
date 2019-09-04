@@ -9,4 +9,5 @@
 </view>
 <view class='padding-xl'>
   <button class='cu-btn  bg-green shadow lg block' open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">微信登录</button>
+  <button class='cu-btn  bg-grey shadow lg block' style="margin-top:25rpx;" bindtap="skip">跳过</button>
 </view>

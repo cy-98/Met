@@ -167,5 +167,43 @@ App({
   },
   onShow(options) {
     this.appIMDelegate.onShow(options);
+  },
+  checkUser(){
+    let userInfo = wx.getStorageSync("userInfo") || false;
+    console.info(userInfo);
+    if (!userInfo) {
+      console.info(userInfo);
+      wx.reLaunch({
+        url: '/pages/auth/auth',
+        success: function () {
+          console.info("success")
+        },
+        fail: function () {
+          console.info("fail")
+        },
+        complete: function () {
+          console.info()
+        }
+      });
+    }
+  },
+  checkUserStuId(){
+    let userInfo = wx.getStorageSync("userInfo") || false;
+    console.info(userInfo);
+    if (!userInfo || !userInfo.stuId) {
+      console.info(userInfo);
+      wx.reLaunch({
+        url: '/pages/auth/auth',
+        success: function () {
+          console.info("success")
+        },
+        fail: function () {
+          console.info("fail")
+        },
+        complete: function () {
+          console.info()
+        }
+      });
+    }
   }
 });

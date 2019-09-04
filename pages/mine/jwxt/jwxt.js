@@ -56,6 +56,7 @@ Page({
         wx.showToast({
           title: '登录成功',
         });
+        getApp().getIMHandler().login({ username: res.data.stuId, avatar: res.data.avatar });
         wx.reLaunch({
           url: '/pages/index/index',
         });
