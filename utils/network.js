@@ -130,6 +130,7 @@ function getDynamic({
 //关注
 function attentOthers({
   id,
+  formId,
   success,
   fail
 }){

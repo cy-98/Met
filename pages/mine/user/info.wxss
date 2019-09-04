@@ -98,3 +98,7 @@ page{
 .cu-form-group{
   padding:0 14rpx;
 }
+.form-focus{
+  width: 100%;
+  display: block;
+}

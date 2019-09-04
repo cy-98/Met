@@ -49,14 +49,16 @@ Page({
   },
   //关注推荐的人
   attent(e){
-    let id = e.currentTarget.id;
+    let id = e.detail.target.id;
+    console.log(id)
+    let formId = e.detail.formId
     console.log(e);
-    let index = e.currentTarget.dataset.index;
+    let index = e.detail.target.dataset.index;
     // pers 关注
     network.attentOthers({
       id:id,
+      formId:formId,
       success:(res)=>{
-
         let recommend = this.data.recommend;
         recommend[index].focus = true;
         this.setData({

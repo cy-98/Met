@@ -61,9 +61,11 @@ Page({
       url: '/pages/chat/chat?conversation=' + JSON.stringify(con),
     })
   },
-  focus:function(){
+  focus:function(e){
+    let formId = e.detail.formId;
     network.attentOthers({
       id:this.data.userId,
+      formId: formId,
       success: res =>{
         this.setData({
           follower:true
@@ -71,9 +73,11 @@ Page({
       }
     })
   },
-  cancelFocus: function(){
+  cancelFocus: function(e){
+    let formId = e.detail.formId;
     network.cancelAttentOthers({
       id: this.data.userId,
+      formId:formId,
       success: res => { 
         this.setData({
           follower:false

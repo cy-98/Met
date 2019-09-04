@@ -117,7 +117,9 @@
       </view>
     </view>
     <view class="action">
-      <button bindtap="{{item.focus ==false?'attent':'unAttent'}}"  id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>{{item.focus == false?'关注':'取消关注'}}</button>
+    <form  bindsubmit="{{item.focus ==false?'attent':'unAttent'}}"  report-submit='true'>
+    <button  form-type='submit' id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>{{item.focus == false?'关注':'取消关注'}}</button>
+    </form>
     </view>
   </view>
 
