@@ -17,7 +17,7 @@
     <navigator class="content" url="/pages/mine/user/slefDynamic" hover-class="none">
       <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
-      <text class="itext cuIcon-discoverfill text-blue"></text>
+      <text class="cuIcon-discoverfill text-blue"></text>
         <!-- <image class="iconf" src="../../images/icon/shipin.png"></image> -->
          <text style="line-height:38rpx;">动态</text> </view>
     </view>
@@ -25,14 +25,14 @@
     <navigator class="content" url="/pages/mine/user/fans" hover-class="none">
       <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
-        <text class="itext cuIcon-peoplefill text-blue"></text>
+        <text class="cuIcon-peoplefill text-blue"></text>
         <!-- <image class="iconf" src="../../images/icon/wode.png"></image> -->
          <text style="line-height:38rpx;">粉丝</text> </view>
     </view>
     </navigator>
     
   </view>
-  <view class="itext cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/question/question" hover-class="none">
         <image src="/images/logo.png" class="png" mode="aspectFit"></image>

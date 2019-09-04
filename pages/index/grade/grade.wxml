@@ -27,3 +27,4 @@
     </view>
 
 </view>
+<view class="bg-blue cu-text" wx:if="{{grades.length == 0}}">最近没考试呀！快去找朋友吧</view>

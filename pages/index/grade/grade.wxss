@@ -1,4 +1,8 @@
+
 /* pages/index/grade/grade.wxss */
+.cu-text{
+  text-align: center;
+}
 .panel{
   background-color: #fff;
   padding: 10rpx;

@@ -56,6 +56,3 @@ map,.mapBox{
 .content{
   flex: 1
 }
-.itext{
-  margin-right:6rpx;
-}
