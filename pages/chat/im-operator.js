@@ -217,7 +217,7 @@ export default class IMOperator {
     messages.forEach(conversation => {
       if (conversation.from_username === this.getFriendId()) {
         let msgs = [];
-        conversation.msgs.slice(-8).forEach(msg => {
+        conversation.msgs.slice(-10).forEach(msg => {
 
           let msgObj = Object;
           msgObj.type = msg.content.msg_body.extras.type;
@@ -234,7 +234,7 @@ export default class IMOperator {
 
         });
 
-        conversation.msgs.slice(0, -8).forEach(msg => {
+        conversation.msgs.slice(-40, -10).forEach(msg => {
 
           let msgObj = Object;
           msgObj.type = msg.content.msg_body.extras.type;
