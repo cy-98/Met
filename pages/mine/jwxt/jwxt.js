@@ -1,5 +1,6 @@
 // pages/mine/jwxt/jwxt.js
 var utils = require('../../../utils/util.js');
+const network = require('../../../utils/network.js');
 Page({
 
   /**
@@ -29,6 +30,7 @@ Page({
   formSubmit: function (e){
     console.info(this.data.stuId);
     console.info(this.data.password);
+    let formId = e.detail.formId;
     if(!this.data.stuId){
       wx.showModal({
         title: '学号填一下',
@@ -43,29 +45,25 @@ Page({
       });
       return;
     }
-
-    console.info(e);
     let data = {
-      formId:e.detail.formId,
       stuId:this.data.stuId,
-      password:this.data.password
+      password:this.data.password,
+      formId: e.detail.formId,
     };
-    utils.req('user/verify', data, function(res){
-      console.info(res);
-      if(res.code === 200){
-        wx.showToast({
+    network.loginJwxt({
+      data:data,
+      success:(res)=>{
+          wx.showToast({
           title: '登录成功',
-        });
-        getApp().getIMHandler().login({ username: res.data.stuId, avatar: res.data.avatar });
-        wx.reLaunch({
-          url: '/pages/index/index',
-        });
-      }else{
+          });
+        },
+      fail:()=>{
         wx.showToast({
           title: '登录失败，检查账户密码是否正确',
         });
       }
-    });
+    })
+   
   },
 
   /**

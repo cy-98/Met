@@ -413,7 +413,6 @@ function getMessages({success,fail}){
         fail && fail(res)
       }
     });
-
 }
 
 /**
@@ -429,7 +428,17 @@ function readMessage({msgId, success, fail}){
       }
     });
 }
-
+// 登陆教务系统
+function loginJwxt({data,success,fail}){
+  util.req('user/verify',data,res=>{
+    console.log(res);
+    if(res.code === 200){
+      success && success(res)
+    }else{
+      fail && fail(res)
+    }
+  });
+}
 
 
 
@@ -467,5 +476,6 @@ module.exports = {
   getOpenSchool: getOpenSchool,
   getMessages: getMessages,
   readMessage: readMessage,
-  getMyDynamic: getMyDynamic
+  getMyDynamic: getMyDynamic,
+  loginJwxt:loginJwxt
 }
