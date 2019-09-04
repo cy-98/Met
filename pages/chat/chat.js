@@ -19,7 +19,12 @@ Page({
         isAndroid: true,
         chatStatue: 'open',
         avatar:"",
-      imOperator: null
+        imOperator: null,
+        adjust:false,
+        bottom:0
+    },
+    chatInputBindFocusEvent:(e)=>{
+      console.log('1')
     },
 
     /**

@@ -14,7 +14,8 @@ let status = {
     CANCEL: 3,
     SHORT: 4,
     FAIL: 5,
-    UNAUTH: 6
+    UNAUTH: 6,
+    bottom:0
 };
 
 // let isRecordAuth = false;
@@ -38,7 +39,6 @@ function init(page, opt) {
     initData(opt);
     initVoiceData();
     initExtraData(opt.extraArr);
-
     initChangeInputWayEvent();
     if (wx.getRecorderManager) {
         recorderManager = wx.getRecorderManager();
@@ -442,10 +442,12 @@ function endRecord() {
 
 function setTextMessageListener(cb) {
     if (_page) {
-        _page.chatInputBindFocusEvent = function () {
+        _page.chatInputBindFocusEvent = function (e) {
+            console.log(e)//拉起键盘后 将input的高度上升
+            let height = e.detail.height;
             _page.setData({
-                'inputObj.inputType': 'text'
-
+                'inputObj.inputType': 'text',
+                bottom:status.height
             })
         };
         _page.chatInputBindBlurEvent = function () {

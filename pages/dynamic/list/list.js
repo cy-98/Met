@@ -73,8 +73,6 @@ Page({
               item.nickname = item.annonyUser.nickname;
               item.avatar = item.annonyUser.avatar;
             }
-
-
         });
         console.info(res.data);
         let dynamics = this.data.dynamics || [];
@@ -220,7 +218,7 @@ Page({
   onReachBottom: function() {
     let pages = this.data.pages;
     let curr = this.data.TabCur;
-    console.info(curr);
+    console.info('正在加载');
     switch (curr){
       case 0:
         this.getRecommendDynamic(++pages[0], 10);

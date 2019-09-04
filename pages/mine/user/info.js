@@ -74,6 +74,7 @@ Page({
     })
   },
   cancelFocus: function(e){
+    console.log(e)
     let formId = e.detail.formId;
     network.cancelAttentOthers({
       id: this.data.userId,

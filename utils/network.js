@@ -147,7 +147,7 @@ function attentOthers({
  * 取消关注
  */
 function cancelAttentOthers({
-  id,form, success, fail
+  id,formId, success, fail
 }){
   util.req("/user/unfollow", { userId: id ,formId: formId }, res => {
     console.log(res);

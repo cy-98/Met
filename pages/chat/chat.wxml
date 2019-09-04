@@ -6,7 +6,6 @@
 <cu-custom style="position:fixed;z-index:99;" bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">{{title}}</view></cu-custom>
 
 <template is="chat-page-status" data="{{chatStatue,chatStatusContent}}"/>
-
 <scroll-view
         style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 54rpx;"
         scroll-y="true"
@@ -18,4 +17,4 @@
     </block>
 
 </scroll-view>
-<template is="chat-input" data="{{inputObj,textMessage,showVoicePart:true}}"/>
+<template   style="transform:{{bottom}}" is="chat-input" data-adjust="{{adjust}}" data="{{inputObj,textMessage,showVoicePart:true}}"/>
