@@ -77,7 +77,7 @@
         <!--评论内容-->
         <view>
           <text wx:if="{{item.replyUser}}">回复</text>
-          <text wx:if="{{item.replyUser}}" style="color:rgb(164,164,164);margin-right:10rpx">@{{item.replyUser.name}}:</text>
+          <text wx:if="{{item.replyUser}}" style="color:rgb(164,164,164);margin-right:10rpx">@{{item.replyUser.nickname}}:</text>
           <text style="word-wrap: break-word;word-break: break-all;">{{item.content}}</text>
         </view>
         <!---->
