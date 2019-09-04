@@ -1,9 +1,10 @@
 <!--pages/mine/jwxt/jwxt.wxml-->
 <cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
   <view slot="backText">返回</view>
+  <view slot="content">学校认证</view>
 </cu-custom>
 <view class="UCenter-bg">
-  <image src="/images/logo.png" class="{{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
+  <image src="/images/icon/cumt_white.png" class="{{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
   <view class="text-xl">{{person.name}}</view>
   <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 </view>

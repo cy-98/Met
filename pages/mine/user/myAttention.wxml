@@ -1,6 +1,7 @@
 <!--pages/mine/user/myAttention.wxml-->
 <cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
   <view slot="backText">返回</view>
+  <view slot="content">我的关注</view>
 </cu-custom>
 <view class="cu-list menu-avatar">
   <view class="cu-item" wx:for="{{users}}" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
