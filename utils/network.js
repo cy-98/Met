@@ -134,7 +134,7 @@ function attentOthers({
   success,
   fail
 }){
-  util.req("/user/follow", {userId:id}, res => {
+  util.req("/user/follow", {userId:id, formId: formId}, res => {
     console.log(res);
     if (res.code == 200) {
       success && success(res);
@@ -147,9 +147,9 @@ function attentOthers({
  * 取消关注
  */
 function cancelAttentOthers({
-  id, success, fail
+  id,form, success, fail
 }){
-  util.req("/user/unfollow", { userId: id }, res => {
+  util.req("/user/unfollow", { userId: id ,formId: formId }, res => {
     console.log(res);
     if (res.code == 200) {
       success && success(res);
@@ -315,11 +315,13 @@ function getUserFollow({
 //添加兴趣标签
 function addTag({
   content,
+  formId,
   success,
   fail
 }) {
   util.req("interest", {
-    content: content
+    content: content,
+    formId:formId
   }, function(res) {
     console.log(res);
     if (res.code === 200) {
@@ -332,11 +334,13 @@ function addTag({
 
 function deleteTag({
   content,
+  formId,
   success,
   fail
 }) {
   util.deleteReq("interest", {
-    content: content
+    content: content,
+    formId:formId
   }, res => {
     console.info(res);
     if (res.code === 200)

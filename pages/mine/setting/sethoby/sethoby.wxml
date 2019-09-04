@@ -16,14 +16,16 @@
   </view> -->
 
   <view class="padding-sm flex flex-wrap">
-    <view class="padding-xs" wx:for="{{taggroup}}" wx:key data-title="{{item.title}}" bindtap='selectTag' wx:if="{{item.color!='white'}}">
-      <view class="cu-tag line-{{item.color}}">{{item.title}}</view>
-    </view>
+    <view class="padding-xs" wx:for="{{taggroup}}" wx:key  wx:if="{{item.color!='white'}}">
+    <form report-submit="true" bindsubmit="selectTag" data-title="{{item.title}}">
+      <button form-type="submit" class="cu-tag line-{{item.color}}">{{item.title}}</button>
+    </form>
   </view>
+</view>
 
 
 </view>
-<form bindsubmit='addTag' >
+<form report-submit="true" bindsubmit='addTag' >
   <view class='cu-form-group ' >
     <input bindinput='inputTag' style='text-align:left;' placeholder='输入你的个性标签'></input>
     <button form-type='submit' class='border cu-tag padding-sm'>+添加标签</button>
@@ -38,8 +40,8 @@
 
 <view class="padding-sm cu-form-group">
   <view class="padding-sm flex flex-wrap">
-    <view class="padding-xs" data-item='{{item}}' data-index='{{index}}' bindtap='deleteTag' wx:for="{{myTags}}" wx:key  wx:if="{{item.color!='white'}}">
-      <view class="cu-tag line-{{item.color}}">{{item.title}}</view>
-    </view>
+    <form report-submit="true" class="padding-xs" data-item='{{item}}' data-index='{{index}}' bindsubmit='deleteTag' wx:for="{{myTags}}" wx:key  wx:if="{{item.color!='white'}}">
+      <button form-type="submit" class="cu-tag line-{{item.color}}">{{item.title}}</button>
+    </form>
   </view>
 </view>

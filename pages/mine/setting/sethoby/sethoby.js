@@ -128,9 +128,10 @@ Page({
     })
   },
   //添加标签
-  addTag:function(){
+  addTag:function(e){
+    let formId  = e.detail.formId;
     let list = this.data.myTags;
-    let trim = this.data.inputTag.replace(/\s*/g, "")
+    let trim = this.data.inputTag.replace(/\s*/g, "");
     if (!trim){
       wx.showToast({
         title: '请输入内容',
@@ -145,33 +146,37 @@ Page({
       this.setData({
         myTags:list
       })
-      network.addTag({
+      console.log(formId);
+      let tag = {
         content: trim,
+        formId: formId,
         success: function (res) {
           console.log('添加兴趣')
-
         },
         fail: function () {
           console.log('fail')
         }
-      })
+      }
+      console.log(tag.formId)
+      network.addTag(tag)
     }
     
   },
   //添加选中的标签
   selectTag:function(e){
+    let formId=  e.detail.formId;
     let myTags = this.data.myTags;
-    let color = this.data.colorList[Math.floor(Math.random() * this.data.colorList.length)].name
-    console.log(color)
+    let color = this.data.colorList[Math.floor(Math.random() * this.data.colorList.length)].name;
     myTags.push({
       title:e.currentTarget.dataset.title,
       color:color
     });
     this.setData({
       myTags:myTags
-    })
+    });
     network.addTag({
       content: e.currentTarget.dataset.title,
+      formId:formId,
       success: function (res) {
         console.log('选择兴趣')
       },
@@ -187,13 +192,10 @@ Page({
     let that = this;
     //获取标签
     network.getUserInfo({ success:res =>{
-      console.log(res);
       let userInfo = wx.getStorageSync("userInfo");
-
       let myTags = [];
       let tag = userInfo.interest || [];
       //添加颜色
-
       tag.forEach(item => {
         let randex = Math.floor(Math.random() * tags.length);
         let color = colorList[randex].name;
@@ -205,10 +207,7 @@ Page({
       this.setData({
         myTags: myTags
       })
-
     }});
-
-
 
     //妄想实现随机颜色
     
@@ -238,15 +237,13 @@ Page({
   //删除标签
   deleteTag:function(e){
 
-
-    console.info(e);
+    let formId = e.detail.formId;
     network.deleteTag({
       content:e.currentTarget.dataset.item.title,
+      formId: formId,
       success:res => {
-
       },
       fail: res => {
-
       }
     });
     let myTags = this.data.myTags;
