@@ -1,11 +1,5 @@
 # wechat-im
 
-[![Build Status](https://travis-ci.org/unmagic/wechat-im.svg?branch=master)](https://travis-ci.org/unmagic/wechat-im)
-[![Version status](https://img.shields.io/badge/release-1.0.2-brightgreen.svg)](https://github.com/unmagic/wechat-im)
-[![Code Size](https://img.shields.io/badge/code%20size-88kb-brightgreen.svg)](https://github.com/unmagic/wechat-im)
-[![Dependency status](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://img.shields.io/badge/dependencies-none-brightgreen.svg)
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/unmagic/wechat-im/blob/master/LICENSE)
-
 
 ## TODO LIST
 - ~~用户兴趣添加页面~~
@@ -17,11 +11,11 @@
 
 - ~~添加一个动态页面~~
 - ~~动态模板~~（待完善）
-- 动态列表页
-- 动态详情页
+- ~~动态列表页~~
+- ~~动态详情页~~
 
 
-- 完善学校认证页面（显示认证结果）
+- ~~完善学校认证页面（显示认证结果）~~
 - ~~兴趣爱好添加页面~~
 - 个人信息页面(对外展示)(待完善)
 - ~~提问设置页面~~
@@ -32,14 +26,6 @@
 - 打卡页面
 - 我的邀请页面（可以做一些礼物什么鬼的）
 
-
-### 微信小程序即时通讯
-
-开发这个项目付出了我很多心血，如果对你有帮助和启发的话，希望在`GitHub`上给个`star`！也是对我工作的支持和肯定！
-
-也非常感谢[kulovecc](https://github.com/kulovecc)对项目中文本超长溢出布局的问题的修正和提交！
-
-## 介绍：
 wechat-im是一个可以让你在小程序平台快速实现即时通讯功能的完整模板。
 
 ## 特性：

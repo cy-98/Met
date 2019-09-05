@@ -446,15 +446,18 @@ function setTextMessageListener(cb) {
     if (_page) {
         _page.chatInputBindFocusEvent =  (e) =>{
             console.log(_page.data)//拉起键盘后 将input的高度上升
-            console.log(e.detail.height)
-            this.VRStatus.bottom = e.detail.height
+            console.log(e.detail.height);
+            this.VRStatus.bottom = e.detail.height;
             _page.setData({
                 'inputObj.inputType': 'text',
                 bottom:e.detail.height
             })
             
         };
-        _page.chatInputBindBlurEvent = function () {
+        _page.chatInputBindBlurEvent = function (e) {
+            _page.setData({
+              bottom:0
+            })
             setTimeout(() => {
                 let obj = {};
                 if (!inputObj.inputValueEventTemp || !inputObj.inputValueEventTemp.detail.value) {
