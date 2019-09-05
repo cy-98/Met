@@ -3,7 +3,7 @@ import * as chatInput from "../../modules/chat-input/chat-input";
 import IMOperator from "./im-operator";
 import UI from "./ui";
 import MsgManager from "./msg-manager";
-
+console.log(chatInput)
 /**
  * 聊天页面
  */
@@ -21,7 +21,7 @@ Page({
         avatar:"",
         imOperator: null,
         adjust:false,
-        bottom:0
+        bottom:0,
     },
     chatInputBindFocusEvent:(e)=>{
       console.log('1')

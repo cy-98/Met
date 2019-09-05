@@ -1,4 +1,5 @@
 let _page;
+
 let inputObj = {}, recorderManager;
 let windowHeight, windowWidth;
 // let voice$position = {toLeft: 0, toBottom: 0};
@@ -94,6 +95,7 @@ function initChangeInputWayEvent() {
 function initVoiceData() {
     let width = windowWidth / 2.6;
     _page.setData({
+
         'inputObj.inputStyle': _page.data.inputObj.inputStyle,
         'inputObj.canUsePress': canUsePress,
         'inputObj.inputStatus': 'text',
@@ -442,13 +444,15 @@ function endRecord() {
 
 function setTextMessageListener(cb) {
     if (_page) {
-        _page.chatInputBindFocusEvent = function (e) {
-            console.log(e)//拉起键盘后 将input的高度上升
-            let height = e.detail.height;
+        _page.chatInputBindFocusEvent =  (e) =>{
+            console.log(_page.data)//拉起键盘后 将input的高度上升
+            console.log(e.detail.height)
+            this.VRStatus.bottom = e.detail.height
             _page.setData({
                 'inputObj.inputType': 'text',
-                bottom:status.height
+                bottom:e.detail.height
             })
+            
         };
         _page.chatInputBindBlurEvent = function () {
             setTimeout(() => {
@@ -481,6 +485,7 @@ function setTextMessageListener(cb) {
 
         }
         _page.chatInputGetValueEvent = function (e) {
+            console.info(status)
             inputObj.inputValueEventTemp = e;
             _page.setData({
                 textMessage: e.detail.value

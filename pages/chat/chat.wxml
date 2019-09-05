@@ -17,4 +17,4 @@
     </block>
 
 </scroll-view>
-<template   style="transform:{{bottom}}" is="chat-input" data-adjust="{{adjust}}" data="{{inputObj,textMessage,showVoicePart:true}}"/>
+<template  is="chat-input" data-adjust="{{adjust}}" data="{{bottom,inputObj,textMessage,showVoicePart:true}}"/>
