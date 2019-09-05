@@ -64,7 +64,7 @@
   <block wx:if="{{dynamic.comments.length>0}}">
     <view class="good_cmt bottom_line" style="align-items:flex-start" wx:for="{{dynamic.comments}}" wx:key="unique">
       <view>
-        <image class="user_avatar " src="{{item.user.avatar}}" />
+        <image class="user_avatar " bindtap="clickUser" data-user="{{item.user}}" src="{{item.user.avatar}}" />
       </view>
       <view style="flex:1" bindtap="commentAt" data-user="{{item.user}}" data-uid="{{item.id}}">
         <!--头像昵称评论时间-->

@@ -27,6 +27,12 @@ Page({
       comment: e.detail.value
     })
   },
+  clickUser: function(e){
+    console.info(e);
+    wx.navigateTo({
+      url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.user.id,
+    })
+  },
   //提交评论
   submitComment: function(e) {
     console.log(this.data.replyUser)
