@@ -2,7 +2,7 @@
   <view slot="backText">返回</view>
   <view slot="content">我的粉丝</view>
 </cu-custom>
-<view class="cu-list menu-avatar" wx:for="{{fans}}">
+<view class="cu-list menu-avatar" wx:for="{{fans}}" style="margin-top: 0rpx;">
   <view class="cu-item" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
     <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
     <view class="content">

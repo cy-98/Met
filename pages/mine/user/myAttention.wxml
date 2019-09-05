@@ -3,8 +3,8 @@
   <view slot="backText">返回</view>
   <view slot="content">我的关注</view>
 </cu-custom>
-<view class="cu-list menu-avatar">
-  <view class="cu-item" wx:for="{{users}}" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
+<view class="cu-list menu-avatar" wx:for="{{users}}" style="margin-top: 0rpx;">
+  <view class="cu-item"  wx:key="item" data-user='{{item}}' bindtap='clickUser'>
     <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
     <view class="content">
       <view class="text-grey">{{item.nickname}}</view>

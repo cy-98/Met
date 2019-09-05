@@ -28,6 +28,9 @@
             <view class='title'> <view>年级</view></view><view>{{grade}}</view>
           </view>
           <view class="cu-form-group">
+            <view class='title'> <view>恋爱状态</view></view><view>{{love}}</view>
+          </view>
+          <view class="cu-form-group">
             <view class='title'> <view>学校专业</view></view><view>{{major}}</view>
           </view>
           <view class="cu-form-group">

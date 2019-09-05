@@ -14,6 +14,7 @@ Page({
     avatar:'',
     stuId:"",
     grade:"",
+    love:"单身",
     userId:"",
     follower:false,
     //问题列表
@@ -109,6 +110,12 @@ Page({
       success: function(res) {
         console.log('获取成功');
         let interest = res.data.interest;
+        let loveTmp = "单身";
+        if(res.data.love === 2){
+          loveTmp = "恋爱中";
+        }else if(res.data.love === 3){
+          loveTmp = "保密";
+        }
         that.setData({
           labArr: interest,
           avatar : res.data.avatar,
@@ -119,7 +126,8 @@ Page({
           grade: res.data.grade,
           gender:res.data.gender,
           follower: res.data.focus,
-          userId:res.data.id
+          userId:res.data.id,
+          love:loveTmp
         })
         //实现随机颜色
         var labLen = that.data.labArr.length,

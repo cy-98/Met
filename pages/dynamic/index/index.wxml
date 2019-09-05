@@ -7,9 +7,10 @@
     <view style="padding-bottom:20px;" class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="cu-item">
-          <image src='{{dynamic.anonymous === 0 ?dynamic.user.avatar:dynamic.annoyUser.avatar}}' class='cu-avatar round lg'></image>
+          <image src='{{dynamic.anonymous == 0 ? dynamic.user.avatar:dynamic.annonyUser.avatar}}' class='cu-avatar round lg'></image>
           <view class="content flex-sub">
-            <view>{{dynamic.anonymous === 0 ?dynamic.user.nickname:dynamic.annoyUser.nickname}}</view>
+            <view>{{dynamic.anonymous == 0 ? dynamic.user.nickname:dynamic.annonyUser.nickname}}</view>
+            
             <view class="text-gray text-sm flex justify-between">
               {{dynamic.createTime}}
             </view>
