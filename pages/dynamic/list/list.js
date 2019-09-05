@@ -13,7 +13,9 @@ Page({
     dynamics:[],
     followDynamic:[],
     expressDynamic:[],
-    talkDynamic:[]
+    talkDynamic:[],
+    //滚动页面位置
+    scroll:0
   },
   tabSelect(e) {
     this.setData({
@@ -57,7 +59,6 @@ Page({
   clickImages: function(e){
     dynamic.clickImages(e);
   },
-
   getRecommendDynamic: function(page, size){
     // 获取相关数据
     network.getRecommendDynamic({
@@ -74,7 +75,6 @@ Page({
               item.avatar = item.annonyUser.avatar;
             }
         });
-        console.info(res.data);
         let dynamics = this.data.dynamics || [];
         this.setData({
           dynamics: dynamics.concat(res.data.data)
@@ -177,13 +177,25 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
+   * 页面相关事件处理函数--
    */
+  //监听滚动
+  touchstart:(e)=>{
+    console.log(e);
+  },
+  scrollbot: function (e) {
+     //这个就是滚动到的位置,可以用这个位置来写判断
+    let scroll = e.detail.scrollTop;
+    console.log(scroll)
+    this.setData({
+      scroll:scroll
+    })
+  },
+  //监听用户下拉动作
   onPullDownRefresh: function() {
-    console.info("pull down");
+    console.log('刷新')
     let pages = this.data.pages;
     let curr = this.data.TabCur;
-    console.info(curr);
     switch (curr) {
       case 0:
         this.setData({
@@ -210,6 +222,7 @@ Page({
         this.getTypeDynamic(1, 1, 10);
         break;
     }
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -218,7 +231,6 @@ Page({
   onReachBottom: function() {
     let pages = this.data.pages;
     let curr = this.data.TabCur;
-    console.info('正在加载');
     switch (curr){
       case 0:
         this.getRecommendDynamic(++pages[0], 10);

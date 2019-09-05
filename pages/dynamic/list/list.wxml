@@ -20,8 +20,9 @@
 <view class='round more' bindtap='addDynamic' ></view>
 <swiper  style="height: {{clientHeight?clientHeight+'px':'auto'}}" class='videoSwiper' current="{{TabCur}}" duration="200" bindchange="swiperchange">
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscrolltolower="scrollbot">
-      <view bindscrolltoupper="refresh" wx:for="{{dynamics}}" wx:key="item">
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot" >
+      <view touchstart="touchstart"
+       bindscrolltoupper="refresh" wx:key="{{index}}" wx:for="{{dynamics}}" wx:key="item">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
         </view>
@@ -30,8 +31,9 @@
   </swiper-item>
   <!-- 关注页面 -->
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscrolltolower="scrollbot">
-      <view bindscrolltoupper="refresh" wx:for="{{followDynamic}}" wx:key="item">
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot">
+      <view touch
+       bindscrolltoupper="refresh" wx:key="{{index}}" wx:for="{{followDynamic}}" wx:key="item">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
         </view>
@@ -40,8 +42,9 @@
     </scroll-view>
   </swiper-item>
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscrolltolower="scrollbot">
-      <view bindscrolltoupper="refresh" wx:for="{{expressDynamic}}" wx:key="item">
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot">
+      <view touch
+       bindscrolltoupper="refresh" wx:for="{{expressDynamic}}" wx:key="{{index}}">
         <view>
           <template is="dynamic" data="{{...item}}"></template>
         </view>
@@ -49,8 +52,9 @@
     </scroll-view>
   </swiper-item>
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscrolltolower="scrollbot">
-      <view bindscrolltoupper="refresh" wx:for="{{talkDynamic}}" wx:key="item">
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot">
+      <view touch
+       bindscrolltoupper="refresh" wx:for="{{talkDynamic}}" wx:key="{{index}}">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
         </view>

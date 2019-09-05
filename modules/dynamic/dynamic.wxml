@@ -31,7 +31,7 @@
           {{content}}
         </view>
         <view class="grid flex-sub padding-tb col-3 grid-square">
-          <view class='bg-img' wx:for="{{images}}" wx:key="{{item}}">
+          <view class='bg-img'  wx:for="{{images}}" wx:for-index='index' wx:key="index">
             <image src='{{item}}' data-current='{{item}}' data-all='{{images}}' bindtap='clickImages'></image>
           </view>
         </view>
