@@ -44,6 +44,7 @@ page{
   transition:  ease 0.2s;
   height: 60rpx;
   line-height: 60rpx;
+  margin-top: 0;
 }
 .float{
   width: 100vw;
