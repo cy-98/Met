@@ -15,14 +15,40 @@ Page({
    */
   onLoad: function (options) {
     let timetable = wx.getStorageSync("timetable") || null;
+    let tmp = [];
+    let currWeek = wx.getStorageSync("currWeek");
+    console.info(currWeek);
+    let timetables = [];
+
+
     if(!timetable){
-      network.getTimeTable({success: res => {
-        this.setData({
-          timetables:res.data
-        })
-      }})
+      network.getTimeTable({
+        success: res => {
+          res.data.forEach(item => {
+            
+              item.week_list.forEach(week => {
+                if (week === currWeek) {
+                  timetables.push(item);
+                }
+              })
+            
+          });
+          this.setData({ timetables: timetables });
+        },
+        fail: res => {
+
+        }
+      });
+      
     }else{
-      this.setData({timetables:timetable});
+      timetable.forEach(item => {
+        item.week_list.forEach(week => {
+          if (week === currWeek) {
+            timetables.push(item);
+          }
+        })
+      });
+      this.setData({timetables:timetables});
     }
   },
 

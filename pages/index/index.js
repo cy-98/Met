@@ -94,6 +94,7 @@ Page({
     network.getOpenSchool({success:res => {
       console.info(res);
       let currWeek = res.data.week + 1;
+      wx.setStorageSync("currWeek", currWeek);
       console.info("当前周数"+ currWeek);
       this.towerSwiper('swiperList');
       // 初始化towerSwiper 传已有的数组名即可
