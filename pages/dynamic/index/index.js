@@ -35,6 +35,12 @@ Page({
   },
   //提交评论
   submitComment: function(e) {
+    if (!this.data.comment || this.data.comment == "") {
+      wx.showToast({
+        title: '内容不能为空',
+      });
+      return;
+    }
     console.log(this.data.replyUser)
     let formId = e.detail.formId;
     let that = this;
