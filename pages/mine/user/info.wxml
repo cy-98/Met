@@ -8,7 +8,13 @@
     <view class="text-xl">{{nickname}} <text class="{{gender === 1 ?'cuIcon-male text-blue':'cuIcon-female text-red'}}"></text></view>
     <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
+        <view class="cu-form-group">
+          <view class="cu-tag square bg-blue">粉丝:{{fans}}</view>
+          <view class="cu-tag square bg-cyan">关注:{{focus}}</view>
+          <view class="cu-tag square bg-orange">动态:{{dynamicNum}}</view>
+        </view>
   <view class="flex text-center text-grey bg-white shadow-warp wave">
+        
     <view class="flex flex-sub flex-direction ">
       <view class="margin-top-sm {{index == 0 ? checked : unchecked}}" bindtap='tapchange' data-id='0'>
         <text class="cuIcon-people"></text>个人信息</view>
@@ -21,6 +27,7 @@
   </scroll-view>
   <view wx:if="{{index == 0}}">
     <view>
+        
          <view class="cu-form-group">
             <view class='title'> <view>性别</view></view><view>{{gender === 1 ?'男':'女'}}</view>
           </view>

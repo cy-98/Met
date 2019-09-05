@@ -127,7 +127,10 @@ Page({
           gender:res.data.gender,
           follower: res.data.focus,
           userId:res.data.id,
-          love:loveTmp
+          love:loveTmp,
+          fans:res.data.follower,
+          focus:res.data.focus,
+          dynamicNum:res.data.dynamicNum
         })
         //实现随机颜色
         var labLen = that.data.labArr.length,

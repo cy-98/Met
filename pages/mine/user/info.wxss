@@ -72,8 +72,10 @@ page{
   margin: 0 auto;
 }
 .content{ width: 100%; height: auto; overflow: hidden; margin: 50rpx auto;}
-.cu-tag{ padding: 4rpx 10rpx; margin: 20rpx; border-radius: 20rpx; float: left; color: #fff; font-size: 28rpx;
+.cu-tag{ 
+  padding: 4rpx 10rpx; margin: 20rpx; border-radius: 20rpx; float: left; color: #fff;     font-size: 28rpx;
 }
+
 .cu-btn{
   width: 100%;
   padding:0;
@@ -101,4 +103,9 @@ page{
 .form-focus{
   width: 100%;
   display: block;
+}
+.square{
+  width: 100%;
+  margin: 10rpx;
+  border-radius:0;
 }
