@@ -1,5 +1,6 @@
 <cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
   <view bindtap="back">返回</view>
+  <view slot="content">消息</view>
 </cu-custom>
 <view class="cu-list menu-avatar" wx:for="{{contents}}" bindtap="intoDynamic" data-id="{{item.id}}" data-url="{{item.url}}">
   <view class="cu-item" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
