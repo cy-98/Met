@@ -57,6 +57,12 @@
         <text class="text-grey">设置</text>
       </navigator>
     </view>
+      <view class="cu-item arrow">
+      <button class="content" open-type="contact" style="text-align:left" hover-class="none">
+        <text class="cuIcon-settingsfill text-orange"></text>
+        <text class="text-grey">在线客服</text>
+      </button> 
+    </view>
     <!-- <view class="cu-item arrow">
       <button class="cu-btn content" bindtap='feedback' >
         <text class="cuIcon-btn text-olive"></text>
