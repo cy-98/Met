@@ -34,9 +34,6 @@ Page({
   onLoad: function (options) {
     //获取问题
 
-    
-    
-    
     //获取别人的信息
     let userInfo = wx.getStorageSync("userInfo");
     this.setData({

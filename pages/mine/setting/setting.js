@@ -62,7 +62,7 @@ Page({
     //post
     network.updateUserInfo({userInfo:data, success:res => {
       console.info("已经醒了");
-      wx.setStorageSync("userInfo", this.data)
+      wx.setStorageSync("userInfo", res.data);
       wx.switchTab({
         url: '/pages/mine/index',
       })
