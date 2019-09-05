@@ -21,7 +21,7 @@
 <swiper  style="height: {{clientHeight?clientHeight+'px':'auto'}}" class='videoSwiper' current="{{TabCur}}" duration="200" bindchange="swiperchange">
   <swiper-item>
     <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot" >
-      <view touchstart="touchstart"
+      <view 
        bindscrolltoupper="refresh" wx:key="{{index}}" wx:for="{{dynamics}}" wx:key="item">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>

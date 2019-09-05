@@ -5,8 +5,10 @@
   color: #fff;
   text-align: center;
   line-height: 1rem;
-
   border-radius: 50%;
   float: right;
   margin-right: 20rpx;
+}
+.cu-list+.cu-list{
+  margin-top: 0;
 }
