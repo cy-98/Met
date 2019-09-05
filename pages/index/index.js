@@ -8,15 +8,15 @@ Page({
     swiperList: [{
       id: 0,
       type: 'image',
-      url: 'https://s2.ax1x.com/2019/09/04/nEdjAg.jpg'
+      url: 'https://s2.ax1x.com/2019/09/04/nEdjAg.th.jpg'
     }, {
       id: 1,
       type: 'image',
-        url: 'https://s2.ax1x.com/2019/09/04/nEwn3R.jpg',
+        url: 'https://s2.ax1x.com/2019/09/04/nEwn3R.th.jpg',
     }, {
       id: 2,
       type: 'image',
-        url: 'https://s2.ax1x.com/2019/09/04/nEwUgI.jpg'
+        url: 'https://s2.ax1x.com/2019/09/04/nEwUgI.th.jpg'
     }],
     iconList: [{
       icon: 'newsfill',

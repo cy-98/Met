@@ -9,7 +9,7 @@ Page({
   data: {
     imgList: [],
     index: 0,
-    picker: ['表白墙', '吐槽墙', '随便说说'],
+    picker: ['表白墙', '约学习'],
     content:"",
     annous:false
   },

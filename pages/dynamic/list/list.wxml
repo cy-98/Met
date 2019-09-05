@@ -13,7 +13,7 @@
     <text class="cuIcon-evaluate_fill"></text> 表白墙
   </view>
   <view class="cu-item {{3==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="3">
-    <text class="cuIcon-creativefill"></text> 吐槽墙
+    <text class="cuIcon-creativefill"></text> 约学习
   </view>
 
 </scroll-view>
