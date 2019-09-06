@@ -22,10 +22,12 @@
          duration="200" bindchange="swiperchange">
   <swiper-item>
     <scroll-view scroll-y="{{true}}" 
-    style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot" >
+      style="height: {{clientHeight?clientHeight+'px':'auto'}}"
+      bindscroll="scrollbot" >
       <view 
-      bindtouchstart="mytouchstart"bindtouchend="mytouchend"
-       bindscrolltoupper="refresh"
+        bindtouchstart="mytouchstart"
+        bindtouchend="mytouchend"
+        bindscrolltoupper="refresh"
         wx:key="{{index}}" wx:for="{{dynamics}}" >
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
@@ -35,8 +37,12 @@
   </swiper-item>
   <!-- 关注页面 -->
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot">
-      <view touch
+    <scroll-view 
+        bindtouchstart="mytouchstart"
+        bindtouchend="mytouchend"
+        bindscrolltoupper="refresh"
+        scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
+      <view
        bindscrolltoupper="refresh" wx:key="{{index}}" wx:for="{{followDynamic}}" wx:key="item">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
@@ -46,8 +52,12 @@
     </scroll-view>
   </swiper-item>
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot">
-      <view touch
+    <scroll-view 
+        bindtouchstart="mytouchstart"
+        bindtouchend="mytouchend"
+        bindscrolltoupper="refresh"
+        scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
+      <view 
        bindscrolltoupper="refresh" wx:for="{{expressDynamic}}" wx:key="{{index}}">
         <view>
           <template is="dynamic" data="{{...item}}"></template>
@@ -56,8 +66,12 @@
     </scroll-view>
   </swiper-item>
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot">
-      <view touch
+    <scroll-view 
+        bindtouchstart="mytouchstart"
+        bindtouchend="mytouchend"
+        bindscrolltoupper="refresh"
+        scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
+      <view 
        bindscrolltoupper="refresh" wx:for="{{talkDynamic}}" wx:key="{{index}}">
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
