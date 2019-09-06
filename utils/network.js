@@ -445,8 +445,31 @@ function loginJwxt({data,success,fail}){
     }
   });
 }
+function delDynamic({
+  id, success, fail
+}){
+  util.deleteReq("/dynamic/" + id, {}, res => {
+    console.log(res);
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  });
+}
 
-
+function searchUser({
+  params, success, fail
+}){
+  util.getReq("search/user", { params: params}, res => {
+      console.log(res);
+      if (res.code === 200) {
+        success && success(res)
+      } else {
+        fail && fail(res)
+      }
+    });
+}
 
 //获取兴趣标签
 function getTag() {
@@ -484,5 +507,9 @@ module.exports = {
   readMessage: readMessage,
   getMyDynamic: getMyDynamic,
   loginJwxt:loginJwxt,
+<<<<<<< HEAD
   searchUser:searchUser
+=======
+  delDynamic: delDynamic
+>>>>>>> ff69f9e128cfb815ab5bba384dc06d6e0c76135e
 }
