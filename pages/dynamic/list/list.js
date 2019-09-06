@@ -15,7 +15,8 @@ Page({
     expressDynamic:[],
     talkDynamic:[],
     //滚动页面位置
-    scroll:0
+    scroll:0,
+    readyRefresh:false
   },
   tabSelect(e) {
     this.setData({
@@ -180,8 +181,24 @@ Page({
    * 页面相关事件处理函数--
    */
   //监听滚动
-  touchstart:(e)=>{
-    console.log(e);
+  mytouchstart:function(e){
+    let that = this;
+
+    var timer = setTimeout(()=>{
+      console.log(that)
+      console.log(this)
+      if (that.data.scroll === 0) {
+        that.setData({
+          readyRefresh: true
+        });
+      }
+    },100)
+    
+  },
+  mytouchend:function(e){
+    if(this.data.scroll === 0 && this.data.readyRefresh === true){
+      wx.startPullDownRefresh();
+    }
   },
   scrollbot: function (e) {
      //这个就是滚动到的位置,可以用这个位置来写判断

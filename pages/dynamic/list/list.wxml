@@ -18,11 +18,15 @@
 
 </scroll-view>
 <view class='round more' bindtap='addDynamic' ></view>
-<swiper  style="height: {{clientHeight?clientHeight+'px':'auto'}}" class='videoSwiper' current="{{TabCur}}" duration="200" bindchange="swiperchange">
+<swiper  style="height: {{clientHeight?clientHeight+'px':'auto'}}" class='videoSwiper'                  current="{{TabCur}}" 
+         duration="200" bindchange="swiperchange">
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot" >
+    <scroll-view scroll-y="{{true}}" 
+    style="height: {{clientHeight?clientHeight+'px':'auto'}}"  bindscroll="scrollbot" >
       <view 
-       bindscrolltoupper="refresh" wx:key="{{index}}" wx:for="{{dynamics}}" wx:key="item">
+      bindtouchstart="mytouchstart"bindtouchend="mytouchend"
+       bindscrolltoupper="refresh"
+        wx:key="{{index}}" wx:for="{{dynamics}}" >
         <view data-item="{{item}}">
           <template is="dynamic" data="{{...item}}"></template>
         </view>
