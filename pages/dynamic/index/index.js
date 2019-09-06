@@ -124,6 +124,29 @@ Page({
       urls: e.currentTarget.dataset.all,
     })
   },
+  delDynamic:function(){
+    wx.showModal({
+      title: '确定要删除吗',
+      content: '删除不可撤销',
+      success:res =>  {
+        if (res.confirm) {
+          console.log('用户点击确定');
+          network.delDynamic({
+            id: this.data.dynamic.id,
+            success: res => {
+              wx.reLaunch({
+                url: '/pages/dynamic/list/list',
+              });
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    });
+
+
+  },
 
   /**
    * 生命周期函数--监听页面加载

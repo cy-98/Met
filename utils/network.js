@@ -439,6 +439,18 @@ function loginJwxt({data,success,fail}){
     }
   });
 }
+function delDynamic({
+  id, success, fail
+}){
+  util.deleteReq("/dynamic/" + id, {}, res => {
+    console.log(res);
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  });
+}
 
 
 
@@ -477,5 +489,6 @@ module.exports = {
   getMessages: getMessages,
   readMessage: readMessage,
   getMyDynamic: getMyDynamic,
-  loginJwxt:loginJwxt
+  loginJwxt:loginJwxt,
+  delDynamic: delDynamic
 }

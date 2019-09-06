@@ -13,6 +13,7 @@
             
             <view class="text-gray text-sm flex justify-between">
               {{dynamic.createTime}}
+              <text bindtap="delDynamic" wx:if="{{dynamic.user.id === userInfo.id}}">删除</text>
             </view>
           </view>
         </view>

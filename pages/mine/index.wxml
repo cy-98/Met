@@ -52,6 +52,12 @@
       </button>
     </view>
     <view class="cu-item arrow">
+      <navigator class="content" url="/pages/mine/share/share" hover-class="none">
+        <text class="cuIcon-creativefill text-orange"></text>
+        <text class="text-grey">分享有礼</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/setting/setting" hover-class="none">
         <text class="cuIcon-settingsfill text-orange"></text>
         <text class="text-grey">设置</text>
