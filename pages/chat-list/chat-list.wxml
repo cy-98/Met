@@ -3,12 +3,12 @@
 <cu-custom bgColor="bg-gradual-pink">
 	<view slot="content">消息</view>
 </cu-custom>
-<block>
+<block >
 <!-- 添加好友 -->
-<view class="chat-item-style" bindtap="infoClick" hover-class="press-style">
+<view class="chat-item-style" bindtap="friendsClick" hover-class="press-style">
       <view  class="chat-head-style info-head menu-avatar round lg" style="background-image: url(https://s2.ax1x.com/2019/09/05/nnNhzd.png);"></view>
         <view class="chat-item-content-super-style" style="flex:1">
-            <view class="chat-item-name-style">添加好友</view>
+            <view class="chat-item-name-style">朋友列表</view>
             <text class="chat-item-content-style">共管学院的妹子请求添加你为好友哦</text>
         </view>
         <view class="redDot bg-red" wx:if="{{unReadDynamic!==0}}">{{unReadDynamic}}</view>

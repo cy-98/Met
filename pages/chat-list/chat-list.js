@@ -176,10 +176,15 @@ Page({
     } = item;
     return Object.assign(msg, JSON.parse(latestMsg));
   },
+  friendsClick:()=>{
+    wx.navigateTo({
+      url: '/pages/friends/friends',
+    });
+  },
   infoClick:()=>{
     wx.navigateTo({
       url: '/pages/chat-list/dynamicInfo',
-    })
+    });
   },
   conversationClick: function(res) {
     console.info(res);
