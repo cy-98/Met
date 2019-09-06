@@ -7,43 +7,24 @@
   <form class="form-search" report-submit="true" bindsubmit="searchUser">
     <view class="search-form round">
       <text class="cuIcon-search"></text>
-        <input type="text" placeholder="输入搜索的关键词" bindinput="bindValue" confirm-type="search"></input>
+        <input type="text" placeholder="输入搜索学号名字或昵称" bindinput="bindValue" confirm-type="search"></input>
         <button class="cu-btn bg-gradual-green shadow-blur round" form-type="submit">搜索</button>
     </view>
     
   </form>
 </view>
-<scroll-view 
-  scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" 
-  scroll-with-animation="true"
-  style="height:calc(100vh - {{CustomBar}}px - 50px)"
-  enable-back-to-top="true">
-  <block wx:for="{{list}}" wx:key>
-    <view class="padding indexItem-{{list[index]}}" id="indexes-{{list[index]}}" data-index="{{list[index]}}">{{list[index]}}</view>
-    <view class="cu-list menu-avatar no-padding">
-      <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
-        <view class="cu-avatar round lg">{{list[index]}}</view>
-        <view class="content">
-          <view class="text-grey">{{list[index]}}
-            <text class="text-abc">{{list[sub]}}</text>君</view>
-          <view class="text-gray text-sm">
-            有{{sub+2}}个主子需要伺候
-          </view>
-        </view>
+<view class="cu-list menu-avatar" wx:for="{{users}}" style="margin-top: 0rpx;">
+  <view class="cu-item" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
+    <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+    <view class="content">
+      <view class="text-grey">{{item.nickname}}</view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut">
+							<text class="margin-right-xs"></text>{{item.profile}}
+        </text>
       </view>
     </view>
-  </block>
-</scroll-view>
-<view class="indexBar" style="height:calc(100vh - {{CustomBar}}px - 50px)">
-  <view class="indexBar-box" 
-        bindtouchstart="tStart" 
-        bindtouchend="tEnd" 
-        catchtouchmove="tMove">
-    <view class="indexBar-item" wx:for="{{list}}" wx:key id="{{index}}"                                bindtouchstart="getCur" 
-        bindtouchend="setCur">{{list[index]}}</view>
   </view>
 </view>
-<!--选择显示-->
-<view hidden="{{hidden}}" class="indexToast">
-  {{listCur}}
-</view>
+<view wx:if="{{users.length == 0}}" style="width:100%;" class="cu-tag bg-pink">还没有粉丝哦~</view>
+<view wx:else style="width:100%;" class="cu-tag bg-blue">没有更多了</view>
