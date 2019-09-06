@@ -76,10 +76,16 @@ Page({
               item.avatar = item.annonyUser.avatar;
             }
         });
+        if( page === 1){
+          this.setData({
+            dynamics: res.data.data
+          });
+          return 
+        }
         let dynamics = this.data.dynamics || [];
         this.setData({
           dynamics: dynamics.concat(res.data.data)
-        })
+        });
       }
     });
   },
@@ -182,8 +188,8 @@ Page({
    */
   //监听滚动
   mytouchstart:function(e){
+    console.log(e)
     let that = this;
-
     var timer = setTimeout(()=>{
       console.log(that)
       console.log(this)
@@ -215,27 +221,27 @@ Page({
     let curr = this.data.TabCur;
     switch (curr) {
       case 0:
-        this.setData({
-          dynamics:[]
-        });
+        // this.setData({
+        //   dynamics:[]
+        // });
         this.getRecommendDynamic(1, 5);
         break;
       case 1:
-        this.setData({
-          followDynamic: []
-        });
+        // this.setData({
+        //   followDynamic: []
+        // });
         this.getFollowDynamic(1, 10);
         break;
       case 2:
-        this.setData({
-          expressDynamic: []
-        });
+        // this.setData({
+        //   expressDynamic: []
+        // });
         this.getTypeDynamic(0,1, 10);
         break;
       case 3:
-        this.setData({
-          talkDynamic: []
-        });
+        // this.setData({
+        //   talkDynamic: []
+        // });
         this.getTypeDynamic(1, 1, 10);
         break;
     }
