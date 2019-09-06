@@ -48,6 +48,23 @@ Page({
       url: 'pages/chat-list/chat-list',
     })
   },
+  cleanAllMessage:function(){
+    network.readAllMessage({success : res => {
+      network.getMessages({
+        success: (res) => {
+          res.data.forEach(item => {
+            item.createTime = item.createTime.replace('T', ' ').substr(0, 16);
+          })
+          this.setData({
+            contents: res.data
+          })
+        },
+        fail: (res) => {
+          console.log(res);
+        }
+      });
+    }})
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -429,11 +429,23 @@ function searchUser ({param,seccess,fail}){
  * 读取一条消息 传入消息的id
  */
 function readMessage({msgId, success, fail}){
-  util.req("/user/message/" + msgId + "/read",{}, res => {
+  util.req("user/message/" + msgId + "/read",{}, res => {
       console.log(res);
       
     });
 }
+
+function readAllMessage({success, fail }) {
+  util.req("user/message/allRead", {}, res => {
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+
+  });
+}
+
 // 登陆教务系统
 function loginJwxt({data,success,fail}){
   util.req('user/verify',data,res=>{
@@ -505,6 +517,7 @@ module.exports = {
   getOpenSchool: getOpenSchool,
   getMessages: getMessages,
   readMessage: readMessage,
+  readAllMessage: readAllMessage,
   getMyDynamic: getMyDynamic,
   loginJwxt:loginJwxt,
   searchUser:searchUser,

@@ -185,7 +185,12 @@ Page({
     let x = e.changedTouches[0].clientX;
     let y = e.changedTouches[0].clientY;
     if( Math.abs(x - this.data.clientX) / Math.abs(y - this.data.clientY) > 0.8 ){
-      console.info("good")
+      console.info("左右滑动的趋势大一点")
+      return;
+    }
+
+    if (Math.abs(y - this.data.clientY) < 50) {
+      console.info("差别太小")
       return;
     }
 
