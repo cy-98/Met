@@ -128,8 +128,8 @@ Page({
           follower: res.data.focus,
           userId:res.data.id,
           love:loveTmp,
-          fans:res.data.follower,
-          focus:res.data.focus,
+          fans:res.data.followerNum,
+          focus: res.data.focusNum,
           dynamicNum:res.data.dynamicNum
         })
         //实现随机颜色

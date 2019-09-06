@@ -37,7 +37,7 @@ Page({
       }
     });
     this.getFollowDynamic(1,10);
-    this.getRecommendDynamic(1,10);
+    this.getRecommendDynamic(1,5);
     this.getTypeDynamic(0,1,10);
     this.getTypeDynamic(1,1,10);
   },
@@ -201,7 +201,7 @@ Page({
         this.setData({
           dynamics:[]
         });
-        this.getRecommendDynamic(1, 10);
+        this.getRecommendDynamic(1, 5);
         break;
       case 1:
         this.setData({
@@ -233,7 +233,7 @@ Page({
     let curr = this.data.TabCur;
     switch (curr){
       case 0:
-        this.getRecommendDynamic(++pages[0], 10);
+        this.getRecommendDynamic(++pages[0], 5);
         break;
       case 1:
         this.getFollowDynamic(++pages[1], 10);
