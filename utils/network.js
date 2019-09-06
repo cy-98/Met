@@ -452,7 +452,18 @@ function delDynamic({
   });
 }
 
-
+function searchUser({
+  params, success, fail
+}){
+  util.getReq("search/user", { params: params}, res => {
+      console.log(res);
+      if (res.code === 200) {
+        success && success(res)
+      } else {
+        fail && fail(res)
+      }
+    });
+}
 
 //获取兴趣标签
 function getTag() {
