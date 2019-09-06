@@ -414,18 +414,24 @@ function getMessages({success,fail}){
       }
     });
 }
-
+function searchUser (param){
+  param = param + '';
+  util.req("search/user",param,res =>{
+    console.log(res)
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  });
+}
 /**
  * 读取一条消息 传入消息的id
  */
 function readMessage({msgId, success, fail}){
   util.req("/user/message/" + msgId + "/read",{}, res => {
       console.log(res);
-      if (res.code === 200) {
-        success && success(res)
-      } else {
-        fail && fail(res)
-      }
+      
     });
 }
 // 登陆教务系统
@@ -477,5 +483,6 @@ module.exports = {
   getMessages: getMessages,
   readMessage: readMessage,
   getMyDynamic: getMyDynamic,
-  loginJwxt:loginJwxt
+  loginJwxt:loginJwxt,
+  searchUser:searchUser
 }
