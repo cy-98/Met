@@ -16,7 +16,9 @@ Page({
     talkDynamic:[],
     //滚动页面位置
     scroll:0,
-    readyRefresh:false
+    readyRefresh:false,
+    clientX:0,
+    clientY:0
   },
   tabSelect(e) {
     this.setData({
@@ -156,40 +158,17 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
    * 页面相关事件处理函数--
    */
   //监听滚动
   mytouchstart:function(e){
     console.log(e)
     let that = this;
+    this.setData({
+      clientX: e.changedTouches[0].clientX,
+      clientY: e.changedTouches[0].clientY
+    });
+
     var timer = setTimeout(()=>{
       console.log(that)
       console.log(this)
@@ -202,11 +181,20 @@ Page({
     
   },
   mytouchend:function(e){
+    console.info(e);
+    let x = e.changedTouches[0].clientX;
+    let y = e.changedTouches[0].clientY;
+    if( Math.abs(x - this.data.clientX) / Math.abs(y - this.data.clientY) > 5 ){
+      console.info("good")
+      return;
+    }
+
     if(this.data.scroll === 0 && this.data.readyRefresh === true){
       wx.startPullDownRefresh();
     }
   },
   scrollbot: function (e) {
+    console.info(e);
      //这个就是滚动到的位置,可以用这个位置来写判断
     let scroll = e.detail.scrollTop;
     console.log(scroll)
@@ -246,6 +234,7 @@ Page({
         break;
     }
     wx.stopPullDownRefresh();
+    
   },
 
   /**
