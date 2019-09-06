@@ -1,18 +1,17 @@
 
-margi
-
-asdaasdsdasdasasd<cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg" isBack="{{true}}">
+<cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg" isBack="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">朋友列表</view>
 </cu-custom>
 <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
-  <view class="search-form round">
-    <text class="cuIcon-search"></text>
-    <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
-  </view>
-  <view class="action">
-    <button class="cu-btn bg-gradual-green shadow-blur round">搜索</button>
-  </view>
+  <form class="form-search" report-submit="true" bindsubmit="searchUser">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+        <input type="text" placeholder="输入搜索的关键词" bindinput="bindValue" confirm-type="search"></input>
+        <button class="cu-btn bg-gradual-green shadow-blur round" form-type="submit">搜索</button>
+    </view>
+    
+  </form>
 </view>
 <scroll-view 
   scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" 

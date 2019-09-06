@@ -414,7 +414,7 @@ function getMessages({success,fail}){
       }
     });
 }
-function searchUser (param){
+function searchUser ({param,seccess,fail}){
   param = param + '';
   util.req("search/user",param,res =>{
     console.log(res)
@@ -459,9 +459,9 @@ function delDynamic({
 }
 
 function searchUser({
-  params, success, fail
+  params,formId,success, fail
 }){
-  util.getReq("search/user", { params: params}, res => {
+  util.getReq("search/user", { params: params, formId: formId }, res => {
       console.log(res);
       if (res.code === 200) {
         success && success(res)
@@ -507,9 +507,7 @@ module.exports = {
   readMessage: readMessage,
   getMyDynamic: getMyDynamic,
   loginJwxt:loginJwxt,
-<<<<<<< HEAD
-  searchUser:searchUser
-=======
-  delDynamic: delDynamic
->>>>>>> ff69f9e128cfb815ab5bba384dc06d6e0c76135e
+  searchUser:searchUser,
+  delDynamic: delDynamic,
+
 }

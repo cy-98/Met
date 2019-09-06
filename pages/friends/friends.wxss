@@ -70,3 +70,7 @@ movable-view.indexBar-item::before {
   text-align: center;
   font-size: 48rpx;
 }
+.form-search{
+  display: inline-block;
+  width: 100%;
+}

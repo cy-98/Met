@@ -4,7 +4,8 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    hidden: true
+    hidden: true,
+    inputValue:''
   },
   onLoad() {
     let list = [];
@@ -95,5 +96,24 @@ Page({
         return false
       }
     }
+  },
+  searchUser:function(e){
+    network.searchUser({
+      param : this.data.inputValue,
+      formId : e.detail.formId,
+      success:(res)=>{
+        wx.navigateTo({
+          url: '',//+用户id
+          })
+      },
+      fail:()=>{
+        //没有该用户
+      }
+    })
+  },
+  bindValue:function(e){
+    this.setData({
+      inputValue:e.detail.value
+    })
   }
 });
