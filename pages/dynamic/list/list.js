@@ -184,7 +184,7 @@ Page({
     console.info(e);
     let x = e.changedTouches[0].clientX;
     let y = e.changedTouches[0].clientY;
-    if( Math.abs(x - this.data.clientX) / Math.abs(y - this.data.clientY) > 2 ){
+    if( Math.abs(x - this.data.clientX) / Math.abs(y - this.data.clientY) > 0.8 ){
       console.info("good")
       return;
     }
