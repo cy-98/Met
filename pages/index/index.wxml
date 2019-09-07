@@ -58,7 +58,7 @@
 </view>
 
 <view class="cu-bar bg-white solid-bottom margin-top">
-  <view class="action">
+  <view class="action" style="width:100%;">
     <text class="cuIcon-title text-orange "></text>遇见
     <button class="location-btn" bindtap="openMap" style="opacity:{{location?0:1}}" >开启定位</button>
   </view>

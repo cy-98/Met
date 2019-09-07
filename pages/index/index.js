@@ -279,6 +279,7 @@ Page({
     var that = this
     wx.getSetting({
       success(res) {
+        console.log(1)
         //这里判断是否有地位权限
         if (!res.authSetting['scope.userLocation']) {
           wx.openSetting({
@@ -290,6 +291,7 @@ Page({
           })
         }
       }
+
     })
   },
   controltap:function(e){

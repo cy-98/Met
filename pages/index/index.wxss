@@ -5,9 +5,7 @@
 .cu-padding{
   padding-left: 10rpx;
 }
-.action{
-  width: 100%;
-}
+
 .location-btn{
   float: right;
   border: #38f 1px solid;
