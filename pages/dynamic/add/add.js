@@ -11,7 +11,8 @@ Page({
     index: 0,
     picker: ['表白墙', '约学习'],
     content:"",
-    annous:false
+    annous:false,
+    unshake:false
   },
 
   ChooseImage:function(){
@@ -82,11 +83,17 @@ Page({
   },
 
   formSubmit: function(e){
+    this.setData({
+      unshake:true
+    });
     console.info(e.detail.formId);
     let formId = e.detail.formId;
     if(!this.data.content || this.data.content == ""){
       wx.showToast({
         title: '内容不能为空',
+      });
+      this.setData({
+        unshake:false
       });
       return;
     }
@@ -97,7 +104,6 @@ Page({
       anonymous: this.data.annous ? 1 : 0,
       formId:formId
     }
-
     utils.req("dynamic", data, res => {
       console.info(res);
       if(res.code === 200){
@@ -109,6 +115,9 @@ Page({
           title: '发布失败',
         });
       }
+    });
+    this.setData({
+      unshake:false
     });
   },
 

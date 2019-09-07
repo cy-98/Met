@@ -7,7 +7,7 @@
     <view style="padding-bottom:20px;" class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="cu-item">
-          <image src='{{dynamic.anonymous == 0 ? dynamic.user.avatar:dynamic.annonyUser.avatar}}' class='cu-avatar round lg'></image>
+          <image mode="aspectFill" src='{{dynamic.anonymous == 0 ? dynamic.user.avatar:dynamic.annonyUser.avatar}}' class='cu-avatar round lg'></image>
           <view class="content flex-sub">
             <view>{{dynamic.anonymous == 0 ? dynamic.user.nickname:dynamic.annonyUser.nickname}}</view>
             
@@ -56,7 +56,7 @@
       <form bindsubmit="submitComment" style="display:flex;" report-submit="true">
         <!-- <view class="comment_in_wrap cell_flex"> -->
         <input class="comment_in cell_flex input" style="float:left;" placeholder='{{cmtAt}}' bindinput='inputChange' value='{{comment}}'></input>
-         <button class="comment_btn_wrap {{bgColor[ranIndex]}}"  form-type="submit"><view>发送</view></button>
+         <button disabled="{{unshake}}" class="comment_btn_wrap {{bgColor[ranIndex]}}"  form-type="submit"><view>发送</view></button>
       </form>
     </view>
   </view>

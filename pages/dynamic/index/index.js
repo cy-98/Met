@@ -19,7 +19,8 @@ Page({
     ColorList: app.globalData.ColorList,
     replyUser: null,
     cmtAt: '评论',
-    dynamic: {}
+    dynamic: {},
+    unshake:false,//防抖
   },
   //输入评论
   inputChange: function(e) {
@@ -35,9 +36,15 @@ Page({
   },
   //提交评论
   submitComment: function(e) {
+    this.setData({
+      unshake:true
+    });
     if (!this.data.comment || this.data.comment == "") {
       wx.showToast({
         title: '内容不能为空',
+      });
+      this.setData({
+        unshake:false
       });
       return;
     }
@@ -96,8 +103,10 @@ Page({
           dynamic: dynamic,
           comment: "",
           cmtAt:"评论",
-          replyUser: null
+          replyUser: null,
+          unshake:false
         });
+        
       }
     });
 

@@ -4,7 +4,9 @@
     <view class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="cu-item"  data-user='{{user}}' bindtap="{{anonymous === 0 ? 'clickAvatar':'null'}}">
-          <image class='cu-avatar round lg' src='{{avatar}}'></image>
+          <image 
+          mode="center" lazy-load="true"
+          class='cu-avatar round lg' src='{{avatar}}'></image>
           <view class="content flex-sub">
             <view>{{nickname}}</view>
             <view class="text-gray text-sm flex justify-between">
