@@ -2,7 +2,14 @@
 <cu-custom bgColor="bg-gradual-blue">
   <view slot="content">主页</view>
 </cu-custom>
-<swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+<swiper 
+    class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" 
+    indicator-dots="true" 
+    circular="true" autoplay="true" 
+    interval="5000" duration="500" 
+    bindchange="cardSwiper" 
+    indicator-color="#8799a3" 
+    indicator-active-color="#0081ff">
   <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
     <view class="swiper-item">
       <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
@@ -10,26 +17,6 @@
     </view>
   </swiper-item>
 </swiper>
-<!-- <view class='cu-bar bg-white margin-top'> -->
-<!-- <view class='action'> -->
-<!-- <text class='cuIcon-title text-red'>活动推荐-BOARD</text> -->
-<!-- </view> -->
-<!-- </view> -->
-<!-- 活动推荐 -->
-<!-- <view class="padding bg-white">
-  <view class="text-left padding">我于杀戮之中绽放 ,亦如黎明中的花朵</view>
-  <view class="text-center padding">我于杀戮之中绽放 ,亦如黎明中的花朵</view>
-  <view class="text-right padding">我于杀戮之中绽放 ,亦如黎明中的花朵</view>
-</view> -->
-<!-- 活动推荐 -->
-
-
-
-<!-- <view class="cu-bar bg-white solid-bottom margin-top">
-  <view class="action">
-    <text class="cuIcon-title text-orange "></text> 工具箱
-  </view>
-</view> -->
 <view class="cu-modal {{modalName=='gridModal'?'show':''}}" bindtap="hideModal">
   <view class="cu-dialog" catchtap>
     <radio-group class="block" bindchange="gridchange">
@@ -54,9 +41,20 @@
     </view>
   </view>
 </view>
+<view class="map-wrapper">
+<view class="cu-tag">我遇见谁会有怎样的对白</view>
+  <map
+      id="myMap"
+      style="width: 100%; height: 300px;"
+      longitude="{{location.longitude}}" latitude="{{location.latitude}}"
+      scale='19'
+      subkey="5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI"
+      polyline="50"
+      markers="{{markers}}">
+      </map>
+</view>
 <view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
   <view class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*2}}">
-
     <navigator url='{{item.url}}'>
       <view class="cuIcon-{{item.icon}} text-{{item.color}}">
         <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
@@ -65,7 +63,6 @@
       </view>
       <text>{{item.name}}</text>
     </navigator>
-
   </view>
 </view>
 

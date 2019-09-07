@@ -16,6 +16,7 @@
     "pages/dynamic/list/list",
     "pages/dynamic/add/add",
     "pages/auth/auth",
+    "pages/mine/photo/photo",
     "pages/mine/jwxt/jwxt",
     "pages/mine/setting/setting",
     "pages/mine/setting/sethoby/sethoby",

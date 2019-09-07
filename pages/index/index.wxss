@@ -1,1 +1,4 @@
 /* pages/index/index.wxss */
+.map-wrapper{
+  padding: 10px;
+}

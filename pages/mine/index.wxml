@@ -1,7 +1,8 @@
 <!--pages/mine/index.wxml-->
 <scroll-view scroll-y class="scrollPage">
-  <view class="UCenter-bg">
-    <image src="{{person.avatar}}" class="{{nav_obj.beforeScrollCss}} head  " mode="aspectFit"></image>
+  <view  class="UCenter-bg">
+    <image 
+    src="{{person.avatar}}" class="{{nav_obj.beforeScrollCss}} head  " mode="aspectFit"></image>
     <view class="text-xl">{{person.name}}</view>
     <!-- <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image> -->
   </view>
@@ -33,12 +34,12 @@
     
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <!-- <view class="cu-item arrow">
-      <navigator class="content" url="/pages/mine/question/question" hover-class="none">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">我的提问</text>
+     <view class="cu-item arrow">
+      <navigator class="content" url="/pages/mine/photo/photo" hover-class="none">
+        <text class="cuIcon-creativefill text-blue"></text>
+        <text class="text-grey">TA的照片墙</text>
       </navigator>
-    </view> -->
+    </view>
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>

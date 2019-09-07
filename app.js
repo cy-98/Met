@@ -166,7 +166,14 @@ App({
     this.appIMDelegate.onHide();
   },
   onShow(options) {
-    this.appIMDelegate.onShow(options);
+      this.appIMDelegate.onShow(options);
+      //初始获取定位权限
+      wx.authorize({
+        scope: 'scope.userLocation',
+        success: (res) => {
+          console.log(res)
+        },
+      })
   },
   checkUser(){
     let userInfo = wx.getStorageSync("userInfo") || false;

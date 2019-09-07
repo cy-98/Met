@@ -7,15 +7,6 @@ Page({
     timetables: [],
     userInfo:{},
     cardCur: 0,
-    markers:[{
-      iconPath: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJflkUFS2dDCHVC7QQ6aMnHaYelxziayvicApIAQ955YicROtHiaz02pjgOncYuibOZqkjphxFSHAC9nfA/132",
-      id: "sdfjlajdsfjaskldj",
-      latitude: 34.214818,
-      longitude: 117.145709,
-      width: 30,
-      height: 30
-    }
-    ],
     swiperList: [{
       id: 0,
       type: 'image',
@@ -56,7 +47,19 @@ Page({
     }],
     gridCol: 4,
     skin: false,
-    recommend:[]
+    recommend:[],
+    location:{
+
+    },
+    markers: [{
+      iconPath: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJflkUFS2dDCHVC7QQ6aMnHaYelxziayvicApIAQ955YicROtHiaz02pjgOncYuibOZqkjphxFSHAC9nfA/132",
+      id: "sdfjlajdsfjaskldj",
+      latitude: 34.214818,
+      longitude: 117.145709,
+      width: 30,
+      height: 30
+    }
+    ],
   },
   //关注推荐的人
   attent(e){
@@ -102,10 +105,12 @@ Page({
   },
 
   onLoad() {
+    let that = this;
     qqmapsdk = new QQMapWX({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
     });
-
+    //获取定位
+    
     network.getOpenSchool({success:res => {
       console.info(res);
       let currWeek = res.data.week + 1;
@@ -249,21 +254,23 @@ Page({
     }
   },
   onShow(){
+    let that =this;
     this.setData({
       userInfo:wx.getStorageSync("userInfo")
     });
-    qqmapsdk.search({
-      keyword: '酒店',
+    wx.getLocation({
       success: function (res) {
-        console.log(res);
+        console.log(res)
+        let location = {}
+        location.latitude = res.latitude;
+        location.longitude = res.longitude;
+        location.speed = res.speed;
+        location.accuracy = res.accuracy;
+        that.setData({
+          location: location
+        })
       },
-      fail: function (res) {
-        console.log(res);
-      },
-      complete: function (res) {
-        console.log(res);
-      }
-    });
+    })
   },
   toJwxt(){
     wx.navigateTo({
