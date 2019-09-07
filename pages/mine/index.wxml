@@ -34,12 +34,12 @@
     
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-     <view class="cu-item arrow">
+     <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/photo/photo" hover-class="none">
         <text class="cuIcon-creativefill text-blue"></text>
         <text class="text-grey">TA的照片墙</text>
       </navigator>
-    </view>
+    </view> -->
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
@@ -52,12 +52,12 @@
         <text class="text-grey">兴趣爱好</text>
       </button>
     </view>
-    <view class="cu-item arrow">
+    <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/share/share" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">分享有礼</text>
       </navigator>
-    </view>
+    </view> -->
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/setting/setting" hover-class="none">
         <text class="cuIcon-settingsfill text-orange"></text>
