@@ -49,15 +49,7 @@ Page({
     skin: false,
     recommend:[],
     location:false,
-    markers: [{
-      iconPath: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJflkUFS2dDCHVC7QQ6aMnHaYelxziayvicApIAQ955YicROtHiaz02pjgOncYuibOZqkjphxFSHAC9nfA/132",
-      id: "sdfjlajdsfjaskldj",
-      latitude: 34.214818,
-      longitude: 117.145709,
-      width: 30,
-      height: 30
-    }
-    ],
+    markers: [],
   },
   //关注推荐的人
   attent(e){
@@ -108,6 +100,50 @@ Page({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
     });
     //获取定位
+
+    wx.getLocation({
+      success: function (res) {
+        console.log(res)
+        let location = {}
+        location.latitude = res.latitude;
+        location.longitude = res.longitude;
+        location.speed = res.speed;
+        location.accuracy = res.accuracy;
+        that.setData({
+          location: location
+        });
+        network.punch({
+          longitude:res.longitude,
+          latitude:res.latitude,
+          success:res => {
+            console.info("发送位置信息");
+          }
+        });
+
+      },
+    });
+
+    network.punches({success:res => {
+      console.info(res);
+      let markers = [];
+      res.data.data.forEach(item => {
+        let marker = {}
+        marker.id = item.user.id;
+        marker.latitude = item.latitude;
+        marker.longitude = item.longitude;
+        marker.iconPath = item.user.avatar;
+        marker.width = 30;
+        marker.height = 30;
+        markers.push(marker);
+      });
+      this.setData({
+        markers:markers
+      })
+    }})
+
+
+
+    
     
     network.getOpenSchool({success:res => {
       console.info(res);
