@@ -100,8 +100,12 @@ Page({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
     });
     //获取定位
+  
+
+    
 
     wx.getLocation({
+      type: 'gcj02',
       success: res =>  {
         console.log(res)
         let location = {}
@@ -117,30 +121,31 @@ Page({
           latitude:res.latitude,
           success:res => {
             console.info("发送位置信息");
-            network.punches({
-              success: res => {
-                console.info(res);
-                let markers = [];
-                res.data.data.forEach(item => {
-                  let marker = {}
-                  marker.id = item.user.id;
-                  marker.latitude = item.latitude;
-                  marker.longitude = item.longitude;
-                  marker.iconPath = item.user.avatar;
-                  marker.width = 30;
-                  marker.height = 30;
-                  markers.push(marker);
-                });
-                this.setData({
-                  markers: markers
-                })
-              }
-            })
           }
         });
 
       },
     });
+
+    network.punches({
+      success: res => {
+        console.info(res);
+        let markers = [];
+        res.data.data.forEach(item => {
+          let marker = {}
+          marker.id = item.user.id;
+          marker.latitude = item.latitude;
+          marker.longitude = item.longitude;
+          marker.iconPath = item.user.avatar;
+          marker.width = 30;
+          marker.height = 30;
+          markers.push(marker);
+        });
+        this.setData({
+          markers: markers
+        })
+      }
+    })
 
 
 
@@ -223,6 +228,9 @@ Page({
   },
   markertap:function(e){
     console.info(e);
+    wx.navigateTo({
+      url: '/pages/mine/user/info?id=' + e.markerId,
+    })
   },
 
   DotStyle(e) {
