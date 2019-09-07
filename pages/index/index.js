@@ -273,7 +273,13 @@ Page({
     // })
   },
   controltap:function(e){
-    console.log(e)
+    console.log(e);
+  
+  },
+  navgate:function(){
+    wx.navigateTo({
+      url: '/pages/mine/jwxt/jwxt',
+    })
   },
   toJwxt(){
     wx.navigateTo({
