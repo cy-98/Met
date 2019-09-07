@@ -83,17 +83,11 @@ Page({
   },
 
   formSubmit: function(e){
-    this.setData({
-      unshake:true
-    });
     console.info(e.detail.formId);
     let formId = e.detail.formId;
     if(!this.data.content || this.data.content == ""){
       wx.showToast({
         title: '内容不能为空',
-      });
-      this.setData({
-        unshake:false
       });
       return;
     }
@@ -116,9 +110,7 @@ Page({
         });
       }
     });
-    this.setData({
-      unshake:false
-    });
+
   },
 
   /**
