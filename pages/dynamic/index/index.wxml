@@ -7,7 +7,7 @@
     <view style="padding-bottom:20px;" class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="cu-item">
-          <image mode="aspectFill" src='{{dynamic.anonymous == 0 ? dynamic.user.avatar:dynamic.annonyUser.avatar}}' class='cu-avatar round lg'></image>
+          <image mode="aspectFit" src='{{dynamic.anonymous == 0 ? dynamic.user.avatar:dynamic.annonyUser.avatar}}' class='cu-avatar round lg'></image>
           <view class="content flex-sub">
             <view>{{dynamic.anonymous == 0 ? dynamic.user.nickname:dynamic.annonyUser.nickname}}</view>
             
@@ -23,7 +23,7 @@
       </view>
       <view class="grid flex-sub padding-lr col-3 grid-square">
         <view class='bg-img' wx:for="{{dynamic.images}}" wx:key="{{item}}">
-          <image src='{{item}}' data-current='{{item}}' data-all='{{dynamic.images}}' bindtap='clickImages'></image>
+          <image mode="aspectFit" src='{{item}}' data-current='{{item}}' data-all='{{dynamic.images}}' bindtap='clickImages'></image>
         </view>
       </view>
 

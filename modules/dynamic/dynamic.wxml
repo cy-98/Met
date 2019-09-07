@@ -5,7 +5,7 @@
       <view class="cu-list menu-avatar">
         <view class="cu-item"  data-user='{{user}}' bindtap="{{anonymous === 0 ? 'clickAvatar':'null'}}">
           <image 
-          mode="center" lazy-load="true"
+          lazy-load="true"
           class='cu-avatar round lg' src='{{avatar}}'></image>
           <view class="content flex-sub">
             <view>{{nickname}}</view>
@@ -14,16 +14,6 @@
             </view>
           </view>
         </view>
-
-        <!-- <view class="cu-item" wx:else>
-          <image class='cu-avatar round lg' src='{{avatar}}'></image>
-          <view class="content flex-sub">
-            <view>{{nickname}}</view>
-            <view class="text-gray text-sm flex justify-between">
-              {{time}}
-            </view>
-          </view>
-        </view> -->
 
       </view>
 
@@ -34,7 +24,7 @@
         </view>
         <view class="grid flex-sub padding-tb col-3 grid-square">
           <view class='bg-img'  wx:for="{{images}}" wx:for-index='index' wx:key="index">
-            <image src='{{item}}' data-current='{{item}}' data-all='{{images}}' bindtap='clickImages'></image>
+            <image mode="aspectFit" src='{{item}}' data-current='{{item}}' data-all='{{images}}' bindtap='clickImages'></image>
           </view>
         </view>
 
