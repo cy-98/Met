@@ -483,6 +483,9 @@ function searchUser({
     });
 }
 
+/**
+ * 向后台发送位置信息
+ */
 function punch({
   latitude, longitude, success, fail
 }){
@@ -496,6 +499,9 @@ function punch({
   });
 }
 
+/**
+ * 获取别人的位置信息
+ */
 function punches({
   latitude, longitude, success, fail
 }) {
@@ -542,5 +548,6 @@ module.exports = {
   loginJwxt:loginJwxt,
   searchUser:searchUser,
   delDynamic: delDynamic,
-
+  punch:punch,
+  punches:punches
 }
