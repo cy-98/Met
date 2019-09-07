@@ -258,19 +258,22 @@ Page({
     this.setData({
       userInfo:wx.getStorageSync("userInfo")
     });
-    wx.getLocation({
-      success: function (res) {
-        console.log(res)
-        let location = {}
-        location.latitude = res.latitude;
-        location.longitude = res.longitude;
-        location.speed = res.speed;
-        location.accuracy = res.accuracy;
-        that.setData({
-          location: location
-        })
-      },
-    })
+    // wx.getLocation({
+    //   success: function (res) {
+    //     console.log(res)
+    //     let location = {}
+    //     location.latitude = res.latitude;
+    //     location.longitude = res.longitude;
+    //     location.speed = res.speed;
+    //     location.accuracy = res.accuracy;
+    //     that.setData({
+    //       location: location
+    //     })
+    //   },
+    // })
+  },
+  controltap:function(e){
+    console.log(e)
   },
   toJwxt(){
     wx.navigateTo({

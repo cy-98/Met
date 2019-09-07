@@ -2,3 +2,6 @@
 .map-wrapper{
   padding: 10px;
 }
+.cu-padding{
+  padding-left: 10rpx;
+}

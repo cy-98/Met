@@ -41,18 +41,9 @@
     </view>
   </view>
 </view>
-<view class="map-wrapper">
-<view class="cu-tag">我遇见谁会有怎样的对白</view>
-  <map
-      id="myMap"
-      style="width: 100%; height: 300px;"
-      longitude="{{location.longitude}}" latitude="{{location.latitude}}"
-      scale='19'
-      subkey="5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI"
-      polyline="50"
-      markers="{{markers}}">
-      </map>
-</view>
+
+
+
 <view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
   <view class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*2}}">
     <navigator url='{{item.url}}'>
@@ -94,8 +85,13 @@
 
 
 </view>
-
-<map id="map" longitude="117.145709" latitude="34.214818" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
+<view class="cu-padding bg-blue">我遇见谁会有怎样的对白</view>
+<map 
+id="map" 
+longitude="117.145709" latitude="34.214818" 
+scale="16" 
+controls="{{controls}}" bindcontroltap="controltap"
+markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
 
 
 <view class="cu-bar bg-white solid-bottom margin-top">
