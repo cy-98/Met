@@ -48,9 +48,7 @@ Page({
     gridCol: 4,
     skin: false,
     recommend:[],
-    location:{
-
-    },
+    location:false,
     markers: [{
       iconPath: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJflkUFS2dDCHVC7QQ6aMnHaYelxziayvicApIAQ955YicROtHiaz02pjgOncYuibOZqkjphxFSHAC9nfA/132",
       id: "sdfjlajdsfjaskldj",
@@ -258,23 +256,47 @@ Page({
     this.setData({
       userInfo:wx.getStorageSync("userInfo")
     });
-    // wx.getLocation({
-    //   success: function (res) {
-    //     console.log(res)
-    //     let location = {}
-    //     location.latitude = res.latitude;
-    //     location.longitude = res.longitude;
-    //     location.speed = res.speed;
-    //     location.accuracy = res.accuracy;
-    //     that.setData({
-    //       location: location
-    //     })
-    //   },
-    // })
+    wx.authorize({
+      scope: 'scope.userLocation',
+      success: (res) => {
+        this.setData({
+          location:true
+        })
+      },
+      fail:(res)=>{
+        this.setData({
+          location :false
+        })
+        wx.showToast({
+          title: '请开启定位',
+          icon:'none'
+        })
+      }
+    })
+  },
+  openMap:function(e){
+    console.log(this.data.location)
+    var that = this
+    wx.getSetting({
+      success(res) {
+        console.log(1)
+        //这里判断是否有地位权限
+        if (!res.authSetting['scope.userLocation']) {
+          wx.openSetting({
+            success:(res)=>{
+              this.setData({
+                location:true
+              })
+            }
+          })
+        }
+
+      }
+
+    })
   },
   controltap:function(e){
     console.log(e);
-  
   },
   navgate:function(){
     wx.navigateTo({

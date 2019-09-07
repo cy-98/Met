@@ -5,3 +5,16 @@
 .cu-padding{
   padding-left: 10rpx;
 }
+.action{
+  width: 100%;
+}
+.location-btn{
+  float: right;
+  border: #38f 1px solid;
+
+  background: #fff;
+
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 20rpx;
+}
