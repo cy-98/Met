@@ -7,6 +7,15 @@ Page({
     timetables: [],
     userInfo:{},
     cardCur: 0,
+    markers:[{
+      iconPath: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJflkUFS2dDCHVC7QQ6aMnHaYelxziayvicApIAQ955YicROtHiaz02pjgOncYuibOZqkjphxFSHAC9nfA/132",
+      id: 0,
+      latitude: 34.214818,
+      longitude: 117.145709,
+      width: 30,
+      height: 30
+    }
+    ],
     swiperList: [{
       id: 0,
       type: 'image',
