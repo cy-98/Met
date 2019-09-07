@@ -483,11 +483,31 @@ function searchUser({
     });
 }
 
-//获取兴趣标签
-function getTag() {
-
+function punch({
+  latitude, longitude, success, fail
+}){
+  util.req("/punch", {latitude:latitude, longitude:longitude}, res => {
+    console.log(res);
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  });
 }
 
+function punches({
+  latitude, longitude, success, fail
+}) {
+  util.getReq("/punches", {}, res => {
+    console.log(res);
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  });
+}
 
 
 module.exports = {
