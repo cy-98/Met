@@ -9,7 +9,7 @@ Page({
     cardCur: 0,
     markers:[{
       iconPath: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJflkUFS2dDCHVC7QQ6aMnHaYelxziayvicApIAQ955YicROtHiaz02pjgOncYuibOZqkjphxFSHAC9nfA/132",
-      id: 0,
+      id: "sdfjlajdsfjaskldj",
       latitude: 34.214818,
       longitude: 117.145709,
       width: 30,
@@ -178,6 +178,9 @@ Page({
     wx.navigateTo({
       url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.user.id,
     })
+  },
+  markertap:function(e){
+    console.info(e);
   },
 
   DotStyle(e) {
