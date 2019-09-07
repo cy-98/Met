@@ -1,4 +1,6 @@
 var network = require("../../utils/network.js");
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 
 Page({
   data: {
@@ -91,6 +93,10 @@ Page({
   },
 
   onLoad() {
+    qqmapsdk = new QQMapWX({
+      key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
+    });
+
     network.getOpenSchool({success:res => {
       console.info(res);
       let currWeek = res.data.week + 1;
@@ -233,7 +239,19 @@ Page({
   onShow(){
     this.setData({
       userInfo:wx.getStorageSync("userInfo")
-    })
+    });
+    qqmapsdk.search({
+      keyword: '酒店',
+      success: function (res) {
+        console.log(res);
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function (res) {
+        console.log(res);
+      }
+    });
   },
   toJwxt(){
     wx.navigateTo({
