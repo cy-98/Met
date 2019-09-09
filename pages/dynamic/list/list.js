@@ -233,7 +233,9 @@ Page({
   },
   //监听用户下拉动作
   onPullDownRefresh: function() {
-    console.log('刷新')
+    console.log('刷新');
+    // 标题栏显示刷新图标，转圈圈
+    wx.showNavigationBarLoading();
     let pages = this.data.pages;
     let curr = this.data.TabCur;
     switch (curr) {

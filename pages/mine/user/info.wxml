@@ -1,100 +1,122 @@
 <!--pages/mine/user/info.wxml-->
 <import src="../../../modules/dynamic/dynamic.wxml" />
 
-<cu-custom bgColor="bg-gradual-green" isCustom="{{true}}"><view slot="backText">返回</view><view slot="content">用户信息</view></cu-custom>
+<cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">用户信息</view>
+</cu-custom>
 <scroll-view scroll-y class="">
   <view class="UCenter-bg">
-    <image src="{{avatar}}"  class="avatar {{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
-    <view class="text-xl">{{nickname}} <text class="{{gender === 1 ?'cuIcon-male text-blue':'cuIcon-female text-red'}}"></text></view>
-    <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
-  </view>
-        <view class="cu-form-group">
-          <view class="cu-tag square bg-blue">粉丝:{{fans}}</view>
-          <view class="cu-tag square bg-cyan">关注:{{focus}}</view>
-          <view class="cu-tag square bg-orange">动态:{{dynamicNum}}</view>
-        </view>
-  <view class="flex text-center text-grey bg-white shadow-warp wave">
+    <image src="{{avatar}}" class="avatar {{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
+    <view class="text-xl">{{nickname}}
+      <text class="{{gender === 1 ?'cuIcon-male text-blue':'cuIcon-female text-red'}}"></text>
+    </view>
+    <view style="width:300rpx;">
         
+      <view wx:if="{{follower}}" style="float:left">
+        <form class="form-focus" report-submit="true" bindsubmit="cancelFocus">
+          <button form-type='submit' class="cu-btn bg-blue margin-tb-sm sm">取消关注</button>
+        </form>
+      </view>
+      <view wx:else>
+        <form class="form-focus" report-submit="true" bindsubmit="focus">
+          <button form-type="submit" class="cu-btn bg-blue margin-tb-sm sm">关注</button>
+        </form>
+      </view>
+
+      <button style="float:left;width:43%;margin-left:20rpx" bindtap="sendMessage" class="cu-btn bg-red margin-tb-sm sm">发消息</button>
+    </view>
+
+
+  </view>
+  <view class="cu-form-group">
+    <view class="cu-tag square bg-blue">粉丝:{{fans}}</view>
+    <view class="cu-tag square bg-cyan">关注:{{focus}}</view>
+    <view class="cu-tag square bg-orange">动态:{{dynamicNum}}</view>
+  </view>
+  <view class="flex text-center text-grey bg-white shadow-warp wave">
+
     <view class="flex flex-sub flex-direction ">
       <view class="margin-top-sm {{index == 0 ? checked : unchecked}}" bindtap='tapchange' data-id='0'>
         <text class="cuIcon-people"></text>个人信息</view>
     </view>
-     <view class="flex flex-sub flex-direction">
+    <view class="flex flex-sub flex-direction">
       <view class="margin-top-sm {{index == 1 ? checked : unchecked}}" bindtap='tapchange' data-id='1'>
         <text class="cuIcon-discover"></text> 动态圈</view>
-    </view> 
+    </view>
   </view>
-  </scroll-view>
-  <view wx:if="{{index == 0}}">
-    <view>
-        
-         <view class="cu-form-group">
-            <view class='title'> <view>性别</view></view><view>{{gender === 1 ?'男':'女'}}</view>
-          </view>
-         <view class="cu-form-group">
-            <view class='title'> <view>年级</view></view><view>{{grade}}</view>
-          </view>
-          <view class="cu-form-group">
-            <view class='title'> <view>恋爱状态</view></view><view>{{love}}</view>
-          </view>
-          <view class="cu-form-group">
-            <view class='title'> <view>学校专业</view></view><view>{{major}}</view>
-          </view>
-          <view class="cu-form-group">
-          <!-- 个签 -->
-            <view class='title'>个性签名</view>
-              {{profile}}</view>
-              <view class="text-center cu-form-group">	      
-            <!-- 标签云 -->
-            <view class=' content'>
-              <block wx:for="{{labArr}}" wx:key="key" wx:for-index="key" wx:for-item="v">
-                <view class=' cu-tag  padding radius text-center shadow-blur' data-key="{{key}}" style="opacity:{{randomOpacity[key]}};; background-color:{{randomColorArr[key]}}">{{v}}</view>
-              </block>
-            </view>
-          </view>
+</scroll-view>
+<view wx:if="{{index == 0}}">
+  <view>
+
+    <view class="cu-form-group">
+      <view class='title'>
+        <view>性别</view>
       </view>
-      
-       <view class="padding flex flex-direction bg-white ">
-           
-           <button bindtap="sendMessage" class="cu-btn bg-red margin-tb-sm lg">发消息</button>
-            <view wx:if="{{follower}}" class="cu-btn">
-              <form class="form-focus" report-submit="true" bindsubmit="cancelFocus">
-                <button form-type='submit' class="cu-btn bg-blue margin-tb-sm lg">取消关注</button>
-              </form>
-            </view>
-            <view wx:else class="cu-btn">
-            <form class="form-focus" report-submit="true" bindsubmit="focus">
-              <button form-type="submit" class="cu-btn bg-blue margin-tb-sm lg">关注</button>
-            </form>
-            </view>
-          </view>
-  </view>
-  <view wx:else>
-    <view class='float' style="display:{{index ==1 ?'block':'none'}};">
-          <view class='dynamic'>
-            <view wx:for="{{dynamics}}" wx:key="item">
-              <view data-item="{{item}}">
-                <template is="dynamic" data="{{...item}}"></template>
-              </view>
-            </view>
-          </view>
+      <view>{{gender === 1 ?'男':'女'}}</view>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>
+        <view>年级</view>
       </view>
+      <view>{{grade}}</view>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>
+        <view>恋爱状态</view>
+      </view>
+      <view>{{love}}</view>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>
+        <view>学校专业</view>
+      </view>
+      <view>{{major}}</view>
+    </view>
+    <view class="cu-form-group">
+      <!-- 个签 -->
+      <view class='title'>个性签名</view>
+      {{profile}}</view>
+    <view class="text-center cu-form-group">
+      <!-- 标签云 -->
+      <view class=' content'>
+        <block wx:for="{{labArr}}" wx:key="key" wx:for-index="key" wx:for-item="v">
+          <view class=' cu-tag  padding radius text-center shadow-blur' data-key="{{key}}" style="opacity:{{randomOpacity[key]}};; background-color:{{randomColorArr[key]}}">{{v}}</view>
+        </block>
+      </view>
+    </view>
   </view>
-  <!-- <swiper-item id="swiper" > -->
-    <!-- <scroll-view class='info_wrapper scroll_left {{index==0?scroll_right:scroll_left}}'> -->
-      <!-- <view class='float'> -->
-        <!-- 左边的页面 -->
 
-         
-          <!-- 专业 -->
-  
-      
-   
-          
+  <!-- <view class="padding flex flex-direction bg-white ">
+
+    <button bindtap="sendMessage" class="cu-btn bg-red margin-tb-sm lg">发消息</button>
+    <view wx:if="{{follower}}" class="cu-btn">
+      <form class="form-focus" report-submit="true" bindsubmit="cancelFocus">
+        <button form-type='submit' class="cu-btn bg-blue margin-tb-sm lg">取消关注</button>
+      </form>
+    </view>
+    <view wx:else class="cu-btn">
+      <form class="form-focus" report-submit="true" bindsubmit="focus">
+        <button form-type="submit" class="cu-btn bg-blue margin-tb-sm lg">关注</button>
+      </form>
+    </view>
+  </view> -->
+</view>
+<view wx:else>
+  <view class='float' style="display:{{index ==1 ?'block':'none'}};">
+    <view class='dynamic'>
+      <view wx:for="{{dynamics}}" wx:key="item">
+        <view data-item="{{item}}">
+          <template is="dynamic" data="{{...item}}"></template>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <swiper-item id="swiper" > -->
+<!-- <scroll-view class='info_wrapper scroll_left {{index==0?scroll_right:scroll_left}}'> -->
+<!-- <view class='float'> -->
+<!-- 左边的页面 -->
 
 
-
-         
-
-      
-
+<!-- 专业 -->
