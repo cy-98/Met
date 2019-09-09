@@ -90,9 +90,9 @@
   <view class="action" style="width:100%;">
     <text class="cuIcon-title text-orange "></text>遇见
     <button class="location-btn" bindtap="openMap" style="opacity:{{location?0:1}}" >开启定位</button>
+  <!-- 取消定位 设置失效的经纬度 -->
   </view>
 </view>
-
 <view class="cu-padding">
   <map 
   id="map" 

@@ -42,7 +42,6 @@
 		<view class="title">匿名</view>
 		<switch class="blue sm" checked="{{annous}}" bindchange="changeAnnous"></switch>
 	</view>
-  
   <button form-type='submit' disabled="{{unshake}}" class="bg-gradual-blue margin-tb-sm lg">提交</button>
 </form>
 
