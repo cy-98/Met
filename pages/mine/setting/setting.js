@@ -44,9 +44,10 @@ Page({
 
       })
       return ;
-    
-      
     }
+    wx.showLoading({
+      title: '修改中....',
+    });
     if (!this.data.profile) {
       this.setData({
         profile: '这个人很懒'
@@ -62,6 +63,7 @@ Page({
     //post
     network.updateUserInfo({userInfo:data, success:res => {
       console.info("已经醒了");
+      wx.hideLoading();
       wx.setStorageSync("userInfo", res.data);
       wx.switchTab({
         url: '/pages/mine/index',

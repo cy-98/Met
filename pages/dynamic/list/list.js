@@ -40,6 +40,9 @@ Page({
         });
       }
     });
+    wx.showLoading({
+      title: '加载中....',
+    });
     this.getFollowDynamic(1,10);
     this.getRecommendDynamic(1,5);
     this.getTypeDynamic(0,1,10);
@@ -84,6 +87,8 @@ Page({
     // 获取相关数据
     network.getRecommendDynamic({
       data: { page: page, size: size }, success: res => {
+        wx.hideLoading();
+
         res.data.data.forEach(item => {
             item.nickname = item.user.nickname,
             item.avatar = item.user.avatar

@@ -104,8 +104,12 @@ Page({
       anonymous: this.data.annous ? 1 : 0,
       formId:formId
     }
+    wx.showLoading({
+      title: '提交中....',
+    });
     utils.req("dynamic", data, res => {
       console.info(res);
+      wx.hideLoading();
       if(res.code === 200){
         wx.redirectTo({
           url: '/pages/dynamic/index/index?id=' + res.data.id,

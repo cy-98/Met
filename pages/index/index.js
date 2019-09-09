@@ -76,11 +76,15 @@ Page({
     let formId = e.detail.formId
     console.log(e);
     let index = e.detail.target.dataset.index;
+    wx.showLoading({
+      title: '关注中....',
+    });
     // pers 关注
     network.attentOthers({
       id:id,
       formId:formId,
       success:(res)=>{
+        wx.hideLoading();
         let recommend = this.data.recommend;
         recommend[index].focus = true;
         this.setData({
@@ -93,13 +97,18 @@ Page({
     })
   },
   unAttent(e){
-    let id = e.currentTarget.id;
+    wx.showLoading({
+      title: '取关中....',
+    });
+    let id = e.detail.target.id;
+    console.info(e);
 
-    let index = e.currentTarget.dataset.index;
+    let index = e.detail.target.dataset.index;
     // pers 关注
     network.cancelAttentOthers({
       id: id,
       success: (res) => {
+        wx.hideLoading();
         let recommend = this.data.recommend;
         recommend[index].focus = false;
         this.setData({

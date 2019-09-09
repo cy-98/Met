@@ -62,6 +62,9 @@ Page({
       req_data["reply"] = 1;
       req_data["replyUser"] = cuId;
     }
+    wx.showLoading({
+      title: '评论中....',
+    });
     network.addComment({
       id: that.data.dynamic.id,
       formId:formId,
@@ -69,6 +72,7 @@ Page({
       reply: req_data["reply"],
       replyUser: req_data["replyUser"],
       success: (res) => {
+        wx.hideLoading();
         console.log(that.data.dynamic.comments);
         let reply = 0,
             replyUser = null;
