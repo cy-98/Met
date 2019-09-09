@@ -44,8 +44,24 @@ Page({
     this.getTypeDynamic(0,1,10);
     this.getTypeDynamic(1,1,10);
   },
-  comment:function(){
-    
+  checkCor: function () {
+    if (this.data.TabCur > 3) {
+      this.setData({
+        scrollLeft: 300
+      })
+    } else {
+      this.setData({
+        scrollLeft: 0
+      })
+    }
+  },
+  swiperchange: function (e) {
+    var that = this
+    console.log(e.detail.current)
+    that.setData({
+      TabCur: e.detail.current
+    });
+    this.checkCor();
   },
   addDynamic: function() {
     console.info("add dynamic");
@@ -149,13 +165,7 @@ Page({
     });
   },
 
-  swiperchange: function(e) {
-    var that = this
-    console.log(e.detail.current)
-    that.setData({
-      TabCur: e.detail.current
-    });
-  },
+
 
   /**
    * 页面相关事件处理函数--
