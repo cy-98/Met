@@ -124,8 +124,6 @@ Page({
               item.nickname = item.annonyUser.nickname;
               item.avatar = item.annonyUser.avatar;
             }
-
-
         });
         if (page === 1) {
           this.setData({
