@@ -56,6 +56,9 @@ Page({
           wx.showToast({
           title: '登录成功',
           });
+          wx.reLaunch({
+            url: '/pages/index/index',
+          })
         },
       fail:()=>{
         wx.showToast({

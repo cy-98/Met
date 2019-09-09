@@ -90,11 +90,12 @@
   <view class="action" style="width:100%;">
     <text class="cuIcon-title text-orange "></text>遇见
     <button class="location-btn" bindtap="openMap" style="opacity:{{location?0:1}}" >开启定位</button>
+    <switch class="red sm" checked="{{openLocationState}}" bindchange="openLocation"></switch>
   <!-- 取消定位 设置失效的经纬度 -->
   </view>
 </view>
 <view class="cu-padding">
-  <map 
+  <map wx:if="{{openLocationState}}"
   id="map" 
   longitude="117.145709" latitude="34.214818" 
   scale="16" 

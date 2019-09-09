@@ -7,6 +7,7 @@ Page({
     timetables: [],
     userInfo:{},
     cardCur: 0,
+    openLocationState:true,
     swiperList: [{
       id: 0,
       type: 'image',
@@ -51,6 +52,23 @@ Page({
     location:false,
     markers: [],
   },
+  openLocation:function(e){
+    console.info(e);
+    wx.setStorageSync("openLocationState", e.detail.value);
+    this.setData({
+      openLocationState:e.detail.value
+    });
+    if(e.detail.value){
+      this.met();
+    }else{
+      this.setData({
+        markers:[]
+      });
+      wx.showToast({
+        title: '关闭定位信息',
+      })
+    }
+  },
   //关注推荐的人
   attent(e){
     let id = e.detail.target.id;
@@ -94,32 +112,23 @@ Page({
     })
   },
 
-  onLoad() {
-    let that = this;
-    qqmapsdk = new QQMapWX({
-      key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
-    });
-    //获取定位
-  
-
-    
-
+  met:function(){
     wx.getLocation({
       type: 'gcj02',
-      success: res =>  {
+      success: res => {
         console.log(res)
         let location = {}
         location.latitude = res.latitude;
         location.longitude = res.longitude;
         location.speed = res.speed;
         location.accuracy = res.accuracy;
-        that.setData({
+        this.setData({
           location: location
         });
         network.punch({
-          longitude:res.longitude,
-          latitude:res.latitude,
-          success:res => {
+          longitude: res.longitude,
+          latitude: res.latitude,
+          success: res => {
             console.info("发送位置信息");
           }
         });
@@ -146,10 +155,37 @@ Page({
         })
       }
     })
+  },
+
+  onLoad() {
 
 
 
+    let that = this;
+    qqmapsdk = new QQMapWX({
+      key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
+    });
+    //获取定位
+  
 
+  
+    // 检测是否是开启位置信息的设置
+    let state = wx.getStorageSync("openLocationState");
+    if(state !== false){
+      console.info("state 为空");
+      wx.setStorageSync("openLocationState", true);
+      this.setData({
+        openLocationState:true
+      });
+      state = true;
+    }
+    this.setData({
+      openLocationState: state
+    })
+    console.info(state);
+    if (state) {
+      this.met();
+    }
 
     
     
@@ -331,7 +367,7 @@ Page({
         if (!res.authSetting['scope.userLocation']) {
           wx.openSetting({
             success:(res)=>{
-              this.setData({
+              that.setData({
                 location:true
               })
             }
