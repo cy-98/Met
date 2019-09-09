@@ -14,6 +14,7 @@ Page({
     followDynamic:[],
     expressDynamic:[],
     talkDynamic:[],
+    secondDynamic:[],
     //滚动页面位置
     scroll:0,
     readyRefresh:false,
@@ -43,6 +44,7 @@ Page({
     this.getRecommendDynamic(1,5);
     this.getTypeDynamic(0,1,10);
     this.getTypeDynamic(1,1,10);
+    this.getTypeDynamic(2, 1, 10);
   },
   checkCor: function () {
     if (this.data.TabCur > 3) {
@@ -125,6 +127,12 @@ Page({
 
 
         });
+        if (page === 1) {
+          this.setData({
+            followDynamic: res.data.data
+          });
+          return
+        }
         let followDynamic = this.data.followDynamic || [];
         this.setData({
           followDynamic: followDynamic.concat(res.data.data)
@@ -151,13 +159,21 @@ Page({
         });
         if(type === 0){
           let expressDynamic = this.data.expressDynamic|| [];
+          expressDynamic = page === 1?[]:expressDynamic;
           this.setData({
             expressDynamic: expressDynamic.concat(res.data.data)
           });
         }else if(type === 1){
           let talkDynamic = this.data.talkDynamic || [];
+          talkDynamic = page === 1 ? [] : talkDynamic;
           this.setData({
             talkDynamic: talkDynamic.concat(res.data.data)
+          });
+        }else if(type === 2){
+          let secondDynamic = this.data.secondDynamic || [];
+          secondDynamic = page === 1 ? [] : secondDynamic;
+          this.setData({
+            secondDynamic: secondDynamic.concat(res.data.data)
           });
         }
 
@@ -247,6 +263,14 @@ Page({
         // });
         this.getTypeDynamic(1, 1, 10);
         break;
+      case 4:
+        // 拼车
+        break;
+      case 5:
+        this.getTypeDynamic(2, 1, 10);
+        break;
+
+
     }
     wx.stopPullDownRefresh();
     
@@ -270,6 +294,9 @@ Page({
         break;
       case 3:
         this.getTypeDynamic(1, ++pages[3], 10);
+        break;
+      case 5:
+        this.getTypeDynamic(2, ++pages[2], 10);
         break;
     }
     this.setData({

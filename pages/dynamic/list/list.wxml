@@ -18,6 +18,9 @@
    <view class="cu-item {{4==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="4">
     <text class="cuIcon-creativefill"></text> 拼车
   </view>
+     <view class="cu-item {{5==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="5">
+    <text class="cuIcon-creativefill"></text> 二手
+  </view>
 
 </scroll-view>
 <view class='round more' bindtap='addDynamic' ></view>
@@ -91,4 +94,20 @@
         </view>
       </view>
   </swiper-item>
+
+  <swiper-item>
+    <scroll-view 
+        bindtouchstart="mytouchstart"
+        bindtouchend="mytouchend"
+        bindscrolltoupper="refresh"
+        scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
+      <view 
+       bindscrolltoupper="refresh" wx:for="{{secondDynamic}}" wx:key="{{index}}">
+        <view data-item="{{item}}">
+          <template is="dynamic" data="{{...item}}"></template>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
 </swiper>

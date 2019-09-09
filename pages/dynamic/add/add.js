@@ -9,7 +9,7 @@ Page({
   data: {
     imgList: [],
     index: 0,
-    picker: ['表白墙', '约学习'],
+    picker: ['表白墙', '约学习', "二手"],
     content:"",
     annous:false,
     unshake:false
