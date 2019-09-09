@@ -18,7 +18,7 @@
           <button form-type='submit' class="cu-btn bg-blue margin-tb-sm sm">取消关注</button>
         </form>
       </view>
-      <view wx:else>
+      <view wx:else style="float:left;width:140rpx">
         <form class="form-focus" report-submit="true" bindsubmit="focus">
           <button form-type="submit" class="cu-btn bg-blue margin-tb-sm sm">关注</button>
         </form>
