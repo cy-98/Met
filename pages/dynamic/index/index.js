@@ -165,6 +165,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中....',
+    });
     let userInfo;
     wx.getStorage({
       key: 'userInfo',
@@ -182,6 +185,7 @@ Page({
     network.getDynamic({
       id: options.id,
       success: res => {
+        wx.hideLoading();
         res.data.createTime = res.data.createTime.replace(/T/g, ' ').substr(0, 19);
         if (res.data.comments) {
           res.data.comments.forEach(item => {

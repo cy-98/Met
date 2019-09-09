@@ -102,12 +102,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
+    wx.showLoading({
+      title: '加载中....',
+    });
     console.info(options);
     let that = this;
     //获取别人的信息
     network.getOtherInfo({
       userId: options.id,
       success: function(res) {
+        wx.hideLoading();
         console.log('获取成功');
         let interest = res.data.interest;
         let loveTmp = "单身";
