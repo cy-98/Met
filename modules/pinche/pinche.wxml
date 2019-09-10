@@ -1,0 +1,46 @@
+<template name="pinche">
+
+  <view class="cu-card dynamic no-card ">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar">
+        <view class="cu-item"  data-user='{{user}}' bindtap="{{anonymous === 0 ? 'clickAvatar':'null'}}">
+          <image 
+          lazy-load="true"
+          class='cu-avatar round lg' src='{{avatar}}'></image>
+          <view class="content flex-sub">
+            <view>{{nickname}}邢远</view>
+            <view class="text-gray text-sm flex justify-between">
+              {{time}}时间
+            </view>
+          </view>
+        </view>
+      </view>
+      <view style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '>
+        <view class="text-content"  bindtap='clickContent'>
+          备注:<text>拼女不拼男</text>
+          <view class="tag-wrapper">出发时间 : <text class="cu-tag">12:00</text> </view>
+          <view class="tag-wrapper">截止时间 : <text class="cu-tag">13:00</text> </view>
+          <view class="line">
+            <view class="tag-wrapper">起点 : <text class="cu-tag">南湖</text> </view>
+            <view class="tag-wrapper">终点 : <text class="cu-tag">文昌大酒店</text> </view>
+          </view>
+        </view>
+        <view>
+          <view class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
+            <text class="cuIcon-messagefill margin-lr-xs" data-id="{{id}}" bindtap='clickContent'></text> {{comments.length}}
+          </view>
+        </view>
+        
+      </view>
+
+
+    </view>
+  </view>
+
+</template>
+
+<navigator url="/pages/info/add">
+  <view class="add" bindtap="add">
+    <image src="/img/adddy.png"></image>
+  </view>
+</navigator>

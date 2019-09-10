@@ -1,0 +1,6 @@
+.line{
+  justify-content: space-between;
+}
+.text-wrapper{
+  margin: 10rpx;
+}

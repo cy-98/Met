@@ -1,0 +1,10 @@
+<import src="../../../modules/pinche/pinche.wxml" />
+<scroll-view 
+        scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
+      <view 
+       bindscrolltoupper="refresh"  >
+        <view data-item="{{item}}">
+          <template is="pinche" data="{{...item}}"></template>
+        </view>
+      </view>
+    </scroll-view>

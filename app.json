@@ -4,6 +4,7 @@
     "pages/index/timetable/timetable",
     "pages/index/exam/exam",
     "pages/index/grade/grade",
+    "pages/index/pinche/pinche",
     "pages/index/activity/activity",
     "pages/index/activity/actdetails/details",
     "pages/chat-list/chat-list",
@@ -31,7 +32,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationStyle": "custom"
   },
   "tabBar": {

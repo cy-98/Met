@@ -43,8 +43,9 @@ Page({
       icon: 'skinfill',
       color: 'olive',
       badge: 0,
-      name: '兴趣',
-      url: '/pages/mine/setting/sethoby/sethoby'
+      name: '拼车',
+      //url拼车
+      url: '/pages/index/pinche/pinche'
     }],
     gridCol: 4,
     skin: false,
@@ -168,8 +169,6 @@ Page({
 
   onLoad() {
 
-
-
     let that = this;
     qqmapsdk = new QQMapWX({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
@@ -261,9 +260,6 @@ Page({
         console.log(res)
       }
     })
-
-
-
   },
   clickUser(e){
     console.log(e)
