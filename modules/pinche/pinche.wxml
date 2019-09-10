@@ -23,9 +23,12 @@
             <view class="tag-wrapper">起点 : <text class="cu-tag">{{departure}}</text> </view>
             <view class="tag-wrapper">终点 : <text class="cu-tag">{{destination}}</text></view>
           </view>
-          <view class="tag-wrapper">现有人数 : <text class="cu-tag">{{leave}}</text> </view>
+          <view class="tag-wrapper">剩余人数 : <text class="cu-tag">{{leave}}</text> </view>
         </view>
         <view>
+        <view style="text-align:right">
+          <button class="cu-btn" style="font-size:0.8rem;display:inline;">预约 </button>
+        </view>
           <view 
             
           class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
