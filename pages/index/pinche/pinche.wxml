@@ -1,8 +1,15 @@
 <import src="../../../modules/pinche/pinche.wxml" />
+<cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
+  <view bindtap="back">返回</view>
+  <view slot="content">拼车</view>
+</cu-custom>
+<view class="cu-form-group head">
+<button class="cu-btn bg-yellow">我的拼车</button>
+<button class="cu-btn bg-blue" >新建拼车</button>
+</view>
 <scroll-view 
         scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
-      <view 
-       bindscrolltoupper="refresh"  >
+      <view  wx:for="{{carPool}}" >
         <view data-item="{{item}}">
           <template is="pinche" data="{{...item}}"></template>
         </view>

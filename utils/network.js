@@ -514,6 +514,19 @@ function punches({
     }
   });
 }
+//获取拼车列表
+function getCarpool({page,size,success,fail}){
+  let url = `/carpools/?page=${page}&size=${size}`;
+  util.getReq(url,{},res=>{
+    console.log('拼车信息')
+    console.log(res)
+    if(res.code === 200) {
+      success && success(res)
+    }else{
+      fail && fail(res)
+    }
+  });
+}
 
 
 module.exports = {
@@ -549,5 +562,6 @@ module.exports = {
   searchUser:searchUser,
   delDynamic: delDynamic,
   punch:punch,
-  punches:punches
+  punches:punches,
+  getCarpool:getCarpool
 }
