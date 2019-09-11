@@ -39,7 +39,7 @@
 
         <view class='comment-wrapper' data-id="{{id}}" bindtap='clickContent'>
           <view wx:if='{{comments.length!==0}}' style="background-color: #fff;">
-            <view class="cu-form-group" wx:if="{{index<3}}" wx:for='{{comments}}'>
+            <view class="cu-form-group" wx:if="{{index<3}}" wx:for='{{comments}}' wx:key="{{index}}">
               <view class="user">{{item.user.nickname}}:</view>
               <text wx:if="{{item.replyUser}}">回复</text>
           <text wx:if="{{item.replyUser}}" class="user">@{{item.replyUser.nickname}}:</text>
