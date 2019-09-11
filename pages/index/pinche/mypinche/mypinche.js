@@ -1,43 +1,18 @@
-// pages/index/pinche/pinche.js
-const network = require('../../../utils/network.js');
-import dynamic from '../../../modules/dynamic/dynamic.js';
+// pages/index/pinche/mypinche/mypinche.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    carPool:[]
+
   },
-  sendMessage:function(e){
-    console.log(e)
-    let con = {
-      "username":e.target.dataset.user.stuId,
-      "avatar":e.target.dataset.user.avatar,
-      "nickName":e.target.dataset.user.nikcname
-    }
-    wx.navigateTo({
-      url:`/pages/chat/chat?conversation=`+JSON.stringify(con)
-    })
-  },
-  clickAvatar: function (e) {
-    dynamic.clickAvatar(e);
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    network.getCarpool({page:1,size:10,
-    success:(res)=>{
-      this.setData({
-        carPool:res.data.data
-      })
-    },fail:()=>{}})
-  },
-  toMypinche:function(){
-    wx.navigateTo({
-      url: '/pages/index/pinche/mypinche/mypinche',
-    })
+
   },
 
   /**
