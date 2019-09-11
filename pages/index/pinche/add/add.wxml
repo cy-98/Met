@@ -1,2 +1,21 @@
-<!--pages/index/pinche/add/add.wxml-->
-<text>pages/index/pinche/add/add.wxml</text>
+<cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
+  <view bindtap="back">返回</view>
+  <view slot="content">新建拼车</view>
+</cu-custom>
+<form bindsubmit="submit">
+  <view class="cu-form-group">电话:<input></input>
+  </view>
+  <view class="cu-form-group">起点:<input></input>
+  </view>
+  <view class="cu-form-group">终点:<input></input>
+  </view>
+  <view class="cu-form-group">截止时间:<input></input>
+  </view>
+  <view class="cu-form-group">备注:<input></input>
+  </view>
+  <view class="cu-form-group">
+    <button class="cu-btn bg-blue" style="width:100%;"
+            form-type="submit"
+    >提交</button>
+  </view>
+</form>

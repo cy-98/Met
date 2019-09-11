@@ -6,6 +6,7 @@
     "pages/index/grade/grade",
     "pages/index/pinche/pinche",
     "pages/index/pinche/mypinche/mypinche",
+    "pages/index/pinche/pincheDetail/detail",
     "pages/index/pinche/add/add",
     "pages/index/activity/activity",
     "pages/index/activity/actdetails/details",

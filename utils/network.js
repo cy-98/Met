@@ -527,8 +527,44 @@ function getCarpool({page,size,success,fail}){
     }
   });
 }
-
-
+function getMycarpool({success,fail}){
+  util.getReq('/my/appointments',{},res=>{
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  })
+}
+function cancelBookCarpool({id,seccess,fail}){
+  util.req('/cancel/carpool/'+id,{},res=>{
+    console.log(res)
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  })
+}
+function getCarpoolDetail({id,success,fail}){
+  util.getReq('/carpool/'+id,{},res=>{
+    console.log(res)
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  })
+}
+function deleteMycarpool({ id, success, fail}){
+  util.deleteReq(`carpool/${id}`, {}, res => {
+    console.info(res);
+    if (res.code === 200)
+      success && success(res);
+    else
+      fail && fail(res);
+  })
+}
 module.exports = {
   updateUserInfo: updateUserInfo,
   getUserInfo: getUserInfo,
@@ -563,5 +599,9 @@ module.exports = {
   delDynamic: delDynamic,
   punch:punch,
   punches:punches,
-  getCarpool:getCarpool
+  getCarpool:getCarpool,
+  getMycarpool:getMycarpool,
+  cancelBookCarpool:cancelBookCarpool,
+  getCarpoolDetail:getCarpoolDetail,
+  deleteMycarpool: deleteMycarpool
 }

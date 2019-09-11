@@ -1,18 +1,32 @@
 // pages/index/pinche/mypinche/mypinche.js
+const network = require('../../../../utils/network.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    carPool:[]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
+  toDetail:(e)=>{
+    console.log(e)
+    wx.navigateTo({
+      url: `/pages/index/pinche/pincheDetail/detail?id=${e.currentTarget.dataset.id}`,
+    })
+  },
+  deletePinche:(e)=>{
+    network.deleteMycarpool({
+      id:e.currentTarget.dataset.id,
+      success:()=>{},
+      fail:()=>{}})
+  },
+  
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -26,7 +40,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    network.getMycarpool({
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          carPool:res.data
+        })
+        console.log(this.data.carPool)
+      },
+      fail: (res) => {
+        console.log(res)
+      }
+    })
   },
 
   /**

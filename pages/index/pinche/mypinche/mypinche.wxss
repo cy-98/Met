@@ -1,1 +1,4 @@
 /* pages/index/pinche/mypinche/mypinche.wxss */
+.tag-wrapper{
+  margin: 10rpx;
+}

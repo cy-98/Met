@@ -1,0 +1,53 @@
+<cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
+  <view bindtap="back">返回</view>
+  <view slot="content">我的拼车</view>
+</cu-custom>
+<view wx:if="{{carPool === false}}" class="cu-card dynamic no-card ">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar">
+        <view class="cu-item" data-user="{{carPool.user}}" bindtap="clickAvatar">
+          <image 
+          lazy-load="true"
+          class='cu-avatar round lg' src='{{carPool.user.avatar}}'></image>
+          <view class="content flex-sub">
+            <view>{{carPool.user.name}}</view>
+            <view class="text-gray text-sm flex justify-between">
+              {{carPool.createTime}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view 
+            data-id="{{carPool.id}}"
+            style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '
+            bindtap="toDetail"
+        >
+        <view class="text-content"  bindtap='clickContent'>
+          备注:<text>{{carPool.content}}</text>
+          <view class="tag-wrapper">出发时间 : <text class="cu-tag">{{carPool.startTime}}</text> </view>
+          <view class="tag-wrapper">截止时间 : <text class="cu-tag">{{carPool.updateTime}}</text> </view>
+          <view class="line">
+            <view class="tag-wrapper">起点 : <text class="cu-tag">{{carPool.departure}}</text> </view>
+            <view class="tag-wrapper">终点 : <text class="cu-tag">{{carPool.destination}}</text></view>
+          </view>
+          <view class="tag-wrapper">目前人数 : <text class="cu-tag">{{carPool.status}}</text> </view>
+        </view>
+        <view>
+        <view style="text-align:right">
+          <button class="cu-btn" bindtap="delete" style="font-size:0.8rem;display:inline;">删除</button>
+        </view>
+          <view 
+          class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
+            <text 
+            style="font-size:40rpx;"
+            class="cuIcon-messagefill margin-lr-xs" 
+            bindtap="sendMessage"
+            data-user="{{carPool.user}}"></text> 
+          </view>
+        </view>
+        
+      </view>
+
+    </view>
+  </view>
+  <view class="cu-tag bg-blue " style="width:100%;text-align:center;" wx:else>已经被删除了哦</view>

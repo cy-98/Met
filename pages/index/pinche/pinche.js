@@ -39,6 +39,14 @@ Page({
       url: '/pages/index/pinche/mypinche/mypinche',
     })
   },
+  newPinche:function(){
+    wx.navigateTo({
+      url: '/pages/index/pinche/add/add',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

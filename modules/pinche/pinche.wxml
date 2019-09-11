@@ -16,7 +16,7 @@
       </view>
       <view style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '>
         <view class="text-content"  bindtap='clickContent'>
-          备注:<text>拼女不拼男</text>
+          备注:<text>{{content}}</text>
           <view class="tag-wrapper">出发时间 : <text class="cu-tag">{{startTime}}</text> </view>
           <view class="tag-wrapper">截止时间 : <text class="cu-tag">{{updateTime}}</text> </view>
           <view class="line">
@@ -27,12 +27,13 @@
         </view>
         <view>
         <view style="text-align:right">
-          <button class="cu-btn" style="font-size:0.8rem;display:inline;">预约 </button>
+          <button class="cu-btn" bindtap="booking" style="font-size:0.8rem;display:inline;">预约 </button>
         </view>
           <view 
-            
           class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
-            <text class="cuIcon-messagefill margin-lr-xs" 
+            <text 
+            style="font-size:40rpx;"
+            class="cuIcon-messagefill margin-lr-xs" 
             bindtap="sendMessage"
             data-user="{{user}}"></text> 
           </view>

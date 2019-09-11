@@ -1,21 +1,29 @@
-// pages/index/pinche/add/add.js
+// pages/index/pinche/pincheDetail/detail.js
+const network = require('../../../../utils/network.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    carPool:{}
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
-  submit:function(){
-    
-  },
   onLoad: function (options) {
-
+    network.getCarpoolDetail({id:options.id,success:()=>{
+      if (res.data){
+        this.setData({
+          carPool: res.data
+        })
+      }else{
+        this.setData({
+          carPoll:false
+        })
+      }
+      
+    }})
   },
 
   /**
