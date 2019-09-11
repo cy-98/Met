@@ -117,6 +117,8 @@ Page({
   getFollowDynamic: function(page,size){
     network.getFollowDynamic({
       data: { page: page, size: size }, success: res => {
+        wx.hideLoading();
+
         res.data.data.forEach(item => {
           item.nickname = item.user.nickname,
             item.avatar = item.user.avatar,
@@ -147,6 +149,8 @@ Page({
     network.getTypeDynamic({
       type: type,
       data: { page: page, size: size }, success: res => {
+        wx.hideLoading();
+
         res.data.data.forEach(item => {
           item.nickname = item.user.nickname,
             item.avatar = item.user.avatar,
@@ -287,6 +291,9 @@ Page({
   onReachBottom: function() {
     let pages = this.data.pages;
     let curr = this.data.TabCur;
+    wx.showLoading({
+      title: '加载中....',
+    });
     switch (curr){
       case 0:
         this.getRecommendDynamic(++pages[0], 5);

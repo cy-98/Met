@@ -14,9 +14,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.data.users.length)
+    console.log(this.data.users.length);
+    wx.showLoading({
+      title: '加载中...',
+    })    
     network.getUserFollow({
       success:(res)=>{
+        wx.hideLoading();
         this.setData({
           users:res.data || []
         });

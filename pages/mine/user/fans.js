@@ -16,8 +16,12 @@ Page({
   onLoad: function (options) {
     let that = this;
     console.log('fans onload')
+    wx.showLoading({
+      title: '加载中....',
+    })
     network.getUserFollower({
       success:(res)=>{
+        wx.hideLoading();
         let users = res.data;
         this.setData({
           fans: res.data || []
