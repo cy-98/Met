@@ -27,7 +27,8 @@
         </view>
         <view>
         <view style="text-align:right">
-          <button class="cu-btn" bindtap="booking" style="font-size:0.8rem;display:inline;">预约 </button>
+          <button class="cu-btn" bindtap="booking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">预约 </button>
+          <button class="vu-btn" bindtap="cancelBooking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
         </view>
           <view 
           class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>

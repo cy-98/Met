@@ -1,1 +1,3 @@
-/* pages/index/pinche/add/add.wxss */
+input{
+  text-align: right;
+}

@@ -536,8 +536,18 @@ function getMycarpool({success,fail}){
     }
   })
 }
+function bookCarpool({ id, success, fail }){
+  util.req(`/carpool/ ${id}/appointment`, {id:id}, res => {
+    console.log(res)
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  })
+}
 function cancelBookCarpool({id,seccess,fail}){
-  util.req('/cancel/carpool/'+id,{},res=>{
+  util.req('/cancel/appointment/'+id,{},res=>{
     console.log(res)
     if (res.code === 200) {
       success && success(res)
@@ -558,6 +568,15 @@ function getCarpoolDetail({id,success,fail}){
 }
 function deleteMycarpool({ id, success, fail}){
   util.deleteReq(`carpool/${id}`, {}, res => {
+    console.info(res);
+    if (res.code === 200)
+      success && success(res);
+    else
+      fail && fail(res);
+  })
+}
+function newCarpool ({context,success,fail}){
+  util.req('carpool', context, res => {
     console.info(res);
     if (res.code === 200)
       success && success(res);
@@ -601,7 +620,9 @@ module.exports = {
   punches:punches,
   getCarpool:getCarpool,
   getMycarpool:getMycarpool,
+  bookCarpool: bookCarpool,
   cancelBookCarpool:cancelBookCarpool,
   getCarpoolDetail:getCarpoolDetail,
-  deleteMycarpool: deleteMycarpool
+  deleteMycarpool: deleteMycarpool,
+  newCarpool: newCarpool
 }

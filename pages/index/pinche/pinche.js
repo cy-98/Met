@@ -47,7 +47,30 @@ Page({
       complete: function(res) {},
     })
   },
-
+  //预约
+  booking:function(e){
+    console.log(e)
+    network.bookCarpool({id:e.currentTarget.dataset.id,success:()=>{
+      wx.showToast({
+        title: '预约成功',
+      })
+    },fail:()=>{
+      wx.showToast({
+        title: '预约失败',
+      })
+    }})
+  },
+  cancelBooking:function(e){
+    network.cancelBookCarpool({
+      id:e.currentTarget.dataset.id,
+      success:()=>{
+        wx.showToast({
+          title: '取消成功',
+        })
+      },fail:()=>{
+        title:'取消失败 打个电话吧'
+    }})
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

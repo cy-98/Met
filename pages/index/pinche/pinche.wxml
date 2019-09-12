@@ -12,7 +12,7 @@
 class="cu-btn bg-blue" >新建拼车</button>
 </view>
 <scroll-view 
-        scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
+        scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscroll="scrollbot">
       <view  wx:for="{{carPool}}" >
         <view data-item="{{item}}">
           <template is="pinche" data="{{...item}}"></template>
