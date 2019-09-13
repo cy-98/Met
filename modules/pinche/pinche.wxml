@@ -16,36 +16,14 @@
       </view>
       <view style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '>
         <view bindtap="toDetail" class="text-content"  data-id="{{id}}">
-          备注:<text>{{des}}</text>
           <view class="tag-wrapper">出发时间 : <text class="cu-tag">{{startTime}}</text> </view>
-          <view class="tag-wrapper">截止时间 : <text class="cu-tag">{{updateTime}}</text> </view>
           <view class="line">
             <view class="tag-wrapper">起点 : <text class="cu-tag">{{departure}}</text> </view>
             <view class="tag-wrapper">终点 : <text class="cu-tag">{{destination}}</text></view>
           </view>
           <view class="tag-wrapper">剩余人数 : <text class="cu-tag">{{leave}}</text> </view>
         </view>
-        <view>
-          <view style="text-align:right">
-            <form>
-              <button class="cu-btn" bindtap="booking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">预约 </button>
-            </form>
-            <form>
-              <button class="vu-btn" bindtap="cancelBooking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
-            </form>
-          </view>
-          <view 
-            class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
-            <text 
-            style="font-size:40rpx;"
-            class="cuIcon-messagefill margin-lr-xs" 
-            bindtap="sendMessage"
-            data-user="{{user}}"></text> 
-          </view>
-        </view>
-        
       </view>
-
     </view>
   </view>
 

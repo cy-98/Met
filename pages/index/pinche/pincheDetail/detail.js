@@ -16,6 +16,32 @@ Page({
       url: `/pages/index/pinche/pincheDetail/detail?id=${e.currentTarget.dataset.id}`,
     })
   },
+  booking: function (e) {
+    console.log(e)
+    network.bookCarpool({
+      id: e.currentTarget.dataset.id, success: () => {
+        wx.showToast({
+          title: '预约成功',
+        })
+      }, fail: () => {
+        wx.showToast({
+          title: '预约失败',
+        })
+      }
+    })
+  },
+  cancelBooking: function (e) {
+    network.cancelBookCarpool({
+      id: e.currentTarget.dataset.id,
+      success: () => {
+        wx.showToast({
+          title: '取消成功',
+        })
+      }, fail: () => {
+
+      }
+    })
+  },
   onLoad: function (options) {
     console.log(options.id)
     network.getCarpoolDetail({id:options.id,success:(res)=>{

@@ -58,7 +58,7 @@
       </navigator>
     </view><view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
-        <text class="ccuIcon-activityfill text-orange"></text>
+        <text class="cuIcon-writefill text-cyan"></text>
         <text class="text-grey">考试</text>
       </navigator>
     </view>

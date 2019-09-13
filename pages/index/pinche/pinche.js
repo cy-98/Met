@@ -23,6 +23,8 @@ Page({
   clickAvatar: function (e) {
     dynamic.clickAvatar(e);
   },
+  //预约
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -58,30 +60,7 @@ Page({
       complete: function(res) {},
     })
   },
-  //预约
-  booking:function(e){
-    console.log(e)
-    network.bookCarpool({id:e.currentTarget.dataset.id,success:()=>{
-      wx.showToast({
-        title: '预约成功',
-      })
-    },fail:()=>{
-      wx.showToast({
-        title: '预约失败',
-      })
-    }})
-  },
-  cancelBooking:function(e){
-    network.cancelBookCarpool({
-      id:e.currentTarget.dataset.id,
-      success:()=>{
-        wx.showToast({
-          title: '取消成功',
-        })
-      },fail:()=>{
-
-    }})
-  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

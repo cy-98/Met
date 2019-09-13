@@ -20,7 +20,6 @@
       <view 
             data-id="{{carPool.id}}"
             style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '
-            bindtap="toDetail"
         >
         <view  class="text-content"  bindtap='clickContent'>
           备注:<text>{{carPool.content}}</text>
@@ -30,9 +29,15 @@
             <view  class="tag-wrapper">起点 : <text class="cu-tag">{{carPool.departure}}</text> </view>
             <view  class="tag-wrapper">终点 : <text class="cu-tag">{{carPool.destination}}</text></view>
           </view>
-          <view class="tag-wrapper">目前人数 : <text class="cu-tag">{{carPool.status}}</text> </view>
+          <view class="tag-wrapper">剩余人数 : <text class="cu-tag">{{carPool.status}}</text> </view>
         </view>
         <view>
+            <form>
+              <button class="cu-btn" bindtap="booking" data-id="{{carPool.id}}" style="font-size:0.8rem;display:inline;">预约 </button>
+            </form>
+            <form>
+              <button class="vu-btn" bindtap="cancelBooking" data-id="{{carPool.id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
+            </form>
           <view 
           class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
             <text 

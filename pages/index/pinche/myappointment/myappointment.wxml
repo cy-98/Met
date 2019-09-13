@@ -1,7 +1,7 @@
 
 <cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
   <view bindtap="back">返回</view>
-  <view slot="content">我的拼车</view>
+  <view slot="content">我的预约</view>
 </cu-custom>
 <scroll-view 
         scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
