@@ -537,7 +537,7 @@ function getMycarpool({success,fail}){
   })
 }
 function bookCarpool({ id, success, fail }){
-  util.req(`/carpool/ ${id}/appointment`, {id:id}, res => {
+  util.req(`/carpool/${id}/appointment`, {id:id}, res => {
     console.log(res)
     if (res.code === 200) {
       success && success(res)
@@ -546,8 +546,8 @@ function bookCarpool({ id, success, fail }){
     }
   })
 }
-function cancelBookCarpool({id,seccess,fail}){
-  util.req('/cancel/appointment/'+id,{},res=>{
+function cancelBookCarpool({id,success,fail}){
+  util.req('/cancel/carpool/'+id,{},res=>{
     console.log(res)
     if (res.code === 200) {
       success && success(res)
