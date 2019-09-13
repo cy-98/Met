@@ -16,7 +16,7 @@
       </view>
       <view style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '>
         <view class="text-content"  bindtap='clickContent'>
-          备注:<text>{{content}}</text>
+          备注:<text>{{des}}</text>
           <view class="tag-wrapper">出发时间 : <text class="cu-tag">{{startTime}}</text> </view>
           <view class="tag-wrapper">截止时间 : <text class="cu-tag">{{updateTime}}</text> </view>
           <view class="line">
@@ -33,9 +33,7 @@
             <form>
               <button class="vu-btn" bindtap="cancelBooking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
             </form>
-        </view>
-
-        
+          </view>
           <view 
             class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
             <text 
