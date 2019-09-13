@@ -26,12 +26,18 @@
           <view class="tag-wrapper">剩余人数 : <text class="cu-tag">{{leave}}</text> </view>
         </view>
         <view>
-        <view style="text-align:right">
-          <button class="cu-btn" bindtap="booking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">预约 </button>
-          <button class="vu-btn" bindtap="cancelBooking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
+          <view style="text-align:right">
+            <form>
+              <button class="cu-btn" bindtap="booking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">预约 </button>
+            </form>
+            <form>
+              <button class="vu-btn" bindtap="cancelBooking" data-id="{{id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
+            </form>
         </view>
+
+        
           <view 
-          class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
+            class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
             <text 
             style="font-size:40rpx;"
             class="cuIcon-messagefill margin-lr-xs" 
