@@ -527,8 +527,17 @@ function getCarpool({page,size,success,fail}){
     }
   });
 }
+function getMyappointment({success,fail}){
+  util.getReq('/my/appointments', {}, res => {
+    if (res.code === 200) {
+      success && success(res)
+    } else {
+      fail && fail(res)
+    }
+  })
+}
 function getMycarpool({success,fail}){
-  util.getReq('/my/appointments',{},res=>{
+  util.getReq('my/carpool',{},res=>{
     if (res.code === 200) {
       success && success(res)
     } else {
@@ -539,6 +548,11 @@ function getMycarpool({success,fail}){
 function bookCarpool({ id, success, fail }){
   util.req(`/carpool/${id}/appointment`, {id:id}, res => {
     console.log(res)
+    if(res.msg =="这是你自己的不能预约")
+      wx.showToast({
+        title: '这是你自己的不预约',
+      })
+      return 
     if (res.code === 200) {
       success && success(res)
     } else {
@@ -622,6 +636,7 @@ module.exports = {
   getMycarpool:getMycarpool,
   bookCarpool: bookCarpool,
   cancelBookCarpool:cancelBookCarpool,
+  getMyappointment: getMyappointment,
   getCarpoolDetail:getCarpoolDetail,
   deleteMycarpool: deleteMycarpool,
   newCarpool: newCarpool

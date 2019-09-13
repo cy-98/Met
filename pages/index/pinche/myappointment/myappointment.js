@@ -1,4 +1,3 @@
-// pages/index/pinche/pincheDetail/detail.js
 const network = require('../../../../utils/network.js');
 Page({
 
@@ -6,31 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    carPool:{}
+    carPool:[]
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  toDetail:function(){
-    wx.navigateTo({
-      url: `/pages/index/pinche/pincheDetail/detail?id=${e.currentTarget.dataset.id}`,
-    })
-  },
   onLoad: function (options) {
-    console.log(options.id)
-    network.getCarpoolDetail({id:options.id,success:(res)=>{
-      if (res.data){
-        this.setData({
-          carPool: res.data
+    let arr;
+    network.getMyappointment({
+      success:(res)=>{
+        console.log(res)
+        res.data.forEach(item=>{
+          network.getCarpoolDetail({
+            id:item.id,
+            success:(res)=>{
+              arr.push[res.data]
+              console.log(arr)
+            }
+          })
         })
-        return
-      }else{
         this.setData({
-          carPoll:false
+          carPool:arr
         })
-      }
-      
-    }})
+      },fail:()=>{
+
+      }})
   },
 
   /**

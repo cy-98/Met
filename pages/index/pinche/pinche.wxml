@@ -7,6 +7,7 @@
 <button class="cu-btn bg-yellow"
   bindtap="toMypinche"
 >我的拼车</button>
+<button bindtap="toMyAppointment" class="cu-btn bg-green">我的预约</button>
 <button 
   bindtap="newPinche"
 class="cu-btn bg-blue" >新建拼车</button>

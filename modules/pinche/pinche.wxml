@@ -15,7 +15,7 @@
         </view>
       </view>
       <view style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '>
-        <view class="text-content"  bindtap='clickContent'>
+        <view bindtap="toDetail" class="text-content"  data-id="{{id}}">
           备注:<text>{{des}}</text>
           <view class="tag-wrapper">出发时间 : <text class="cu-tag">{{startTime}}</text> </view>
           <view class="tag-wrapper">截止时间 : <text class="cu-tag">{{updateTime}}</text> </view>

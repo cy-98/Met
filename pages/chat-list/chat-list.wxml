@@ -1,6 +1,6 @@
 <!-- <import src="view/chat-item.wxml"/> -->
 <import src="view/chat-item-head.wxml"/>
-<cu-custom bgColor="bg-gradual-pink">
+<cu-custom bgColor="bg-gradual-green">
 	<view slot="content">消息</view>
 </cu-custom>
 <block >

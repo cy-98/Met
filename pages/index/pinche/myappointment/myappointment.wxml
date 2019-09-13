@@ -1,0 +1,66 @@
+
+<cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
+  <view bindtap="back">返回</view>
+  <view slot="content">我的拼车</view>
+</cu-custom>
+<scroll-view 
+        scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"                  bindscroll="scrollbot">
+      <view  wx:for="{{carPool}}" >
+        <view data-item="{{item}}">
+
+  <view class="cu-card dynamic no-card ">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar">
+        <view class="cu-item" data-user="{{item.user}}" bindtap="clickAvatar">
+          <image 
+          lazy-load="true"
+          class='cu-avatar round lg' src='{{item.user.avatar}}'></image>
+          <view class="content flex-sub">
+            <view>{{item.user.name}}</view>
+            <view class="text-gray text-sm flex justify-between">
+              {{item.createTime}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view 
+            data-id="{{item.id}}"
+            style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '
+            bindtap="toDetail"
+        >
+        <view class="text-content"  bindtap='clickContent'>
+          备注:<text>{{content}}</text>
+          <view class="tag-wrapper">出发时间 : <text class="cu-tag">{{item.startTime}}</text> </view>
+          <view class="tag-wrapper">截止时间 : <text class="cu-tag">{{item.updateTime}}</text> </view>
+          <view class="line">
+            <view class="tag-wrapper">起点 : <text class="cu-tag">{{item.departure}}</text> </view>
+            <view class="tag-wrapper">终点 : <text class="cu-tag">{{item.destination}}</text></view>
+          </view>
+          <view class="tag-wrapper">目前人数 : <text class="cu-tag">{{item.status}}</text> </view>
+        </view>
+        <view>
+        <view style="text-align:right">
+          <button 
+                  data-id="{{item.id}}"
+                  class="cu-btn" bindtap="deletePinche" 
+                  style="font-size:0.8rem;display:inline;">删除</button>
+        </view>
+          <view 
+          class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
+            <text 
+            style="font-size:40rpx;"
+            class="cuIcon-messagefill margin-lr-xs" 
+            bindtap="sendMessage"
+            data-user="{{item.user}}"></text> 
+          </view>
+        </view>
+        
+      </view>
+
+    </view>
+  </view>
+
+
+        </view>
+      </view>
+    </scroll-view>

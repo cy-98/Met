@@ -39,6 +39,17 @@ Page({
       url: '/pages/index/pinche/mypinche/mypinche',
     })
   },
+  toMyAppointment:function(){
+    wx.navigateTo({
+      url: '/pages/index/pinche/myappointment/myappointment',
+    })
+  },
+  toDetail:function(e){
+    console.log(e)
+    wx.navigateTo({
+      url: `/pages/index/pinche/pincheDetail/detail?id=${e.currentTarget.dataset.id}`,
+    })
+  },
   newPinche:function(){
     wx.navigateTo({
       url: '/pages/index/pinche/add/add',
@@ -68,9 +79,10 @@ Page({
           title: '取消成功',
         })
       },fail:()=>{
-        title:'取消失败 打个电话吧'
+
     }})
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

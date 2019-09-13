@@ -22,24 +22,6 @@ Page({
         url: 'https://s2.ax1x.com/2019/09/04/nEwUgI.th.jpg'
     }],
     iconList: [{
-      icon: 'newsfill',
-      color: 'red',
-      badge: 0,
-      name: '课表',
-      url: '/pages/index/timetable/timetable'
-    }, {
-      icon: 'activityfill',
-      color: 'orange',
-      badge: 0,
-      name: '考试',
-      url: '/pages/index/exam/exam'
-    }, {
-      icon: 'medalfill',
-      color: 'yellow',
-      badge: 0,
-      name: '成绩',
-      url: '/pages/index/grade/grade'
-    }, {
       icon: 'skinfill',
       color: 'olive',
       badge: 0,

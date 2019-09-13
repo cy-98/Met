@@ -1,8 +1,8 @@
 <import src="../../../modules/dynamic/dynamic.wxml" />
-<cu-custom bgColor="bg-gradual-orange">
+<cu-custom bgColor="bg-gradual-green">
   <view slot="content">动态</view>
 </cu-custom>
-<scroll-view scroll-x class="bg-gradual-orange nav text-center" scroll-left="{{scrollLeft}}">
+<scroll-view scroll-x class="bg-gradual-green nav text-center" scroll-left="{{scrollLeft}}">
   <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
     <text class="cuIcon-hotfill"></text> 推荐
   </view>
