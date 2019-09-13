@@ -31,15 +31,8 @@
          <text style="line-height:38rpx;">粉丝</text> </view>
     </view>
     </navigator>
-    
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-     <!-- <view class="cu-item arrow">
-      <navigator class="content" url="/pages/mine/photo/photo" hover-class="none">
-        <text class="cuIcon-creativefill text-blue"></text>
-        <text class="text-grey">TA的照片墙</text>
-      </navigator>
-    </view> -->
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
@@ -68,12 +61,6 @@
         <text class="text-grey">兴趣爱好</text>
       </button>
     </view>
-    <!-- <view class="cu-item arrow">
-      <navigator class="content" url="/pages/mine/share/share" hover-class="none">
-        <text class="cuIcon-creativefill text-orange"></text>
-        <text class="text-grey">分享有礼</text>
-      </navigator>
-    </view> -->
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/mine/setting/setting" hover-class="none">
         <text class="cuIcon-settingsfill text-orange"></text>
@@ -86,6 +73,10 @@
         <text class="text-grey">在线客服</text>
       </button> 
     </view>
+    <view class="action content cu-form-group" style="width:100%;">
+      <text class="cuIcon-title text-grey ">开启定位</text>
+      <switch class="red sm" checked="{{openLocationState}}" bindchange="openLocation"></switch>
+  </view>
     <!-- <view class="cu-item arrow">
       <button class="cu-btn content" bindtap='feedback' >
         <text class="cuIcon-btn text-olive"></text>
@@ -94,4 +85,5 @@
     </view> -->
   </view>
   <view class="cu-tabbar-height"></view>
+  
 </scroll-view>

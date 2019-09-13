@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/map/map",
     "pages/index/timetable/timetable",
     "pages/index/exam/exam",
     "pages/index/grade/grade",
@@ -52,6 +53,12 @@
       {
         "pagePath": "pages/dynamic/list/list",
         "text": "动态",
+        "iconPath": "images/icon/shipin_unselect.png",
+        "selectedIconPath": "images/icon/shipin.png"
+      },
+      {
+        "pagePath": "pages/index/map/map",
+        "text": "遇见",
         "iconPath": "images/icon/shipin_unselect.png",
         "selectedIconPath": "images/icon/shipin.png"
       },

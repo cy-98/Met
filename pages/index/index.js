@@ -52,6 +52,26 @@ Page({
       })
     }
   },
+   openMap:function(e){
+    console.log(this.data.location)
+    var that = this
+    wx.getSetting({
+      success(res) {
+        console.log(1)
+        //这里判断是否有地位权限
+        if (!res.authSetting['scope.userLocation']) {
+          wx.openSetting({
+            success:(res)=>{
+              that.setData({
+                location:true
+              })
+            }
+          })
+        }
+      }
+
+    })
+  },
   //关注推荐的人
   attent(e){
     let id = e.detail.target.id;
@@ -156,8 +176,6 @@ Page({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
     });
     //获取定位
-  
-
   
     // 检测是否是开启位置信息的设置
     let state = wx.getStorageSync("openLocationState");
@@ -376,7 +394,6 @@ Page({
     })
   },
   onShareAppMessage(){
-
     return {
       title: '转发',
       path: '/pages/index/index',
