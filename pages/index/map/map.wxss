@@ -1,1 +1,9 @@
-/* pages/index/map/map.wxss */
+.switch-wrapper{
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+}
+.switch{
+  
+  width: 80rpx;
+}

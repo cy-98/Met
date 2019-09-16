@@ -15,7 +15,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
+    let that = this
+    wx.showModal({
+      content: '是否开启定位?',
+      success(res) {
+        if (res.confirm) {
+          that.openMap()
+        } else if (res.cancel) {
+          wx.switchTab({
+            url: "/pages/index/index",
+          })
+        }
+      }
+    })
     qqmapsdk = new QQMapWX({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
     });
@@ -81,7 +93,7 @@ Page({
 
     network.punches({
       success: res => {
-        console.info(res);
+
         let markers = [];
         res.data.data.forEach(item => {
           let marker = {}
@@ -101,6 +113,7 @@ Page({
   },
   openMap: function (e) {
     console.log(this.data.location)
+    
     var that = this
     wx.getSetting({
       success(res) {

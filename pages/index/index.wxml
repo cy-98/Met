@@ -41,7 +41,6 @@
     </view>
   </view>
 </view>
-
 <view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
   <view class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*2}}">
     <navigator url='{{item.url}}'>
@@ -54,11 +53,6 @@
     </navigator>
   </view>
 </view>
-
-
-
-
-
 
 <view class="cu-bar bg-white solid-bottom margin-top">
   <view class="action">
@@ -87,14 +81,14 @@
 </view>
 
 
-<view class="cu-bar bg-white solid-bottom margin-top">
+<!-- <view class="cu-bar bg-white solid-bottom margin-top">
   <view class="action" style="width:100%;">
     <text class="cuIcon-title text-orange "></text>遇见
     <button class="location-btn" bindtap="openMap" style="opacity:{{location?0:1}}" >开启定位</button>
     <switch class="red sm" checked="{{openLocationState}}" bindchange="openLocation"></switch>
   </view>
 </view>
-<view class="cu-padding">
+<view class="cu-padding pad">
   <map wx:if="{{openLocationState}}"
   id="map" 
   longitude="117.145709" latitude="34.214818" 
@@ -103,7 +97,7 @@
   bindtap="navgate"
   bindcontroltap="controltap"
   markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}"                        bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
-</view>
+</view> -->
 
 
 

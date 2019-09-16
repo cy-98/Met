@@ -15,3 +15,6 @@
   line-height: 40rpx;
   font-size: 20rpx;
 }
+.pad{
+  padding: 0 40rpx;
+}

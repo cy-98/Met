@@ -73,10 +73,18 @@
         <text class="text-grey">在线客服</text>
       </button> 
     </view>
-    <view class="action content cu-form-group" style="width:100%;">
-      <text class="cuIcon-title text-grey ">开启定位</text>
+    <view class="cu-item">
+      <view class="content" open-type="contact" style="text-align:left" hover-class="none">
+        <text class="cuIcon-settingsfill text-orange"></text>
+        <text class="text-grey">开启定位</text>
+        <switch class="red sm" style="float:right;" checked="{{openLocationState}}" bindchange="openLocation"></switch>
+      </view> 
+    </view>
+    <!-- <view class="cu-item content cu-form-group" style="width:100%;">
+    <text class="cuIcon-settingsfill  text-orange"></text>
+      <text class=" text-grey ">开启定位</text>
       <switch class="red sm" checked="{{openLocationState}}" bindchange="openLocation"></switch>
-  </view>
+  </view> -->
     <!-- <view class="cu-item arrow">
       <button class="cu-btn content" bindtap='feedback' >
         <text class="cuIcon-btn text-olive"></text>
