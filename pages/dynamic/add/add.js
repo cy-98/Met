@@ -18,17 +18,20 @@ Page({
   ChooseImage:function(){
     var that = this;
     wx.chooseImage({
-      count: 4, //默认9
+      count: 9, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-
+        wx.showLoading({
+          title: '上传中....',
+        })
         res.tempFilePaths.forEach(function (item) {
           wx.uploadFile({
             url: 'https://school.chpz527.cn/api/upload',
             filePath: item,
             name: 'file',
             success: function (res) {
+              wx.hideLoading();
               console.log(JSON.parse(res.data));
               var data = JSON.parse(res.data)
               that.setData({
