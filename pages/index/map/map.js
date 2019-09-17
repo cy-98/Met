@@ -16,55 +16,54 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    wx.showModal({
-      content: '是否开启定位?',
-      success(res) {
-        if (res.confirm) {
-          that.openMap()
-        } else if (res.cancel) {
-          wx.switchTab({
-            url: "/pages/index/index",
-          })
-        }
-      }
-    })
+
     qqmapsdk = new QQMapWX({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
     });
-    //获取定位
-    // 检测是否是开启位置信息的设置
-    let state = wx.getStorageSync("openLocationState");
-    if (state !== false) {
-      console.info("state 为空");
-      wx.setStorageSync("openLocationState", true);
-      this.setData({
-        openLocationState: true
-      });
-      state = true;
-    }
-    this.setData({
-      openLocationState: state
-    })
-    console.info(state);
-    if (state) {
-      this.met();
-    }
   },
   openLocation: function (e) {
     console.info(e);
-    wx.setStorageSync("openLocationState", e.detail.value);
-    this.setData({
-      openLocationState: e.detail.value
-    });
-    if (e.detail.value) {
+    let openLocationState = !wx.getStorageSync("openLocationState");
+    
+    if (openLocationState) {
       this.met();
-    } else {
+      wx.setStorageSync("openLocationState", openLocationState);
+
       this.setData({
-        markers: []
+        openLocationState: openLocationState
       });
-      wx.showToast({
-        title: '关闭定位信息',
+    } else {
+
+
+      
+      wx.showModal({
+        title: '是否要关闭定位',
+        content: '关闭定位后不能查看别人的定位哦',
+        success: res => {
+          console.info(res);
+          if (res.confirm){
+            this.setData({
+              openLocationState: openLocationState
+            });
+            this.setData({
+              markers: []
+            });
+            wx.setStorageSync("openLocationState", openLocationState);
+            wx.reLaunch({
+              url: '/pages/index/index',
+            });
+
+
+            wx.showToast({
+              title: '关闭定位信息',
+            });
+
+
+          }
+        },
       })
+
+      
     }
   },
   met: function () {
@@ -143,7 +142,38 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //获取定位
+    let that = this;
+    // 检测是否是开启位置信息的设置
+    let state = wx.getStorageSync("openLocationState");
+    if (state !== false) {
+      console.info("state 为空");
+      wx.setStorageSync("openLocationState", true);
+      this.setData({
+        openLocationState: true
+      });
+      state = true;
+    }
+    this.setData({
+      openLocationState: state
+    })
+    console.info(state);
+    if (state) {
+      this.met();
+    } else {
+      wx.showModal({
+        content: '是否开启定位?',
+        success(res) {
+          if (res.confirm) {
+            that.openLocation();
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: "/pages/index/index",
+            })
+          }
+        }
+      })
+    }
   },
 
   /**
