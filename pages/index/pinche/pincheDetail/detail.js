@@ -6,18 +6,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    carPool:{}
+    carPool:{},
+    book:""
   },
   /**
    * 生命周期函数--监听页面加载
    */
   booking: function (e) {
+
     console.log(e)
     network.bookCarpool({
       id: e.currentTarget.dataset.id, success: () => {
+        console.log(1)
         wx.showToast({
           title: '预约成功',
         })
+        this.setData({
+          book: true
+        })
+        console.log(this.data.book)
       }, fail: () => {
         wx.showToast({
           title: '预约失败',
@@ -26,12 +33,17 @@ Page({
     })
   },
   cancelBooking: function (e) {
+    
     network.cancelBookCarpool({
       id: e.currentTarget.dataset.id,
       success: () => {
         wx.showToast({
           title: '取消成功',
         })
+        this.setData({
+          book: false
+        })
+        console.log(this.data.book)
       }, fail: () => {
 
       }
@@ -42,7 +54,8 @@ Page({
     network.getCarpoolDetail({id:options.id,success:(res)=>{
       if (res.data){
         this.setData({
-          carPool: res.data
+          carPool: res.data,
+          book:res.data.book
         })
         return
       }else{

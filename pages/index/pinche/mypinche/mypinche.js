@@ -44,7 +44,7 @@ Page({
       success: (res) => {
         console.log(res)
         this.setData({
-          carPool:res.data
+          carPool:res.data.data
         })
       },
       fail: (res) => {

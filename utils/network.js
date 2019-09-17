@@ -537,7 +537,7 @@ function getMyappointment({success,fail}){
   })
 }
 function getMycarpool({success,fail}){
-  util.getReq('my/carpools',{},res=>{
+  util.getReq('my/carpools?page=1&size=10',{},res=>{
     if (res.code === 200) {
       success && success(res)
     } else {
@@ -548,14 +548,12 @@ function getMycarpool({success,fail}){
 function bookCarpool({ id, success, fail }){
   util.req(`/carpool/${id}/appointment`, {id:id}, res => {
     console.log(res)
-    if(res.msg =="这是你自己的不能预约")
-      wx.showToast({
-        title: '这是你自己的不预约',
-      })
-      return 
     if (res.code === 200) {
       success && success(res)
     } else {
+      wx.showToast({
+        title: res.msg,
+      })
       fail && fail(res)
     }
   })
