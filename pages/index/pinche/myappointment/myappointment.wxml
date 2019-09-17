@@ -39,12 +39,12 @@
           <view class="tag-wrapper">目前人数 : <text class="cu-tag">{{item.status}}</text> </view>
         </view>
         <view>
-        <view style="text-align:right">
+        <!-- <view style="text-align:right">
           <button 
                   data-id="{{item.carpool.id}}"
                   class="cu-btn" bindtap="deletePinche" 
                   style="font-size:0.8rem;display:inline;">删除</button>
-        </view>
+        </view> -->
           <view 
           class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
             <text 
