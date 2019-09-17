@@ -250,7 +250,12 @@ Page({
       }
     })
   },
-
+  markertap: function (e) {
+    console.info(e);
+    wx.navigateTo({
+      url: '/pages/mine/user/info?id=' + e.markerId,
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
