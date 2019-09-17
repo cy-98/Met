@@ -25,10 +25,10 @@ Page({
         // })
         res.data.forEach(item=>{
           console.log(item);
-          if(item.carPool.startTime) {
+          if(item.carpool.startTime) {
             item.carpool.startTime = item.carpool.startTime.replace('T', ' ').substr(0, 16);
           }
-          if(item.carPool.updateTime) {
+          if(item.carpool.updateTime) {
             item.carpool.updateTime = item.carpool.updateTime.replace('T', ' ').substr(0, 16);
           }
         })

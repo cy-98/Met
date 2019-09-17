@@ -284,7 +284,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage() {
 
+    return {
+      title: '转发',
+      path: '/pages/dynamic/index/index?id=' + this.data.dynamic.id,
+      success: function (res) { }
+    }
   }
 })
