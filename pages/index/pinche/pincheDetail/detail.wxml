@@ -32,11 +32,11 @@
           <view class="tag-wrapper">剩余人数 : <text class="cu-tag">{{carPool.status}}</text> </view>
         </view>
         <view>
-            <form>
-              <button class="cu-btn" bindtap="booking" data-id="{{carPool.id}}" style="font-size:0.8rem;display:inline;">预约 </button>
+            <form wx:if="{{!book}}">
+              <button class="cu-btn" bindtap="booking" data-id="{{carPool.id}}" style="font-size:0.8rem;display:inline;">预约</button>
             </form>
-            <form>
-              <button class="vu-btn" bindtap="cancelBooking" data-id="{{carPool.id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
+            <form wx:else>
+              <button class="cu-btn" bindtap="cancelBooking" data-id="{{carPool.id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
             </form>
           <view 
           class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
