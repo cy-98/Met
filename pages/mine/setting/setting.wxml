@@ -19,7 +19,9 @@
       </radio-group> -->
       </view>
       </view>
-
+    <view class="cu-form-group">
+      <view>电话号码</view><input style="text-align:right"  placeholder="{{phone}}" bindinput="changeTel"></input>
+    </view>
     <view class="cu-form-group">
       <view class="title">生日日期</view>
       <picker mode="date" value="{{birthday}}" start="1990-09-01" end="2020-09-01" bindchange="dateChange">

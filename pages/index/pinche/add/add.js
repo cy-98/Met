@@ -106,7 +106,29 @@ Page({
       }})
   },  
   onLoad: function (options) {
-
+    wx.getStorage({
+      key: 'userInfo',
+      success: function(res) {
+        console.log(res)
+        if(!res.data.phone){
+          wx.showModal({
+            title: '未设置电话号码',
+            content: '是否前往设置电话号码',
+            success:(res)=>{
+              if(res.confirm){
+                wx.navigateTo({
+                  url: '/pages/mine/setting/setting',
+                })
+              }else{
+                wx.redirectTo({
+                  url: '/pages/index/pinche/pinche',
+                })
+              }
+            }
+          })
+        }
+      },
+    })
   },
 
   /**

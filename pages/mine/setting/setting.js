@@ -13,12 +13,17 @@ Page({
     love:"",
     profile:"",
     school:"",
-    major:""
-
+    major:"",
+    phone:""
+  },
+  changeTel:function(e){
+    let phone = e.detail.value;
+    this.setData({
+      phone:phone
+    })
   },
   changename:function(e){
     let nickname = e.detail.value;
-
     this.setData({
       nickname:nickname
     })
@@ -38,12 +43,17 @@ Page({
   },
   // 提交 监测
   submit:function(){
+    if (!(/^1[3456789]\d{9}$/.test(this.data.phone))){
+      wx.showToast({
+        title: '请输入电话号码',
+      })
+      return
+    }
     if(!this.data.nickname){
       wx.showToast({
         title:'请输入昵称'
-
       })
-      return ;
+      return 
     }
     wx.showLoading({
       title: '修改中....',
@@ -58,19 +68,17 @@ Page({
       nickname: this.data.nickname,
       birthday: this.data.birthday,
       love: this.data.love,
-      profile: this.data.profile
+      profile: this.data.profile,
+      phone:this.data.phone
     }
     //post
     network.updateUserInfo({userInfo:data, success:res => {
-      console.info("已经醒了");
       wx.hideLoading();
       wx.setStorageSync("userInfo", res.data);
       wx.switchTab({
         url: '/pages/mine/index',
       })
     }})
-    
-
   },
   /**
    * 生命周期函数--监听页面加载
@@ -92,7 +100,8 @@ Page({
           love: userInfo.love,
           profile: userInfo.profile,
           school: userInfo.school,
-          major: userInfo.major
+          major: userInfo.major,
+          phone:userInfo.phone
         })
       }
       

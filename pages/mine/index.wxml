@@ -40,17 +40,18 @@
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
+      <navigator class="content" url="/pages/index/timetable/timetable"               
+        hover-class="none">
         <text class="cuIcon-newsfill text-red"></text>
         <text class="text-grey">课程</text>
       </navigator>
     </view><view class="cu-item arrow">
-      <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
+      <navigator class="content" url="/pages/index/grade/grade" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">成绩</text>
       </navigator>
     </view><view class="cu-item arrow">
-      <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
+      <navigator class="content" url="/pages/index/exam/exam" hover-class="none">
         <text class="cuIcon-writefill text-cyan"></text>
         <text class="text-grey">考试</text>
       </navigator>
@@ -73,24 +74,7 @@
         <text class="text-grey">在线客服</text>
       </button> 
     </view>
-    <view class="cu-item">
-      <view class="content" open-type="contact" style="text-align:left" hover-class="none">
-        <text class="cuIcon-settingsfill text-orange"></text>
-        <text class="text-grey">开启定位</text>
-        <switch class="red sm" style="float:right;" checked="{{openLocationState}}" bindchange="openLocation"></switch>
-      </view> 
-    </view>
-    <!-- <view class="cu-item content cu-form-group" style="width:100%;">
-    <text class="cuIcon-settingsfill  text-orange"></text>
-      <text class=" text-grey ">开启定位</text>
-      <switch class="red sm" checked="{{openLocationState}}" bindchange="openLocation"></switch>
-  </view> -->
-    <!-- <view class="cu-item arrow">
-      <button class="cu-btn content" bindtap='feedback' >
-        <text class="cuIcon-btn text-olive"></text>
-        <text class="text-grey">谁回答了我的提问</text>
-      </button>
-    </view> -->
+   
   </view>
   <view class="cu-tabbar-height"></view>
   
