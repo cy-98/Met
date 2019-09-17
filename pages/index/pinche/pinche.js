@@ -29,12 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    network.getCarpool({page:1,size:10,
-    success:(res)=>{
-      this.setData({
-        carPool:res.data.data
-      })
-    },fail:()=>{}})
+    
   },
   toMypinche:function(){
     wx.navigateTo({
@@ -73,7 +68,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    network.getCarpool({
+      page: 1, size: 10,
+      success: (res) => {
+        this.setData({
+          carPool: res.data.data
+        })
+      }, fail: () => { }
+    })
   },
 
   /**

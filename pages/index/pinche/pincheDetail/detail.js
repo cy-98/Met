@@ -54,12 +54,16 @@ Page({
     network.deleteMycarpool({id:e.currentTarget.dataset.id,
       success:()=>{
         console.info("删除成功");
+        this.setData({
+          carPool: ""
+        })
         wx.showToast({
           title: '删除成功',
         })
         wx.redirectTo({
           url: '/pages/index/pinche/pinche',
         })
+
       }
     })
   },
@@ -81,7 +85,8 @@ Page({
         return
       }else{
         this.setData({
-          carPoll:false
+          carPool:"",
+          carPool:false
         })
       }
       

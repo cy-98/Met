@@ -12,3 +12,9 @@
   right: 40rpx;
   bottom: 100rpx;
 }
+.barrage{
+  position: fixed;
+  color: orange;
+  text-shadow: 1px 1px 5px red, 1px 2px 5px blue;
+  left: 
+}

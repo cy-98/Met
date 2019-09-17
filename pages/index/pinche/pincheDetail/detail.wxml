@@ -32,11 +32,11 @@
           <view class="tag-wrapper">备注:<text class="cu-tag">{{carPool.des}}</text> </view>
         </view>
         <view>
-            <form wx:if="{{!book}}">
-              <button class="cu-btn small-btn" bindtap="booking" data-id="{{carPool.id}}" >预约</button>
+            <form wx:if="{{!book && (carPool.user.id !== userId)}}" >
+              <button  class="cu-btn small-btn" bindtap="booking" data-id="{{carPool.id}}" >预约</button> 
             </form>
-            <form wx:else>
-              <button class="cu-btn small-btn" bindtap="cancelBooking" data-id="{{carPool.id}}" >取消预约</button>
+            <form wx:else >
+              <button wx:if="{{carPool.user.id !== userId}}" class="cu-btn small-btn" bindtap="cancelBooking" data-id="{{carPool.id}}" >取消预约</button>
             </form>
             <form>
               <button class="cu-btn small-btn" data-id="{{carPool.id}}" bindtap="deleteCarpool" wx:if="{{carPool.user.id == userId}}">删除</button>
