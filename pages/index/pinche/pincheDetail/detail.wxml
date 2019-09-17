@@ -39,7 +39,7 @@
               <button class="cu-btn small-btn" bindtap="cancelBooking" data-id="{{carPool.id}}" >取消预约</button>
             </form>
             <form>
-              <button class="cu-btn small-btn" data-id="{{carPoll.id}}" bindtap="deleteCarpool" wx:if="{{carPool.user.id == userId}}">删除</button>
+              <button class="cu-btn small-btn" data-id="{{carPool.id}}" bindtap="deleteCarpool" wx:if="{{carPool.user.id == userId}}">删除</button>
             </form>
           <view 
           class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>

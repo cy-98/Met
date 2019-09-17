@@ -49,7 +49,11 @@ Page({
     })
   },
   cleanAllMessage:function(){
+    wx.showLoading({
+      title: '清除消息中....',
+    });
     network.readAllMessage({success : res => {
+      wx.hideLoading();
       network.getMessages({
         success: (res) => {
           res.data.forEach(item => {
