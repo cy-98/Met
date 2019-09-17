@@ -6,10 +6,10 @@
   <view class="cu-form-group">出发地点: <input bindtap="chooseLocationS" placeholder="点击选择出发地点" value="{{start}}"></input></view>
   <view class="cu-form-group">到达地点: <input bindtap="chooseLocationD" placeholder="点击选择到达地点" value="{{destination}}"></input></view>
   <picker mode="date" bindchange="chooseDate">
-    <view class="cu-form-group">日期: <input  placeholder="选择日期" value="{{date}}"></input></view>
+    <view class="cu-form-group">选择出发日期:<text>{{date}}</text></view>
   </picker>
   <picker mode="time" bindchange="goTime">
-    <view class="cu-form-group">出发时间: <input placeholder="点击选择出发时间" value="{{setout}}"></input> </view>
+    <view class="cu-form-group">选择出发时间: <text>{{setout}}</text> </view>
   </picker>
   <view class="cu-form-group">剩余:<input bindinput="inputLeave"  value="{{leave}}"></input></view>
   <view class="cu-form-group">备注:<input bindinput="inputContent" value="{{content}}"></input></view>

@@ -9,8 +9,8 @@ Page({
     tel:'',
     start:'',
     destination:'',
-    date: '',
-    setout:'',
+    date: new Date().getFullYear() + "-" + new Date().getMonth()+ "-" + new Date().getDate(),
+    setout: new Date().getHours() + ":" + new Date().getMinutes(),
     leave:'',
     content:'准时 不赖账',
 
