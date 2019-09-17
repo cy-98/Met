@@ -537,7 +537,7 @@ function getMyappointment({success,fail}){
   })
 }
 function getMycarpool({success,fail}){
-  util.getReq('my/carpool',{},res=>{
+  util.getReq('my/carpools',{},res=>{
     if (res.code === 200) {
       success && success(res)
     } else {

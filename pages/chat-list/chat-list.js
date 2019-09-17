@@ -87,7 +87,7 @@ Page({
               });
               if (this.data.totalUnread !== 0) {
                 wx.setTabBarBadge({
-                  index: 2,
+                  index: 3,
                   text: this.data.totalUnread + '',
                 })
               };
@@ -158,7 +158,7 @@ Page({
         console.log(this.data.totalUnread);
         if (this.data.totalUnread !== 0) {
           wx.setTabBarBadge({
-            index: 2,
+            index: 3,
             text: this.data.totalUnread + '',
           })
         };
@@ -236,7 +236,7 @@ Page({
     });
     if (this.data.totalUnread !== 0) {
       wx.setTabBarBadge({
-        index: 2,
+        index: 3,
         text: this.data.totalUnread + '',
       })
     };

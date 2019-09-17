@@ -7,3 +7,8 @@
   
   width: 80rpx;
 }
+.refresh{
+  position: fixed;
+  right: 40rpx;
+  bottom: 100rpx;
+}

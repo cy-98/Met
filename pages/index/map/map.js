@@ -59,9 +59,6 @@ Page({
         openLocationState: openLocationState
       });
     } else {
-
-
-      
       wx.showModal({
         title: '是否要关闭定位',
         content: '关闭定位后不能查看别人的定位哦',
@@ -78,13 +75,9 @@ Page({
             wx.reLaunch({
               url: '/pages/index/index',
             });
-
-
             wx.showToast({
               title: '关闭定位信息',
             });
-
-
           }
         },
       })
@@ -184,6 +177,10 @@ Page({
    */
   onReady: function () {
 
+  },
+
+  refresh() {
+    this.met();
   },
 
   /**
