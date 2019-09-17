@@ -1,0 +1,24 @@
+<!--pages/mine/activity/activity.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">活动中心</view>
+</cu-custom>
+
+<view class="wrapper">
+  <view class="activityContent" wx:for="{{activities}}" wx:key="{{item}}" data-id="{{item.id}}" bindtap="actdetail">
+    <view class="poster">
+      <image class="img-act" src="{{item.poster}}" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
+    </view>
+    <view class="detail">
+      <view class="secondary">主办方：{{item.secondary}}</view>
+      <view class="des">说明：{{item.des}}</view>
+      <view class="chief">主办方：{{item.chief}}</view>
+      <view class="startTime">开始时间：{{item.startTime}}</view>
+      <view class="endTime">结束时间：{{item.endTime}}{{item.endTime}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- git stash -->
+<!-- git pull -->
+<!-- git stash pop -->

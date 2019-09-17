@@ -31,7 +31,8 @@
     "pages/mine/user/fans",
     "pages/mine/question/question",
     "pages/mine/feedback/feedback",
-    "pages/mine/share/share"
+    "pages/mine/share/share",
+    "pages/mine/activity/activity"
   ],
   "window": {
     "backgroundTextStyle": "light",

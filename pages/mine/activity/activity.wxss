@@ -1,0 +1,39 @@
+/* pages/mine/activity/activity.wxss */
+
+.wrapper {
+  font-size: 30rpx;
+  margin: 30rpx;
+}
+.activityContent {
+  display: flex;
+  flex-direction: row;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: white;
+  /* border: 1px solid black; */
+}
+.img-act{
+  height: 100%;
+}
+.activityContent .poster {
+  /* width: 210rpx; */
+  width: 30%;
+  box-sizing: border-box;
+}
+.poster image {
+  width: 100%;
+}
+.activityContent .detail {
+  width: 70%;
+  /* flex: 0 0 1; */
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+.activityContent .detail view {
+  width: 100%;
+  margin-bottom: 10rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

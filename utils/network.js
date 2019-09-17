@@ -596,6 +596,20 @@ function newCarpool ({context,success,fail}){
       fail && fail(res);
   })
 }
+function getActivities({
+  success,
+  fail
+}) {
+  util.getReq("activities", {page: 1, size: 10}, res => {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
 module.exports = {
   updateUserInfo: updateUserInfo,
   getUserInfo: getUserInfo,
@@ -637,5 +651,6 @@ module.exports = {
   getMyappointment: getMyappointment,
   getCarpoolDetail:getCarpoolDetail,
   deleteMycarpool: deleteMycarpool,
-  newCarpool: newCarpool
+  newCarpool: newCarpool,
+  getActivities: getActivities
 }
