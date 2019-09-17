@@ -7,13 +7,13 @@ Page({
    */
   data: {
     carPool:{},
-    book:""
+    book:"",
+    userId:""
   },
   /**
    * 生命周期函数--监听页面加载
    */
   booking: function (e) {
-
     console.log(e)
     network.bookCarpool({
       id: e.currentTarget.dataset.id, success: () => {
@@ -49,8 +49,27 @@ Page({
       }
     })
   },
+  deleteCarpool:function(e){
+    network.deleteMycarpool({id:e.currentTarget.dataset.id,
+      success:()=>{
+        wx.showToast({
+          title: '删除成功',
+        })
+        wx.navigateTo({
+          url: '/pages/pinche/pinche',
+        })
+      }
+    })
+  },
   onLoad: function (options) {
-    console.log(options.id)
+    wx.getStorage({
+      key: 'userInfo',
+      success: (res) =>{
+        this.setData({
+          userId:res.data.id
+        })
+      },
+    })
     network.getCarpoolDetail({id:options.id,success:(res)=>{
       if (res.data){
         this.setData({

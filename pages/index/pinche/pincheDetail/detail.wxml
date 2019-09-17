@@ -33,10 +33,13 @@
         </view>
         <view>
             <form wx:if="{{!book}}">
-              <button class="cu-btn" bindtap="booking" data-id="{{carPool.id}}" style="font-size:0.8rem;display:inline;">预约</button>
+              <button class="cu-btn small-btn" bindtap="booking" data-id="{{carPool.id}}" >预约</button>
             </form>
             <form wx:else>
-              <button class="cu-btn" bindtap="cancelBooking" data-id="{{carPool.id}}" style="font-size:0.8rem;display:inline;">取消预约</button>
+              <button class="cu-btn small-btn" bindtap="cancelBooking" data-id="{{carPool.id}}" >取消预约</button>
+            </form>
+            <form>
+              <button class="cu-btn small-btn" data-id="{{carPoll.id}}" bindtap="deleteCarpool" wx:if="{{carPool.user.id == userId}}">删除</button>
             </form>
           <view 
           class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>

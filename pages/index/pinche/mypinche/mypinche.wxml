@@ -26,9 +26,8 @@
       <view 
             data-id="{{item.id}}"
             style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '
-            bindtap="toDetail"
         >
-        <view class="text-content"  bindtap='clickContent'>
+        <view class="text-content" bindtap="toDetail">
           备注:<text>{{content}}</text>
           <view class="tag-wrapper">出发时间 : <text class="cu-tag">{{item.startTime}}</text> </view>
           <view class="tag-wrapper">截止时间 : <text class="cu-tag">{{item.updateTime}}</text> </view>

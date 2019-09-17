@@ -2,3 +2,7 @@
 .tag-wrapper{
   margin: 10rpx;
 }
+.small-btn{
+  display: inline;
+  font-size: 0.8rem;
+}
