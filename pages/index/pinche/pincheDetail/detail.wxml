@@ -23,7 +23,7 @@
         >
         <view  class="text-content"  bindtap='clickContent'>
           <view  class="tag-wrapper">出发时间 : <text class="cu-tag">{{carPool.startTime}}</text> </view>
-          <view  class="tag-wrapper">截止时间 : <text class="cu-tag">{{carPool.updateTime}}</text> </view>
+          <!-- <view  class="tag-wrapper">截止时间 : <text class="cu-tag">{{carPool.updateTime}}</text> </view> -->
           <view  class="line">
             <view  class="tag-wrapper">起点 : <text class="cu-tag">{{carPool.departure}}</text> </view>
             <view  class="tag-wrapper">终点 : <text class="cu-tag">{{carPool.destination}}</text></view>
