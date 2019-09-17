@@ -16,10 +16,36 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-
     qqmapsdk = new QQMapWX({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
     });
+    that.openMap()
+      // wx.showModal({
+      //   content: '是否开启定位?',
+      //   success(res) {
+      //     if (res.confirm) {
+      //       wx.openSetting({
+      //         success:(res)=>{
+      //           wx.setStorage({
+      //             key: 'openLocationState',
+      //             data: true,
+      //           })
+      //           that.met()
+      //         }
+      //       })
+      //       that.openMap()
+      //     } else if (res.cancel) {
+      //       wx.switchTab({
+      //         url: "/pages/index/index",
+      //       })
+      //     }
+      //   }
+      // })
+
+   
+    
+    //获取定位
+    // 检测是否是开启位置信息的设置
   },
   openLocation: function (e) {
     console.info(e);
@@ -116,13 +142,35 @@ Page({
     var that = this
     wx.getSetting({
       success(res) {
-        console.log(1)
+
         //这里判断是否有地位权限
         if (!res.authSetting['scope.userLocation']) {
           wx.openSetting({
             success: (res) => {
               that.setData({
                 location: true
+              })
+            },
+            fail:(res)=>{
+              console.log(res)
+              wx.showModal({
+                content: '请开启权限',
+                success:(res)=>{
+                  if(res.confirm){
+                    wx.openSetting({
+                      success:(res)=>{
+                        that.setData({
+                          location:true
+                        })
+                      }
+                    })
+                  }
+                },
+                fail:()=>{
+                  wx.switchTab({
+                    url: '/pages/index/index',
+                  })
+                }
               })
             }
           })
@@ -142,6 +190,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
     //获取定位
     let that = this;
     // 检测是否是开启位置信息的设置
@@ -174,6 +223,32 @@ Page({
         }
       })
     }
+    //初始获取定位权限
+    wx.authorize({
+      scope: 'scope.userLocation',
+      success: (res) => {
+        console.log(res)//检测定位
+        wx.getStorage({
+          key: 'openLocationState',
+          success: function(res) {
+
+          },
+          fail:function(){
+            wx.setStorage({
+              key: 'openLocationState',
+              data: true,
+            })
+          }
+        })
+      },
+      fail:(res)=>{
+        console.log(res)//检测定位
+        wx.setStorage({
+          key: 'openLocationState',
+          data: false,
+        })
+      }
+    })
   },
 
   /**
