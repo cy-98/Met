@@ -3,8 +3,6 @@
   <view slot="content">新建拼车</view>
 </cu-custom>
 <form bindsubmit="submit">
-  <view class="cu-form-group">电话:<input placeholder="请输入电话号码" bindinput="inputTel" value="{{tel}}"></input>
-  </view>
   <view class="cu-form-group">出发地点: <input bindtap="chooseLocationS" placeholder="点击选择出发地点" value="{{start}}"></input></view>
   <view class="cu-form-group">到达地点: <input bindtap="chooseLocationD" placeholder="点击选择到达地点" value="{{destination}}"></input></view>
   <picker mode="date" bindchange="chooseDate">

@@ -1,13 +1,11 @@
 const network = require('../../../../utils/network.js');
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     carPool:[]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -16,17 +14,20 @@ Page({
     network.getMyappointment({
       success:(res)=>{
         console.log(res)
+        // res.data.forEach(item=>{
+        //   network.getCarpoolDetail({
+        //     id:item.id,
+        //     success:(res)=>{
+        //       arr.push[res.data]
+        //       console.log(arr)
+        //     }
+        //   })
+        // })
         res.data.forEach(item=>{
-          network.getCarpoolDetail({
-            id:item.id,
-            success:(res)=>{
-              arr.push[res.data]
-              console.log(arr)
-            }
-          })
+
         })
         this.setData({
-          carPool:arr
+          carPool:res.data
         })
       },fail:()=>{
 

@@ -12,7 +12,8 @@ Page({
     date: '',
     setout:'',
     leave:'',
-    content:'准时 不赖账'
+    content:'准时 不赖账',
+
   },
   inputTel:function(e){
     console.log(e)
@@ -73,23 +74,18 @@ Page({
         title: '剩余人数必须为小于4的数字',
       })
       return
-    }else if(this.data.destination === '' || this.data.start === '' || this.data.setout === '' || this.data.tel === '' || this.data.date === ''){
+    }else if(this.data.destination === '' || this.data.start === '' || this.data.setout === '' || this.data.date === ''){
       wx.showToast({
         title: '所填信息不能为空',
       })
       return
-    } else if (!(/^1[3456789]\d{9}$/.test(this.data.tel))){
-      wx.showToast({
-        title: '请输入正确的电话号码',
-      })
-      return
-    }
+    } 
     let context = {
       departure : this.data.start,
       destination : this.data.destination,
       leave : Number(this.data.leave),
       startTime: this.data.date + ' ' + this.data.setout+":00",
-      des : this.data.content
+      des : this.data.content,
     }
     console.log(context)
     network.newCarpool({
@@ -106,6 +102,7 @@ Page({
       }})
   },  
   onLoad: function (options) {
+    let that = this
     wx.getStorage({
       key: 'userInfo',
       success: function(res) {

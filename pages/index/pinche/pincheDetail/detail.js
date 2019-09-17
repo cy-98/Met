@@ -11,11 +11,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  toDetail:function(){
-    wx.navigateTo({
-      url: `/pages/index/pinche/pincheDetail/detail?id=${e.currentTarget.dataset.id}`,
-    })
-  },
   booking: function (e) {
     console.log(e)
     network.bookCarpool({
