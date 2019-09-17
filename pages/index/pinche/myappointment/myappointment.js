@@ -24,7 +24,13 @@ Page({
         //   })
         // })
         res.data.forEach(item=>{
-
+          console.log(item);
+          // if(item.carPool.startTime) {
+          //   item.carpool.startTime = item.carpool.startTime.replace('T', ' ').substr(0, 16);
+          // }
+          // if(item.carPool.updateTime) {
+          //   item.carpool.updateTime = item.carpool.updateTime.replace('T', ' ').substr(0, 16);
+          // }
         })
         this.setData({
           carPool:res.data
@@ -34,6 +40,12 @@ Page({
       }})
   },
 
+  // deleteMycarpool
+
+  deletePinche(e){
+    console.log(e);
+    network.deleteMycarpool({id:e.currentTarget.dataset.id});
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
