@@ -609,7 +609,15 @@ function getActivities({
     }
   });
 }
-
+function getDetailAct({id,success,fail}){
+  util.getReq("activities",{id:id},res=>{
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  })
+}
 module.exports = {
   updateUserInfo: updateUserInfo,
   getUserInfo: getUserInfo,
@@ -652,5 +660,6 @@ module.exports = {
   getCarpoolDetail:getCarpoolDetail,
   deleteMycarpool: deleteMycarpool,
   newCarpool: newCarpool,
-  getActivities: getActivities
+  getActivities: getActivities,
+  getDetailAct: getDetailAct
 }

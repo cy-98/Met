@@ -43,7 +43,7 @@ Page({
     this.setData({
       totalUnread:0
     })
-    console.log('onshow')
+
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
         let totalUnread = 0;
@@ -76,7 +76,6 @@ Page({
                   con.latestMsg = "[图片]";
               }
               con.timeStr =  msgShowTime(con.mtime);
-
               totalUnread += con.unread_msg_count
 
               //判断最后一条

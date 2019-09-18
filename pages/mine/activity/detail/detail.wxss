@@ -1,5 +1,3 @@
-/* pages/mine/activity/activity.wxss */
-
 .wrapper {
   font-size: 30rpx;
   margin: 30rpx;
@@ -19,6 +17,7 @@
   width: 30%;
   box-sizing: border-box;
   height: 120%;
+  min-height: 240rpx;
   background: -webkit-linear-gradient(rgb(156, 188, 235),rgb(150, 157, 228));
 }
 .activityContent .detail {

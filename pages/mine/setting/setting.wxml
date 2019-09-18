@@ -1,4 +1,3 @@
-<!--pages/mine/setting/setting.wxml-->
 <cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}"><view slot="backText">返回</view><view slot="content">设置</view></cu-custom>
 <view class="cu-form-group margin-top">
 		<view class="title">头像</view>

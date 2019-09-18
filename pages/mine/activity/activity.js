@@ -16,8 +16,6 @@ Page({
   onLoad: function (options) {
     this.getActivity();
   },
-
-
   getActivity() {
     let that = this;
     network.getActivities({
@@ -28,9 +26,11 @@ Page({
       }
     })
   },
-
   actdetail(e) {
     console.log(e);
     // let id = 
+    wx.navigateTo({
+      url: `/pages/mine/activity/detail/detail?id=${e.currentTarget.dataset.id}`,
+    })
   }
 })
