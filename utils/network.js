@@ -610,7 +610,7 @@ function getActivities({
   });
 }
 function getDetailAct({id,success,fail}){
-  util.getReq("activity/"+id,{},res=>{
+  util.req("activity/"+id,{},res=>{
     if (res.code === 200) {
       success && success(res);
     } else {
@@ -619,7 +619,7 @@ function getDetailAct({id,success,fail}){
   })
 }
 function signUpAct({id,success,fail}){
-  util.req(`activity/${id}join`,{},res=>{
+  util.getReq(`activity/${id}join`,{},res=>{
     if (res.code === 200) {
       success && success(res);
     } else {
