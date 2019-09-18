@@ -7,7 +7,8 @@
     indicator-dots="true" 
     circular="true" autoplay="true" 
     interval="5000" duration="500" 
-    bindchange="cardSwiper" 
+    bindchange="cardSwiper"
+    bindtap="toAct" 
     indicator-color="#8799a3" 
     indicator-active-color="#0081ff">
   <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">

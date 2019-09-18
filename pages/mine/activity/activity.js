@@ -20,6 +20,10 @@ Page({
     let that = this;
     network.getActivities({
       success: res => {
+        res.data.data.forEach(item=>{
+          item.startTime = item.start.split(" ")[0]
+          item.endTime = item.endTime.split(" ")[0]          
+        })
         that.setData({
           activities: res.data.data
         })

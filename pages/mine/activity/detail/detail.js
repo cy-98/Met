@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activity:{
+    detail:{
       
     }
   },
@@ -14,13 +14,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad:function (options) {
-    network.getDetailAct({id:options.id,
+    console.log(options.id)
+    network.getDetailAct({
+      id:options.id,
       success:(res)=>{
         console.log(res)
-      },fail:()=>{}
+        this.setData({
+          detail:res.data
+        })
+      }
     })
   },
-
+  join:function(){
+    network.signUpAct({
+      success:()=>{
+        wx.showToast({
+          title: '报名成功',
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -9,12 +9,15 @@ Page({
   data: {
     location: false,
     markers: [],
+    left:-20
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let anim = this.leftAnim()
+    anim()
     let that = this
     qqmapsdk = new QQMapWX({
       key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
@@ -46,6 +49,20 @@ Page({
     
     //获取定位
     // 检测是否是开启位置信息的设置
+  },
+  leftAnim:function(){
+    let left
+    let that = this
+    return function(){
+      setInterval(() => {
+        console.log(that.data.left, left)
+        left = that.data.left++
+        that.setData({
+          left: left
+        })
+      }, 60)
+    }
+    
   },
   openLocation: function (e) {
     console.info(e);

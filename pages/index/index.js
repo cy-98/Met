@@ -35,44 +35,11 @@ Page({
     location:false,
     markers: [],
   },
-  // openLocation:function(e){
-  //   console.info(e);
-  //   wx.setStorageSync("openLocationState", e.detail.value);
-  //   this.setData({
-  //     openLocationState:e.detail.value
-  //   });
-  //   if(e.detail.value){
-  //     this.met();
-  //   }else{
-  //     this.setData({
-  //       markers:[]
-  //     });
-  //     wx.showToast({
-  //       title: '关闭定位信息',
-  //     })
-  //   }
-  // },
-  //  openMap:function(e){
-  //   console.log(this.data.location)
-  //   var that = this
-  //   wx.getSetting({
-  //     success(res) {
-  //       console.log(1)
-  //       //这里判断是否有地位权限
-  //       if (!res.authSetting['scope.userLocation']) {
-  //         wx.openSetting({
-  //           success:(res)=>{
-  //             that.setData({
-  //               location:true
-  //             })
-  //           }
-  //         })
-  //       }
-  //     }
-
-  //   })
-  // },
-  //关注推荐的人
+  toAct:function(){
+    wx.navigateTo({
+      url: '/pages/mine/activity/activity',
+    })
+  },
   attent(e){
     let id = e.detail.target.id;
     console.log(id)

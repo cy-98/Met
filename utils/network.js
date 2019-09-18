@@ -610,7 +610,7 @@ function getActivities({
   });
 }
 function getDetailAct({id,success,fail}){
-  util.getReq("activities",{id:id},res=>{
+  util.getReq("activity/"+id,{},res=>{
     if (res.code === 200) {
       success && success(res);
     } else {
@@ -618,6 +618,16 @@ function getDetailAct({id,success,fail}){
     }
   })
 }
+function signUpAct({success,fail}){
+  util.req("join",{},res=>{
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  })
+}
+
 module.exports = {
   updateUserInfo: updateUserInfo,
   getUserInfo: getUserInfo,
@@ -661,5 +671,6 @@ module.exports = {
   deleteMycarpool: deleteMycarpool,
   newCarpool: newCarpool,
   getActivities: getActivities,
-  getDetailAct: getDetailAct
+  getDetailAct: getDetailAct,
+  signUpAct:signUpAct
 }

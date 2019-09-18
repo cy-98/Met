@@ -7,12 +7,12 @@
     <view class="poster">
       <image class="img-act" src="{{item.poster}}" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
     </view>
-    <view class="detail">
+    <view  class="detail bg-gradual-red">
       <view class="secondary">主办方:{{item.secondary}}</view>
       <view class="des">说明 : {{item.des}}</view>
       <view class="chief">主办方 : {{item.chief}}</view>
-      <view class="startTime">开始时间 : {{item.startTime}}</view>
-      <view class="endTime">结束时间 : {{item.endTime}}{{item.endTime}}</view>
+      <view class="startTime">报名时间 : {{item.startTime}}</view>
+      <view class="endTime">结束时间 : {{item.endTime}}</view>
     </view>
   </view>
 </view>
