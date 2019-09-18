@@ -16,13 +16,11 @@ Page({
 
   },
   inputTel:function(e){
-    console.log(e)
     this.setData({
       tel:e.detail.value
     })
   },
   chooseDate: function (e) {
-    console.log(e)
     this.setData({
       date:e.detail.value
     })
@@ -30,7 +28,6 @@ Page({
   chooseLocationS: function (e) {
     wx.chooseLocation({
       success:  (res)=> {
-        console.log(res)
         this.setData({
           start: res.name
         })

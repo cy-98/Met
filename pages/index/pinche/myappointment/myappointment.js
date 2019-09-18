@@ -9,11 +9,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  toDetail: (e) => {
+    wx.navigateTo({
+      url: `/pages/index/pinche/pincheDetail/detail?id=${e.currentTarget.dataset.id}`,
+    })
+  },
   onLoad: function (options) {
     let arr;
     network.getMyappointment({
       success:(res)=>{
-        console.log(res)
         // res.data.forEach(item=>{
         //   network.getCarpoolDetail({
         //     id:item.id,
@@ -24,7 +28,6 @@ Page({
         //   })
         // })
         res.data.forEach(item=>{
-          console.log(item);
           if(item.carpool.startTime) {
             item.carpool.startTime = item.carpool.startTime.replace('T', ' ').substr(0, 16);
           }

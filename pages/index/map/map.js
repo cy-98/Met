@@ -50,11 +50,9 @@ Page({
   openLocation: function (e) {
     console.info(e);
     let openLocationState = !wx.getStorageSync("openLocationState");
-    
     if (openLocationState) {
       this.met();
       wx.setStorageSync("openLocationState", openLocationState);
-
       this.setData({
         openLocationState: openLocationState
       });
@@ -108,10 +106,8 @@ Page({
 
       },
     });
-
     network.punches({
       success: res => {
-
         let markers = [];
         res.data.data.forEach(item => {
           let marker = {}
@@ -131,11 +127,9 @@ Page({
   },
   openMap: function (e) {
     console.log(this.data.location)
-    
     var that = this
     wx.getSetting({
       success(res) {
-
         //这里判断是否有地位权限
         if (!res.authSetting['scope.userLocation']) {
           wx.openSetting({

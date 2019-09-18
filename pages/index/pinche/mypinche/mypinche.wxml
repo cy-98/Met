@@ -21,12 +21,8 @@
           </view>
           <view data-id="{{item.id}}" style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '>
             <view class="text-content" bindtap="toDetail">
-              备注:
-              <text>{{content}}</text>
               <view class="tag-wrapper">出发时间 :
                 <text class="cu-tag">{{item.startTime}}</text> </view>
-              <view class="tag-wrapper">截止时间 :
-                <text class="cu-tag">{{item.updateTime}}</text> </view>
               <view class="line">
                 <view class="tag-wrapper">起点 :
                   <text class="cu-tag">{{item.departure}}</text> </view>
@@ -35,15 +31,9 @@
                 </view>
               </view>
               <view class="tag-wrapper">目前人数 :
-                <text class="cu-tag">{{item.status}}</text> </view>
+                <text class="cu-tag">{{item.leave}}</text> </view>
             </view>
             <view>
-              <view style="text-align:right">
-                <button data-id="{{item.id}}" class="cu-btn" bindtap="deletePinche" style="font-size:0.8rem;display:inline;">删除</button>
-              </view>
-              <view class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
-                <text style="font-size:40rpx;" class="cuIcon-messagefill margin-lr-xs" bindtap="sendMessage" data-user="{{item.user}}"></text>
-              </view>
             </view>
 
           </view>

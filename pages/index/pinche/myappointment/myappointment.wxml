@@ -25,13 +25,12 @@
       </view>
       <view 
             data-id="{{item.carpool.id}}"
-            style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '
+            style='padding-left:140rpx; border-bottom: #eee 15rpx solid;padding-bottom:20rpx; '
             bindtap="toDetail"
         >
-        <view class="text-content"  bindtap='clickContent'>
-          备注:<text>{{content}}</text>
+        <view class="text-content"  data-id="{{item.carpool.id}}" bindtap="toDetail">
           <view class="tag-wrapper">出发时间 : <text class="cu-tag">{{item.carpool.startTime}}</text> </view>
-          <view class="tag-wrapper">截止时间 : <text class="cu-tag">{{item.carpool.updateTime}}</text> </view>
+
           <view class="line">
             <view class="tag-wrapper">起点 : <text class="cu-tag">{{item.carpool.departure}}</text> </view>
             <view class="tag-wrapper">终点 : <text class="cu-tag">{{item.carpool.destination}}</text></view>
@@ -45,14 +44,7 @@
                   class="cu-btn" bindtap="deletePinche" 
                   style="font-size:0.8rem;display:inline;">删除</button>
         </view> -->
-          <view 
-          class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
-            <text 
-            style="font-size:40rpx;"
-            class="cuIcon-messagefill margin-lr-xs" 
-            bindtap="sendMessage"
-            data-user="{{item.carpool.user}}"></text> 
-          </view>
+
         </view>
         
       </view>

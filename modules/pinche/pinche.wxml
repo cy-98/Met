@@ -21,7 +21,7 @@
             <view class="tag-wrapper">起点 : <text class="cu-tag">{{departure}}</text> </view>
             <view class="tag-wrapper">终点 : <text class="cu-tag">{{destination}}</text></view>
           </view>
-          <view class="tag-wrapper">剩余人数 : <text class="cu-tag">{{leave}}</text> </view>
+          <view class="tag-wrapper">目前人数 : <text class="cu-tag">{{leave}}</text> </view>
         </view>
       </view>
     </view>

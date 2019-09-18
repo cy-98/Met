@@ -15,7 +15,9 @@
       <cover-view class="text">这里是一条弹幕</cover-view>
     </cover-view>
       <cover-view class="refresh">
-        <button bindtap="refresh">刷新</button>
+        <button class="cu-btn " bindtap="refresh">
+          <cover-image style="width:60rpx;height:60rpx;" src="/images/icon/刷新.png"></cover-image>
+        </button>
       </cover-view>
       <cover-view bindtap="openLocation" class="switch-wrapper">
         <cover-image class="switch" src="../../../image/chat/dingwei.png"></cover-image>

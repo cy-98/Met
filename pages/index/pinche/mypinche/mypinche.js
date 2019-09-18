@@ -13,7 +13,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   toDetail:(e)=>{
-    console.log(e)
     wx.navigateTo({
       url: `/pages/index/pinche/pincheDetail/detail?id=${e.currentTarget.dataset.id}`,
     })
@@ -42,13 +41,13 @@ Page({
   onShow: function () {
     network.getMycarpool({
       success: (res) => {
-        console.log(res)
+
         this.setData({
           carPool:res.data.data
         })
       },
       fail: (res) => {
-        console.log(res)
+
       }
     })
   },
