@@ -27,6 +27,7 @@ Page({
   },
   join:function(){
     network.signUpAct({
+      id:this.data.detail.id,
       success:()=>{
         wx.showToast({
           title: '报名成功',

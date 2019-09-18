@@ -618,8 +618,8 @@ function getDetailAct({id,success,fail}){
     }
   })
 }
-function signUpAct({success,fail}){
-  util.req("join",{},res=>{
+function signUpAct({id,success,fail}){
+  util.req(`activity/${id}join`,{},res=>{
     if (res.code === 200) {
       success && success(res);
     } else {
