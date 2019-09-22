@@ -15,8 +15,11 @@
   </view>
 </view>
 
-<view class="cu-form-group des">说明 : {{detail.des}}</view>
-<view class="cu-form-group"  style="padding-left:80%;">
+<view class="cu-form-group des">
+<text class="rich-text">background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;background: #fff;</text>
+</view>
+
+<view class="cu-form-group join"  style="padding-left:80%;">
         <button class="cu-btn bg-blue" bindtap="join">报名</button>
     </view>
 

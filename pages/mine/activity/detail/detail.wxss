@@ -33,3 +33,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.des{
+    width:100%; 
+    position: relative;
+    min-height:80rpx;margin-top:17rpx;
+    background: #fff;
+}
