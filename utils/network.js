@@ -610,7 +610,7 @@ function getActivities({
   });
 }
 function getDetailAct({id,success,fail}){
-  util.req("activity/"+id,{},res=>{
+  util.getReq("activity/"+id,{},res=>{
     if (res.code === 200) {
       success && success(res);
     } else {

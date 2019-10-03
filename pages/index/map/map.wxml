@@ -13,13 +13,13 @@
     <cover-view class="barrage" style="position:fixed;left:{{left}}px">
 
     </cover-view>
-      <cover-view class="refresh">
-        <button class="cu-btn " bindtap="refresh">
-          <cover-image style="width:60rpx;height:60rpx;" src="/images/icon/刷新.png"></cover-image>
-        </button>
+
+      <cover-view class="refresh-wrapper">
+          <cover-image bindtap="refresh" class="switch" src="/images/icon/refresh.png"></cover-image>
       </cover-view>
+
       <cover-view bindtap="openLocation" class="switch-wrapper">
-        <cover-image class="switch" src="../../../image/chat/dingwei.png"></cover-image>
+        <cover-image class="switch" src="/images/icon/close.png"></cover-image>
       </cover-view>
   </map>
 </view>

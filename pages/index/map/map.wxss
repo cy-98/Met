@@ -5,17 +5,30 @@
   text-align: center;
 }
 .switch-wrapper::after{
-  content: "关闭定位";
+  content: "关闭";
   display: block;
   font-size: 20rpx;
 }
+
+.refresh-wrapper{
+  position: fixed;
+  right: 40rpx;
+  bottom: 120rpx;
+  text-align: center;
+}
+.refresh-wrapper::after{
+  content: "刷新";
+  display: block;
+  font-size: 20rpx;
+}
+
 .switch{
-  width: 80rpx;
+  width: 40rpx;
 }
 .refresh{
   position: fixed;
   right: 40rpx;
-  bottom: 100rpx;
+  bottom: 50rpx;
 }
 .barrage{
   position: fixed;
@@ -23,7 +36,6 @@
   text-shadow: 1px 1px 5px red, 1px 2px 5px blue;
 }
 .refresh{
-
   position: fixed;
   bottom: 200rpx;
   right: 50rpx;

@@ -61,8 +61,8 @@
       {
         "pagePath": "pages/index/map/map",
         "text": "遇见",
-        "iconPath": "images/icon/shipin_unselect.png",
-        "selectedIconPath": "images/icon/shipin.png"
+        "iconPath": "images/icon/dingwei_unselect.png",
+        "selectedIconPath": "images/icon/dingwei.png"
       },
       {
         "pagePath": "pages/chat-list/chat-list",
