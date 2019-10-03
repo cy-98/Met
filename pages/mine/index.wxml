@@ -39,7 +39,7 @@
         <text class="text-grey">学校认证</text>
       </navigator>
     </view>
-    <view class="cu-item arrow">
+    <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/index/timetable/timetable"               
         hover-class="none">
         <text class="cuIcon-newsfill text-red"></text>
@@ -55,7 +55,7 @@
         <text class="cuIcon-writefill text-cyan"></text>
         <text class="text-grey">考试</text>
       </navigator>
-    </view>
+    </view> -->
     <view class="cu-item arrow" bindtap='sethoby'>
       <button class="cu-btn content">
         <text class="cuIcon-writefill text-cyan"></text>
