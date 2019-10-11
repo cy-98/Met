@@ -33,11 +33,13 @@
     </navigator>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/mine/jwxt/jwxt" hover-class="none">
+    <view class="cu-item arrow" bindtap="identify">
+      <button class="cu-btn content">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">学校认证</text>
-      </navigator>
+      </button>
+        
+
     </view>
     <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/index/timetable/timetable"               
@@ -68,11 +70,11 @@
         <text class="text-grey">设置</text>
       </navigator>
     </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/mine/activity/activity" hover-class="none">
-        <text class="cuIcon-settingsfill text-orange"></text>
+    <view class="cu-item arrow" bindtap="toActivity">
+    <button class="content cu-btn">
+      <text class="cuIcon-settingsfill text-orange"></text>
         <text class="text-grey">活动</text>
-      </navigator>
+    </button>
     </view>
     <view class="cu-item arrow">
       <button class="content" open-type="contact" style="text-align:left" hover-class="none">

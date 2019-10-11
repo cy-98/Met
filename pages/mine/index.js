@@ -27,6 +27,16 @@ Page({
       url: '/pages/mine/feedback/feedback',
     })
   },
+  toActivity:function(){
+    wx.navigateTo({
+      url: '/pages/mine/activity/activity',
+    })
+  },
+  identify:function(){
+    wx.navigateTo({
+      url: '/pages/mine/jwxt/jwxt',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
