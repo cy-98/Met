@@ -628,6 +628,16 @@ function signUpAct({id,success,fail}){
   })
 }
 
+function getBanner({success, fail}){
+  util.getReq(`banner`,{},res=>{
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  })
+}
+
 module.exports = {
   updateUserInfo: updateUserInfo,
   getUserInfo: getUserInfo,
@@ -672,5 +682,6 @@ module.exports = {
   newCarpool: newCarpool,
   getActivities: getActivities,
   getDetailAct: getDetailAct,
-  signUpAct:signUpAct
+  signUpAct:signUpAct,
+  getBanner: getBanner
 }

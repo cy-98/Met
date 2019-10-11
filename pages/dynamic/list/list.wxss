@@ -19,9 +19,9 @@
   font-size: 30rpx;
   line-height: 100rpx;
   font-weight: 1200;
-  width: 70rpx;
-  height: 70rpx;
-  background: #8d3ee7;
+  width: 94rpx;
+  height: 94rpx;
+  background: #15b7b9;
   text-align: center;
   box-shadow: 0rpx 0rpx 20rpx rgb(241, 237, 237);
 }

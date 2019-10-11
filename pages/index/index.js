@@ -53,11 +53,32 @@ Page({
     location:false,
     markers: [],
   },
-  toAct:function(){
-    wx.navigateTo({
-      url: '/pages/mine/activity/activity',
+  getSwiperList() {
+    let that = this;
+    network.getBanner({
+      success: (res) => {
+        console.log(res)
+        that.setData({
+          swiperList: res.data
+        })
+        console.log(res)
+      },
+      fail: (res) => {
+        console.log(res)
+      }
     })
   },
+  bannerClick(e) {
+    // console.log(e.currentTarget.dataset.url)
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url
+    })
+  },
+  // toAct:function(){
+  //   wx.navigateTo({
+  //     url: '/pages/mine/activity/activity',
+  //   })
+  // },
   attent(e){
     let id = e.detail.target.id;
     console.log(id)
@@ -326,6 +347,7 @@ Page({
   },
   onShow(){
     let that =this;
+    this.getSwiperList()
     this.setData({
       userInfo:wx.getStorageSync("userInfo")
     });
