@@ -15,7 +15,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    let userInfo = wx.getStorageInfoSync('userInfo');
+    if(!userInfo){
+      wx.redirectTo({
+        url: '/pages/auth/auth',
+      })
+    }
   },
   bindStuIdInput: function(e) {
     this.setData({
@@ -56,6 +61,15 @@ Page({
     network.loginJwxt({
       data: data,
       success: (res) => {
+
+        getApp().getIMHandler().login({ 
+          username: this.data.stuId, 
+          avatar: this.data.stuId, 
+          nickname: this.data.stuId, 
+          success: res => { }, 
+          fail: res => { } }
+        );
+
         wx.hideLoading();
         wx.showToast({
           title: '登录成功',
