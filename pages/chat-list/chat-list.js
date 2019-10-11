@@ -12,10 +12,10 @@ Page({
    */
   data: {
     conversations: [],
-    totalUnread:0,
-    unReadMsg:0,
     contents:[],
-    unReadDynamic:0
+    unReadDynamic:0,
+    totalUnread: 0,
+    unReadMsg: 0,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -40,10 +40,17 @@ Page({
   onShow() {
     // getApp().checkUser();
     getApp().checkUserStuId();
-    let unReadMsg  = 0,
-        unReadDynamic = this.data.unReadDynamic,
-        totalUnread = unReadMsg + unReadDynamic;
-
+        let unReadMsg=0,
+        unReadDynamic = 0;
+        getApp().globalData.conversations.forEach(item => {
+          unReadMsg += item.unread_msg_count
+        })
+        let totalUnread = unReadMsg + unReadDynamic;
+        this.setData({
+          unReadMsg:unReadMsg,
+          totalUnread:totalUnread
+        })
+        console.log(totalUnread,unReadMsg,getApp().globalData.conversations)
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
         if ( data.event === "msg_sync") {
@@ -74,10 +81,10 @@ Page({
               con.timeStr =  msgShowTime(con.mtime);
               unReadMsg += con.unread_msg_count
 
-              //判断最后一条
-              
-
+            //** conversations循环结束
             });
+
+
             // 如果不是消息列表的消息 我们进行添加一个新的消息进来
             if (!hasItem) {
               let conversation = {}
@@ -92,11 +99,21 @@ Page({
             conversations.sort((a, b)=> {
               return b.mtime - a.mtime;
             });
+            console.log(unReadMsg)
+            totalUnread += unReadMsg
+            this.setData({
+              conversations: conversations,
+              unReadMsg: unReadMsg,
+              totalUnread: totalUnread
+            });
+            wx.setTabBarBadge({
+              index: 3,
+              text: this.data.totalUnread + '',
+            })
             //显示tabbar红点
 
 
             getApp().globalData.conversations = conversations;
-            
           });
           // console.log(this.data.totalUnread);
               // let unReadDynamic = this.data.unReadDynamic;
@@ -109,10 +126,6 @@ Page({
               //     text: this.data.totalUnread + '',
               //   })
               // };
-          this.setData({
-            conversations: conversations,
-            unReadMsg : unReadMsg
-          });
           
         }
 
@@ -151,6 +164,7 @@ Page({
           contents: res.data
         });
         //判断最后一条
+        console.log(this.data.unReadMsg,this.data.unReadDynamic)
         totalUnread = this.data.unReadMsg + this.data.unReadDynamic
           wx.setTabBarBadge({
             index: 3,
@@ -193,7 +207,9 @@ Page({
     this.setData({
       conversations: conversations
     });
+
     getApp().globalData.conversations = conversations;
+    console.log(conversations)
     // console.info(JSON.stringify(con));
     wx.navigateTo({
       url: '/pages/chat/chat?conversation=' + JSON.stringify(con),
@@ -229,17 +245,6 @@ Page({
 
     });
 
-    // let unReadDynamic = this.data.unReadDynamic;
-    
-    // this.setData({
-    //   totalUnread: unread + unReadDynamic
-    // });
-    // if (this.data.totalUnread !== 0) {
-    //   wx.setTabBarBadge({
-    //     index: 3,
-    //     text: this.data.totalUnread + '',
-    //   })
-    // };
 
     console.info(converstaions);
     converstaions.sort((a, b)=>{
