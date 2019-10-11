@@ -106,26 +106,19 @@ Page({
               unReadMsg: unReadMsg,
               totalUnread: totalUnread
             });
-            wx.setTabBarBadge({
-              index: 3,
-              text: this.data.totalUnread + '',
-            })
+            if(this.data.totalUnread !== 0){
+              wx.setTabBarBadge({
+                index: 3,
+                text: this.data.totalUnread + '',
+              })
+            }
+            
             //显示tabbar红点
 
 
             getApp().globalData.conversations = conversations;
           });
-          // console.log(this.data.totalUnread);
-              // let unReadDynamic = this.data.unReadDynamic;
-              // this.setData({
-              //   totalUnread: totalUnread + unReadDynamic
-              // });
-              // if (this.data.totalUnread !== 0) {
-              //   wx.setTabBarBadge({
-              //     index: 3,
-              //     text: this.data.totalUnread + '',
-              //   })
-              // };
+         
           
         }
 
@@ -166,10 +159,12 @@ Page({
         //判断最后一条
         console.log(this.data.unReadMsg,this.data.unReadDynamic)
         totalUnread = this.data.unReadMsg + this.data.unReadDynamic
+        if(totalUnread !== 0){
           wx.setTabBarBadge({
             index: 3,
             text: totalUnread + '',
           })
+        }
 
       },
       fail: (res) => {
@@ -207,6 +202,12 @@ Page({
     this.setData({
       conversations: conversations
     });
+    if (this.data.totalUnread !== 0) {
+      wx.setTabBarBadge({
+        index: 3,
+        text: this.data.totalUnread + '',
+      })
+    }
 
     getApp().globalData.conversations = conversations;
     console.log(conversations)
