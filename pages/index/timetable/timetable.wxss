@@ -1,6 +1,6 @@
 /* pages/timetable/index.wxss */
 
-.flex-item {
+/* .flex-item {
   width: 95rpx;
   height: 100px;
 }
@@ -16,7 +16,6 @@
 .smalltext {
   font-size: 8pt;
   color: #fff;
-  /* color: black; */
   padding-left: 2px;
 }
 
@@ -24,7 +23,6 @@
   display: flex;
   flex-direction: row;
   margin-left: 35rpx;
-  /* background-color: #d2e6b3; */
   color: #7cba23;
 }
 
@@ -54,4 +52,166 @@
 
 .change-week{
   background-color: #fff;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+page {
+  background: #fff;
+}
+.nav{
+  width: 100%;
+  z-index: 10000;
+  position: fixed;
+  color: #fff;
+}
+.nav .nav-flex{
+  display: inline-block;
+  width: 33%;
+}
+.nav .btn{
+  line-height: 60rpx;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  position: relative;
+  top: 20rpx;
+}
+.nav .title{
+  line-height: 60rpx;
+  font-size: 32rpx;
+  text-align: center;
+  position: relative;
+  top: 14rpx;
+}
+.function {
+  width: 30rpx;
+  height: 30rpx;
+  position: relative;
+  top: -10rpx;
+}
+
+.flex-item {
+  width: 94rpx;
+}
+.kcb-item {
+  position: absolute;             
+  display: flex;
+  align-items: center;
+  border-radius: 10rpx;
+}
+.smalltext {
+  font-size: 20rpx;
+  color: #fff;
+  padding-left: 4rpx;
+}
+
+.shrinkKCB{
+  white-space: nowrap;
+  background: #FFFCE3;
+}
+/* 隐藏scroll-view滚动条 */
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.shrinkKCB .btnx{
+  display: inline-block;
+  background-color: #C0EAFA;
+  margin: 6rpx 20rpx;
+  width: 100rpx;
+  height: 110rpx;
+  border-radius: 20rpx;
+  vertical-align:top;
+}
+.shrinkKCB .select{
+  /* 暂时设置的颜色 */
+  background-color: rgba(183,104,228, 0.77);
+}
+.shrinkKCB #cur{
+  background-color: rgba(97,249,233,0.77) !important;
+}
+.btnx .btnxtitle{
+  width: 100%;
+  height: 30rpx;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 30rpx;
+}
+.btnx .btnxtitle>text{
+  font-size: 30rpx;
+}
+.btnx .btnxcontent{
+  width: 70rpx;
+  height: 70rpx;
+  /* border: 1px solid black; */
+  margin: 6rpx auto;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  color: #000;
+}
+.top .month{
+  width: 65rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+.top-text {
+  /* width: 100rpx; */
+  flex: 1;
+  height: 70rpx;
+  font-size: 22rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border-radius: 12rpx; */
+}
+.bg {
+  /* background: #cce6ff; */
+  background: #DADADA;
+}
+
+.scroll {
+  height: 1170rpx;
+  z-index: 10;
+  position: fixed;
+}
+
+.left {
+  width: 65rpx;
+  height: 112rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.change-week{
+  background-color: #fff;
+}
+.classTime {
+  margin-right: 2rpx;
+}
+.classSection{
+  font-size: 26rpx;
+}
+.classTimestart{
+  font-size: 20rpx;
+}
+.classTimeend{
+  font-size: 20rpx;
 }

@@ -149,7 +149,6 @@ App({
 
 
 
-
     this.appIMDelegate = new AppIMDelegate(this);
     this.appIMDelegate.onLaunch(options);
 
@@ -159,6 +158,8 @@ App({
         let custom = wx.getMenuButtonBoundingClientRect();
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+
+        this.globalData.navHeight = e.statusBarHeight;
       }
     });
   },
