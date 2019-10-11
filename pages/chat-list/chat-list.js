@@ -40,6 +40,8 @@ Page({
   onShow() {
     // getApp().checkUser();
     getApp().checkUserStuId();
+
+    
         let unReadMsg=0,
         unReadDynamic = 0;
         getApp().globalData.conversations.forEach(item => {
@@ -50,6 +52,17 @@ Page({
           unReadMsg:unReadMsg,
           totalUnread:totalUnread
         })
+        if(this.data.totalUnread === 0){
+          wx.removeTabBarBadge({
+            index: 3,
+          })
+        }else{
+          wx.setTabBarBadge({
+            index: 3,
+            text: this.data.totalUnread,
+          })
+        }
+        
         console.log(totalUnread,unReadMsg,getApp().globalData.conversations)
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {

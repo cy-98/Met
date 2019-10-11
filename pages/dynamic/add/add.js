@@ -75,11 +75,11 @@ Page({
     });
   },
   PickerChange(e){
-    console.info(e);
+    // console.info(e);
     this.setData({index:e.detail.value});
   },
   changeAnnous(e){
-    console.info(e);
+    // console.info(e);
     this.setData({
       annous:e.detail.value
     });
@@ -89,7 +89,7 @@ Page({
     this.setData({
       unshake:true
     });
-    console.info(e.detail.formId);
+    // console.info(e.detail.formId);
     let formId = e.detail.formId;
     if(!this.data.content || this.data.content == ""){
       wx.showToast({
