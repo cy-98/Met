@@ -13,6 +13,7 @@ Page({
   data: {
     conversations: [],
     totalUnread:0,
+    unReadMsg:0,
     contents:[],
     unReadDynamic:0
   },
@@ -39,31 +40,26 @@ Page({
   onShow() {
     // getApp().checkUser();
     getApp().checkUserStuId();
-
-    this.setData({
-      totalUnread:0
-    })
+    let unReadMsg  = 0,
+        unReadDynamic = this.data.unReadDynamic,
+        totalUnread = unReadMsg + unReadDynamic;
 
     getApp().getIMHandler().setOnReceiveMessageListener({
       listener: (data) => {
-        let totalUnread = 0;
-        this.setData({
-          totalUnread:totalUnread
-        })
-        console.log(this.data.totalUnread);
-        if (data.event === "msg_sync") {
+        if ( data.event === "msg_sync") {
+          console.log(data) 
+          let conversations = this.data.conversations;
           data.messages.forEach(msg => {
             let hasItem = false;
-            let conversations = this.data.conversations;
             // 判断消息是否是已有列表中的消息
             conversations.forEach(con => {
               if (con.username === msg.from_username) {
                 hasItem = true;
                 con.unread_msg_count++;
                 con.mtime = Date.now();
-                getApp().globalData.messages.forEach(c => {
-                  if (c.from_username === msg.from_username) {
-                    c.msgs.push(msg); 
+                getApp().globalData.messages.forEach(globalCvs => {
+                  if (globalCvs.from_username === globalCvs.from_username) {
+                    globalCvs.msgs.push(msg); 
                   }
                 });
                 console.log('showed')
@@ -76,20 +72,10 @@ Page({
                   con.latestMsg = "[图片]";
               }
               con.timeStr =  msgShowTime(con.mtime);
-              totalUnread += con.unread_msg_count
+              unReadMsg += con.unread_msg_count
 
               //判断最后一条
-              console.log(this.data.totalUnread);
-              let unReadDynamic = this.data.unReadDynamic;
-              this.setData({
-                totalUnread: totalUnread + unReadDynamic
-              });
-              if (this.data.totalUnread !== 0) {
-                wx.setTabBarBadge({
-                  index: 3,
-                  text: this.data.totalUnread + '',
-                })
-              };
+              
 
             });
             // 如果不是消息列表的消息 我们进行添加一个新的消息进来
@@ -107,16 +93,27 @@ Page({
               return b.mtime - a.mtime;
             });
             //显示tabbar红点
-            console.log(this.data.totalUnread)
-            
+
+
             getApp().globalData.conversations = conversations;
-            this.setData({
-              conversations: conversations
-            });
-
- 
-
+            
           });
+          // console.log(this.data.totalUnread);
+              // let unReadDynamic = this.data.unReadDynamic;
+              // this.setData({
+              //   totalUnread: totalUnread + unReadDynamic
+              // });
+              // if (this.data.totalUnread !== 0) {
+              //   wx.setTabBarBadge({
+              //     index: 3,
+              //     text: this.data.totalUnread + '',
+              //   })
+              // };
+          this.setData({
+            conversations: conversations,
+            unReadMsg : unReadMsg
+          });
+          
         }
 
       }
@@ -141,10 +138,10 @@ Page({
     // this.setData({conversations: getApp().globalData.conversations});
 
     //动态通知
-    let unReadDynamic = 0;
     network.getMessages({
       success: (res) => {
         res.data.forEach(item => {
+          console.log(unReadDynamic)
           if (item.hasRead === false) {
             unReadDynamic += 1;
           }
@@ -154,13 +151,12 @@ Page({
           contents: res.data
         });
         //判断最后一条
-        console.log(this.data.totalUnread);
-        if (this.data.totalUnread !== 0) {
+        totalUnread = this.data.unReadMsg + this.data.unReadDynamic
           wx.setTabBarBadge({
             index: 3,
-            text: this.data.totalUnread + '',
+            text: totalUnread + '',
           })
-        };
+
       },
       fail: (res) => {
         console.log(res.data)
@@ -205,40 +201,45 @@ Page({
   },
   // 设置最新的消息
   setLastMessage(converstaions, messages) {
+    console.log(converstaions,messages)
     let unread = 0;
     converstaions.forEach(conversation => {
-      messages.forEach(con => {
-        let type = con.msgs[con.msgs.length - 1].content.msg_body.extras.type;
-        if (con.from_username === conversation.username) {
-          console.info(type);
-          if (type === undefined || type === "text")
-            conversation.latestMsg = con.msgs[con.msgs.length - 1].content.msg_body.text;
-          else if (type === "voice")
-            conversation.latestMsg = "[语音]";
-          else if (type === "image")
-            conversation.latestMsg = "[图片]";
+      if(messages){
+        messages.forEach(con => {
+          let type = con.msgs[con.msgs.length - 1].content.msg_body.extras.type;
+          if (con.from_username === conversation.username) {
+            console.info(type);
+            if (type === undefined || type === "text")
+              conversation.latestMsg = con.msgs[con.msgs.length - 1].content.msg_body.text;
+            else if (type === "voice")
+              conversation.latestMsg = "[语音]";
+            else if (type === "image")
+              conversation.latestMsg = "[图片]";
 
-          // const time = dealChatTime(Date.now(), con.msgs[con.msgs.length - 1].ctime_ms);
-          // conversation.timeStr = time.timeStr;
-          conversation.timeStr = msgShowTime(conversation.mtime);
+            // const time = dealChatTime(Date.now(), con.msgs[con.msgs.length - 1].ctime_ms);
+            // conversation.timeStr = time.timeStr;
+            conversation.timeStr = msgShowTime(conversation.mtime);
 
-        }
-      });
+          }
+        });
+      }
+      
+      console.log(unread)
       unread += conversation.unread_msg_count;
 
-
     });
 
-    let unReadDynamic = this.data.unReadDynamic;
-    this.setData({
-      totalUnread: unread + unReadDynamic
-    });
-    if (this.data.totalUnread !== 0) {
-      wx.setTabBarBadge({
-        index: 3,
-        text: this.data.totalUnread + '',
-      })
-    };
+    // let unReadDynamic = this.data.unReadDynamic;
+    
+    // this.setData({
+    //   totalUnread: unread + unReadDynamic
+    // });
+    // if (this.data.totalUnread !== 0) {
+    //   wx.setTabBarBadge({
+    //     index: 3,
+    //     text: this.data.totalUnread + '',
+    //   })
+    // };
 
     console.info(converstaions);
     converstaions.sort((a, b)=>{
