@@ -166,6 +166,7 @@ App({
   onHide() {
     this.appIMDelegate.onHide();
   },
+  // onShow
   onShow(options) {
       this.appIMDelegate.onShow(options);
       //初始获取定位权限

@@ -45,15 +45,18 @@ Page({
     //获取问题
 
     //获取别人的信息
-    let userInfo = wx.getStorageSync("userInfo");
+    const userInfo = wx.getStorageSync("userInfo");
+    console.log(userInfo)
+    const { school, major, nickName, avatarUrl } = userInfo
     this.setData({
       person:{
-        school:userInfo.school,
-        major:userInfo.major,
-        name:userInfo.name,
-        avatar:userInfo.avatar
+        school: school,
+        major: major,
+        name: nickName,
+        avatar: avatarUrl
       }
     })
+
   },
 
   /**
