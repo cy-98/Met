@@ -5,6 +5,54 @@
 page{
   height: 100%;
 }
+
+.user-bg{
+  background-image: url(https://image.weilanwl.com/color2.0/plugin/qpct2148.jpg);
+  background-size: cover;
+  height: 550rpx;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.user-bg .avatar{
+  position: relative;
+  top: 400rpx;
+  left: -270rpx;
+}
+
+.user-bg .cu-tag{
+  margin: 0;
+}
+
+.user-bg .nickname{
+  position: relative;
+  top: 250rpx;
+  left: -10rpx;
+  font-size: 36rpx;
+  font-weight: 2.5;
+}
+
+.user-bg .major{
+  position: relative;
+  top: 300rpx;
+  left: -90rpx;
+  font-size: 24rpx;
+}
+
+.user-bg .cuIcon-back{
+  position: relative;
+  top: -125rpx;
+  left: -300rpx;
+  /* font-size: 36rpx; */
+  font-weight: 2.5;
+}
+
+
 .UCenter-bg {
   background-image: url(https://image.weilanwl.com/color2.0/index.jpg);
   background-size: cover;
@@ -46,10 +94,10 @@ page{
   line-height: 60rpx;
   margin-top: 0;
 }
-.float{
+/* .float{
   width: 100vw;
   float: left;
-}
+} */
 .info_wrapper{
   transition: 0.3s;
   width: 200vw;
@@ -71,10 +119,6 @@ page{
   height: 80rpx;
   width: 300rpx;
   margin: 0 auto;
-}
-.content{ width: 100%; height: auto; overflow: hidden; margin: 50rpx auto;}
-.cu-tag{ 
-  padding: 4rpx 10rpx; margin: 20rpx; border-radius: 20rpx; float: left; color: #fff;     font-size: 28rpx;
 }
 
 .cu-btn{

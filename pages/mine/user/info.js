@@ -41,6 +41,11 @@ Page({
     ranIndex: Math.floor(Math.random() * 5),
     dynamics:[]
   },
+  back:function(e){
+    wx.navigateBack({
+      
+    });
+  },
 
   tapchange: function(e) {
     // this.index = e.target.dataset.id;
