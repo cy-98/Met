@@ -59,12 +59,6 @@
         "selectedIconPath": "images/icon/shipin.png"
       },
       {
-        "pagePath": "pages/index/map/map",
-        "text": "遇见",
-        "iconPath": "images/icon/dingwei_unselect.png",
-        "selectedIconPath": "images/icon/dingwei.png"
-      },
-      {
         "pagePath": "pages/chat-list/chat-list",
         "text": "消息",
         "iconPath": "images/icon/xiaoxi_unselect.png",
