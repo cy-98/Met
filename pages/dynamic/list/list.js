@@ -1,6 +1,7 @@
 // pages/dynamic/list.js
 var network = require("../../../utils/network.js");
 import dynamic from '../../../modules/dynamic/dynamic.js';
+let app = getApp();
 Page({
 
   /**
@@ -19,7 +20,13 @@ Page({
     scroll:0,
     readyRefresh:false,
     clientX:0,
-    clientY:0
+    clientY:0,
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
+    scrollWidth: 0,
+    scrollLeftWidth: 0,
+    windowWidth: 0
   },
   tabSelect(e) {
     this.setData({
@@ -48,7 +55,25 @@ Page({
     this.getTypeDynamic(0,1,10);
     this.getTypeDynamic(1,1,10);
     this.getTypeDynamic(2, 1, 10);
+    this.getScrollWidth();
   },
+
+  getScrollWidth: function () {
+    var scrollWidth = wx.getSystemInfoSync().windowWidth;
+    this.setData({
+      scrollWidth: scrollWidth / 5 * 10,
+      windowWidth: scrollWidth
+    })
+  },
+  scrollleft: function (e) {
+    console.log(e);
+  },
+  lowerRight: function (e) {
+    console.log(e);
+  },
+
+
+
   checkCor: function () {
     if (this.data.TabCur > 3) {
       this.setData({

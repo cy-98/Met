@@ -45,3 +45,16 @@
   left: 50%;top: 50%;transform: translate(-50%,-50%);
   border-radius: 5rpx;
 }
+
+.flex-wrap{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  height:180rpx;
+}
+.sertit-dis .flex-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}

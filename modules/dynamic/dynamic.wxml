@@ -1,6 +1,6 @@
 <template name="dynamic">
 
-  <view class="cu-card dynamic no-card ">
+  <!-- <view class="cu-card dynamic no-card ">
     <view class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="cu-item"  data-user='{{user}}' bindtap="{{anonymous === 0 ? 'clickAvatar':'null'}}">
@@ -50,6 +50,79 @@
       </view>
 
 
+    </view>
+  </view> -->
+
+
+  <view class="cu-card dynamic no-card">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar">
+        <view class="cu-item" data-user='{{user}}' bindtap="{{anonymous === 0 ? 'clickAvatar':'null'}}">
+          <view class="cu-avatar round lg" style="background-image:url({{avatar}});"></view>
+          <view class="content flex-sub">
+            <view>{{nickname}}</view>
+            <view class="text-gray text-sm flex justify-between">
+              {{createTime}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="text-content" data-id="{{id}}" bindtap='clickContent'>
+        {{content}}
+      </view>
+      <view class="grid flex-sub padding-lr col-3 grid-square" data-id="{{id}}" bindtap='clickContent'>
+        <view class="bg-img" style="background-image:url({{item}});" wx:for="{{images}}" wx:for-index='index' wx:key="index">
+        </view>
+      </view>
+
+      <view class="padding bg-white solid-bottom">
+
+        <view class="cu-tag bg-cyan round"># 矿大南湖</view>
+
+      </view>
+
+      <view class="text-gray text-sm padding " data-id="{{id}}" bindtap='clickContent'>
+        <view class="cu-avatar-group" style="float:left;font-size:32rpx;padding-left:20rpx">
+          <view class="cu-avatar round sm " wx:for="{{4}}" wx:key style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big1000{{index+1}}.jpg);"></view>
+        </view>
+       
+       <view style="line-height:48rpx;float:left">
+          + 24名用户点赞
+       </view>
+
+        <view style="float:right;font-size:32rpx">
+
+          <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+          <text class="cuIcon-messagefill margin-lr-xs"></text> {{comments.length}}
+        </view>
+
+      </view>
+      <view style="clear:both"></view>
+
+      <!-- <view class="cu-list menu-avatar comment solids-top">
+      <view class="cu-item" wx:for="{{comments}}">
+        <view class="cu-avatar round" style="background-image:url({{item.user.avatar}});"></view>
+        <view class="content">
+          <view class="text-grey">{{item.user.nickname}}</view>
+          <view class="text-gray text-content text-df">
+            {{item.content}}
+          </view>
+          <view class="bg-grey padding-sm radius margin-top-sm text-sm" wx:if="{{item.replyUser}}">
+            <view class="flex">
+              <view>{{item.replyUser.nickname}}</view>
+              <view class="flex-sub">妹妹，你在帮他们给黑暗找借口吗?</view>
+            </view>
+          </view>
+          <view class="margin-top-sm flex justify-between">
+            <view class="text-gray text-df">{{item.createTime}}</view>
+            <view>
+              <text class="cuIcon-appreciatefill text-red"></text>
+              <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view> -->
     </view>
   </view>
 
