@@ -1,4 +1,58 @@
 /* pages/mine/index.wxss */
+
+
+.user-bg{
+  background-image: url(https://image.weilanwl.com/color2.0/plugin/qpct2148.jpg);
+  background-size: cover;
+  height: 550rpx;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.user-bg .avatar{
+  position: relative;
+  top: 400rpx;
+  left: -270rpx;
+}
+
+.user-bg .cu-tag{
+  margin: 0;
+}
+
+.user-bg .nickname{
+  position: relative;
+  top: 300rpx;
+  left: -10rpx;
+  font-size: 36rpx;
+  font-weight: 2.5;
+}
+
+.user-bg .major{
+  position: relative;
+  top: 340rpx;
+  left: -90rpx;
+  font-size: 24rpx;
+}
+
+.user-bg .cuIcon-back{
+  position: relative;
+  top: -125rpx;
+  left: -340rpx;
+  /* font-size: 36rpx; */
+  font-weight: 2.5;
+}
+
+.cu-list.grid>.cu-item [class*=cuIcon]{
+  margin-top: 0;
+}
+
+
+
 .UCenter-bg {
   background-image: url(https://image.weilanwl.com/color2.0/index.jpg);
   background-size: cover;

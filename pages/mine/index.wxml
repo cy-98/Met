@@ -1,17 +1,17 @@
 <!--pages/mine/index.wxml-->
 <scroll-view scroll-y class="scrollPage">
-  <view  class="UCenter-bg">
+  <!-- <view  class="UCenter-bg">
     <image 
     src="{{person.avatar}}" class="{{nav_obj.beforeScrollCss}} head  " mode="aspectFit"></image>
     <view class="text-xl">{{person.name}}</view>
-    <!-- <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image> -->
+    <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class="padding flex text-center text-grey bg-white shadow-warp">
   <navigator class="content" url="/pages/mine/user/myAttention" hover-class="none">
     <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
         <text class="cuIcon-attentionfill text-blue"></text>
-        <!-- <image class="iconf" src="../../images/icon/guanzhu-.png"></image> -->
+
          <text style="line-height:38rpx;">关注</text> </view>
     </view>
   </navigator>
@@ -19,7 +19,7 @@
       <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
       <text class="cuIcon-discoverfill text-blue"></text>
-        <!-- <image class="iconf" src="../../images/icon/shipin.png"></image> -->
+
          <text style="line-height:38rpx;">动态</text> </view>
     </view>
     </navigator>
@@ -27,18 +27,162 @@
       <view class="flex flex-sub flex-direction solid-right" >
       <view class="margin-top-sm">
         <text class="cuIcon-peoplefill text-blue"></text>
-        <!-- <image class="iconf" src="../../images/icon/wode.png"></image> -->
+
          <text style="line-height:38rpx;">粉丝</text> </view>
     </view>
     </navigator>
+  </view> -->
+
+
+  <view class="user-bg">
+    <!-- <image src="{{avatar}}" class="avatar" mode="widthFix">
+        <view class="cu-tag badge {{index%2==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>    
+    </image> -->
+
+    <view class="cu-avatar round lg avatar" style="background-image:url({{person.avatar}});">
+      <view class="cu-tag badge {{person.gender !== 1 ? 'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
+    </view>
+    <view>
+      <text class="nickname">{{person.name +' '}}</text>
+      <text class="major">{{person.major}} - {{person.grade}}</text>
+    </view>
   </view>
+
+
+  <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-sm text-orange">{{fans}}0</view>
+      <view class="margin-top-xs text-sm">粉丝</view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-sm text-blue ">{{focus}}0</view>
+      <view class="margin-top-xs text-sm">
+        关注</view>
+    </view>
+    <view class="flex flex-sub flex-direction">
+      <view class="text-sm text-green">{{dynamicNum}}3</view>
+      <view class="margin-top-xs text-sm">
+        动态</view>
+    </view>
+
+    <view class="flex flex-sub flex-direction">
+    </view>
+
+    <view class="flex flex-sub flex-direction">
+      <button class="bg-gradual-red cu-btn round">编辑</button>
+    </view>
+
+  </view>
+
+
+  <view class="cu-bar bg-white">
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-green">我的学习</text>
+      <text class="bg-green" style="width:2rem"></text>
+      <!-- last-child选择器-->
+    </view>
+  </view>
+
+  <view class="cu-list grid col-5 no-border">
+    <view class="cu-item">
+      <view class="cuIcon-recordfill text-red">
+      </view>
+      <text>课表</text>
+    </view>
+
+    <view class="cu-item">
+      <view class="cuIcon-picfill text-cyan">
+      </view>
+      <text>考试</text>
+    </view>
+    <view class="cu-item">
+      <view class="cuIcon-noticefill text-green">
+      </view>
+      <text>成绩</text>
+    </view>
+    <view class="cu-item">
+      <view class="cuIcon-discoverfill text-green">
+      </view>
+      <text>空教室</text>
+    </view>
+  </view>
+
+
+
+  <view class="cu-bar bg-white">
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-green">我的一卡通</text>
+      <text class="bg-green" style="width:2rem"></text>
+      <!-- last-child选择器-->
+    </view>
+  </view>
+
+  <view class="cu-list grid col-5 no-border">
+    <view class="cu-item">
+      <view class="cuIcon-recordfill text-blue">
+      </view>
+      <text>余额</text>
+    </view>
+
+    <view class="cu-item">
+      <view class="cuIcon-picfill text-green">
+      </view>
+      <text>充值</text>
+    </view>
+    <view class="cu-item">
+      <view class="cuIcon-noticefill text-cyan">
+      </view>
+      <text>流水</text>
+    </view>
+  </view>
+
+
+
+  <view class="cu-bar bg-white">
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-green">我的图书馆</text>
+      <text class="bg-green" style="width:2rem"></text>
+      <!-- last-child选择器-->
+    </view>
+  </view>
+
+  <view class="cu-list grid col-5 no-border">
+    <view class="cu-item">
+      <view class="cuIcon-recordfill text-green">
+      </view>
+      <text>馆藏查询</text>
+    </view>
+
+    <view class="cu-item">
+      <view class="cuIcon-recordfill text-green">
+      </view>
+      <text>个人信息</text>
+    </view>
+
+    <view class="cu-item">
+      <view class="cuIcon-picfill text-green">
+      </view>
+      <text>当前借阅</text>
+    </view>
+    <view class="cu-item">
+      <view class="cuIcon-noticefill text-green">
+      </view>
+      <text>历史借阅</text>
+    </view>
+  </view>
+
+
+
+
+
+
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow" bindtap="identify">
       <button class="cu-btn content">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">学校认证</text>
       </button>
-        
+
 
     </view>
     <!-- <view class="cu-item arrow">
@@ -71,19 +215,19 @@
       </navigator>
     </view>
     <view class="cu-item arrow" bindtap="toActivity">
-    <button class="content cu-btn">
-      <text class="cuIcon-settingsfill text-orange"></text>
+      <button class="content cu-btn">
+        <text class="cuIcon-settingsfill text-orange"></text>
         <text class="text-grey">活动</text>
-    </button>
+      </button>
     </view>
     <view class="cu-item arrow">
       <button class="content" open-type="contact" style="text-align:left" hover-class="none">
         <text class="cuIcon-settingsfill text-orange"></text>
         <text class="text-grey">在线客服</text>
-      </button> 
+      </button>
     </view>
-   
+
   </view>
   <view class="cu-tabbar-height"></view>
-  
+
 </scroll-view>

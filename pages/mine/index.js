@@ -51,7 +51,9 @@ Page({
         school:userInfo.school,
         major:userInfo.major,
         name:userInfo.name,
-        avatar:userInfo.avatar
+        avatar:userInfo.avatar,
+        gender:userInfo.gender,
+        grade: userInfo.grade
       }
     })
   },
