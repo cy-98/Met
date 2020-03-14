@@ -1,34 +1,16 @@
 <!--pages/mine/user/info.wxml-->
 <import src="../../../modules/dynamic/dynamic.wxml" />
 
-<!-- <cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">用户信息</view>
-</cu-custom> -->
-<!-- <scroll-view scroll-y class=""> -->
-  <!-- <view class="UCenter-bg">
-    <image src="{{avatar}}" class="avatar {{nav_obj.beforeScrollCss}}" mode="widthFix"></image>
-    <view class="text-xl">{{nickname}}
-      <text class="{{gender === 1 ?'cuIcon-male text-blue':'cuIcon-female text-red'}}"></text>
-    </view>
-    <view style="width:300rpx;">
-
-      <view wx:if="{{follower}}" style="float:left">
-        <form class="form-focus" report-submit="true" bindsubmit="cancelFocus">
-          <button form-type='submit' class="cu-btn bg-blue margin-tb-sm sm">取消关注</button>
-        </form>
-      </view>
-      <view wx:else style="float:left;width:140rpx">
-        <form class="form-focus" report-submit="true" bindsubmit="focus">
-          <button form-type="submit" class="cu-btn bg-blue margin-tb-sm sm">关注</button>
-        </form>
-      </view>
-
-      <button style="float:left;width:43%;margin-left:20rpx" bindtap="sendMessage" class="cu-btn bg-red margin-tb-sm sm">发消息</button>
-    </view>
+  <view class="doommview" bindtap="bindbt">
+      <block wx:for="{{doommData}}" wx:key="id">
+        <view wx:if="{{item.display}}" class=" aon text-white" style="animation: first {{item.time}}s infinite linear;top:{{item.top}}%;">
+              {{item.text}}
+        </view>
+      </block>
+  </view>
 
 
-  </view> -->
+
 
   <view class="user-bg">
     <!-- <image src="{{avatar}}" class="avatar" mode="widthFix">
@@ -67,7 +49,8 @@
     </view>
 
     <view class="flex flex-sub flex-direction">
-      <button class="bg-gradual-red cu-btn round">关注</button>
+      <button wx:if="{{follower}}" class="bg-gradual-red cu-btn round" bindtap="cancelFocus">取消关注</button>
+      <button wx:else class="bg-gradual-red cu-btn round" bindtap="focus">关注</button>
     </view>
 
   </view>

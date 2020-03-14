@@ -12,7 +12,8 @@ Page({
     picker: ['表白墙', '约学习', "二手"],
     content:"",
     annous:false,
-    unshake:false
+    unshake:false,
+    topic:''
   },
 
   ChooseImage:function(){
@@ -74,6 +75,11 @@ Page({
       'content':e.detail.value
     });
   },
+  topicInput(e){
+    this.setData({
+      'topic': e.detail.value
+    })
+  },
   PickerChange(e){
     // console.info(e);
     this.setData({index:e.detail.value});
@@ -103,7 +109,7 @@ Page({
     let data = {
       content : this.data.content,
       images: this.data.imgList.join(","),
-      type: this.data.index,
+      topic: this.data.topic,
       anonymous: this.data.annous ? 1 : 0,
       formId:formId
     }

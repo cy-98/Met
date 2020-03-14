@@ -1,6 +1,26 @@
 /* pages/mine/index.wxss */
 
 
+
+.aon{
+position: absolute;
+white-space:nowrap;/* 防止向下换行*/
+animation-timing-function: linear;
+animation-fill-mode: none;
+}
+.doommview{
+  z-index: 3;
+  height: 20%;
+  width: 100%;
+  top: 100rpx;
+  position: absolute;
+}
+
+@keyframes first{
+  from{left: 100%; }
+  to{left: -100%;}
+}
+
 .user-bg{
   background-image: url(https://image.weilanwl.com/color2.0/plugin/qpct2148.jpg);
   background-size: cover;

@@ -10,13 +10,16 @@ Page({
   data: {
     TabCur: 0,
     scrollLeft: 0,
-    pages:[1,1,1,1],
+    page: 1,
+    totalPage:1000,
+    // pages:[1,1,1,1],
     dynamics:[],
-    followDynamic:[],
-    expressDynamic:[],
-    talkDynamic:[],
-    secondDynamic:[],
+    // followDynamic:[],
+    // expressDynamic:[],
+    // talkDynamic:[],
+    // secondDynamic:[],
     //滚动页面位置
+    loading: false,
     scroll:0,
     readyRefresh:false,
     clientX:0,
@@ -26,7 +29,8 @@ Page({
     Custom: app.globalData.Custom,
     scrollWidth: 0,
     scrollLeftWidth: 0,
-    windowWidth: 0
+    windowWidth: 0,
+    recommend:[]
   },
   tabSelect(e) {
     this.setData({
@@ -50,18 +54,44 @@ Page({
     wx.showLoading({
       title: '加载中....',
     });
-    this.getFollowDynamic(1,10);
+    // this.getFollowDynamic(1,10);
     this.getRecommendDynamic(1,5);
-    this.getTypeDynamic(0,1,10);
-    this.getTypeDynamic(1,1,10);
-    this.getTypeDynamic(2, 1, 10);
+    // this.getTypeDynamic(0,1,10);
+    // this.getTypeDynamic(1,1,10);
+    // this.getTypeDynamic(2, 1, 10);
+
+
     this.getScrollWidth();
+
+
+    //获取推荐的人
+    network.getRecommend({
+      success: (res) => {
+        let recommend = res.data.data;
+        recommend.forEach(item => {
+          item.focus = false;
+        });
+        var scrollWidth = wx.getSystemInfoSync().windowWidth;
+        this.setData({
+          recommend: recommend,
+          scrollWidth: scrollWidth / 5 * (recommend.length + 1),
+          windowWidth: scrollWidth
+        })
+        console.log(this.data.recommend)
+
+      },
+      fail: (res) => {
+        console.log(res)
+      }
+    })
+
   },
+
 
   getScrollWidth: function () {
     var scrollWidth = wx.getSystemInfoSync().windowWidth;
     this.setData({
-      scrollWidth: scrollWidth / 5 * 10,
+      scrollWidth: scrollWidth / 5 * 1,
       windowWidth: scrollWidth
     })
   },
@@ -72,6 +102,15 @@ Page({
     console.log(e);
   },
 
+  clickUser: function(e){
+    console.info(e);
+    wx.navigateTo({
+      url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.userid,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
 
 
   checkCor: function () {
@@ -110,6 +149,9 @@ Page({
   },
   getRecommendDynamic: function(page, size){
     // 获取相关数据
+    this.setData({
+      loading: true
+    })
     network.getRecommendDynamic({
       data: { page: page, size: size }, success: res => {
         wx.hideLoading();
@@ -128,90 +170,95 @@ Page({
         });
         if( page === 1){
           this.setData({
-            dynamics: res.data.data
+            dynamics: res.data.data,
+            loading:false,
+            totalPage: res.data.totalPage
           });
           return 
         }
         let dynamics = this.data.dynamics || [];
         this.setData({
-          dynamics: dynamics.concat(res.data.data)
+          dynamics: dynamics.concat(res.data.data),
+          loading: false,
+          totalPage: res.data.totalPage
         });
-      }
-    });
-  },
-  getFollowDynamic: function(page,size){
-    network.getFollowDynamic({
-      data: { page: page, size: size }, success: res => {
-        wx.hideLoading();
-
-        res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
-            item.commentNum = item.comments.length,
-            item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100,
-            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
-            item.anonymous = item.anonymous;
-            if (item.anonymous === 1) {
-              item.nickname = item.annonyUser.nickname;
-              item.avatar = item.annonyUser.avatar;
-            }
-        });
-        if (page === 1) {
-          this.setData({
-            followDynamic: res.data.data
-          });
-          return
-        }
-        let followDynamic = this.data.followDynamic || [];
-        this.setData({
-          followDynamic: followDynamic.concat(res.data.data)
-        })
-      }
-    });
-  },
-  getTypeDynamic: function(type, page, size){
-    network.getTypeDynamic({
-      type: type,
-      data: { page: page, size: size }, success: res => {
-        wx.hideLoading();
-
-        res.data.data.forEach(item => {
-          item.nickname = item.user.nickname,
-            item.avatar = item.user.avatar,
-            item.commentNum = item.comments.length,
-            item.good = item.liker.length,
-            item.watch = (new Date().getTime()) % 100,
-            item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
-            item.anonymous = item.anonymous;
-            if (item.anonymous === 1) {
-              item.nickname = item.annonyUser.nickname;
-              item.avatar = item.annonyUser.avatar;
-            }
-        });
-        if(type === 0){
-          let expressDynamic = this.data.expressDynamic|| [];
-          expressDynamic = page === 1?[]:expressDynamic;
-          this.setData({
-            expressDynamic: expressDynamic.concat(res.data.data)
-          });
-        }else if(type === 1){
-          let talkDynamic = this.data.talkDynamic || [];
-          talkDynamic = page === 1 ? [] : talkDynamic;
-          this.setData({
-            talkDynamic: talkDynamic.concat(res.data.data)
-          });
-        }else if(type === 2){
-          let secondDynamic = this.data.secondDynamic || [];
-          secondDynamic = page === 1 ? [] : secondDynamic;
-          this.setData({
-            secondDynamic: secondDynamic.concat(res.data.data)
-          });
-        }
 
       }
     });
   },
+  // getFollowDynamic: function(page,size){
+  //   network.getFollowDynamic({
+  //     data: { page: page, size: size }, success: res => {
+  //       wx.hideLoading();
+
+  //       res.data.data.forEach(item => {
+  //         item.nickname = item.user.nickname,
+  //           item.avatar = item.user.avatar,
+  //           item.commentNum = item.comments.length,
+  //           item.good = item.liker.length,
+  //           item.watch = (new Date().getTime()) % 100,
+  //           item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+  //           item.anonymous = item.anonymous;
+  //           if (item.anonymous === 1) {
+  //             item.nickname = item.annonyUser.nickname;
+  //             item.avatar = item.annonyUser.avatar;
+  //           }
+  //       });
+  //       if (page === 1) {
+  //         this.setData({
+  //           followDynamic: res.data.data
+  //         });
+  //         return
+  //       }
+  //       let followDynamic = this.data.followDynamic || [];
+  //       this.setData({
+  //         followDynamic: followDynamic.concat(res.data.data)
+  //       })
+  //     }
+  //   });
+  // },
+  // getTypeDynamic: function(type, page, size){
+  //   network.getTypeDynamic({
+  //     type: type,
+  //     data: { page: page, size: size }, success: res => {
+  //       wx.hideLoading();
+
+  //       res.data.data.forEach(item => {
+  //         item.nickname = item.user.nickname,
+  //           item.avatar = item.user.avatar,
+  //           item.commentNum = item.comments.length,
+  //           item.good = item.liker.length,
+  //           item.watch = (new Date().getTime()) % 100,
+  //           item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+  //           item.anonymous = item.anonymous;
+  //           if (item.anonymous === 1) {
+  //             item.nickname = item.annonyUser.nickname;
+  //             item.avatar = item.annonyUser.avatar;
+  //           }
+  //       });
+  //       if(type === 0){
+  //         let expressDynamic = this.data.expressDynamic|| [];
+  //         expressDynamic = page === 1?[]:expressDynamic;
+  //         this.setData({
+  //           expressDynamic: expressDynamic.concat(res.data.data)
+  //         });
+  //       }else if(type === 1){
+  //         let talkDynamic = this.data.talkDynamic || [];
+  //         talkDynamic = page === 1 ? [] : talkDynamic;
+  //         this.setData({
+  //           talkDynamic: talkDynamic.concat(res.data.data)
+  //         });
+  //       }else if(type === 2){
+  //         let secondDynamic = this.data.secondDynamic || [];
+  //         secondDynamic = page === 1 ? [] : secondDynamic;
+  //         this.setData({
+  //           secondDynamic: secondDynamic.concat(res.data.data)
+  //         });
+  //       }
+
+  //     }
+  //   });
+  // },
 
 
 
@@ -267,45 +314,46 @@ Page({
   },
   //监听用户下拉动作
   onPullDownRefresh: function() {
+    if (this.data.loading) return;
     console.log('刷新');
     // 标题栏显示刷新图标，转圈圈
     wx.showNavigationBarLoading();
-    let pages = this.data.pages;
-    let curr = this.data.TabCur;
-    switch (curr) {
-      case 0:
-        // this.setData({
-        //   dynamics:[]
-        // });
-        this.getRecommendDynamic(1, 5);
-        break;
-      case 1:
-        // this.setData({
-        //   followDynamic: []
-        // });
-        this.getFollowDynamic(1, 10);
-        break;
-      case 2:
-        // this.setData({
-        //   expressDynamic: []
-        // });
-        this.getTypeDynamic(0,1, 10);
-        break;
-      case 3:
-        // this.setData({
-        //   talkDynamic: []
-        // });
-        this.getTypeDynamic(1, 1, 10);
-        break;
-      case 4:
-        // 拼车
-        break;
-      case 5:
-        this.getTypeDynamic(2, 1, 10);
-        break;
+    this.getRecommendDynamic(1, 5);
+    // let curr = this.data.TabCur;
+    // switch (curr) {
+    //   case 0:
+    //     // this.setData({
+    //     //   dynamics:[]
+    //     // });
+    //     this.getRecommendDynamic(1, 5);
+    //     break;
+    //   case 1:
+    //     // this.setData({
+    //     //   followDynamic: []
+    //     // });
+    //     this.getFollowDynamic(1, 10);
+    //     break;
+    //   case 2:
+    //     // this.setData({
+    //     //   expressDynamic: []
+    //     // });
+    //     this.getTypeDynamic(0,1, 10);
+    //     break;
+    //   case 3:
+    //     // this.setData({
+    //     //   talkDynamic: []
+    //     // });
+    //     this.getTypeDynamic(1, 1, 10);
+    //     break;
+    //   case 4:
+    //     // 拼车
+    //     break;
+    //   case 5:
+    //     this.getTypeDynamic(2, 1, 10);
+    //     break;
 
 
-    }
+    // }
     wx.stopPullDownRefresh();
     
   },
@@ -314,28 +362,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    let pages = this.data.pages;
-    let curr = this.data.TabCur;
+    let pages = this.data.page + 1;
+    console.info(pages);
+    if(this.data.loading || this.data.totalPage <= pages)return;
+    console.info("通过校验了");
+    // let curr = this.data.TabCur;
     wx.showLoading({
       title: '加载中....',
     });
-    switch (curr){
-      case 0:
-        this.getRecommendDynamic(++pages[0], 5);
-        break;
-      case 1:
-        this.getFollowDynamic(++pages[1], 10);
-        break;
-      case 2:
-        this.getTypeDynamic(0, ++pages[2], 10);
-        break;
-      case 3:
-        this.getTypeDynamic(1, ++pages[3], 10);
-        break;
-      case 5:
-        this.getTypeDynamic(2, ++pages[2], 10);
-        break;
-    }
+    this.getRecommendDynamic(pages, 5);
     this.setData({
       pages:pages
     })

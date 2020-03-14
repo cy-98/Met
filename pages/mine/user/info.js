@@ -1,6 +1,19 @@
 // pages/mine/user/info.js
 var network = require('../../../utils/network.js')
 import dynamic from '../../../modules/dynamic/dynamic.js';
+
+var doommList = [];
+let page = null;
+class Doomm {
+  constructor(text, top, time, color) {
+    this.text = text;
+    this.top = top;
+    this.time = time;
+    this.color = color;
+    this.display = true;
+  }
+}
+
 Page({
 
   /**
@@ -30,7 +43,7 @@ Page({
       "#66CDAA", "#00CED1", "#9F79EE", "#CD3333", "#FFC125", "#32CD32",
       "#00BFFF", "#68A2D5", "#FF69B4", "#DB7093", "#CD3278", "#607B8B"
     ],
-    //标签云
+    //标签
     labArr: [],
     //页面切换
     index: 0,
@@ -39,7 +52,8 @@ Page({
     checked: 'checked bg-green',
     unchecked: '',
     ranIndex: Math.floor(Math.random() * 5),
-    dynamics:[]
+    dynamics:[],
+    doommData: []
   },
   back:function(e){
     wx.navigateBack({
@@ -142,31 +156,15 @@ Page({
           focus: res.data.focusNum,
           dynamicNum:res.data.dynamicNum
         })
-        //实现随机颜色
-        var labLen = that.data.labArr.length,
-          colorArr = that.data.colorArr,
-          colorLen = colorArr.length,
-          randomColorArr = [];
-        //透明度
-        let opaArr = that.data.opacity,
-          randomOpacity = [],
-          opaLen = opaArr.length;
-        //判断执行
-        do {
-          let random = colorArr[Math.floor(Math.random() * colorLen)];
-          randomColorArr.push(random);
-          //透明度
-          let randomOpa = opaArr[Math.floor(Math.random() * opaLen)];
-          randomOpacity.push(randomOpa)
-          labLen--;
-        } while (labLen > 0)
 
-        that.setData({
-          randomColorArr: randomColorArr,
-          randomOpacity: randomOpacity
-        });
+        interest.forEach(item => {
+          doommList.push(new Doomm(item, Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 10 + 3)));
+          that.setData({
+            doommData: doommList
+          });
+        })
+        
 
-        console.info(options);
         // 获取相关数据
         network.getOtherDynamic({
            userId:options.id , success: res => {

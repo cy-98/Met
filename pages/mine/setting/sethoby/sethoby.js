@@ -196,8 +196,9 @@ Page({
       let tag = userInfo.interest || [];
       //添加颜色
       tag.forEach(item => {
-        let randex = Math.floor(Math.random() * tags.length);
-        let color = colorList[randex].name;
+        let randex = Math.floor(Math.random() * tags.length) % 15;
+        console.info(randex);
+        let color = that.data.colorList[randex].name;
         myTags.push({
           color: color,
           title: item
@@ -208,7 +209,6 @@ Page({
       })
     }});
 
-    //妄想实现随机颜色
     
     //颜色列表
     let colorList = that.data.colorList;
@@ -231,7 +231,6 @@ Page({
 
 
   },
-  //妄想实现随机颜色
 
   //删除标签
   deleteTag:function(e){

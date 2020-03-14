@@ -54,8 +54,8 @@
   </view> -->
 
 
-  <view class="cu-card dynamic no-card">
-    <view class="cu-item shadow">
+  <view class="cu-card dynamic no-card" >
+    <view class="cu-item shadow" style="padding-bottom:20rpx">
       <view class="cu-list menu-avatar">
         <view class="cu-item" data-user='{{user}}' bindtap="{{anonymous === 0 ? 'clickAvatar':'null'}}">
           <view class="cu-avatar round lg" style="background-image:url({{avatar}});"></view>
@@ -77,7 +77,7 @@
 
       <view class="padding bg-white solid-bottom">
 
-        <view class="cu-tag bg-cyan round"># 矿大南湖</view>
+        <view wx:if="{{topic}}" class="cu-tag bg-cyan round"># {{topic}}</view>
 
       </view>
 

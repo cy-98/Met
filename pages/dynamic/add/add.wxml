@@ -30,12 +30,8 @@
 		</view>
 	</view> 
 	<view class="cu-form-group margin-top">
-		<view class="title">类型</view>
-		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
-			<view class="picker">
-				{{index!=null?picker[index]:'请选择'}}
-			</view>
-		</picker>
+		<view class="title">话题</view>
+		<input bindinput="topicInput" placeholder="相关话题"></input>
 	</view>
 
 	<view class="cu-form-group">

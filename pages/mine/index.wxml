@@ -1,45 +1,23 @@
 <!--pages/mine/index.wxml-->
 <scroll-view scroll-y class="scrollPage">
-  <!-- <view  class="UCenter-bg">
-    <image 
-    src="{{person.avatar}}" class="{{nav_obj.beforeScrollCss}} head  " mode="aspectFit"></image>
-    <view class="text-xl">{{person.name}}</view>
-    <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+
+
+  <view class="doommview" bindtap="bindbt">
+      <block wx:for="{{doommData}}" wx:key="id">
+        <view wx:if="{{item.display}}" class=" aon text-white" style="animation: first {{item.time}}s infinite linear;top:{{item.top}}%;">
+              {{item.text}}
+        </view>
+      </block>
   </view>
-  <view class="padding flex text-center text-grey bg-white shadow-warp">
-  <navigator class="content" url="/pages/mine/user/myAttention" hover-class="none">
-    <view class="flex flex-sub flex-direction solid-right" >
-      <view class="margin-top-sm">
-        <text class="cuIcon-attentionfill text-blue"></text>
-
-         <text style="line-height:38rpx;">关注</text> </view>
-    </view>
-  </navigator>
-    <navigator class="content" url="/pages/mine/user/slefDynamic" hover-class="none">
-      <view class="flex flex-sub flex-direction solid-right" >
-      <view class="margin-top-sm">
-      <text class="cuIcon-discoverfill text-blue"></text>
-
-         <text style="line-height:38rpx;">动态</text> </view>
-    </view>
-    </navigator>
-    <navigator class="content" url="/pages/mine/user/fans" hover-class="none">
-      <view class="flex flex-sub flex-direction solid-right" >
-      <view class="margin-top-sm">
-        <text class="cuIcon-peoplefill text-blue"></text>
-
-         <text style="line-height:38rpx;">粉丝</text> </view>
-    </view>
-    </navigator>
-  </view> -->
 
 
-  <view class="user-bg">
+
+  <view class="user-bg" >
     <!-- <image src="{{avatar}}" class="avatar" mode="widthFix">
         <view class="cu-tag badge {{index%2==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>    
     </image> -->
 
-    <view class="cu-avatar round lg avatar" style="background-image:url({{person.avatar}});">
+    <view  class="cu-avatar round lg avatar" style="background-image:url({{person.avatar}});">
       <view class="cu-tag badge {{person.gender !== 1 ? 'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
     </view>
     <view>
@@ -51,16 +29,16 @@
 
   <view class="padding flex text-center text-grey bg-white shadow-warp" data-url="/pages/mine/user/fans" bindtap="nav">
     <view class="flex flex-sub flex-direction solid-right">
-      <view class="text-sm text-orange">{{fans}}0</view>
+      <view class="text-sm text-orange">{{person.fansNum}}</view>
       <view class="margin-top-xs text-sm">粉丝</view>
     </view>
     <view class="flex flex-sub flex-direction solid-right" data-url="/pages/mine/user/myAttention" bindtap="nav">
-      <view class="text-sm text-blue ">{{focus}}0</view>
+      <view class="text-sm text-blue ">{{person.focusNum}}</view>
       <view class="margin-top-xs text-sm">
         关注</view>
     </view>
     <view class="flex flex-sub flex-direction" data-url="/pages/mine/user/slefDynamic" bindtap="nav">
-      <view class="text-sm text-green">{{dynamicNum}}3</view>
+      <view class="text-sm text-green">{{person.dynamicNum}}</view>
       <view class="margin-top-xs text-sm">
         动态</view>
     </view>
