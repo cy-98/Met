@@ -147,6 +147,38 @@ Page({
   clickImages: function(e){
     dynamic.clickImages(e);
   },
+  clickGood: function(e){
+    let item = e.currentTarget.dataset.item;
+    let idx = e.currentTarget.dataset.idx;
+    if(item.like){
+      network.unlikeDynamic({dynamicId:item.id, success: res => {
+        wx.showToast({
+          title: '取消点赞',
+          icon: 'none'
+        });
+      } })
+      
+    }else{
+
+      network.likeDynamic({
+        dynamicId: item.id, success: res => {
+          wx.showToast({
+            title: '点赞成功',
+            icon: 'none'
+          });
+        }
+      })
+
+      
+    }
+    item.like = !item.like;
+    let dynamics = this.data.dynamics;
+    dynamics.splice(idx, 1, item);
+    this.setData({
+      dynamics:dynamics
+    })
+    dynamic.clickGood(e);
+  },
   getRecommendDynamic: function(page, size){
     // 获取相关数据
     this.setData({

@@ -87,7 +87,7 @@
 <scroll-view  scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" >
   <view wx:for="{{dynamics}}" wx:key="{{index}}">
     <view>
-      <template is="dynamic" data="{{...item}}"></template>
+      <template is="dynamic" data="{{item, index}}"></template>
     </view>
   </view>
 

@@ -18,6 +18,9 @@ var dynamic = {
       urls: e.currentTarget.dataset.all,
     })
   },
+  clickGood: function(e){
+    console.info(e);
+  }
   
 }
 export default dynamic;

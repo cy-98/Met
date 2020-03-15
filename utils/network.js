@@ -51,6 +51,33 @@ function getRecommendDynamic({data,success,fail}) {
     }
   })
 }
+
+function likeDynamic({
+  dynamicId, success, fail
+}){
+  util.req("dynamic/" + dynamicId + "/like", {}, function (res) {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
+function unlikeDynamic({
+  dynamicId, success, fail
+}) {
+  util.req("dynamic/" + dynamicId + "/unlike", {}, function (res) {
+    console.info(res);
+    if (res.code === 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
 // 获取关注用户的动态
 function getFollowDynamic({
   data,
@@ -683,5 +710,7 @@ module.exports = {
   getActivities: getActivities,
   getDetailAct: getDetailAct,
   signUpAct:signUpAct,
-  getBanner: getBanner
+  getBanner: getBanner,
+  unlikeDynamic: unlikeDynamic,
+  likeDynamic: likeDynamic
 }
