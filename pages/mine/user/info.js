@@ -156,6 +156,7 @@ Page({
           focus: res.data.focusNum,
           dynamicNum:res.data.dynamicNum
         })
+        doommList = []
 
         interest.forEach(item => {
           doommList.push(new Doomm(item, Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 10 + 3)));

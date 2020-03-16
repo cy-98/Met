@@ -1,19 +1,28 @@
-<cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
-  <view bindtap="back">返回</view>
-  <view slot="content">消息</view>
+<cu-custom bgColor="bg-white" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">通知</view>
 </cu-custom>
-<view class='round more' bindtap='cleanAllMessage' ></view>
+
+
+<view class="cu-bar bg-white">
+  <view class="action title-style-3">
+    <text class="text-xl text-bold">最近通知</text>
+    <text class="text-Abc text-gray self-end margin-left-sm">notification</text>
+  </view>
+</view>
+
+
 <view class="cu-list menu-avatar" wx:for="{{contents}}" bindtap="intoDynamic" data-id="{{item.id}}" data-url="{{item.url}}">
   <view class="cu-item" wx:key="item" data-user='{{item}}' bindtap='clickUser'>
     <view class="cu-avatar round lg" style="background-image:url({{item.fromUser.avatar}});"></view>
     <view class="content">
-      <view class="text-grey">{{item.content}}</view>
+      <view class="text-grey">{{item.title}}</view>
       <view class="text-gray text-sm flex" style="width:100%;">
         <text class="text-cut">
-							<text class="margin-right-xs"></text>{{item.createTime}}
+							<text class="margin-right-xs"></text>{{item.content}}
         </text>
       </view>
     </view>
-    <view class="redDot bg-red" wx:if="{{!item.hasRead}}">1</view>
+
   </view>
 </view>

@@ -25,3 +25,16 @@
   background-color: #fff;
   border-top: 1rpx solid #eee;
 }
+
+.flex-wrap{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  height:180rpx;
+}
+.sertit-dis .flex-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}

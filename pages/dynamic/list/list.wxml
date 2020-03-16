@@ -12,7 +12,7 @@
   </view>
 </view>
 
-<scroll-view scroll-x="true" scroll-left="{{scrollLeftWidth}}" bindscroll="scrollleft" scroll-with-animation='true' class="bg-white" bindscrolltolower="lowerRight">
+<!-- <scroll-view scroll-x="true" scroll-left="{{scrollLeftWidth}}" bindscroll="scrollleft" scroll-with-animation='true' class="bg-white" bindscrolltolower="lowerRight">
 
 
   <view class="flex-wrap sertit-dis" style='width:{{scrollWidth}}px;'>
@@ -32,7 +32,7 @@
     </view>
 
   </view>
-</scroll-view>
+</scroll-view> -->
 
 
 <view class="cu-bar bg-white">

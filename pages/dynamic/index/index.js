@@ -127,8 +127,35 @@ Page({
     console.log(this.data.replyUser.name)
   },
   //点赞
-  like: function() {
+  clickGood: function() {
+    let dynamic = this.data.dynamic;
+    if (dynamic.like) {
+      network.unlikeDynamic({
+        dynamicId: dynamic.id, success: res => {
+          wx.showToast({
+            title: '取消点赞',
+            icon: 'none'
+          });
+        }
+      })
 
+    } else {
+
+      network.likeDynamic({
+        dynamicId: dynamic.id, success: res => {
+          wx.showToast({
+            title: '点赞成功',
+            icon: 'none'
+          });
+        }
+      })
+
+
+    }
+    dynamic.like = !dynamic.like;
+    this.setData({
+      dynamic: dynamic
+    })
   },
   clickImages: function(e) {
     console.info(e);

@@ -16,12 +16,53 @@ Page({
     unReadDynamic:0,
     totalUnread: 0,
     unReadMsg: 0,
+    scrollWidth: 0,
+    scrollLeftWidth: 0,
+    windowWidth: 0,
+    recommend:[]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    
+
+    //获取推荐的人
+    network.getRecommend({
+      success: (res) => {
+        let recommend = res.data.data;
+        recommend.forEach(item => {
+          item.focus = false;
+        });
+        var scrollWidth = wx.getSystemInfoSync().windowWidth;
+        this.setData({
+          recommend: recommend,
+          scrollWidth: scrollWidth / 5 * (recommend.length + 1),
+          windowWidth: scrollWidth
+        })
+        console.log(this.data.recommend)
+
+      },
+      fail: (res) => {
+        console.log(res)
+      }
+    })
+    this.getScrollWidth();
+
+  },
+
+
+  getScrollWidth: function () {
+    var scrollWidth = wx.getSystemInfoSync().windowWidth;
+    this.setData({
+      scrollWidth: scrollWidth / 5 * 1,
+      windowWidth: scrollWidth
+    })
+  },
+  scrollleft: function (e) {
+    console.log(e);
+  },
+  lowerRight: function (e) {
+    console.log(e);
   },
 
   toChat(e) {
@@ -54,11 +95,11 @@ Page({
         })
         if(this.data.totalUnread === 0){
           wx.removeTabBarBadge({
-            index: 3,
+            index: 2,
           })
         }else{
           wx.setTabBarBadge({
-            index: 3,
+            index: 2,
             text: this.data.totalUnread,
           })
         }
@@ -121,7 +162,7 @@ Page({
             });
             if(this.data.totalUnread !== 0){
               wx.setTabBarBadge({
-                index: 3,
+                index: 2,
                 text: this.data.totalUnread + '',
               })
             }
@@ -174,7 +215,7 @@ Page({
         totalUnread = this.data.unReadMsg + this.data.unReadDynamic
         if(totalUnread !== 0){
           wx.setTabBarBadge({
-            index: 3,
+            index: 2,
             text: totalUnread + '',
           })
         }
@@ -186,6 +227,17 @@ Page({
     })
 
   },
+
+  clickUser: function (e) {
+    console.info(e);
+    wx.navigateTo({
+      url: '/pages/mine/user/info?id=' + e.currentTarget.dataset.userid,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+
   getConversationsItem(item) {
     let {
       latestMsg,

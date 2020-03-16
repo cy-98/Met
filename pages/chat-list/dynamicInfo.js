@@ -26,6 +26,7 @@ Page({
         console.log(res);
       }
     });
+    this.cleanAllMessage();
 
   },
   intoDynamic:(e)=>{

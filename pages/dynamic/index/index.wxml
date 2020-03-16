@@ -10,7 +10,7 @@
           <image mode="aspectFit" src='{{dynamic.anonymous == 0 ? dynamic.user.avatar:dynamic.annonyUser.avatar}}' class='cu-avatar round lg'></image>
           <view class="content flex-sub">
             <view>{{dynamic.anonymous == 0 ? dynamic.user.nickname:dynamic.annonyUser.nickname}}</view>
-            
+
             <view class="text-gray text-sm flex justify-between">
               {{dynamic.createTime}}
               <text bindtap="delDynamic" wx:if="{{dynamic.user.id === userInfo.id}}">删除</text>
@@ -26,6 +26,33 @@
           <image mode="aspectFit" src='{{item}}' data-current='{{item}}' data-all='{{dynamic.images}}' bindtap='clickImages'></image>
         </view>
       </view>
+
+
+      <view class="padding bg-white solid-bottom">
+
+        <view wx:if="{{dynamic.topic}}" class="cu-tag bg-cyan round"># {{dynamic.topic}}</view>
+
+      </view>
+
+      <view class="text-gray text-sm padding ">
+        <view wx:if="{{dynamic.liker.length > 0}}" class="cu-avatar-group" style="float:left;font-size:32rpx;padding-left:20rpx">
+          <view class="cu-avatar round sm " wx:for="{{dynamic.liker}}" wx:for-item="like" wx:key style="background-image:url({{like.avatar}});"></view>
+        </view>
+
+        <view wx:if="{{dynamic.liker.length > 0}}" style="line-height:48rpx;float:left">
+          + {{dynamic.liker.length}}名用户点赞
+        </view>
+
+        <view style="float:right;font-size:32rpx">
+
+          <text wx:if="{{dynamic.like}}" data-item="{{dynamic}}" bindtap="clickGood" class="cuIcon-appreciatefill text-green margin-lr-xs"> </text>
+          <text wx:else bindtap="clickGood" data-idx="{{index}}" data-item="{{dynamic}}" class="cuIcon-appreciate margin-lr-xs"></text>
+
+          <text class="cuIcon-messagefill margin-lr-xs"></text>{{dynamic.comments.length}}
+        </view>
+
+      </view>
+      <view style="clear:both"></view>
 
 
       <view class="cu-list menu-avatar comment solids-top" data-user="{{item.nickname}}" wx:for="{{dynamic.comment}}">
@@ -51,61 +78,63 @@
 
   <view style='padding:0 20rpx;background-color:#fff;'>
     <view class="good_cell" style="align-items:center">
-    <image class="user_avatar" src="{{userInfo.avatar}}" />
-    <view class="cell_flex">
-      <form bindsubmit="submitComment" style="display:flex;" report-submit="true">
-        <!-- <view class="comment_in_wrap cell_flex"> -->
-        <input class="comment_in cell_flex input" style="float:left;" placeholder='{{cmtAt}}' bindinput='inputChange' value='{{comment}}'></input>
-         <button disabled="{{unshake}}" class="comment_btn_wrap {{bgColor[ranIndex]}}"  form-type="submit"><view>发送</view></button>
+      <image class="user_avatar" src="{{userInfo.avatar}}" />
+      <view class="cell_flex">
+        <form bindsubmit="submitComment" style="display:flex;" report-submit="true">
+          <!-- <view class="comment_in_wrap cell_flex"> -->
+          <input class="comment_in cell_flex input" style="float:left;" placeholder='{{cmtAt}}' bindinput='inputChange' value='{{comment}}'></input>
+          <button disabled="{{unshake}}" class="comment_btn_wrap {{bgColor[ranIndex]}}" form-type="submit">
+            <view>发送</view>
+          </button>
+        </form>
+      </view>
+    </view>
+    <!---->
+    <!--留言展示-->
+    <block wx:if="{{dynamic.comments.length>0}}">
+      <view class="good_cmt bottom_line" style="align-items:flex-start" wx:for="{{dynamic.comments}}" wx:key="unique">
+        <view>
+          <image class="user_avatar " bindtap="clickUser" data-user="{{item.user}}" src="{{item.user.avatar}}" />
+        </view>
+        <view style="flex:1" bindtap="commentAt" data-user="{{item.user}}" data-uid="{{item.id}}">
+          <!--头像昵称评论时间-->
+          <view class="cell_flex" style="height:70rpx">
+            <view class="user_nickname">
+              <text style="color:rgb(164,164,164);margin-right:10rpx">{{item.user.nickname}}</text>
+            </view>
+            <text style="color:rgb(164,164,164)">{{item.createTime}}</text>
+          </view>
+          <!---->
+          <!--评论内容-->
+          <view>
+            <text wx:if="{{item.replyUser}}">回复</text>
+            <text wx:if="{{item.replyUser}}" style="color:rgb(164,164,164);margin-right:10rpx">@{{item.replyUser.nickname}}:</text>
+            <text style="word-wrap: break-word;word-break: break-all;">{{item.content}}</text>
+          </view>
+          <!---->
+        </view>
+      </view>
+      <view class="good_cmt" style="align-items:center;justify-content:center;color:#979795">
+        <text>没有更多了</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="good_cmt" style="align-items:center;justify-content:center;color:#979795">
+        <text>暂无评论！</text>
+      </view>
+    </block>
+    <!---->
+    <!-- 评论框 -->
+    <view class='cu-form-group comment-form' hidden='{{commentHidden}}'>
+      <form bindsubmit='submit'>
+        <view class='comment'>
+          <input class='comment-input' bindinput='changeInput'></input>
+          <button form-type="submit" class='bg-blue cu-btn comment-btn'>提交</button>
+        </view>
       </form>
     </view>
-  </view>
-  <!---->
-  <!--留言展示-->
-  <block wx:if="{{dynamic.comments.length>0}}">
-    <view class="good_cmt bottom_line" style="align-items:flex-start" wx:for="{{dynamic.comments}}" wx:key="unique">
-      <view>
-        <image class="user_avatar " bindtap="clickUser" data-user="{{item.user}}" src="{{item.user.avatar}}" />
-      </view>
-      <view style="flex:1" bindtap="commentAt" data-user="{{item.user}}" data-uid="{{item.id}}">
-        <!--头像昵称评论时间-->
-        <view class="cell_flex" style="height:70rpx">
-          <view class="user_nickname">
-            <text style="color:rgb(164,164,164);margin-right:10rpx">{{item.user.nickname}}</text>
-          </view>
-          <text style="color:rgb(164,164,164)">{{item.createTime}}</text>
-        </view>
-        <!---->
-        <!--评论内容-->
-        <view>
-          <text wx:if="{{item.replyUser}}">回复</text>
-          <text wx:if="{{item.replyUser}}" style="color:rgb(164,164,164);margin-right:10rpx">@{{item.replyUser.nickname}}:</text>
-          <text style="word-wrap: break-word;word-break: break-all;">{{item.content}}</text>
-        </view>
-        <!---->
-      </view>
-    </view>
-    <view class="good_cmt" style="align-items:center;justify-content:center;color:#979795">
-      <text>没有更多了</text>
-    </view>
-  </block>
-  <block wx:else>
-    <view class="good_cmt" style="align-items:center;justify-content:center;color:#979795">
-      <text>暂无评论！</text>
-    </view>
-  </block>
-  <!---->
-  <!-- 评论框 -->
-  <view class='cu-form-group comment-form' hidden='{{commentHidden}}'>
-    <form bindsubmit='submit'>
-      <view class='comment'>
-        <input class='comment-input' bindinput='changeInput'></input>
-        <button form-type="submit" class='bg-blue cu-btn comment-btn'>提交</button>
-      </view>
-    </form>
-  </view>
-  <!-- 评论框 -->
-  
+    <!-- 评论框 -->
+
   </view>
 
 

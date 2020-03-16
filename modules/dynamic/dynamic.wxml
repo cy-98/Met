@@ -95,7 +95,7 @@
           <text wx:if="{{item.like}}" data-item="{{item}}" bindtap="clickGood" class="cuIcon-appreciatefill text-green margin-lr-xs"> </text> 
           <text wx:else bindtap="clickGood" data-idx="{{index}}" data-item="{{item}}" class="cuIcon-appreciate margin-lr-xs"></text> 
 
-          <text class="cuIcon-messagefill margin-lr-xs"></text> {{comments.length}}
+          <text class="cuIcon-messagefill margin-lr-xs"></text> {{item.comments.length}}
         </view>
 
       </view>
