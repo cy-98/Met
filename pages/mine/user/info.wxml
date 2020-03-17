@@ -119,7 +119,7 @@
     <!-- <view class='dynamic'> -->
       <view wx:for="{{dynamics}}" wx:key="item">
         <view data-item="{{item}}">
-          <template is="dynamic" data="{{...item}}"></template>
+          <template is="dynamic" data="{{item}}"></template>
         </view>
       </view>
     <!-- </view> -->

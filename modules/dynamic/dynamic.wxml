@@ -57,7 +57,7 @@
   <view class="cu-card dynamic no-card" >
     <view class="cu-item shadow" style="padding-bottom:20rpx">
       <view class="cu-list menu-avatar">
-        <view class="cu-item" data-user='{{item.user}}' bindtap="{{anonymous === 0 ? 'clickAvatar':'null'}}">
+        <view class="cu-item" data-user='{{item.user}}' bindtap="clickAvatar">
           <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
           <view class="content flex-sub">
             <view>{{item.nickname}}</view>
