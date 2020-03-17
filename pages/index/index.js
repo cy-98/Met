@@ -1,6 +1,8 @@
 var network = require("../../utils/network.js");
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
+import bus from '../../utils/bus.js'
+
 
 Page({
   data: {
@@ -130,79 +132,14 @@ Page({
     })
   },
 
-  // met:function(){
-  //   wx.getLocation({
-  //     type: 'gcj02',
-  //     success: res => {
-  //       console.log(res)
-  //       let location = {}
-  //       location.latitude = res.latitude;
-  //       location.longitude = res.longitude;
-  //       location.speed = res.speed;
-  //       location.accuracy = res.accuracy;
-  //       this.setData({
-  //         location: location
-  //       });
-  //       network.punch({
-  //         longitude: res.longitude,
-  //         latitude: res.latitude,
-  //         success: res => {
-  //           console.info("发送位置信息");
-  //         }
-  //       });
-
-  //     },
-  //   });
-
-  //   network.punches({
-  //     success: res => {
-  //       console.info(res);
-  //       let markers = [];
-  //       res.data.data.forEach(item => {
-  //         let marker = {}
-  //         marker.id = item.user.id;
-  //         marker.latitude = item.latitude;
-  //         marker.longitude = item.longitude;
-  //         marker.iconPath = item.user.avatar;
-  //         marker.width = 30;
-  //         marker.height = 30;
-  //         markers.push(marker);
-  //       });
-  //       this.setData({
-  //         markers: markers
-  //       })
-  //     }
-  //   })
-  // },
-
   onLoad() {
+    bus.on('Test', (text) => {
+      console.info(text);
+      console.info("bus test")
+    })
 
-    // let that = this;
-    // qqmapsdk = new QQMapWX({
-    //   key: '5O2BZ-7QJKJ-TRGFA-KARQV-GSOW6-E2BAI'
-    // });
-    //获取定位
+    
   
-    // 检测是否是开启位置信息的设置
-    // let state = wx.getStorageSync("openLocationState");
-    // if(state !== false){
-    //   console.info("state 为空");
-    //   wx.setStorageSync("openLocationState", true);
-    //   this.setData({
-    //     openLocationState:true
-    //   });
-    //   state = true;
-    // }
-    // this.setData({
-    //   openLocationState: state
-    // })
-    // console.info(state);
-    // if (state) {
-    //   this.met();
-    // }
-
-    
-    
     network.getOpenSchool({success:res => {
       console.info(res);
       let currWeek = res.data.week + 1;

@@ -203,6 +203,30 @@ function getRecommend({success,fail}){
 }
 
 
+function getConversion({success, fail}){
+  util.getReq('chat/conversion', {}, res => {
+    console.log(res);
+    if (res.code == 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
+function getChatList({userId, success, fail}){
+  util.getReq(userId + '/chat', {}, res => {
+    console.log(res);
+    if (res.code == 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
+
+
 // 更新问题
 function updateQuestion({
   data,
@@ -712,5 +736,7 @@ module.exports = {
   signUpAct:signUpAct,
   getBanner: getBanner,
   unlikeDynamic: unlikeDynamic,
-  likeDynamic: likeDynamic
+  likeDynamic: likeDynamic,
+  getConversion: getConversion,
+  getChatList: getChatList
 }

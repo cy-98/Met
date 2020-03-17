@@ -19,7 +19,8 @@ Page({
     scrollWidth: 0,
     scrollLeftWidth: 0,
     windowWidth: 0,
-    recommend:[]
+    recommend:[],
+    convertions:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -45,7 +46,18 @@ Page({
       fail: (res) => {
         console.log(res)
       }
+    });
+
+
+    network.getConversion({
+      success: res => {
+        console.info(res);
+        this.setData({
+          convertions: res.data
+        })
+      }
     })
+
     this.getScrollWidth();
 
   },
@@ -105,89 +117,89 @@ Page({
         }
         
         console.log(totalUnread,unReadMsg,getApp().globalData.conversations)
-    getApp().getIMHandler().setOnReceiveMessageListener({
-      listener: (data) => {
-        if ( data.event === "msg_sync") {
-          console.log(data) 
-          let conversations = this.data.conversations;
-          data.messages.forEach(msg => {
-            let hasItem = false;
-            // 判断消息是否是已有列表中的消息
-            conversations.forEach(con => {
-              if (con.username === msg.from_username) {
-                hasItem = true;
-                con.unread_msg_count++;
-                con.mtime = Date.now();
-                getApp().globalData.messages.forEach(globalCvs => {
-                  if (globalCvs.from_username === globalCvs.from_username) {
-                    globalCvs.msgs.push(msg); 
-                  }
-                });
-                console.log('showed')
-                let type = msg.content.msg_body.extras.type;
-                if (type === undefined || type === "text")
-                  con.latestMsg = msg.content.msg_body.text;
-                else if (type === "voice")
-                  con.latestMsg = "[语音]";
-                else if (type === "image")
-                  con.latestMsg = "[图片]";
-              }
-              con.timeStr =  msgShowTime(con.mtime);
-              unReadMsg += con.unread_msg_count
+    // getApp().getIMHandler().setOnReceiveMessageListener({
+    //   listener: (data) => {
+    //     if ( data.event === "msg_sync") {
+    //       console.log(data) 
+    //       let conversations = this.data.conversations;
+    //       data.messages.forEach(msg => {
+    //         let hasItem = false;
+    //         // 判断消息是否是已有列表中的消息
+    //         conversations.forEach(con => {
+    //           if (con.username === msg.from_username) {
+    //             hasItem = true;
+    //             con.unread_msg_count++;
+    //             con.mtime = Date.now();
+    //             getApp().globalData.messages.forEach(globalCvs => {
+    //               if (globalCvs.from_username === globalCvs.from_username) {
+    //                 globalCvs.msgs.push(msg); 
+    //               }
+    //             });
+    //             console.log('showed')
+    //             let type = msg.content.msg_body.extras.type;
+    //             if (type === undefined || type === "text")
+    //               con.latestMsg = msg.content.msg_body.text;
+    //             else if (type === "voice")
+    //               con.latestMsg = "[语音]";
+    //             else if (type === "image")
+    //               con.latestMsg = "[图片]";
+    //           }
+    //           con.timeStr =  msgShowTime(con.mtime);
+    //           unReadMsg += con.unread_msg_count
 
-            //** conversations循环结束
-            });
+    //         //** conversations循环结束
+    //         });
 
 
-            // 如果不是消息列表的消息 我们进行添加一个新的消息进来
-            if (!hasItem) {
-              let conversation = {}
-              conversation.name = msg.from_username;
-              conversation.username = msg.from_username;
-              conversation.type = msg.msg_type;
-              conversation.mtime = Date.now();
-              conversation.nikeName = msg.from_username;
-              conversation.unread_msg_count = conversation.unread_msg_count === undefined ? 1 : conversation.unread_msg_count++;
-              conversations.push(conversation);
-            }
-            conversations.sort((a, b)=> {
-              return b.mtime - a.mtime;
-            });
-            console.log(unReadMsg)
-            totalUnread += unReadMsg
-            this.setData({
-              conversations: conversations,
-              unReadMsg: unReadMsg,
-              totalUnread: totalUnread
-            });
-            if(this.data.totalUnread !== 0){
-              wx.setTabBarBadge({
-                index: 2,
-                text: this.data.totalUnread + '',
-              })
-            }
+    //         // 如果不是消息列表的消息 我们进行添加一个新的消息进来
+    //         if (!hasItem) {
+    //           let conversation = {}
+    //           conversation.name = msg.from_username;
+    //           conversation.username = msg.from_username;
+    //           conversation.type = msg.msg_type;
+    //           conversation.mtime = Date.now();
+    //           conversation.nikeName = msg.from_username;
+    //           conversation.unread_msg_count = conversation.unread_msg_count === undefined ? 1 : conversation.unread_msg_count++;
+    //           conversations.push(conversation);
+    //         }
+    //         conversations.sort((a, b)=> {
+    //           return b.mtime - a.mtime;
+    //         });
+    //         console.log(unReadMsg)
+    //         totalUnread += unReadMsg
+    //         this.setData({
+    //           conversations: conversations,
+    //           unReadMsg: unReadMsg,
+    //           totalUnread: totalUnread
+    //         });
+    //         if(this.data.totalUnread !== 0){
+    //           wx.setTabBarBadge({
+    //             index: 2,
+    //             text: this.data.totalUnread + '',
+    //           })
+    //         }
             
-            //显示tabbar红点
+    //         //显示tabbar红点
 
 
-            getApp().globalData.conversations = conversations;
-          });
+    //         getApp().globalData.conversations = conversations;
+    //       });
          
           
-        }
+    //     }
 
-      }
-    });
-    // 获取消息列表后的操作 因为可能第一次或者前面打开可能导致页面数据没有加载完成 所以做了一个回调接口
-    getApp().getIMHandler().setMsgListListener({
-      listener: (data) => {
-        console.info(data);
-        let messages = getApp().globalData.messages || [];
-        const currentTimestamp = Date.now();
-        this.setLastMessage(data, messages);
+    //   }
+    // });
+    // // 获取消息列表后的操作 因为可能第一次或者前面打开可能导致页面数据没有加载完成 所以做了一个回调接口
+    // getApp().getIMHandler().setMsgListListener({
+    //   listener: (data) => {
+    //     console.info(data);
+    //     let messages = getApp().globalData.messages || [];
+    //     const currentTimestamp = Date.now();
+    //     this.setLastMessage(data, messages);
 
-      }
-    });
+    //   }
+    // });
 
 
     let conversations = getApp().globalData.conversations;
@@ -258,27 +270,8 @@ Page({
   conversationClick: function(res) {
     console.info(res);
     let con = res.currentTarget.dataset.item;
-    let conversations = this.data.conversations;
-    conversations.forEach(conversation => {
-      if (con.username == conversation.username) {
-        conversation.unread_msg_count = 0;
-      }
-    });
-    this.setData({
-      conversations: conversations
-    });
-    if (this.data.totalUnread !== 0) {
-      wx.setTabBarBadge({
-        index: 3,
-        text: this.data.totalUnread + '',
-      })
-    }
-
-    getApp().globalData.conversations = conversations;
-    console.log(conversations)
-    // console.info(JSON.stringify(con));
     wx.navigateTo({
-      url: '/pages/chat/chat?conversation=' + JSON.stringify(con),
+      url: '/pages/chat/chat?userId='+ con.user.id,
     })
   },
   // 设置最新的消息

@@ -488,7 +488,6 @@ function setTextMessageListener(cb) {
 
         }
         _page.chatInputGetValueEvent = function (e) {
-            console.info(status)
             inputObj.inputValueEventTemp = e;
             _page.setData({
                 textMessage: e.detail.value

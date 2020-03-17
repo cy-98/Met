@@ -15,7 +15,7 @@ export default class IMOperator {
     this._opts = opts;
     this._latestTImestamp = 0; //最新消息的时间戳
     this._myHeadUrl = wx.getStorageSync('userInfo').avatar;
-    this._otherHeadUrl = this._opts.avatar;
+    this._otherHeadUrl = opts.user.avatar;
     let that = this;
 
   }
@@ -81,6 +81,7 @@ export default class IMOperator {
     success,
     fail
   }) {
+    console.info("ddddd");
     //这里content即为要发送的数据
     //这里的content是一个对象了，不再是一个JSON格式的字符串。这样可以在发送消息的底层统一处理。
     let data = content;
@@ -168,96 +169,7 @@ export default class IMOperator {
     return obj;
   }
 
-  createHistoryChatItem({
-    type = IMOperator.TextType,
-    content = '',
-    isMy = true,
-    duration,
-    lastTime = 0,
-    thisTime = 0
-  } = {}) {
-    if (!content) return;
 
-  
-    // const currentTimestamp = Date.now();
-    const time = dealChatTime(thisTime, lastTime);
-    console.info(time);
-    let obj = {
-      msgId: 0, //消息id
-      friendId: this.getFriendId(), //好友id
-      isMy: isMy, //我发送的消息？
-      showTime: time.ifShowTime, //是否显示该次发送时间
-      time: time.timeStr, //发送时间 如 09:15,
-      timestamp: thisTime, //该条数据的时间戳，一般用于排序
-      type: type, //内容的类型，目前有这几种类型： text/voice/image/custom | 文本/语音/图片/自定义
-      content: content, // 显示的内容，根据不同的类型，在这里填充不同的信息。
-      headUrl: isMy ? this._myHeadUrl : this._otherHeadUrl, //显示的头像，自己或好友的。
-      sendStatus: 'success', //发送状态，目前有这几种状态：sending/success/failed | 发送中/发送成功/发送失败
-      voiceDuration: duration, //语音时长 单位秒
-      isPlaying: false, //语音是否正在播放
-    };
-    obj.saveKey = obj.friendId + '_' + obj.msgId; //saveKey是存储文件时的key
-    return obj;
-  }
-
-
-  getMsgHistory(msgManager) {
-    // let messages = getApp().globalData.messages;
-    getApp().getIMHandler().getConversationSync((data) => {
-
-    });
-    let messages = getApp().globalData.messages;
-    // let messages = data;
-    console.info(messages);
-
-    if (messages === undefined) {
-      getApp().globalData.messages = [];
-      messages = [];
-    }
-    messages.forEach(conversation => {
-      if (conversation.from_username === this.getFriendId()) {
-        let msgs = [];
-        conversation.msgs.slice(-10).forEach(msg => {
-
-          let msgObj = Object;
-          msgObj.type = msg.content.msg_body.extras.type;
-          msgObj.isMy = msg.content.from_id != this.getFriendId();
-          msgObj.content = msg.content.msg_body.text;
-          msgObj.duration = msg.content.msg_body.extras.duration;
-          msgObj.thisTime = msg.ctime_ms;
-          msgObj.lastTime = this._latestTImestamp;
-          const msgItem = this.createHistoryChatItem(msgObj);
-
-          this._latestTImestamp = msg.ctime_ms;
-          msgManager && msgManager(msgItem);
-          msgs.push(msg.msg_id);
-
-        });
-
-        conversation.msgs.slice(-40, -10).forEach(msg => {
-
-          let msgObj = Object;
-          msgObj.type = msg.content.msg_body.extras.type;
-          msgObj.isMy = msg.content.from_id != this.getFriendId();
-          msgObj.content = msg.content.msg_body.text;
-          msgObj.duration = msg.content.msg_body.extras.duration;
-          msgObj.thisTime = msg.ctime_ms;
-          msgObj.lastTime = this._latestTImestamp;
-          const msgItem = this.createHistoryChatItem(msgObj);
-
-          this._latestTImestamp = msg.ctime_ms;
-          msgManager && msgManager(msgItem);
-          msgs.push(msg.msg_id);
-
-        });
-
-        getApp().getIMHandler().reciptReport(conversation.from_username, msgs);
-
-
-      }
-    });
-
-  }
 
   static createCustomChatItem() {
     return {

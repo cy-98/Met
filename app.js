@@ -1,6 +1,8 @@
 //app.js
 import AppIMDelegate from "./delegate/app-im-delegate";
 var utils = require('./utils/util.js');
+import bus from './utils/bus'
+
 App({
   globalData: {
     userInfo: {},
@@ -91,14 +93,6 @@ App({
   onLaunch(options) {
     console.log(this.userInfo)
     let that = this;
-
-    // wx.checkSession({
-    //   success: function () {
-    //     //存在登陆态
-    //     console.info("已经登录了");
-    //   },
-    //   fail: function () {
-    //     //不存在登陆态
         wx.login({
           success: res => {
             // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -122,8 +116,6 @@ App({
             })
           }
         });
-    //   }
-    // });
 
     let userInfo = wx.getStorageSync("userInfo") || false  ;
     console.info(userInfo);
@@ -146,9 +138,6 @@ App({
       
     }
 
-
-
-
     this.appIMDelegate = new AppIMDelegate(this);
     this.appIMDelegate.onLaunch(options);
 
@@ -168,6 +157,7 @@ App({
   },
   onShow(options) {
       this.appIMDelegate.onShow(options);
+
       //初始获取定位权限
       wx.authorize({
         scope: 'scope.userLocation',

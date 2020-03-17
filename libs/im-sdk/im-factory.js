@@ -1,3 +1,5 @@
-import WebSocketHandlerImp from "./sdk/jmessage";
+// import WebSocketHandlerImp from "./sdk/jmessage";
 
-export const getIMHandlerFactory = new WebSocketHandlerImp();
+import Web from "./sdk/web.js";
+
+export const getIMHandlerFactory = new Web();

@@ -1,20 +1,18 @@
 <!--pages/list/list.wxml-->
-<import src="../../modules/chat-page/chat-item.wxml"/>
-<import src="../../modules/chat-input/chat-input.wxml"/>
-<import src="../../modules/chat-page/chat-page-status.wxml"/>
+<import src="../../modules/chat-page/chat-item.wxml" />
+<import src="../../modules/chat-input/chat-input.wxml" />
+<import src="../../modules/chat-page/chat-page-status.wxml" />
 
-<cu-custom style="position:fixed;z-index:99;" bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">{{title}}</view></cu-custom>
+<cu-custom style="position:fixed;z-index:99;" bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">{{userInfo.nickname}}</view>
+</cu-custom>
 
-<template is="chat-page-status" data="{{chatStatue,chatStatusContent}}"/>
-<scroll-view
-        style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 64rpx; transform:translateY(-{{chatItems.length > 6 ? bottom:0}}px);"
-        scroll-y="true"
-        scroll-top="{{scrollTopVal}}"
-        bindtap="resetInputStatus">
-    <block wx:for="{{chatItems}}" wx:key="{{index}}">
-        <template is="chat-item"
-                  data="{{length:chatItems.length,index:index,item:item}}"/>
-    </block>
+<template is="chat-page-status" data="{{chatStatue,chatStatusContent}}" />
+<scroll-view style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 64rpx; transform:translateY(-{{chatItems.length > 6 ? bottom:0}}px);" scroll-y="true" scroll-top="{{scrollTopVal}}" bindtap="resetInputStatus">
+  <block wx:for="{{chatItems}}" wx:key="{{index}}">
+    <template is="chat-item" data="{{length:chatItems.length,index:index,item:item}}" />
+  </block>
 
 </scroll-view>
-<template  is="chat-input" data-adjust="{{adjust}}" data="{{bottom,inputObj,textMessage,showVoicePart:true}}"/>
+<template is="chat-input" data-adjust="{{adjust}}" data="{{bottom,inputObj,textMessage,showVoicePart:true}}" />
