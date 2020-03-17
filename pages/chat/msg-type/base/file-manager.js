@@ -46,9 +46,12 @@ export default class FileManager {
      * @param duration 由输入组件接收到的录音时间
      */
     sendOneMsg({type, content, duration}) {
+      console.debug("发文件消息" + content);
+
         FileSaveManager.saveFileRule({
             tempFilePath: content,
             success: (savedFilePath) => {
+              console.info("保存文案成功");
                 this._sendFileMsg({content: savedFilePath, duration, type});
             }, fail: res => {
                 this._sendFileMsg({content, type, duration});
@@ -57,6 +60,7 @@ export default class FileManager {
     }
 
     _sendFileMsg({content, duration, type}) {
+      console.debug("发送文件消息" + content);
         const temp = this._page.imOperator.createNormalChatItem({
             type,
             content,
@@ -98,6 +102,7 @@ export default class FileManager {
           console.info(content);
           let chatData = this._page.imOperator.createChatItemContent({ type, content, duration });
           console.info(content);
+          console.info("发送文件消息。。。。");
           this._page.sendMsg({
                     content: chatData,
                     itemIndex,

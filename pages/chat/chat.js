@@ -29,7 +29,8 @@ Page({
     imOperator: null,
     adjust: false,
     bottom: 0,
-    userInfo: null
+    userInfo: null,
+    scrollTop:0
   },
   chatInputBindFocusEvent: (e) => {
     console.log('1')
@@ -66,6 +67,19 @@ Page({
     let myInfo = wx.getStorageSync("userInfo");
     this.setData({
       myInfo: myInfo
+    });
+
+    bus.on('ReceiveMsg', msg => {
+      console.info("接受到消息:" + msg);
+      // 接收到消息是当前用户的
+      if(msg.srcId == this.data.userInfo.id){
+        let chatItems = this.data.chatItems;
+        let msgItem = this.createChatItem(msg);
+        chatItems.push(msgItem);
+        this.setData({
+          chatItems
+        })
+      }
     })
 
 
@@ -91,6 +105,19 @@ Page({
 
         that.UI = new UI(that);
         this.initData();
+
+        const query = wx.createSelectorQuery();
+        query.select('#chatScrollView').boundingClientRect();
+        query.selectViewport().scrollOffset()
+        
+        query.exec(function (res) {
+          console.info(res);
+          that.setData({
+            scrollTop: (res[0].bottom + res[0].height + res[0].top) * 1000
+          })
+          // res[0].top       // #the-id节点的上边界坐标
+          // res[1].scrollTop // 显示区域的竖直滚动位置
+        })
 
       }
     });

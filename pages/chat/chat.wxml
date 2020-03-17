@@ -9,10 +9,11 @@
 </cu-custom>
 
 <template is="chat-page-status" data="{{chatStatue,chatStatusContent}}" />
-<scroll-view style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 64rpx; transform:translateY(-{{chatItems.length > 6 ? bottom:0}}px);" scroll-y="true" scroll-top="{{scrollTopVal}}" bindtap="resetInputStatus">
-  <block wx:for="{{chatItems}}" wx:key="{{index}}">
+<scroll-view id="chatScrollView" style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 144rpx;" scroll-y="true" scroll-top="{{scrollTop}}" bindtap="resetInputStatus" scroll-into-view="msg{{chatItems.length}}" scroll-with-animation="{{true}}">
+  <block wx:for="{{chatItems}}" wx:key="{{index}}" class="chat-item" >
     <template is="chat-item" data="{{length:chatItems.length,index:index,item:item}}" />
   </block>
-
+  <!-- 用来占位的否则看不到最后一条消息 -->
+  <view id="msg{{chatItems.length}}" style="height:106rpx"></view>
 </scroll-view>
 <template is="chat-input" data-adjust="{{adjust}}" data="{{bottom,inputObj,textMessage,showVoicePart:true}}" />

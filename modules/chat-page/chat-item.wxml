@@ -2,7 +2,7 @@
 <import src="./custom.wxml"/>
 <import src="./word.wxml"/>
 <template name="chat-item">
-    <view style="width: 100%;display: flex;flex-direction: column;align-items: center">
+    <view style="width: 100%;display: flex;flex-direction: column;align-items: center" id="msg{{index}}">
         <block wx:if="{{item.type!=='custom'}}">
             <template is="chat-time" data="{{showTime:item.showTime,time:item.time}}"/>
             <template is="chat-word"

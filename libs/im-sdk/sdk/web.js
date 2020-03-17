@@ -142,12 +142,8 @@ export default class Web extends IIMHandler {
       // 订阅自己的
       stompClient.subscribe('/user/queue/sendUser', function(message, headers) {
         console.log('收到只发送给我的消息:', message.body);
-        // that.globalData.socketReceiver(JSON.parse(message.body));
-        // 通知服务端收到消息
+        bus.emit('ReceiveMsg', JSON.parse(message.body));
         message.ack();
-
-        bus.emit('Test', message.body);
-
       });
 
       bus.on('SendMsg', (msg) => {
@@ -157,6 +153,7 @@ export default class Web extends IIMHandler {
         stompClient.send("/sendServer", {}, JSON.stringify({
           'content': msg.content,
           'user': msg.friendId,
+          'duration': msg.duration ? msg.duration : 0,
           'msgType': msg.type
         }));
       })
