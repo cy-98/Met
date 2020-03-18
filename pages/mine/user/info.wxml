@@ -45,12 +45,13 @@
         动态</view>
     </view>
 
-    <view class="flex flex-sub flex-direction">
+    <view class="flex flex-twice flex-direction justify-center align-center">
+      <button class="bg-gradual-blue cu-btn round" style="width: 80%" bindtap="sendMsg">发消息</button>
     </view>
 
-    <view class="flex flex-sub flex-direction">
-      <button wx:if="{{follower}}" class="bg-gradual-red cu-btn round" bindtap="cancelFocus">取消关注</button>
-      <button wx:else class="bg-gradual-red cu-btn round" bindtap="focus">关注</button>
+    <view class="flex flex-twice flex-direction justify-center align-center">
+      <button wx:if="{{follower}}" class="bg-gradual-red cu-btn round" style="width: 80%" bindtap="cancelFocus">取消关注</button>
+      <button wx:else class="bg-gradual-red cu-btn round" style="width: 80%" bindtap="focus">关注</button>
     </view>
 
   </view>

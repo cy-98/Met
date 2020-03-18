@@ -180,6 +180,15 @@ App({
             })
         });
 
+        bus.on('clearNotice', () => {
+            // 已经读取了所有通知 现在开始清除
+            console.info("已经读取了所有通知 现在开始清除");
+            this.globalData.notification.forEach(item => {
+                item.hasRead = true;
+            });
+            this.globalData.unreadNoticeNum = 0;
+            this.updateBadge();
+        });
 
         this.appIMDelegate = new AppIMDelegate(this);
         this.appIMDelegate.onLaunch(options);
@@ -197,10 +206,15 @@ App({
 
     updateBadge: function(){
         let tmp = this.globalData.unreadMsgNum + this.globalData.unreadNoticeNum;
+        console.info("当前的badge为" + tmp);
         if (tmp > 0) {
             wx.setTabBarBadge({
                 index: 2,
                 text: '' + (tmp),
+            })
+        }else{
+            wx.removeTabBarBadge({
+                index: 2
             })
         }
     },

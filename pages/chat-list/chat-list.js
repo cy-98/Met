@@ -103,7 +103,9 @@ Page({
             unReadNotice: app.globalData.unreadNoticeNum,
             lastNotice: app.globalData.lastNotice,
             contents: app.globalData.notification
-        })
+        });
+        // 当前页面没有tabbar的时候不能更新 badge
+        app.updateBadge();
 
     },
 
