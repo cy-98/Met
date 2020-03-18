@@ -1,113 +1,43 @@
-<import src="../../../modules/dynamic/dynamic.wxml" />
-
-<view class="cu-custom" style="height:{{CustomBar}}px">
-  <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-    <view class="action border-custom" wx:if="{{isCustom}}" style="width:{{Custom.width}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
-    </view>
-    <view class="cu-avatar round" bindtap='addDynamic' style="background-image:url(https://image.weilanwl.com/img/square-2.jpg);"></view>
-    <view class="search-form round">
-      <text class="cuIcon-search"></text>
-      <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
-    </view>
-  </view>
-</view>
-
-<!-- <scroll-view scroll-x="true" scroll-left="{{scrollLeftWidth}}" bindscroll="scrollleft" scroll-with-animation='true' class="bg-white" bindscrolltolower="lowerRight">
+<import src="../../../modules/dynamic/dynamic.wxml"/>
 
 
-  <view class="flex-wrap sertit-dis" style='width:{{scrollWidth}}px;'>
 
-    <view class="padding-tb">
-      <view class="cu-avatar round lg margin-lr-xs" style="cuIcon-unfold text-grey">
-      </view>
-      <view class="text-center">附近</view>
-    </view>
+<scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
 
-    <view wx:for="{{recommend}}" wx:key class="padding-tb">
-      <view class="cu-avatar round lg margin-lr-xs " style="background-image:url({{item.avatar}});" data-userId="{{item.id}}" bindtap="clickUser">
-        <view class="cu-tag badge {{item.gender==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
-      </view>
-      <view class="text-center">{{item.nickname}}</view>
-
-    </view>
-
-  </view>
-</scroll-view> -->
-
-
-<view class="cu-bar bg-white">
-  <view class="action title-style-3">
-    <text class="text-xl text-bold">推荐动态</text>
-    <text class="text-Abc text-gray self-end margin-left-sm">recommend</text>
-  </view>
-
-  <view class="action">
-    <text class="cuIcon-unfold text-grey"></text>
-  </view>
-
-</view>
-
-
-<!-- <scroll-view scroll-x class="bg-gradual-green nav text-center" scroll-left="{{scrollLeft}}">
-  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
-    <text class="cuIcon-hotfill"></text> 推荐
-  </view>
-  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
-    <text class="cuIcon-attentionfill"></text> 关注
-  </view>
-  <view class="cu-item {{2==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="2">
-    <text class="cuIcon-evaluate_fill"></text> 表白墙
-  </view>
-  <view class="cu-item {{3==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="3">
-    <text class="cuIcon-creativefill"></text> 约学习
-  </view>
-</scroll-view> -->
-<!-- <view class='round more' bindtap='addDynamic'></view> -->
-<!-- <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" class='videoSwiper' current="{{TabCur}}" duration="200" bindchange="swiperchange">
-  <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscroll="scrollbot">
-      <view bindtouchstart="mytouchstart" bindtouchend="mytouchend" bindscrolltoupper="refresh" wx:key="{{index}}" wx:for="{{dynamics}}">
-        <view data-item="{{item}}">
-          <template is="dynamic" data="{{...item}}"></template>
+    <view class="cu-custom" style="height:{{CustomBar}}px">
+        <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+            <view class="action border-custom" wx:if="{{isCustom}}"
+                  style="width:{{Custom.width}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
+            </view>
+            <view class="cu-avatar round" bindtap='addDynamic'
+                  style="background-image:url(https://image.weilanwl.com/img/square-2.jpg);"></view>
+            <view class="search-form round">
+                <text class="cuIcon-search"></text>
+                <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+            </view>
         </view>
-      </view>
-    </scroll-view>
-  </swiper-item>
-  <!-- 关注页面 -->
-<!-- <swiper-item>
-    <scroll-view bindtouchstart="mytouchstart" bindtouchend="mytouchend" bindscrolltoupper="refresh" scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscroll="scrollbot">
-      <view bindscrolltoupper="refresh" wx:key="{{index}}" wx:for="{{followDynamic}}" wx:key="item">
-        <view data-item="{{item}}">
-          <template is="dynamic" data="{{...item}}"></template>
-        </view>
-      </view>
-    </scroll-view>
-  </swiper-item>
-  <swiper-item>  -->
-<scroll-view  scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" >
-  <view wx:for="{{dynamics}}" wx:key="{{index}}">
-    <view>
-      <template is="dynamic" data="{{item, index}}"></template>
     </view>
-  </view>
 
-  <view wx:if="{{totalPage <= page}}" class="cu-load over padding-top"></view>
 
+    <view class="cu-bar bg-white">
+        <view class="action title-style-3">
+            <text class="text-xl text-bold">推荐动态</text>
+            <text class="text-Abc text-gray self-end margin-left-sm">recommend</text>
+        </view>
+
+        <view class="action">
+            <text class="cuIcon-unfold text-grey"></text>
+        </view>
+
+    </view>
+
+
+    <view wx:for="{{dynamics}}" wx:key="{{index}}">
+        <view>
+            <template is="dynamic" data="{{item, index}}"></template>
+        </view>
+    </view>
+
+    <view wx:if="{{totalPage <= page}}" class="cu-load over padding-top"></view>
 
 </scroll-view>
-
-
-<!-- </swiper-item>
-  <swiper-item>
-    <scroll-view bindtouchstart="mytouchstart" bindtouchend="mytouchend" bindscrolltoupper="refresh" scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscroll="scrollbot">
-      <view bindscrolltoupper="refresh" wx:for="{{talkDynamic}}" wx:key="{{index}}">
-        <view data-item="{{item}}">
-          <template is="dynamic" data="{{...item}}"></template>
-        </view>
-      </view>
-    </scroll-view>
-  </swiper-item> -->
-<!-- //拼车 -->
-
-
-<!-- </swiper> -->

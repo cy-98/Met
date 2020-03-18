@@ -193,7 +193,7 @@ App({
             let idx = -1;
             for (let i = 0; i < this.globalData.conversations.length; i++) {
                 let con = this.globalData.conversations[i];
-                if (con.user.id == msg.srcId) {
+                if (con.user.id === msg.srcId) {
                     con.lastRecord = msg;
                     con.unread += 1;
                     idx = i;

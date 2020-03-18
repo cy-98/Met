@@ -66,7 +66,8 @@ export default class Web extends IIMHandler {
         // 创建一个 WebSocket 连接
         function connect() {
             wx.connectSocket({
-                url: "wss://met.chpz527.cn/im?token=" + wx.getStorageSync("token"),
+                // url: "wss://met.chpz527.cn/im?token=" + wx.getStorageSync("token"),
+                url: "ws://127.0.0.1:8888/im?token=" + wx.getStorageSync("token"),
                 success: res => {
                     console.info(res);
                 },
@@ -208,53 +209,6 @@ export default class Web extends IIMHandler {
         this._app = options.app;
         this.initSocket();
         return;
-
-        !this._isLogin && wx.connectSocket({
-            url: options.url + "?token=" + wx.getStorageSync("token"),
-            method: 'GET'
-        });
-
-
-        /**
-         * 定期发送心跳或检测服务器心跳
-         *  The heart-beating is using window.setInterval() to regularly send heart-beats and/or check server heart-beats.
-         *  可看stomp.js的源码（195,207，489行），由于小程序没有window对象，所以我们要调用小程序的定时器api实现
-         */
-        this.Stomp.setInterval = function (interval, f) {
-            return setInterval(f, interval);
-        };
-        // 结束定时器的循环调用
-        this.Stomp.clearInterval = function (id) {
-            return clearInterval(id);
-        };
-
-        const stompClient = this.Stomp.over(this.ws);
-
-
-        stompClient.connect({}, function (callback) {
-            console.info("发送");
-
-
-            // 订阅自己的
-            stompClient.subscribe('/user/queue/sendUser', function (message, headers) {
-                console.log('收到只发送给我的消息:', message.body);
-                // that.globalData.socketReceiver(JSON.parse(message.body));
-                // 通知服务端收到消息
-                message.ack();
-            });
-
-
-            bus.on('SendMsg', (content) => {
-                console.info("监听到sendmsg" + content);
-                // 向服务端发送消息
-                stompClient.send("/sendServer", {}, JSON.stringify({
-                    'content': content,
-                    'user': '5e5dc3bba7b11b0006e65ea8',
-                    'msgType': 'text'
-                }));
-            })
-
-        })
 
     }
 

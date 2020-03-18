@@ -113,6 +113,11 @@ Page({
      */
     onLoad: function (options) {
 
+        if (options.id === getApp().globalData.userInfo.id){
+            wx.switchTab({
+                url:"/pages/mine/index"
+            });
+        }
         wx.showLoading({
             title: '加载中....',
         });
