@@ -99,7 +99,7 @@ Page({
                 network.readChatMsg(this.data.userInfo.id);
 
                 // 通知APP 这个消息已经读取了
-                bus.emit('ReadMsg', msg);
+                bus.emit('ReadMsg', this.data.userInfo.id);
 
             }
         });
@@ -303,4 +303,10 @@ Page({
             itemIndex
         });
     },
+
+    onUnload: function (e) {
+        console.info("设置已读消息");
+        bus.emit('ReadMsg', this.data.userInfo.id);
+    }
+
 });

@@ -142,7 +142,24 @@ App({
             });
 
         }else{
-            this.globalData.userInfo = userInfo;
+            if (userInfo.stuId && userInfo.avatar){
+                this.globalData.userInfo = userInfo;
+            } else {
+                console.info(userInfo);
+                wx.reLaunch({
+                    url: '/pages/auth/auth',
+                    success: function () {
+                        console.info("success")
+                    },
+                    fail: function () {
+                        console.info("fail")
+                    },
+                    complete: function () {
+                        console.info()
+                    }
+                });
+            }
+
         }
 
         // 获取消息列表
@@ -169,12 +186,16 @@ App({
         // 监听消息
         bus.on('ReceiveMsg', (msg) => {
             console.info("在App获取消息");
-            console.info(msg);
+            // let pages = this.getCurrentPages();
+            // let currPage = pages[pages.length - 1];
+            // console.info(pages, currPage.route);
+            // console.info(msg);
             let idx = -1;
-            for (let i = 0; i < this.globalData.conversations; i++) {
+            for (let i = 0; i < this.globalData.conversations.length; i++) {
                 let con = this.globalData.conversations[i];
                 if (con.user.id == msg.srcId) {
                     con.lastRecord = msg;
+                    con.unread += 1;
                     idx = i;
                 }
             }
@@ -199,29 +220,36 @@ App({
                 msgType: content.type,
                 duration: content.duration
             };
+            console.info(msg);
+            console.info(this.globalData.conversations);
             let idx = -1;
-            for (let i = 0; i < this.globalData.conversations; i++) {
+            for (let i = 0; i < this.globalData.conversations.length; i++) {
                 let con = this.globalData.conversations[i];
-                if (con.user.id == msg.srcId) {
+                console.info(con.user.id, msg.destId);
+                if (con.user.id === msg.destId) {
+                    console.info("找到了这个用户");
                     con.lastRecord = msg;
+                    con.lastTime = new Date().getTime();
                     idx = i;
                 }
             }
 
             if (idx === -1){
+                console.info("当前列表没有这个用户, 从网络中重新拉取消息");
                 this.getConversation();
             }else {
                 let item = this.globalData.conversations[idx];
                 this.globalData.conversations.splice(idx, 1);
                 this.globalData.conversations.unshift(item);
+                console.info(this.globalData.conversations);
             }
         });
 
-        bus.on('ReadMsg', (msg) => {
+        bus.on('ReadMsg', (userId) => {
             console.info('已读消息');
             this.globalData.conversations.forEach(con => {
                 // if ()
-                if (con.user.id == msg.srcId){
+                if (con.user.id === userId){
                     // con.last
                     this.globalData.unreadMsgNum -= con.unread;
                     con.unread = 0;
