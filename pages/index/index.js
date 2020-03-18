@@ -278,8 +278,10 @@ Page({
         }
     },
     onShow() {
+
+        getApp().updateBadge();
         let that = this;
-        this.getSwiperList()
+        this.getSwiperList();
         this.setData({
             userInfo: wx.getStorageSync("userInfo")
         });

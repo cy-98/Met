@@ -77,6 +77,17 @@ Page({
 
         bus.on('ReceiveMsg', msg => {
             console.info("接受到消息:" + msg);
+
+            console.info("播放提示音");
+            const innerAudioContext = wx.createInnerAudioContext();//新建一个createInnerAudioContext();
+            innerAudioContext.autoplay = true;//音频自动播放设置
+            innerAudioContext.src = '/audio/notice.mp3';//链接到音频的地址
+            innerAudioContext.onPlay(() => {});//播放音效
+            innerAudioContext.onError((res) => {//打印错误
+                console.log(res.errMsg);//错误信息
+                console.log(res.errCode);//错误码
+            });
+
             // 接收到消息是当前用户的
             if (msg.srcId == this.data.userInfo.id) {
                 let chatItems = this.data.chatItems;

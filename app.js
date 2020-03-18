@@ -89,7 +89,8 @@ App({
                 color: '#ffffff'
             },
         ],
-        cos: null
+        cos: null,
+        notification:[]
     },
     getIMHandler() {
         return this.appIMDelegate.getIMHandlerDelegate();
@@ -140,31 +141,80 @@ App({
                 }
             });
 
+        }else{
+            this.globalData.userInfo = userInfo;
         }
 
         // 获取消息列表
         this.getConversation();
 
+        // 监听通知
+
+        bus.on('ReceiveNotice', msg =>{
+            console.info("监听到通知了");
+            this.globalData.notification.push(msg);
+            this.globalData.unreadNoticeNum ++;
+            this.updateBadge();
+            console.info("播放提示音");
+            const innerAudioContext = wx.createInnerAudioContext();//新建一个createInnerAudioContext();
+            innerAudioContext.autoplay = true;//音频自动播放设置
+            innerAudioContext.src = '/audio/notice.mp3';//链接到音频的地址
+            innerAudioContext.onPlay(() => {});//播放音效
+            innerAudioContext.onError((res) => {//打印错误
+                console.log(res.errMsg);//错误信息
+                console.log(res.errCode);//错误码
+            });
+        });
 
         // 监听消息
         bus.on('ReceiveMsg', (msg) => {
             console.info("在App获取消息");
             console.info(msg);
-            let hasCon = false;
-            this.globalData.conversations.forEach(con => {
-                // if ()
-                if (con.user.id == msg.srcId){
-                    // con.last
+            let idx = -1;
+            for (let i = 0; i < this.globalData.conversations; i++) {
+                let con = this.globalData.conversations[i];
+                if (con.user.id == msg.srcId) {
                     con.lastRecord = msg;
-                    hasCon = true;
+                    idx = i;
                 }
-            });
-
-            if (!hasCon){
-                this.getConversation();
             }
 
+            if (idx === -1){
+                this.getConversation();
+            }else {
+                let item = this.globalData.conversations[idx];
+                this.globalData.conversations.splice(idx, 1);
+                this.globalData.conversations.unshift(item);
+            }
             
+        });
+
+        bus.on('SendMsg', content => {
+            console.info(content);
+            console.info("在App获取消息");
+            let msg = {
+                srcId: content.userId,
+                destId: content.friendId,
+                content: content.content,
+                msgType: content.type,
+                duration: content.duration
+            };
+            let idx = -1;
+            for (let i = 0; i < this.globalData.conversations; i++) {
+                let con = this.globalData.conversations[i];
+                if (con.user.id == msg.srcId) {
+                    con.lastRecord = msg;
+                    idx = i;
+                }
+            }
+
+            if (idx === -1){
+                this.getConversation();
+            }else {
+                let item = this.globalData.conversations[idx];
+                this.globalData.conversations.splice(idx, 1);
+                this.globalData.conversations.unshift(item);
+            }
         });
 
         bus.on('ReadMsg', (msg) => {
