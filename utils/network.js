@@ -225,6 +225,17 @@ function getChatList({userId, success, fail}){
   });
 }
 
+function readChatMsg({userId, success, fail}){
+  util.req(userId + '/hasRead', {}, res => {
+    console.log(res);
+    if (res.code == 200) {
+      success && success(res);
+    } else {
+      fail && fail(res);
+    }
+  });
+}
+
 
 
 // 更新问题
@@ -306,10 +317,7 @@ function getGrade({
   });
 }
 
-function getExam({
-  success,
-  fail
-}) {
+function getExam({success,fail}) {
   util.getReq("exam", {
     year: 2020,
     term: 2
@@ -329,9 +337,7 @@ function getExam({
 /**
  * 得到粉丝信息
  */
-function getUserFollower({
-  success,fail
-}){
+function getUserFollower({success,fail}){
   util.getReq("/user/follower", {}, res => {
     console.info(res);
     if (res.code === 200) {
@@ -345,9 +351,7 @@ function getUserFollower({
 /**
  *  获取自己的关注信息
  */
-function getUserFollow({
-  success, fail
-}) {
+function getUserFollow({success, fail}) {
   util.getReq("/user/follow", {}, res => {
     console.info(res);
     if (res.code === 200) {
@@ -364,12 +368,7 @@ function getUserFollow({
 
 
 //添加兴趣标签
-function addTag({
-  content,
-  formId,
-  success,
-  fail
-}) {
+function addTag({content,formId,success,fail}) {
   util.req("interest", {
     content: content,
     formId:formId
@@ -738,5 +737,6 @@ module.exports = {
   unlikeDynamic: unlikeDynamic,
   likeDynamic: likeDynamic,
   getConversion: getConversion,
-  getChatList: getChatList
+  getChatList: getChatList,
+  readChatMsg: readChatMsg
 }

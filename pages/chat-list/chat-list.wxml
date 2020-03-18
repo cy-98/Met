@@ -53,11 +53,11 @@
             <view class="chat-item-name-style">消息通知</view>
             <text class="chat-item-content-style">{{contents[0].title}}</text>
         </view>
-        <view class="redDot bg-red" wx:if="{{unReadDynamic!==0}}">{{unReadDynamic}}</view>
+        <view class="redDot bg-red" wx:if="{{unReadNotice!==0}}">{{unReadNotice}}</view>
     </view>
     <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%"/>
 </block>
-<block wx:for="{{convertions}}" wx:key wx:for-item="item">
+<block wx:for="{{conversations}}" wx:key wx:for-item="item">
 
     <view class="chat-item-style" bindtap="conversationClick" data-item="{{item}}" hover-class="press-style">
         <template is="chat-item-head" data="{{headUrl:item.user.avatar,unread:item.unread}}"/>

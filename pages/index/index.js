@@ -133,13 +133,7 @@ Page({
   },
 
   onLoad() {
-    bus.on('Test', (text) => {
-      console.info(text);
-      console.info("bus test")
-    })
 
-    
-  
     network.getOpenSchool({success:res => {
       console.info(res);
       let currWeek = res.data.week + 1;
@@ -288,6 +282,8 @@ Page({
     this.setData({
       userInfo:wx.getStorageSync("userInfo")
     });
+
+
     wx.authorize({
       scope: 'scope.userLocation',
       success: (res) => {
