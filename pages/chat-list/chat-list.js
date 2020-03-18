@@ -33,7 +33,6 @@ Page({
         bus.on('ReceiveMsg', (msg) => {
             console.info("在消息列表页获取消息");
             console.info(msg);
-            this.getConversion();
         });
 
         //获取推荐的人

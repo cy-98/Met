@@ -150,10 +150,34 @@ App({
         bus.on('ReceiveMsg', (msg) => {
             console.info("在App获取消息");
             console.info(msg);
+            let hasCon = false;
+            this.globalData.conversations.forEach(con => {
+                // if ()
+                if (con.user.id == msg.srcId){
+                    // con.last
+                    con.lastRecord = msg;
+                    hasCon = true;
+                }
+            });
+
+            if (!hasCon){
+                this.getConversation();
+            }
+
+            
         });
 
         bus.on('ReadMsg', (msg) => {
-            console.info('已读消息')
+            console.info('已读消息');
+            this.globalData.conversations.forEach(con => {
+                // if ()
+                if (con.user.id == msg.srcId){
+                    // con.last
+                    this.globalData.unreadMsgNum -= con.unread;
+                    con.unread = 0;
+                    this.updateBadge();
+                }
+            })
         });
 
 
@@ -169,6 +193,16 @@ App({
                 this.globalData.navHeight = e.statusBarHeight;
             }
         });
+    },
+
+    updateBadge: function(){
+        let tmp = this.globalData.unreadMsgNum + this.globalData.unreadNoticeNum;
+        if (tmp > 0) {
+            wx.setTabBarBadge({
+                index: 2,
+                text: '' + (tmp),
+            })
+        }
     },
 
     getConversation: function () {
