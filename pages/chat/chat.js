@@ -66,7 +66,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        network.readChatMsg({userId:options.userId});
+        network.readChatMsg({userId: options.userId});
 
         let userId = options.userId;
         this.msgManager = new MsgManager(this);
@@ -82,7 +82,8 @@ Page({
             const innerAudioContext = wx.createInnerAudioContext();//新建一个createInnerAudioContext();
             innerAudioContext.autoplay = true;//音频自动播放设置
             innerAudioContext.src = '/audio/notice.mp3';//链接到音频的地址
-            innerAudioContext.onPlay(() => {});//播放音效
+            innerAudioContext.onPlay(() => {
+            });//播放音效
             innerAudioContext.onError((res) => {//打印错误
                 console.log(res.errMsg);//错误信息
                 console.log(res.errCode);//错误码
@@ -96,8 +97,6 @@ Page({
                 this.setData({
                     chatItems
                 });
-                network.readChatMsg(this.data.userInfo.id);
-
                 // 通知APP 这个消息已经读取了
                 bus.emit('ReadMsg', this.data.userInfo.id);
 
@@ -164,7 +163,7 @@ Page({
                 description: '拍摄'
             }, {
                 picName: 'close_chat',
-                description: '自定义功能'
+                description: '渣男语录'
             }],
             // tabbarHeigth: 48
         });
@@ -246,19 +245,36 @@ Page({
      * 自定义事件
      */
     myFun() {
-        wx.showModal({
-            title: '小贴士',
-            content: '演示更新会话状态',
-            confirmText: '确认',
-            showCancel: true,
-            success: (res) => {
-                if (res.confirm) {
-                    this.msgManager.sendMsg({
-                        type: IMOperator.CustomType
-                    })
-                }
+        wx.request({
+            url: 'https://api.lovelive.tools/api/SweetNothings',
+            method: 'GET',
+            success: res => {
+                console.info(res);
+                this.setData({
+                    textMessage: res.data
+                });
+                this.msgManager.sendMsg({
+                    type: IMOperator.TextType,
+                    content: res.data
+                });
             }
         })
+        // this.setData({
+        //     textMessage: 'nb'
+        // })
+        // wx.showModal({
+        //     title: '小贴士',
+        //     content: '演示更新会话状态',
+        //     confirmText: '确认',
+        //     showCancel: true,
+        //     success: (res) => {
+        //         if (res.confirm) {
+        //             this.msgManager.sendMsg({
+        //                 type: IMOperator.CustomType
+        //             })
+        //         }
+        //     }
+        // })
     },
 
     resetInputStatus() {
@@ -276,19 +292,6 @@ Page({
         bus.emit('SendMsg', content);
         this.UI.updateViewWhenSendSuccess(content, itemIndex);
         success && success(content);
-
-        // this.UI.updateViewWhenSendSuccess(msg, itemIndex);
-
-        // this.imOperator.onSimulateSendMsg({
-        //   content,
-        //   success: (msg) => {
-        //     this.UI.updateViewWhenSendSuccess(msg, itemIndex);
-        //     success && success(msg);
-        //   },
-        //   fail: () => {
-        //     this.UI.updateViewWhenSendFailed(itemIndex);
-        //   }
-        // })
     },
     /**
      * 重发消息
@@ -305,8 +308,10 @@ Page({
     },
 
     onUnload: function (e) {
+        network.readChatMsg(this.data.userInfo.id);
         console.info("设置已读消息");
         bus.emit('ReadMsg', this.data.userInfo.id);
+
     }
 
 });

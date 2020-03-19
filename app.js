@@ -165,6 +165,21 @@ App({
         // 获取消息列表
         this.getConversation();
 
+
+
+        // 测试加密
+
+
+
+        var CryptoJS = require('./utils/des');
+        var keyHex = CryptoJS.enc.Utf8.parse("flyingstudioisgood");
+        console.log(CryptoJS);
+        var encrypted = CryptoJS.DES.encrypt("12345678", keyHex, {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        console.log(encrypted.toString());
+
         // 监听通知
 
         bus.on('ReceiveNotice', msg =>{

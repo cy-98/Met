@@ -66,8 +66,8 @@ export default class Web extends IIMHandler {
         // 创建一个 WebSocket 连接
         function connect() {
             wx.connectSocket({
-                // url: "wss://met.chpz527.cn/im?token=" + wx.getStorageSync("token"),
-                url: "ws://127.0.0.1:8888/im?token=" + wx.getStorageSync("token"),
+                url: "wss://met.chpz527.cn/im?token=" + wx.getStorageSync("token"),
+                // url: "ws://127.0.0.1:8888/im?token=" + wx.getStorageSync("token"),
                 success: res => {
                     console.info(res);
                 },

@@ -1,71 +1,80 @@
-<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}"><view slot="backText">返回</view><view slot="content">设置</view></cu-custom>
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">设置</view>
+</cu-custom>
 <view class="cu-form-group margin-top">
-		<view class="title">头像</view>
-		<view class="cu-avatar radius bg-gray"><image src='{{avatar}}'></image></view>
-	</view>
-  <form report-submit='true' bindsubmit='submit'>
-  <view class="cu-form-group">
-      <view class="title ">昵称</view>
-      <input placeholder="{{nickname}}" bindinput='changename' class='' style='text-align:right;'></input>
+    <view class="title">头像</view>
+    <view class="cu-avatar radius bg-gray">
+        <image src='{{avatar}}'></image>
+    </view>
+</view>
+<form report-submit='true' bindsubmit='submit'>
+    <view class="cu-form-group">
+        <view class="title ">昵称</view>
+        <input placeholder="{{nickname}}" bindinput='changename' class='' style='text-align:right;'></input>
     </view>
     <view class="cu-form-group margin-top">
-      <view class="title">性别</view>
-      <view>
-      {{gender == 1? '男': '女'}}
-      <!-- <radio-group>
-        男<radio class='blue radio margin-hori'></radio>
-        女<radio class='pink radio margin-hori'></radio>
-      </radio-group> -->
-      </view>
-      </view>
-    <view class="cu-form-group">
-      <view>电话号码</view><input style="text-align:right"  placeholder="{{phone}}" bindinput="changeTel"></input>
-    </view>
-    <view class="cu-form-group">
-      <view class="title">生日日期</view>
-      <picker mode="date" value="{{birthday}}" start="1990-09-01" end="2020-09-01" bindchange="dateChange">
-        <view class="picker">
-      {{birthday}}
+        <view class="title">性别</view>
+        <view>
+            {{gender == 1? '男': '女'}}
+            <!-- <radio-group>
+              男<radio class='blue radio margin-hori'></radio>
+              女<radio class='pink radio margin-hori'></radio>
+            </radio-group> -->
         </view>
-      </picker>
-    </view>
-    <view class="cu-form-group" >
-      <view class="title">情感状态</view>
-      <view>
-      <radio-group bindchange="loveChange">
-        单身中<radio value='1' checked='{{love == 1? true : false}}' class='green radio margin-hori'></radio>
-        恋爱中<radio value='2' checked='{{love == 2? true : false}}' class='red radio margin-hori'></radio>
-        保密<radio value='3' checked='{{love == 3? true : false}}' class='red radio margin-hori'></radio>
-      </radio-group>
-
-      </view>
-      
     </view>
     <view class="cu-form-group">
-      <view class='title'>个性签名</view>
-      <input placeholder='{{profile}}' class='' bindinput='changeprofile'  style='text-align:right;'></input>
+        <view>电话号码</view>
+        <input style="text-align:right" placeholder="{{phone}}" bindinput="changeTel"></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">生日日期</view>
+        <picker mode="date" value="{{birthday}}" start="1990-09-01" end="2020-09-01" bindchange="dateChange">
+            <view class="picker">
+                {{birthday}}
+            </view>
+        </picker>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">情感状态</view>
+        <view>
+            <radio-group bindchange="loveChange">
+                单身中
+                <radio value='1' checked='{{love == 1? true : false}}' class='green radio margin-hori'></radio>
+                恋爱中
+                <radio value='2' checked='{{love == 2? true : false}}' class='red radio margin-hori'></radio>
+                保密
+                <radio value='3' checked='{{love == 3? true : false}}' class='red radio margin-hori'></radio>
+            </radio-group>
+
+        </view>
+
+    </view>
+    <view class="cu-form-group">
+        <view class='title'>个性签名</view>
+        <input placeholder='{{profile}}' class='' bindinput='changeprofile' style='text-align:right;'></input>
     </view>
 
     <view class="cu-form-group margin-top">
-      <view class="title">学校认证</view>
-      <view bindtap="nav" data-url="/pages/auth/auth">重新认证</view>
+        <view class="title">学校认证</view>
+        <view bindtap="nav" data-url="/pages/auth/auth">重新认证</view>
     </view>
     <view class="cu-form-group">
-      <view class="title">学院</view>
-      <view>{{school}}</view>
+        <view class="title">学院</view>
+        <view>{{school}}</view>
     </view>
     <view class="cu-form-group">
-      <view>专业</view>
-      <view>{{major}}</view>
+        <view>专业</view>
+        <view>{{major}}</view>
     </view>
     <!-- 兴趣 -->
     <navigator url='/pages/mine/setting/sethoby/sethoby'>
-      <view class="cu-form-group margin-top">
-      <view class="title" >兴趣爱好</view>
-      <view class='morebtn'>></view>
-    </view>
+        <view class="cu-form-group margin-top">
+            <view class="title">兴趣爱好</view>
+            <view class='morebtn'>></view>
+        </view>
     </navigator>
     <!-- 兴趣 -->
-    <button form-type='submit' class='commitbtn bg-red margin-top' >保存</button>
-	
+    <button form-type='submit' class='commitbtn bg-red margin-top'>保存</button>
+
 </form>
