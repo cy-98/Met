@@ -33,7 +33,8 @@
     "pages/mine/feedback/feedback",
     "pages/mine/share/share",
     "pages/mine/activity/activity",
-    "pages/mine/activity/detail/detail"
+    "pages/mine/activity/detail/detail",
+    "pages/mine/card/card"
   ],
   "window": {
     "backgroundTextStyle": "light",

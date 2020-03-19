@@ -9,7 +9,7 @@
   </cu-custom> -->
   <view class="cu-card">
     <view class="cu-item bg-img shadow-blur" style="background-image:url({{item.img}})" bindtap="toChild" data-url="{{item.url}}" wx:for="{{list}}" wx:key>
-      <view class="cardTitle">
+      <view class="cardName">
         {{item.title}}
       </view>
       <view class='time'>{{item.time}}</view>

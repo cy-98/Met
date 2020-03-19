@@ -1,0 +1,65 @@
+<cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">一卡通</view>
+</cu-custom>
+
+<view class="bg-white" style="height: 100%">
+    <view class="cu-card">
+        <view class="cu-item bg-gradual-blue shadow-blur">
+            <view class="cardName">
+                张三
+                <view class="cu-tag padding-lr bg-orange refresh"> 刷新余额</view>
+            </view>
+            <view class="cardNum">
+                16165212
+            </view>
+            <view class="cardDes">
+                余额：
+                <text class="text-price text-white">80.00</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="flex flex-wrap text-center justify-center">
+        <view class="flex-sub padding-sm radius margin num-card">
+            20元
+        </view>
+
+        <view class="flex-sub padding-sm radius margin num-card">
+            50元
+        </view>
+        <view class="flex-sub padding-sm radius margin num-card">
+            100元
+        </view>
+        <view class="flex-sub padding-sm radius margin num-card">
+            其他
+        </view>
+    </view>
+
+    <input class="margin" placeholder="输入金额" type="number"></input>
+
+    <button class="cu-btn margin block lg bg-blue radius">充值</button>
+
+    <view class="cu-bar bg-white">
+        <view class="action sub-title">
+            <text class="text-xl text-bold text-blue">最近流水</text>
+            <text class="bg-blue" style="width:2rem"></text>
+        </view>
+    </view>
+
+    <view class="order margin border" wx:for="{{5}}">
+        <view class="flex justify-center">
+            <view class="flex-sub">
+                <view class="title">图书馆</view>
+                <view class="time cu-time">2019-01-12 12:12:12</view>
+            </view>
+            <view class="flex-sub text-right justify-center">
+                <view class="num text-green padding-sm"> + 12元</view>
+            </view>
+        </view>
+        <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%"/>
+
+    </view>
+
+</view>
+

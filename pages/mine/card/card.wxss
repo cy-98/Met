@@ -1,0 +1,76 @@
+.cu-item{
+    display: inline;
+    height: 250rpx;
+}
+.cardName{
+    color: #fff;
+    padding: 90rpx 60rpx;
+    font-size: 40rpx;
+    font-weight: 300;
+    position: relative;
+    text-shadow: 0px 0px 6rpx rgba(0,0,0,0.3);
+    top: -50rpx;
+}
+.refresh{
+    color: #fff;
+    position: relative;
+    left: 382rpx;
+    transform: none;
+    border-top-left-radius: 10000rpx;
+    border-bottom-left-radius: 10000rpx;
+
+}
+
+.cardName::after{
+    content: "";
+    position: absolute;
+    width: 140rpx;
+    border-radius: 6rpx;
+    height: 24rpx;
+    background-color: #fff;
+    display: block;
+    bottom: 76rpx;
+    left: 90rpx;
+    transform: skew(10deg, 0deg);
+    opacity: 0.1;
+}
+
+
+.cardNum{
+    color: #fff;
+    font-weight: 300;
+    transform: skew(-10deg, 0deg);
+    position: relative;
+    text-shadow: 0px 0px 6rpx rgba(0,0,0,0.3);
+    top: -140rpx;
+    left: 55rpx;
+}
+
+.cardDes{
+    color: #fff;
+    font-weight: 300;
+    transform: skew(-10deg, 0deg);
+    position: relative;
+    text-shadow: 0px 0px 6rpx rgba(0,0,0,0.3);
+    top: -100rpx;
+    left: 450rpx;
+}
+
+.text-price{
+    font-size: 40rpx;
+    font-weight: 400;
+}
+.num-card{
+    border:1rpx solid #0081ff;
+    color: #0081ff;
+    font-weight: 400;
+}
+
+.title{
+    font-size: 35rpx;
+    font-weight: 350;
+}
+.num{
+    font-size: 35rpx;
+    font-weight: 350;
+}
