@@ -1,49 +1,20 @@
-// pages/mine/card/card.js
+// pages/lib/index.js
+const  app = getApp();
 Page({
-	refresh: function (event) {
-        console.info("刷新余额");
-	},
-
-	customInput: function (event) {
-	    console.info(event);
-        this.setData({
-            customNum: event.detail.value
-        })
-	},
-
-	formSubmit: function (event) {
-        console.info(event);
-        let tmp = {
-            0:20,
-            1:50,
-            2:100,
-            3: this.data.customNum
-        };
-        let num = tmp[this.data.customType];
-        if (num === 0){
-            wx.showToast({
-                title: '数额不能为空',
-                icon: 'none'
-            });
-            return;
-        }
-        console.info("开始充值");
-	},
-
 
     /**
      * 页面的初始数据
      */
     data: {
-        customNum: 0,
-        customType: 0
+        curr: 1,
+        CustomBar: app.globalData.CustomBar,
+        StatusBar: app.globalData.StatusBar,
     },
-
-    selectNum: function(e){
-      console.info(e);
-      this.setData({
-          customType: e.currentTarget.dataset.type
-      })
+    NavChange: function(e){
+        console.info("切换页面");
+        this.setData({
+            curr: e.currentTarget.dataset.current
+        })
     },
 
     /**

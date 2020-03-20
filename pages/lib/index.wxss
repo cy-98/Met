@@ -1,0 +1,10 @@
+/* pages/lib/index.wxss */
+
+.book-name{
+    font-size: 34rpx;
+    font-weight: 300;
+}
+.book-time{
+    font-size: 24rpx;
+    font-weight: 200;
+}

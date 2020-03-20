@@ -34,7 +34,8 @@
     "pages/mine/share/share",
     "pages/mine/activity/activity",
     "pages/mine/activity/detail/detail",
-    "pages/mine/card/card"
+    "pages/mine/card/card",
+    "pages/lib/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

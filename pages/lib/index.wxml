@@ -1,0 +1,76 @@
+<!--当前借阅-->
+<view wx:if="{{curr == 0}}" class="bg-white" style="height: 100%">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">我的借阅</view>
+    </cu-custom>
+    <view>
+        <view class="flex margin">
+            <view class="flex-sub">
+                <view class="book-name">JAVA从入门到放弃</view>
+                <view class="book-time">到期时间: 2019-01-11</view>
+            </view>
+            <view>
+                <button class="cu-btn radius bg-blue">续借</button>
+            </view>
+        </view>
+
+        <view class="flex margin">
+            <view class="flex-sub">
+                <view class="book-name">从删库到跑路</view>
+                <view class="book-time">到期时间: 2019-01-11</view>
+            </view>
+            <view>
+                <button class="cu-btn radius bg-red" disabled>已过期</button>
+            </view>
+        </view>
+
+
+    </view>
+</view>
+<!--馆藏-->
+<view wx:if="{{curr == 1}}" class="bg-white" style="height: 100%">
+    <view class="cu-custom bg-gradual-blue" style="height:{{CustomBar}}px">
+        <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+            <view class="action border-custom" wx:if="{{isCustom}}"
+                  style="width:{{Custom.width}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
+            </view>
+            <view class="cuIcon-back lg" style="font-size: 30rpx">返回</view>
+            <view class="search-form round">
+                <text class="cuIcon-search"></text>
+                <input type="text" placeholder="搜索图书馆藏" confirm-type="search"></input>
+            </view>
+        </view>
+    </view>
+</view>
+<!--历史-->
+<view wx:if="{{curr == 2}}">
+    <cu-custom style="position:fixed;z-index:99;" bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">历史借阅</view>
+    </cu-custom>
+</view>
+
+<view class="box">
+    <view class="cu-bar tabbar bg-white foot">
+        <view class="action" bindtap="NavChange" data-current="0">
+            <view class="cuIcon-cu-image">
+                <image src="/images/icon/shouye.png"></image>
+            </view>
+            <view class="text-green">借阅</view>
+        </view>
+        <view class="action" bindtap="NavChange" data-current="1">
+            <view class="cuIcon-cu-image">
+                <image src="/images/icon/shipin.png"></image>
+            </view>
+            <view class="text-gray">馆藏</view>
+        </view>
+        <view class="action" bindtap="NavChange" data-current="2">
+            <view class="cuIcon-cu-image">
+                <image src="/images/icon/wode.png"></image>
+            </view>
+            <view class="text-gray">历史</view>
+        </view>
+    </view>
+
+</view>

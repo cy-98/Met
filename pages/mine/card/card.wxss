@@ -62,7 +62,6 @@
 }
 .num-card{
     border:1rpx solid #0081ff;
-    color: #0081ff;
     font-weight: 400;
 }
 
