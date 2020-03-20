@@ -67,8 +67,12 @@ animation-fill-mode: none;
   font-weight: 2.5;
 }
 
-.cu-list.grid>.cu-item [class*=cuIcon]{
-  margin-top: 0;
+.flex > .cu-item{
+  background-color: #00DFFC;
+}
+
+[class*=cuIcon]{
+  font-size: 70rpx;
 }
 
 

@@ -1,3 +1,4 @@
+const crypto = require("des");
 const formatTime = date => {
     const year = date.getFullYear()
     const month = date.getMonth() + 1
@@ -9,15 +10,26 @@ const formatTime = date => {
     return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+const decrypt = (data) => {
+    let keyHex = crypto.enc.Utf8.parse("flyingstudioisgood");
+    let dataHex = crypto.enc.Base64.parse(data);
+    console.info(dataHex);
+    let result = crypto.DES.decrypt({ciphertext: dataHex}, keyHex, {
+        mode: crypto.mode.ECB,
+        padding: crypto.pad.Pkcs7
+    });
+    return result.toString(crypto.enc.Utf8);
+}
+
 const formatNumber = n => {
     n = n.toString()
     return n[1] ? n : '0' + n
 }
-let rootUrl = "https://met.chpz527.cn/";
+// let rootUrl = "https://met.chpz527.cn/";
 
-// let rootUrl = "http://127.0.0.1:8888/";
+let rootUrl = "http://127.0.0.1:8888/";
 
-function req(url, data, su, fa) {
+function req(url, data, su, fa, de = false) {
     wx.request({
         url: rootUrl + url,
         data: data,
@@ -28,6 +40,12 @@ function req(url, data, su, fa) {
         },
         success: function (res) {
             if (res.statusCode < 399) {
+                if (de) {
+                    console.info(res.data);
+                    res.data.data = JSON.parse(decrypt(res.data.data));
+                    console.info(res.data.data);
+                    return typeof su == "function" && su(res.data)
+                }
                 return typeof su == "function" && su(res.data);
             }
             else {
@@ -43,7 +61,7 @@ function req(url, data, su, fa) {
 }
 
 
-function getReq(url, data, su, fa) {
+function getReq(url, data, su, fa, de=false) {
     wx.request({
         url: rootUrl + url,
         data: data,
@@ -53,9 +71,15 @@ function getReq(url, data, su, fa) {
             'token': wx.getStorageSync('token')
         },
         success: function (res) {
-            if (res.statusCode < 399)
-                return typeof su == "function" && su(res.data);
-            else {
+            if (res.statusCode < 399) {
+                if (de) {
+                    console.info(res.data);
+                    res.data.data = JSON.parse(decrypt(res.data.data));
+                    console.info(res.data.data);
+                    return typeof su == "function" && su(res.data)
+                }
+                return typeof su == "function" && su(res.data)
+            }else {
                 showError(res.data.msg);
                 return typeof fa == "function" && fa(res.data)
             }
@@ -108,5 +132,6 @@ module.exports = {
     getReq: getReq,
     req: req,
     deleteReq: deleteReq,
-    rootUrl: rootUrl
+    rootUrl: rootUrl,
+    decrypt: decrypt
 }

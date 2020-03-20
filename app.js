@@ -179,6 +179,10 @@ App({
             padding: CryptoJS.pad.Pkcs7
         });
         console.log(encrypted.toString());
+        console.info(utils.decrypt(encrypted.toString()));
+        console.info(network.getUniAll(res => {
+            console.info(res);
+        }));
 
         // 监听通知
 

@@ -12,6 +12,8 @@
     </view>
 
 
+
+
     <view class="user-bg">
         <!-- <image src="{{avatar}}" class="avatar" mode="widthFix">
             <view class="cu-tag badge {{index%2==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
@@ -64,6 +66,28 @@
     <!--</view>-->
     <!--</view>-->
 
+    <!--<view class="flex margin justify-center text-center">-->
+        <!--<view class="flex-sub padding cu-item" data-url="/pages/index/timetable/timetable" bindtap="nav">-->
+                <!--<view class="cuIcon-recordfill text-red ">-->
+                <!--</view>-->
+                <!--<text>课表</text>-->
+        <!--</view>-->
+
+        <!--<view class="flex-sub padding cu-item" data-url="/pages/index/timetable/timetable" bindtap="nav">-->
+            <!--<view class="cuIcon-recordfill text-red bg-white padding-tb">-->
+            <!--</view>-->
+            <!--<text>课表</text>-->
+        <!--</view>-->
+
+        <!--<view class="flex-sub padding cu-item" data-url="/pages/index/timetable/timetable" bindtap="nav">-->
+            <!--<view class="cuIcon-recordfill text-red">-->
+            <!--</view>-->
+            <!--<text>课表</text>-->
+        <!--</view>-->
+
+    <!--</view>-->
+
+
     <view class="cu-list grid col-3 no-border">
         <view class="cu-item" data-url="/pages/index/timetable/timetable" bindtap="nav">
             <view class="cuIcon-recordfill text-red">
@@ -81,7 +105,7 @@
             </view>
             <text>成绩</text>
         </view>
-        <view class="cu-item" data-url="/pages/ykt/ykt" bindtap="nav">
+        <view class="cu-item" data-url="/pages/mine/card/card" bindtap="nav">
             <view class="cuIcon-discoverfill text-green">
             </view>
             <text>一卡通</text>
@@ -96,39 +120,6 @@
     </view>
 
 
-    <!-- <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-      <view class="cu-item arrow" bindtap="identify">
-        <button class="cu-btn content">
-          <text class="cuIcon-creativefill text-orange"></text>
-          <text class="text-grey">学校认证</text>
-        </button>
-      </view>
-      <view class="cu-item arrow" bindtap='sethoby'>
-        <button class="cu-btn content">
-          <text class="cuIcon-writefill text-cyan"></text>
-          <text class="text-grey">兴趣爱好</text>
-        </button>
-      </view>
-      <view class="cu-item arrow">
-        <navigator class="content" url="/pages/mine/setting/setting" hover-class="none">
-          <text class="cuIcon-settingsfill text-orange"></text>
-          <text class="text-grey">设置</text>
-        </navigator>
-      </view>
-      <view class="cu-item arrow" bindtap="toActivity">
-        <button class="content cu-btn">
-          <text class="cuIcon-settingsfill text-orange"></text>
-          <text class="text-grey">活动</text>
-        </button>
-      </view>
-      <view class="cu-item arrow">
-        <button class="content" open-type="contact" style="text-align:left" hover-class="none">
-          <text class="cuIcon-settingsfill text-orange"></text>
-          <text class="text-grey">在线客服</text>
-        </button>
-      </view>
-
-    </view> -->
     <view class="cu-tabbar-height"></view>
 
 </scroll-view>

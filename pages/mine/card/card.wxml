@@ -16,7 +16,7 @@
             </view>
             <view class="cardDes">
                 余额：
-                <text class="text-price text-white">80.00</text>
+                <text class="text-price text-white">{{balance * 0.01}}</text>
             </view>
         </view>
     </view>
@@ -55,14 +55,14 @@
         </view>
     </view>
 
-    <view class="order margin border" wx:for="{{5}}">
+    <view class="order margin border" wx:for="{{orders}}">
         <view class="flex justify-center">
             <view class="flex-sub">
-                <view class="title">图书馆</view>
-                <view class="time cu-time">2019-01-12 12:12:12</view>
+                <view class="title">{{item.MERCNAME?item.MERCNAME:item.TRANNAME}}</view>
+                <view class="time cu-time">{{item.OCCTIME}}</view>
             </view>
             <view class="flex-sub text-right justify-center">
-                <view class="num text-green padding-sm"> + 12元</view>
+                <view class="num text-green padding-sm"> {{item.TRANAMT > 0 ? '+' + item.TRANAMT : item.TRANAMT}}元</view>
             </view>
         </view>
         <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%"/>
