@@ -733,6 +733,34 @@ function recharge({num, success, fail}){
     }, true);
 }
 
+function libInfo({success, fail}){
+    util.getReq("school/uni/libInfo", {}, res => {
+        console.info(res);
+        if (res.code === 200) {
+            success && success(res);
+        } else {
+            fail && fail(res);
+        }
+    }, err => {
+
+    }, true);
+}
+
+function findBook({name, success, fail}){
+    util.getReq("school/uni/lib/findBook", {
+        name: name
+    }, res => {
+        console.info(res);
+        if (res.code === 200) {
+            success && success(res);
+        } else {
+            fail && fail(res);
+        }
+    }, err => {
+
+    }, true);
+}
+
 module.exports = {
     updateUserInfo: updateUserInfo,
     getUserInfo: getUserInfo,
@@ -786,5 +814,7 @@ module.exports = {
     readChatMsg: readChatMsg,
     getUniAll: getUniAll,
     getCardInfo: getCardInfo,
-    recharge: recharge
+    recharge: recharge,
+    libInfo: libInfo,
+    findBook: findBook
 }

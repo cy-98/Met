@@ -35,21 +35,57 @@
             <view class="action border-custom" wx:if="{{isCustom}}"
                   style="width:{{Custom.width}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
             </view>
-            <view class="cuIcon-back lg" style="font-size: 30rpx">返回</view>
+            <!--<view class="cuIcon-back lg" style="font-size: 30rpx">返回</view>-->
             <view class="search-form round">
                 <text class="cuIcon-search"></text>
-                <input type="text" placeholder="搜索图书馆藏" confirm-type="search"></input>
+                <input type="text" bindconfirm="search" placeholder="搜索图书馆藏" confirm-type="search"></input>
             </view>
         </view>
     </view>
+
+
+    <view>
+        <view class="flex margin" wx:for="{{searchContent}}">
+            <view class="flex-sub">
+                <view class="book-name">{{item.title}}</view>
+                <view class="book-time">位置: {{item.callNoOne}}</view>
+            </view>
+            <view>
+            <text>{{item.onShelfCountI ? item.onShelfCountI : '0' }}</text>
+            </view>
+        </view>
+
+
+
+    </view>
+
 </view>
 <!--历史-->
-<view wx:if="{{curr == 2}}">
+<view wx:if="{{curr == 2}}" class="bg-white">
     <cu-custom style="position:fixed;z-index:99;" bgColor="bg-gradual-blue" isBack="{{true}}">
         <view slot="backText">返回</view>
         <view slot="content">历史借阅</view>
     </cu-custom>
+
+    <view>
+        <view class="flex margin" wx:for="{{loanHistory}}">
+            <view class="flex-sub">
+                <view class="book-name">{{item.title}}</view>
+                <view class="book-time">归还时间: {{item.returnDate}}</view>
+            </view>
+            <!--<view>-->
+                <!--<button class="cu-btn radius bg-blue">续借</button>-->
+            <!--</view>-->
+        </view>
+
+
+
+    </view>
+
 </view>
+
+<view class="cu-tabbar-height"></view>
+
 
 <view class="box">
     <view class="cu-bar tabbar bg-white foot">

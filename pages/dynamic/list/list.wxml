@@ -9,9 +9,8 @@
             <view class="action border-custom" wx:if="{{isCustom}}"
                   style="width:{{Custom.width}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
             </view>
-            <view class="cu-avatar round" bindtap='addDynamic'
-                  style="background-image:url(https://image.weilanwl.com/img/square-2.jpg);"></view>
-            <view class="search-form round">
+            <view class="cuIcon-add padding" style="font-size: 40rpx" bindtap='addDynamic'></view>
+            <view class="search-form round" style="margin: 0">
                 <text class="cuIcon-search"></text>
                 <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
             </view>

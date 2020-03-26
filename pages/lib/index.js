@@ -1,35 +1,90 @@
 // pages/lib/index.js
-const  app = getApp();
+const app = getApp();
+const network = require("../../utils/network");
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        curr: 1,
+        curr: 0,
         CustomBar: app.globalData.CustomBar,
         StatusBar: app.globalData.StatusBar,
+        loanHistory: [],
+        loanInfo: [],
+        userInfo: [],
+        searchText: "",
+        searchContent: []
     },
-    NavChange: function(e){
+    NavChange: function (e) {
         console.info("切换页面");
         this.setData({
             curr: e.currentTarget.dataset.current
         })
+    },
+    search: function (e) {
+        console.info(e);
+        if (e.detail.value) {
+            network.findBook({
+                name: e.detail.value,
+                success: res => {
+                    console.info("查询数据成功");
+                    console.info(res);
+                    let content = JSON.parse(res.data);
+                    // 查询成功
+                    if (content.success){
+                        this.setData({
+                            searchContent: content.data.searchResult
+                        })
+                    } else {
+                        wx.showToast({
+                            title: "查询失败",
+                            icon: 'none'
+                        })
+                    }
+
+                }
+            })
+        } else {
+            wx.showToast({
+                title: '请输入查询内容',
+                icon: 'none'
+            });
+            return;
+        }
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        network.libInfo({
+            success: res => {
+                console.info("获取图书馆信息成功");
+                console.info(res);
+                // 处理当前借阅
+                let loanInfo = JSON.parse(res.data.loanInfo);
+                console.info(loanInfo);
+                if (loanInfo.success) {
+                    this.setData({
+                        loanInfo: loanInfo.data.searchResult
+                    })
+                }
+                // 处理历史借阅
 
+                let historyInfo = JSON.parse(res.data.loanHistory);
+                console.info(historyInfo);
+                if (historyInfo.success) {
+                    this.setData({
+                        loanHistory: historyInfo.data.searchResult
+                    })
+                }
+
+
+            }
+        })
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
 
     /**
      * 生命周期函数--监听页面显示
