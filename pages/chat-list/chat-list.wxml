@@ -10,9 +10,12 @@
   <view class="flex-wrap sertit-dis" style='width:{{scrollWidth}}px;'>
 
     <view class="padding-tb">
-      <view class="cu-avatar round lg margin-lr-xs" style="cuIcon-unfold text-grey">
-      </view>
-      <view class="text-center">附近</view>
+        <button class="cu-btn icon lg  margin-xs">
+            <text class="cuIcon-add" style="font-size: 50rpx; font-weight: 200"></text>
+        </button>
+      <!--<view class="cuIcon-add lg margin-lr-xs" style="font-size: 50rpx">-->
+      <!--</view>-->
+      <view class="text-center">添加</view>
     </view>
 
     <view wx:for="{{recommend}}" wx:key class="padding-tb">
