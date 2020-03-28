@@ -1,21 +1,17 @@
 <!--pages/index/index.wxml-->
-<cu-custom bgColor="bg-gradual-blue">
-  <view slot="content">主页</view>
-</cu-custom>
+<!--<cu-custom bgColor="bg-gradual-blue">-->
+  <!--<view slot="content">主页</view>-->
+<!--</cu-custom>-->
 <swiper
-    class="card-swiper {{DotStyle?'square-dot':'round-dot'}}"
+    class="screen-swiper square-dot"
     indicator-dots="true"
     circular="true" autoplay="true"
     interval="5000" duration="500"
-    bindchange="cardSwiper"
-    indicator-color="#8799a3"
-    indicator-active-color="#0081ff">
-  <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}" bindtap="bannerClick" data-url="{{item.url}}">
-    <view class="swiper-item">
-      <!-- <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image> -->
-      <image src="{{item.image}}"  mode="aspectFill"></image>
-      <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
-    </view>
+    bindchange="cardSwiper">
+  <swiper-item wx:for="{{swiperList}}" wx:key bindtap="bannerClick" data-url="{{item.path}}">
+       <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+      <!--<image src="{{item.image}}"  mode="aspectFill"></image>-->
+       <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
   </swiper-item>
 </swiper>
 <view class="cu-modal {{modalName=='gridModal'?'show':''}}" bindtap="hideModal">

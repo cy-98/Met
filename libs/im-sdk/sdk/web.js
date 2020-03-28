@@ -65,16 +65,24 @@ export default class Web extends IIMHandler {
 
         // 创建一个 WebSocket 连接
         function connect() {
-            wx.connectSocket({
-                url: "wss://met.chpz527.cn/im?token=" + wx.getStorageSync("token"),
-                // url: "ws://127.0.0.1:8888/im?token=" + wx.getStorageSync("token"),
-                success: res => {
-                    console.info(res);
-                },
-                fail: err => {
-                    console.info(err);
-                }
-            })
+            let token = wx.getStorageSync("token");
+            console.info(token);
+            if (token){
+                wx.connectSocket({
+                    url: "wss://met.chpz527.cn/im?token=" + wx.getStorageSync("token"),
+                    // url: "ws://127.0.0.1:8888/im?token=" + wx.getStorageSync("token"),
+                    success: res => {
+                        console.info(res);
+                    },
+                    fail: err => {
+                        console.info(err);
+                    }
+                })
+            } else {
+                console.info("token为空现在不进行连接")
+            }
+
+
         }
 
         connect();
@@ -110,12 +118,15 @@ export default class Web extends IIMHandler {
 
         // 监听 WebSocket 连接关闭事件
         wx.onSocketClose(function (res) {
-            console.log("WebSocket 连接关闭")
+            console.log("WebSocket 连接关闭");
             socketConnected = false;
-            // 断线重连
-            if (reconnect) {
-                connect();
-            }
+            setTimeout(res => {
+                // 断线重连
+                if (reconnect) {
+                    connect();
+                }
+            }, 2000);
+
         })
 
 

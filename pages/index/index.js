@@ -2,6 +2,7 @@ var network = require("../../utils/network.js");
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 import bus from '../../utils/bus.js'
+let storage = require("../../utils/storage");
 
 
 Page({
@@ -138,11 +139,14 @@ Page({
             success: res => {
                 console.info(res);
                 let currWeek = res.data.week + 1;
-                wx.setStorageSync("currWeek", currWeek);
+                storage.put("currWeek", currWeek, 24 * 60 * 60);
+                storage.put("openDate", res.data.openDate, 24 * 60 * 60);
+                // wx.setStorageSync("currWeek", currWeek);
+                // wx.setStorageSync("openDate", res.data.openDate);
                 console.info("当前周数" + currWeek);
                 this.towerSwiper('swiperList');
                 // 初始化towerSwiper 传已有的数组名即可
-                let timetable = wx.getStorageSync("timetable") || null;
+                let timetable = storage.get("timetable", null) || null;
                 let timetables = [];
                 let today = (new Date()).getDay();
                 if (!timetable) {
@@ -209,18 +213,6 @@ Page({
         console.info(e);
         wx.navigateTo({
             url: '/pages/mine/user/info?id=' + e.markerId,
-        })
-    },
-
-    DotStyle(e) {
-        this.setData({
-            DotStyle: e.detail.value
-        })
-    },
-    // cardSwiper
-    cardSwiper(e) {
-        this.setData({
-            cardCur: e.detail.current
         })
     },
     // towerSwiper
@@ -323,17 +315,6 @@ Page({
                 }
             }
 
-        })
-    },
-    controltap: function (e) {
-        console.log(e);
-    },
-    navgate: function () {
-
-    },
-    toJwxt() {
-        wx.navigateTo({
-            url: '/pages/mine/jwxt/jwxt',
         })
     },
     onShareAppMessage() {

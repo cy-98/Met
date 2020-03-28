@@ -289,7 +289,7 @@ function getTimeTable({
                           fail
                       }) {
     util.getReq("timetable", {
-        year: 2020,
+        year: 2018,
         term: 2
     }, res => {
         console.info(res);
@@ -307,7 +307,7 @@ function getGrade({
                       fail
                   }) {
     util.getReq("grade", {
-        year: 2020,
+        year: 2019,
         term: 2
     }, res => {
         console.info(res);
@@ -322,7 +322,7 @@ function getGrade({
 
 function getExam({success, fail}) {
     util.getReq("exam", {
-        year: 2020,
+        year: 2019,
         term: 2
     }, res => {
         console.info(res);
@@ -337,7 +337,7 @@ function getExam({success, fail}) {
 
 function getUniAll({success, fail}) {
     util.getReq("school/uni/all", {
-        year: 2020,
+        year: 2019,
         term: 2
     }, res => {
         console.info(res);

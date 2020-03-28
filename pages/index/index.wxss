@@ -1,20 +1,26 @@
 /* pages/index/index.wxss */
-.map-wrapper{
-  padding: 10px;
-}
-.cu-padding{
-  padding-left: 10rpx;
+.map-wrapper {
+    padding: 10px;
 }
 
-.location-btn{
-  float: right;
-  border: #38f 1px solid;
-  background: #fff;
-
-  height: 40rpx;
-  line-height: 40rpx;
-  font-size: 20rpx;
+.cu-padding {
+    padding-left: 10rpx;
 }
-.pad{
-  padding: 0 40rpx;
+
+.location-btn {
+    float: right;
+    border: #38f 1px solid;
+    background: #fff;
+
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 20rpx;
+}
+
+.pad {
+    padding: 0 40rpx;
+}
+
+.screen-swiper {
+    min-height: 500rpx;
 }
