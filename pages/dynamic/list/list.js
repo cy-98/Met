@@ -13,13 +13,7 @@ Page({
         scrollLeft: 0,
         page: 1,
         totalPage: 1000,
-        // pages:[1,1,1,1],
         dynamics: [],
-        // followDynamic:[],
-        // expressDynamic:[],
-        // talkDynamic:[],
-        // secondDynamic:[],
-        //滚动页面位置
         loading: false,
         scroll: 0,
         readyRefresh: false,
@@ -31,7 +25,8 @@ Page({
         scrollWidth: 0,
         scrollLeftWidth: 0,
         windowWidth: 0,
-        recommend: []
+        recommend: [],
+        currType: 'recommend'
     },
     tabSelect(e) {
         this.setData({
@@ -39,6 +34,40 @@ Page({
             scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
         });
 
+    },
+    searchDynamic: function(e){
+        console.info(e);
+        wx.showLoading({
+            title: '搜索中'
+        });
+        this.setData({
+            currType: 'search'
+        });
+        network.searchDynamic({keyword: e.detail.value, success: res => {
+            console.info(res);
+                wx.hideLoading();
+
+                res.data.data.forEach(item => {
+                    item.nickname = item.user.nickname,
+                        item.avatar = item.user.avatar
+                    item.commentNum = item.comments.length,
+                        item.good = item.liker.length,
+                        item.createTime = item.createTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+                    item.anonymous = item.anonymous;
+                    if (item.anonymous === 1) {
+                        item.nickname = item.annonyUser.nickname;
+                        item.avatar = item.annonyUser.avatar;
+                    }
+                });
+
+                this.setData({
+                    dynamics: res.data.data,
+                    loading: false,
+                    totalPage: res.data.totalPage
+                });
+
+
+            }})
     },
     onShow: function(options){
         getApp().updateBadge();
@@ -193,11 +222,14 @@ Page({
         // 获取相关数据
         this.setData({
             loading: true
-        })
+        });
         network.getRecommendDynamic({
             data: {page: page, size: size}, success: res => {
                 wx.hideLoading();
-
+                wx.hideNavigationBarLoading();
+                this.setData({
+                    loading: false
+                })
                 res.data.data.forEach(item => {
                     item.nickname = item.user.nickname,
                         item.avatar = item.user.avatar
@@ -231,8 +263,12 @@ Page({
 
     //监听用户下拉动作
     onPullDownRefresh: function () {
+        console.info("下拉");
         if (this.data.loading) return;
         console.log('刷新');
+        this.setData({
+            currType: 'recommend'
+        });
         // 标题栏显示刷新图标，转圈圈
         wx.showNavigationBarLoading();
         this.getRecommendDynamic(1, 5);
@@ -247,6 +283,9 @@ Page({
         let pages = this.data.page + 1;
         console.info(pages);
         if (this.data.loading || this.data.totalPage <= pages) return;
+        this.setData({
+            currType: 'recommend'
+        });
         console.info("通过校验了");
         // let curr = this.data.TabCur;
         wx.showLoading({

@@ -648,7 +648,20 @@ function addFormId({formId}) {
         })
     }
 
+}
 
+function searchDynamic({keyword, success, fail}) {
+    util.req(`dynamic/search/${keyword}`, {}, res => {
+        console.log(res);
+        if (res.code === 200) {
+            success && success(res)
+        } else {
+            wx.showToast({
+                title: res.msg,
+            });
+            fail && fail(res)
+        }
+    })
 }
 
 
@@ -832,5 +845,6 @@ module.exports = {
     recharge: recharge,
     libInfo: libInfo,
     findBook: findBook,
-    addFormId: addFormId
+    addFormId: addFormId,
+    searchDynamic: searchDynamic
 }
