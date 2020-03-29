@@ -486,13 +486,13 @@ function getOpenSchool({
  */
 function getMessages({success, fail}) {
     util.getReq("user/message", {}, res => {
-            console.log(res);
-            if (res.code === 200) {
-                success && success(res)
-            } else {
-                fail && fail(res)
-            }
-        });
+        console.log(res);
+        if (res.code === 200) {
+            success && success(res)
+        } else {
+            fail && fail(res)
+        }
+    });
 }
 
 function searchUser({param, seccess, fail}) {
@@ -637,6 +637,21 @@ function bookCarpool({id, success, fail}) {
     })
 }
 
+
+function addFormId({formId}) {
+    if (formId === "the formId is a mock one") {
+        console.info("当前formId是mock的 不进行提交");
+        return;
+    } else {
+        util.req('formId', {formId: formId}, res => {
+            console.log(res);
+        })
+    }
+
+
+}
+
+
 function cancelBookCarpool({id, success, fail}) {
     util.req('/cancel/carpool/' + id, {}, res => {
         console.log(res)
@@ -720,7 +735,7 @@ function getBanner({success, fail}) {
     })
 }
 
-function recharge({num, success, fail}){
+function recharge({num, success, fail}) {
     util.req("school/uni/ykt/recharge", {num: num}, res => {
         console.info(res);
         if (res.code === 200) {
@@ -733,7 +748,7 @@ function recharge({num, success, fail}){
     }, true);
 }
 
-function libInfo({success, fail}){
+function libInfo({success, fail}) {
     util.getReq("school/uni/libInfo", {}, res => {
         console.info(res);
         if (res.code === 200) {
@@ -746,7 +761,7 @@ function libInfo({success, fail}){
     }, true);
 }
 
-function findBook({name, success, fail}){
+function findBook({name, success, fail}) {
     util.getReq("school/uni/lib/findBook", {
         name: name
     }, res => {
@@ -816,5 +831,6 @@ module.exports = {
     getCardInfo: getCardInfo,
     recharge: recharge,
     libInfo: libInfo,
-    findBook: findBook
+    findBook: findBook,
+    addFormId: addFormId
 }
