@@ -6,10 +6,6 @@ import bus from '../../../utils/bus.js'
 export default class Web extends IIMHandler {
     constructor() {
         super();
-        this._onSocketOpen();
-        this._onSocketMessage();
-        this._onSocketError();
-        this._onSocketClose();
         this._app = undefined;
 
         // this.socketConnected = false;
@@ -111,7 +107,10 @@ export default class Web extends IIMHandler {
             if (!socketConnected) {
                 // 断线重连
                 if (reconnect) {
-                    connect();
+                    setTimeout(() => {
+                        connect();
+                    }, 2000)
+                    // connect();
                 }
             }
         })
@@ -120,13 +119,12 @@ export default class Web extends IIMHandler {
         wx.onSocketClose(function (res) {
             console.log("WebSocket 连接关闭");
             socketConnected = false;
-            setTimeout(res => {
-                // 断线重连
-                if (reconnect) {
+            if (reconnect){
+                setTimeout(() => {
                     connect();
-                }
-            }, 2000);
-
+                }, 2000)
+            }
+            // connect();
         })
 
 
@@ -151,6 +149,7 @@ export default class Web extends IIMHandler {
         this._app.globalData.socketClient = stompClient;
 
         stompClient.connect({}, function (callback) {
+            console.info("stompClient连接成功");
 
             // 订阅自己的
             stompClient.subscribe('/user/queue/sendUser', function (message, headers) {
@@ -165,44 +164,29 @@ export default class Web extends IIMHandler {
                 message.ack();
             });
 
-            bus.on('SendMsg', (msg) => {
-                console.info("监听到消息了");
-                console.info(msg);
-                // 向服务端发送消息
-                stompClient.send("/sendServer", {}, JSON.stringify({
-                    'content': msg.content,
-                    'user': msg.friendId,
-                    'duration': msg.duration ? msg.duration : 0,
-                    'msgType': msg.type
-                }));
-            })
+        });
 
+        console.info("订阅消息发送");
+        // 在外面订阅消息 就没有重复发送消息的bug
+        bus.on('SendMsg', (msg) => {
+            console.info("监听到消息了");
+            console.info(msg);
+            // 向服务端发送消息
+            stompClient.send("/sendServer", {}, JSON.stringify({
+                'content': msg.content,
+                'user': msg.friendId,
+                'duration': msg.duration ? msg.duration : 0,
+                'msgType': msg.type
+            }));
+        });
+
+        stompClient.disconnect(() => {
+            console.info("stompClient断开连接");
         })
     }
 
 
-    // 发送消息
-    sendSocketMessage(msg) {
-        // console.log(msg);
-        // 如果socket已连接则发送消息
-        if (this.socketConnected) {
-            wx.sendSocketMessage({
-                data: msg
-            })
-        } else {
-            // socket没有连接将消息放入队列中
-            this.messageQueue = [];
-            this.messageQueue.push(msg);
-        }
-    }
 
-    // 关闭连接
-    close() {
-        if (this.socketConnected) {
-            wx.closeSocket()
-            this.socketConnected = false;
-        }
-    }
 
 
     /**
@@ -218,89 +202,13 @@ export default class Web extends IIMHandler {
 
         console.info(options);
         this._app = options.app;
-        this.initSocket();
-        return;
+        if (this._app.globalData.socketClient){
+            console.info("不需要重新注册了已经有了");
+            return;
+        } else {
+            this.initSocket();
+        }
 
-    }
-
-    _sendMsgImp({
-                    content,
-                    success,
-                    fail
-                }) {
-        wx.sendSocketMessage({
-            data: JSON.stringify(content),
-            success: () => {
-                success && success(content);
-            },
-            fail: (res) => {
-                fail && fail(res);
-            }
-        });
-    }
-
-
-    /**
-     * 关闭webSocket
-     */
-    closeConnection() {
-        wx.closeSocket();
-    }
-
-    connect() {
-        wx.connectSocket({
-            url: options.url + "?token=" + wx.getStorageSync("token"),
-            method: 'GET'
-        });
-    }
-
-    _onSocketError(cb) {
-        wx.onSocketError((res) => {
-            console.log("WebSocket 错误事件")
-            if (!this.socketConnected) {
-                // 断线重连
-                if (this.reconnect) {
-                    this.connect();
-                }
-            }
-        })
-    }
-
-    _onSocketClose(cb) {
-        wx.onSocketClose((res) => {
-            console.log("WebSocket 连接关闭")
-            socketConnected = false;
-            // 断线重连
-            if (this.reconnect) {
-                this.connect();
-            }
-        });
-    }
-
-    _onSocketOpen() {
-        wx.onSocketOpen((res) => {
-            console.log("WebSocket 连接成功")
-            this.socketConnected = true;
-            this.ws.onopen();
-            // 连接成功后，将队列中的消息发送出去
-            let queueLength = this.messageQueue.length
-            for (let i = 0; i < queueLength; i++) {
-                this.sendSocketMessage(this.messageQueue.shift())
-            }
-        });
-    }
-
-    /**
-     * webSocket是在这里接收消息的
-     * 在socket连接成功时，服务器会主动给客户端推送一条消息类型为login的信息，携带了用户的基本信息，如id，头像和昵称。
-     * 在login信息接收前发送的所有消息，都会被推到msgQueue队列中，在登录成功后会自动重新发送。
-     * 这里我进行了事件的分发，接收到非login类型的消息，会回调监听函数。
-     * @private
-     */
-    _onSocketMessage() {
-        wx.onSocketMessage((res) => {
-            this.ws.onmessage(res);
-        })
     }
 
 }

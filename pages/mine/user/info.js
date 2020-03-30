@@ -69,9 +69,9 @@ Page({
     },
     focus: function (e) {
         let formId = e.detail.formId;
+        network.addFormId({formId});
         network.attentOthers({
             id: this.data.userId,
-            formId: formId,
             success: res => {
                 this.setData({
                     follower: true
@@ -82,9 +82,9 @@ Page({
     cancelFocus: function (e) {
         console.log(e);
         let formId = e.detail.formId;
+        network.addFormId({formId});
         network.cancelAttentOthers({
             id: this.data.userId,
-            formId: formId,
             success: res => {
                 this.setData({
                     follower: false
@@ -113,9 +113,9 @@ Page({
      */
     onLoad: function (options) {
 
-        if (options.id === getApp().globalData.userInfo.id){
+        if (options.id === getApp().globalData.userInfo.id) {
             wx.switchTab({
-                url:"/pages/mine/index"
+                url: "/pages/mine/index"
             });
         }
         wx.showLoading({

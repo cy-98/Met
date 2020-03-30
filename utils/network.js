@@ -53,9 +53,7 @@ function getRecommendDynamic({data, success, fail}) {
     })
 }
 
-function likeDynamic({
-                         dynamicId, success, fail
-                     }) {
+function likeDynamic({dynamicId, success, fail}) {
     util.req("dynamic/" + dynamicId + "/like", {}, function (res) {
         console.info(res);
         if (res.code === 200) {
@@ -66,9 +64,7 @@ function likeDynamic({
     });
 }
 
-function unlikeDynamic({
-                           dynamicId, success, fail
-                       }) {
+function unlikeDynamic({dynamicId, success, fail}) {
     util.req("dynamic/" + dynamicId + "/unlike", {}, function (res) {
         console.info(res);
         if (res.code === 200) {
@@ -80,11 +76,7 @@ function unlikeDynamic({
 }
 
 // 获取关注用户的动态
-function getFollowDynamic({
-                              data,
-                              success,
-                              fail
-                          }) {
+function getFollowDynamic({data, success, fail}) {
     util.getReq("dynamic/follow", data, function (res) {
         console.info(res);
         if (res.code === 200) {
@@ -95,12 +87,7 @@ function getFollowDynamic({
     })
 }
 
-function getTypeDynamic({
-                            type,
-                            data,
-                            success,
-                            fail
-                        }) {
+function getTypeDynamic({type, data, success, fail}) {
     util.getReq("dynamic/type/" + type, data, function (res) {
         console.info(res);
         if (res.code === 200) {
@@ -111,11 +98,7 @@ function getTypeDynamic({
     })
 }
 
-function getOtherDynamic({
-                             userId,
-                             success,
-                             fail
-                         }) {
+function getOtherDynamic({userId, success, fail}) {
     util.getReq("user/" + userId + "/dynamic", {}, res => {
         console.info(res);
         if (res.code === 200) {
@@ -126,10 +109,7 @@ function getOtherDynamic({
     });
 }
 
-function getMyDynamic({
-                          success,
-                          fail
-                      }) {
+function getMyDynamic({success, fail}) {
     util.getReq("/user/dynamic", {}, res => {
         console.info(res);
         if (res.code === 200) {
@@ -141,11 +121,7 @@ function getMyDynamic({
 }
 
 
-function getDynamic({
-                        id,
-                        success,
-                        fail
-                    }) {
+function getDynamic({id, success, fail}) {
     util.getReq("dynamic/" + id, {}, res => {
         console.info(res);
         if (res.code === 200) {
@@ -157,13 +133,8 @@ function getDynamic({
 }
 
 //关注
-function attentOthers({
-                          id,
-                          formId,
-                          success,
-                          fail
-                      }) {
-    util.req("/user/follow", {userId: id, formId: formId}, res => {
+function attentOthers({id, success, fail}) {
+    util.req("/user/follow", {userId: id}, res => {
         console.log(res);
         if (res.code == 200) {
             success && success(res);
@@ -176,10 +147,8 @@ function attentOthers({
 /**
  * 取消关注
  */
-function cancelAttentOthers({
-                                id, formId, success, fail
-                            }) {
-    util.req("/user/unfollow", {userId: id, formId: formId}, res => {
+function cancelAttentOthers({id, success, fail}) {
+    util.req("/user/unfollow", {userId: id}, res => {
         console.log(res);
         if (res.code == 200) {
             success && success(res);
@@ -240,11 +209,7 @@ function readChatMsg({userId, success, fail}) {
 
 
 // 更新问题
-function updateQuestion({
-                            data,
-                            success,
-                            fail
-                        }) {
+function updateQuestion({data, success, fail}) {
     util.req("question", data, res => {
         console.info(res);
         if (res.code == 200) {
@@ -255,10 +220,7 @@ function updateQuestion({
     })
 }
 
-function getMyQuestion({
-                           success,
-                           fail
-                       }) {
+function getMyQuestion({success, fail}) {
     util.getReq("question", {}, res => {
         console.info(res);
         if (res.code === 200) {
@@ -269,11 +231,7 @@ function getMyQuestion({
     });
 }
 
-function getOtherQuestion({
-                              userId,
-                              success,
-                              fail
-                          }) {
+function getOtherQuestion({userId, success, fail}) {
     util.getReq("/user/" + userId + "/question", {}, res => {
         console.info(res);
         if (res.code === 200) {
@@ -284,12 +242,9 @@ function getOtherQuestion({
     });
 }
 
-function getTimeTable({
-                          success,
-                          fail
-                      }) {
+function getTimeTable({success, fail}) {
     util.getReq("timetable", {
-        year: 2018,
+        year: 2019,
         term: 2
     }, res => {
         console.info(res);
@@ -302,10 +257,7 @@ function getTimeTable({
     });
 }
 
-function getGrade({
-                      success,
-                      fail
-                  }) {
+function getGrade({success, fail}) {
     util.getReq("grade", {
         year: 2019,
         term: 2
@@ -442,11 +394,7 @@ function addComment({id, formId, content, reply, replyUser, success}) {
     });
 }
 
-function commitComment({
-                           id,
-                           success,
-                           fail
-                       }) {
+function commitComment({id, success, fail}) {
     util.getReq("dynamic",
         {
             id: id,
@@ -465,10 +413,7 @@ function commitComment({
 /**
  * 开学时间获取当前周获取
  */
-function getOpenSchool({
-                           success,
-                           fail
-                       }) {
+function getOpenSchool({success, fail}) {
     util.getReq("openSchool",
         {}, res => {
             console.log(res);
