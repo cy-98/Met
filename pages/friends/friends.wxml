@@ -1,7 +1,7 @@
 
 <cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">朋友列表</view>
+  <view slot="content">搜索用户</view>
 </cu-custom>
 <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
   <form class="form-search" report-submit="true" bindsubmit="searchUser">
@@ -10,7 +10,7 @@
         <input type="text" placeholder="输入搜索学号名字或昵称" bindinput="bindValue" confirm-type="search"></input>
         <button class="cu-btn bg-gradual-green shadow-blur round" form-type="submit">搜索</button>
     </view>
-    
+
   </form>
 </view>
 <view class="cu-list menu-avatar" wx:for="{{users}}" style="margin-top: 0rpx;">

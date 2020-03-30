@@ -9,7 +9,7 @@
 
   <view class="flex-wrap sertit-dis" style='width:{{scrollWidth}}px;'>
 
-    <view class="padding-tb">
+    <view class="padding-tb" bindtap="nav" data-url="/pages/friends/friends">
         <button class="cu-btn icon lg  margin-xs">
             <text class="cuIcon-add" style="font-size: 50rpx; font-weight: 200"></text>
         </button>

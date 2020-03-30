@@ -132,6 +132,11 @@ Page({
             url: '/pages/chat-list/dynamicInfo',
         });
     },
+    nav: (e) => {
+        wx.navigateTo({
+            url: e.currentTarget.dataset.url
+        });
+    },
     conversationClick: function (res) {
         console.info(res);
         let con = res.currentTarget.dataset.item;
