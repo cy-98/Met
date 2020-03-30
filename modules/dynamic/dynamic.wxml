@@ -1,132 +1,63 @@
 <template name="dynamic">
 
-  <!-- <view class="cu-card dynamic no-card ">
-    <view class="cu-item shadow">
-      <view class="cu-list menu-avatar">
-        <view class="cu-item"  data-user='{{user}}' bindtap="{{anonymous === 0 ? 'clickAvatar':'null'}}">
-          <image 
-          lazy-load="true"
-          class='cu-avatar round lg' src='{{avatar}}'></image>
-          <view class="content flex-sub">
-            <view>{{nickname}}</view>
-            <view class="text-gray text-sm flex justify-between">
-              {{time}}
+    <view class="cu-card dynamic no-card margin-bottom-sm">
+        <view class="cu-item shadow" style="padding-bottom:20rpx">
+            <view class="cu-list menu-avatar">
+                <view class="cu-item" data-user='{{item.user}}' bindtap="{{item.anonymous === 0 ? 'clickAvatar':''}}">
+                    <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+                    <view class="content flex-sub">
+                        <view>{{item.nickname}}</view>
+                        <view class="text-gray text-sm flex justify-between">
+                            {{item.createTime}}
+                        </view>
+                    </view>
+                </view>
             </view>
-          </view>
-        </view>
-
-      </view>
-
- 
-      <view style='padding-left:140rpx; border-bottom: #eee 15rpx solid; '>
-        <view class="text-content" data-id="{{id}}" bindtap='clickContent'>
-          {{content}}
-        </view>
-        <view class="grid flex-sub padding-tb col-3 grid-square">
-          <view class='bg-img'  wx:for="{{images}}" wx:for-index='index' wx:key="index">
-            <image mode="aspectFit" src='{{item}}' data-current='{{item}}' data-all='{{images}}' bindtap='clickImages'></image>
-          </view>
-        </view>
-
-        <view>
-          <view class="text-gray text-sm" style='float:left;padding-bottom:10rpx;'>
-            {{createTime}}
-          </view>
-          <view class="text-gray text-sm text-right" style='padding-right:20rpx;padding-bottom:10rpx;'>
-            <text class="cuIcon-messagefill margin-lr-xs" data-id="{{id}}" bindtap='clickContent'></text> {{comments.length}}
-          </view>
-        </view>
-
-        <view class='comment-wrapper' data-id="{{id}}" bindtap='clickContent'>
-          <view wx:if='{{comments.length!==0}}' style="background-color: #fff;">
-            <view class="cu-form-group" wx:if="{{index<3}}" wx:for='{{comments}}' wx:key="{{index}}">
-              <view class="user">{{item.user.nickname}}:</view>
-              <text wx:if="{{item.replyUser}}">回复</text>
-          <text wx:if="{{item.replyUser}}" class="user">@{{item.replyUser.nickname}}:</text>
-              <view class="flshr">{{item.content}}</view>
+            <view class="text-content" data-id="{{item.id}}" bindtap='clickContent'>
+                {{item.content}}
             </view>
-          </view>
+            <view class="grid flex-sub padding-lr col-3 grid-square" data-id="{{item.id}}" bindtap='clickContent'>
+                <view class="bg-img" style="background-image:url({{item}});" wx:for="{{item.images}}"
+                      wx:for-index='index' wx:key="index">
+                </view>
+            </view>
+
+            <view class="padding bg-white solid-bottom">
+
+                <view wx:if="{{item.topic}}" class="cu-tag bg-cyan round"># {{item.topic}}</view>
+
+            </view>
+
+            <view class="text-gray text-sm padding ">
+                <view wx:if="{{item.liker.length > 0}}" class="cu-avatar-group"
+                      style="float:left;font-size:32rpx;padding-left:20rpx">
+                    <view class="cu-avatar round sm " wx:for="{{item.liker}}" wx:if="{{index < 6}}" wx:for-item="like"
+                          wx:key style="background-image:url({{like.avatar}});"></view>
+                </view>
+
+                <view wx:if="{{item.liker.length > 0}}" style="line-height:48rpx;float:left">
+                    + {{item.good}}名用户点赞
+                </view>
+
+                <view style="float:right;font-size:32rpx">
+
+                    <text wx:if="{{item.like}}" data-item="{{item}}" bindtap="clickGood"
+                          class="cuIcon-appreciatefill text-green margin-lr-xs"></text>
+                    <text wx:else bindtap="clickGood" data-idx="{{index}}" data-item="{{item}}"
+                          class="cuIcon-appreciate margin-lr-xs">
+                    </text>
+                    {{item.good}}
+
+
+                    <text class="cuIcon-messagefill margin-lr-xs"></text>
+                    {{item.comments.length}}
+                </view>
+
+            </view>
+            <view style="clear:both"></view>
+
         </view>
-      </view>
-
-
     </view>
-  </view> -->
-
-
-  <view class="cu-card dynamic no-card" >
-    <view class="cu-item shadow" style="padding-bottom:20rpx">
-      <view class="cu-list menu-avatar">
-        <view class="cu-item" data-user='{{item.user}}' bindtap="clickAvatar">
-          <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
-          <view class="content flex-sub">
-            <view>{{item.nickname}}</view>
-            <view class="text-gray text-sm flex justify-between">
-              {{item.createTime}}
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="text-content" data-id="{{item.id}}" bindtap='clickContent'>
-        {{item.content}}
-      </view>
-      <view class="grid flex-sub padding-lr col-3 grid-square" data-id="{{item.id}}" bindtap='clickContent'>
-        <view class="bg-img" style="background-image:url({{item}});" wx:for="{{item.images}}" wx:for-index='index' wx:key="index">
-        </view>
-      </view>
-
-      <view class="padding bg-white solid-bottom">
-
-        <view wx:if="{{item.topic}}" class="cu-tag bg-cyan round"># {{item.topic}}</view>
-
-      </view>
-
-      <view class="text-gray text-sm padding ">
-        <view wx:if="{{item.liker.length > 0}}" class="cu-avatar-group" style="float:left;font-size:32rpx;padding-left:20rpx">
-          <view class="cu-avatar round sm " wx:for="{{item.liker}}" wx:for-item="like" wx:key style="background-image:url({{like.avatar}});"></view>
-        </view>
-       
-       <view wx:if="{{item.liker.length > 0}}" style="line-height:48rpx;float:left">
-          + {{item.good}}名用户点赞
-       </view>
-
-        <view style="float:right;font-size:32rpx">
-
-          <text wx:if="{{item.like}}" data-item="{{item}}" bindtap="clickGood" class="cuIcon-appreciatefill text-green margin-lr-xs"> </text> 
-          <text wx:else bindtap="clickGood" data-idx="{{index}}" data-item="{{item}}" class="cuIcon-appreciate margin-lr-xs"></text> 
-
-          <text class="cuIcon-messagefill margin-lr-xs"></text> {{item.comments.length}}
-        </view>
-
-      </view>
-      <view style="clear:both"></view>
-
-      <!-- <view class="cu-list menu-avatar comment solids-top">
-      <view class="cu-item" wx:for="{{comments}}">
-        <view class="cu-avatar round" style="background-image:url({{item.user.avatar}});"></view>
-        <view class="content">
-          <view class="text-grey">{{item.user.nickname}}</view>
-          <view class="text-gray text-content text-df">
-            {{item.content}}
-          </view>
-          <view class="bg-grey padding-sm radius margin-top-sm text-sm" wx:if="{{item.replyUser}}">
-            <view class="flex">
-              <view>{{item.replyUser.nickname}}</view>
-              <view class="flex-sub">妹妹，你在帮他们给黑暗找借口吗?</view>
-            </view>
-          </view>
-          <view class="margin-top-sm flex justify-between">
-            <view class="text-gray text-df">{{item.createTime}}</view>
-            <view>
-              <text class="cuIcon-appreciatefill text-red"></text>
-              <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view> -->
-    </view>
-  </view>
 
 
 </template>
