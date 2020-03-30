@@ -78,7 +78,8 @@ Page({
         customNum: 0,
         customType: 0,
         balance: 0,
-        orders: []
+        orders: [],
+        userInfo: {}
     },
 
     selectNum: function (e) {
@@ -123,6 +124,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+
+        // 获取用户信息
+        let userInfo = getApp().globalData.userInfo;
+        console.info(userInfo);
+        this.setData({
+            userInfo
+        });
+
         wx.showLoading({
             title: '数据正在刷新'
         });

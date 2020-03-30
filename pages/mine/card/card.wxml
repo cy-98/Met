@@ -8,11 +8,11 @@
     <view class="cu-card">
         <view class="cu-item bg-gradual-blue shadow-blur">
             <view class="cardName">
-                张三
+                {{userInfo.name}}
                 <view bindtap="refresh" class="cu-tag padding-lr bg-orange refresh"> 刷新余额</view>
             </view>
             <view class="cardNum">
-                16165212
+                {{userInfo.stuId}}
             </view>
             <view class="cardDes">
                 余额：
