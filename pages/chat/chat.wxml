@@ -1,19 +1,26 @@
 <!--pages/list/list.wxml-->
-<import src="../../modules/chat-page/chat-item.wxml" />
-<import src="../../modules/chat-input/chat-input.wxml" />
-<import src="../../modules/chat-page/chat-page-status.wxml" />
+<import src="../../modules/chat-page/chat-item.wxml"/>
+<import src="../../modules/chat-input/chat-input.wxml"/>
+<import src="../../modules/chat-page/chat-page-status.wxml"/>
+<!--<view class='anit {{show? "show" :""}}' bindtap="clickNotice" data-userid="{{outMsg.srcId}}">新消息:{{outMsg.content}}</view>-->
 
 <cu-custom style="position:fixed;z-index:99;" bgColor="bg-gradual-blue" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">{{userInfo.nickname}}</view>
+    <view slot="backText">
+        {{unreadNum <= 0?'':unreadNum}}
+    </view>
+    <view slot="content">{{userInfo.nickname}}</view>
 </cu-custom>
 
-<template is="chat-page-status" data="{{chatStatue,chatStatusContent}}" />
-<scroll-view id="chatScrollView" style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 144rpx;" scroll-y="true" scroll-top="{{scrollTop}}" bindtap="resetInputStatus" scroll-into-view="msg{{chatItems.length}}" scroll-with-animation="{{true}}">
-  <block wx:for="{{chatItems}}" wx:key="{{index}}" class="chat-item" >
-    <template is="chat-item" data="{{length:chatItems.length,index:index,item:item}}" />
-  </block>
-  <!-- 用来占位的否则看不到最后一条消息 -->
-  <view id="msg{{chatItems.length}}" style="height:106rpx"></view>
+
+<template is="chat-page-status" data="{{chatStatue,chatStatusContent}}"/>
+<scroll-view id="chatScrollView"
+             style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 144rpx;"
+             scroll-y="true" scroll-top="{{scrollTop}}" bindtap="resetInputStatus"
+             scroll-into-view="msg{{chatItems.length}}" scroll-with-animation="{{true}}">
+    <block wx:for="{{chatItems}}" wx:key="{{index}}" class="chat-item">
+        <template is="chat-item" data="{{length:chatItems.length,index:index,item:item}}"/>
+    </block>
+    <!-- 用来占位的否则看不到最后一条消息 -->
+    <view id="msg{{chatItems.length}}" style="height:106rpx"></view>
 </scroll-view>
-<template is="chat-input" data-adjust="{{adjust}}" data="{{bottom,inputObj,textMessage,showVoicePart:true}}" />
+<template is="chat-input" data-adjust="{{adjust}}" data="{{bottom,inputObj,textMessage,showVoicePart:true}}"/>

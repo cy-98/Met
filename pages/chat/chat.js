@@ -32,7 +32,8 @@ Page({
         adjust: false,
         bottom: 0,
         userInfo: null,
-        scrollTop: 0
+        scrollTop: 0,
+        unreadNum: 0
     },
     chatInputBindFocusEvent: (e) => {
         console.log('1')
@@ -75,6 +76,19 @@ Page({
             myInfo: myInfo
         });
 
+        let unreadNum = getApp().globalData.unreadMsgNum;
+        let conversations = getApp().globalData.conversations;
+        conversations.forEach((con) => {
+            if (con.user.id === userId){
+                getApp().globalData.unreadMsgNum -= con.unread;
+                con.unread = 0;
+            }
+        });
+        unreadNum = getApp().globalData.unreadMsgNum;
+        this.setData({
+            unreadNum
+        });
+
         bus.on('ReceiveMsg', msg => {
             console.info("接受到消息:" + msg);
 
@@ -100,7 +114,13 @@ Page({
                 // 通知APP 这个消息已经读取了
                 bus.emit('ReadMsg', this.data.userInfo.id);
 
+            }else{
+                this.setData({
+                    unreadNum: this.data.unreadNum + 1
+                })
             }
+
+
         });
 
 
@@ -275,6 +295,12 @@ Page({
         //         }
         //     }
         // })
+    },
+
+    clickNotice: function(e){
+      wx.navigateTo({
+          url: "/pages/chat/chat?userId=" + e.currentTarget.dataset.userid
+      })
     },
 
     resetInputStatus() {

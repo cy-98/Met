@@ -226,7 +226,7 @@ App({
                 this.globalData.conversations.splice(idx, 1);
                 this.globalData.conversations.unshift(item);
             }
-            
+
         });
 
         bus.on('SendMsg', content => {
@@ -271,6 +271,7 @@ App({
                 if (con.user.id === userId){
                     // con.last
                     this.globalData.unreadMsgNum -= con.unread;
+
                     con.unread = 0;
                     this.updateBadge();
                 }
@@ -302,6 +303,11 @@ App({
     },
 
     updateBadge: function(){
+        if (this.globalData.unreadMsgNum < 0){
+            this.globalData.unreadMsgNum = 0;
+        } else if (this.globalData.unreadNoticeNum < 0){
+            this.globalData.unreadNoticeNum = 0;
+        }
         let tmp = this.globalData.unreadMsgNum + this.globalData.unreadNoticeNum;
         console.info("当前的badge为" + tmp);
         if (tmp > 0) {

@@ -1,6 +1,40 @@
 @import "../../modules/chat-page/word.wxss";
 @import "../../modules/chat-input/chat-input.wxss";
 @import "../../modules/chat-page/chat-page-status.wxss";
+
 page {
     background-color: #EFEFEF;
+}
+
+.anit {
+    width: 100%;
+    height: 80rpx;
+    background: red;
+    position: relative;
+    color: white;
+    font-size: 30rpx;
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.show {
+    top: -80rpx;
+    animation: show 2s;
+    z-index: 98;
+    animation-timing-function: ease;
+}
+
+@keyframes show {
+    0% {
+        top: -70rpx;
+    }
+    10% {
+        top: 0rpx;
+    }
+    80% {
+        top: 0rpx;
+    }
+    100% {
+        top: -70rpx;
+    }
 }
