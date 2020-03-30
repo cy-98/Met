@@ -22,7 +22,7 @@
       <view class="cu-avatar round lg margin-lr-xs " style="background-image:url({{item.avatar}});" data-userId="{{item.id}}" bindtap="clickUser">
         <view class="cu-tag badge {{item.gender==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
       </view>
-      <view class="text-center">{{item.nickname}}</view>
+      <view class="text-center">{{item.name}}</view>
 
     </view>
 
