@@ -2,6 +2,7 @@ var network = require("../../utils/network.js");
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 import bus from '../../utils/bus.js'
+
 let storage = require("../../utils/storage");
 
 
@@ -11,45 +12,47 @@ Page({
         userInfo: {},
         cardCur: 0,
         openLocationState: true,
-        swiperList: [{
-            id: 0,
-            type: 'image',
-            url: 'https://s2.ax1x.com/2019/09/04/nEdjAg.th.jpg'
-        }, {
-            id: 1,
-            type: 'image',
-            url: 'https://s2.ax1x.com/2019/09/04/nEwn3R.th.jpg',
-        }, {
-            id: 2,
-            type: 'image',
-            url: 'https://s2.ax1x.com/2019/09/04/nEwUgI.th.jpg'
-        }],
-        iconList: [{
-            icon: 'newsfill',
-            color: 'red',
-            badge: 0,
-            name: '课表',
-            url: '/pages/index/timetable/timetable'
-        }, {
-            icon: 'activityfill',
-            color: 'orange',
-            badge: 0,
-            name: '考试',
-            url: '/pages/index/exam/exam'
-        }, {
-            icon: 'medalfill',
-            color: 'yellow',
-            badge: 0,
-            name: '成绩',
-            url: '/pages/index/grade/grade'
-        }, {
-            icon: 'skinfill',
-            color: 'olive',
-            badge: 0,
-            name: '拼车',
-            //url拼车
-            url: '/pages/index/pinche/pinche'
-        }],
+        swiperList: [
+            {
+                id: 0,
+                type: 'image',
+                url: 'https://s2.ax1x.com/2019/09/04/nEdjAg.th.jpg'
+            }, {
+                id: 1,
+                type: 'image',
+                url: 'https://s2.ax1x.com/2019/09/04/nEwn3R.th.jpg',
+            }, {
+                id: 2,
+                type: 'image',
+                url: 'https://s2.ax1x.com/2019/09/04/nEwUgI.th.jpg'
+            }],
+        iconList: [
+            {
+                icon: 'newsfill',
+                color: 'red',
+                badge: 0,
+                name: '课表',
+                url: '/pages/index/timetable/timetable'
+            }, {
+                icon: 'activityfill',
+                color: 'orange',
+                badge: 0,
+                name: '考试',
+                url: '/pages/index/exam/exam'
+            }, {
+                icon: 'medalfill',
+                color: 'yellow',
+                badge: 0,
+                name: '成绩',
+                url: '/pages/index/grade/grade'
+            }, {
+                icon: 'skinfill',
+                color: 'olive',
+                badge: 0,
+                name: '拼车',
+                //url拼车
+                url: '/pages/index/pinche/pinche'
+            }],
         gridCol: 4,
         skin: false,
         recommend: [],
@@ -82,6 +85,13 @@ Page({
     //     url: '/pages/mine/activity/activity',
     //   })
     // },
+    nav: function(e){
+        console.info(e);
+        wx.navigateTo({
+            url: e.currentTarget.dataset.url
+        });
+    },
+
     attent(e) {
         let id = e.detail.target.id;
         console.log(id)

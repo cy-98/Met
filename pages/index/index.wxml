@@ -1,78 +1,95 @@
 <!--pages/index/index.wxml-->
 <!--<cu-custom bgColor="bg-gradual-blue">-->
-  <!--<view slot="content">主页</view>-->
+<!--<view slot="content">主页</view>-->
 <!--</cu-custom>-->
 <swiper
-    class="screen-swiper square-dot"
-    indicator-dots="true"
-    circular="true" autoplay="true"
-    interval="5000" duration="500"
-    bindchange="cardSwiper">
-  <swiper-item wx:for="{{swiperList}}" wx:key bindtap="bannerClick" data-url="{{item.path}}">
-       <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-      <!--<image src="{{item.image}}"  mode="aspectFill"></image>-->
-       <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
-  </swiper-item>
+        class="screen-swiper square-dot"
+        indicator-dots="true"
+        circular="true" autoplay="true"
+        interval="5000" duration="500"
+        bindchange="cardSwiper">
+    <swiper-item wx:for="{{swiperList}}" wx:key bindtap="bannerClick" data-url="{{item.path}}">
+        <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+        <!--<image src="{{item.image}}"  mode="aspectFill"></image>-->
+        <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover"
+               wx:if="{{item.type=='video'}}"></video>
+    </swiper-item>
 </swiper>
 <view class="cu-modal {{modalName=='gridModal'?'show':''}}" bindtap="hideModal">
-  <view class="cu-dialog" catchtap>
-    <radio-group class="block" bindchange="gridchange">
-      <view class="cu-list menu text-left">
-        <view class="cu-item" wx:for="{{3}}" wx:key>
-          <label class="flex justify-between align-center flex-sub">
-            <view class="flex-sub">{{index +3}} 列</view>
-            <radio class="round" value="{{index +3}}" checked="{{gridCol==index+3}}"></radio>
-          </label>
+    <view class="cu-dialog" catchtap>
+        <radio-group class="block" bindchange="gridchange">
+            <view class="cu-list menu text-left">
+                <view class="cu-item" wx:for="{{3}}" wx:key>
+                    <label class="flex justify-between align-center flex-sub">
+                        <view class="flex-sub">{{index +3}} 列</view>
+                        <radio class="round" value="{{index +3}}" checked="{{gridCol==index+3}}"></radio>
+                    </label>
+                </view>
+            </view>
+        </radio-group>
+        <view class="cu-list menu text-left solid-top">
+            <view class="cu-item">
+                <view class="content">
+                    <text class="text-grey">边框</text>
+                </view>
+                <view class="action">
+                    <switch bindchange="gridswitch"></switch>
+                </view>
+            </view>
         </view>
-      </view>
-    </radio-group>
-    <view class="cu-list menu text-left solid-top">
-      <view class="cu-item">
-        <view class="content">
-          <text class="text-grey">边框</text>
-        </view>
-        <view class="action">
-          <switch bindchange="gridswitch"></switch>
-        </view>
-      </view>
     </view>
-  </view>
 </view>
 <view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
-  <view class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*2}}">
-    <navigator url='{{item.url}}'>
-      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
-        <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
-          <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+    <view class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*2}}">
+        <navigator url='{{item.url}}'>
+            <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+                <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+                    <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+                </view>
+            </view>
+            <text>{{item.name}}</text>
+        </navigator>
+    </view>
+</view>
+
+<view class="cu-bar bg-white">
+    <view class="action title-style-3">
+        <text class="text-xl text-bold">今日课程</text>
+        <text class="text-Abc text-gray self-end margin-left-sm">today</text>
+    </view>
+
+    <view class="action">
+        <text class="text-grey" data-url="/pages/index/timetable/timetable" bindtap="nav">更多>></text>
+    </view>
+
+</view>
+
+<view>
+
+    <view class="cu-item cur" wx:for="{{timetables}}" wx:key="item">
+        <view class="content bg-white shadow-blur padding flex justify-center">
+            <text class="flex-sub text-center padding-sm" style="font-size: 40rpx;">{{item.start}}-{{item.step + item.start - 1}}</text>
+            <view class="flex-treble">
+                <view class="" style="font-size: 35rpx">
+                    {{item.name}}
+                </view>
+                <view>
+                    【{{item.room}}】
+                </view>
+            </view>
         </view>
-      </view>
-      <text>{{item.name}}</text>
-    </navigator>
-  </view>
-</view>
-
-<view class="cu-bar bg-white solid-bottom margin-top">
-  <view class="action">
-    <text class="cuIcon-title text-orange "></text>今日课程
-  </view>
-</view>
-
-<view class="cu-timeline">
-
-  <view class="cu-item cur cuIcon-noticefill" wx:for="{{timetables}}" wx:key="item">
-    <view class="content bg-green shadow-blur">
-      <text>{{item.start}}-{{item.step + item.start - 1}}</text> 【{{item.room}}】{{item.name}}
     </view>
-  </view>
-  <view wx:if="{{timetables.length == 0}}" style="padding:15rpx;text-align:center;align-items:center;justify-content:center;color:#979795">
+    <view wx:if="{{timetables.length == 0}}"
+          style="padding:15rpx;text-align:center;align-items:center;justify-content:center;color:#979795">
 
-    <view wx:if="{{!userInfo.stuId}}" style="padding:15rpx;text-align:center;align-items:center;justify-content:center;color:#979795">
-    <button class="cu-btn bg-green shadow lg block" bindtap="toJwxt">登录教务系统</button>
+        <view wx:if="{{!userInfo.stuId}}"
+              style="padding:15rpx;text-align:center;align-items:center;justify-content:center;color:#979795">
+            <button class="cu-btn bg-green shadow lg block" bindtap="toJwxt">登录教务系统</button>
+        </view>
+        <view wx:else>
+            今日没有课程~~好好浪吧
+        </view>
     </view>
-    <view wx:else>
-        今日没有课程~~好好浪吧
-    </view>
-  </view>
 
 
 </view>
@@ -97,30 +114,28 @@
 </view> -->
 
 
-
-
 <!--<view class="cu-bar bg-white solid-bottom margin-top">-->
-  <!--<view class="action">-->
-    <!--<text class="cuIcon-title text-orange "></text> 推荐用户-->
-  <!--</view>-->
+<!--<view class="action">-->
+<!--<text class="cuIcon-title text-orange "></text> 推荐用户-->
+<!--</view>-->
 <!--</view>-->
 
 <!--<view class="cu-list menu-avatar">-->
-  <!--<view class="cu-item"  wx:for="{{recommend}}" wx:key="item"  >-->
-    <!--<view class="cu-avatar round lg" style="background-image:url({{item.avatar}});" data-user='{{item}}' bindtap='clickUser'></view>-->
-    <!--<view class="content">-->
-      <!--<view class="text-grey" data-user='{{item}}' bindtap='clickUser'>{{item.nickname}}</view>-->
-      <!--<view class="text-gray text-sm flex">-->
-        <!--<text class="text-cut">-->
-							<!--<text class="margin-right-xs" data-user='{{item}}' bindtap='clickUser'></text> {{item.profile}}-->
-        <!--</text>-->
-      <!--</view>-->
-    <!--</view>-->
-    <!--<view class="action">-->
-    <!--<form  bindsubmit="{{item.focus ==false?'attent':'unAttent'}}"  report-submit='true'>-->
-    <!--<button  form-type='submit' id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>{{item.focus == false?'关注':'取消关注'}}</button>-->
-    <!--</form>-->
-    <!--</view>-->
-  <!--</view>-->
+<!--<view class="cu-item"  wx:for="{{recommend}}" wx:key="item"  >-->
+<!--<view class="cu-avatar round lg" style="background-image:url({{item.avatar}});" data-user='{{item}}' bindtap='clickUser'></view>-->
+<!--<view class="content">-->
+<!--<view class="text-grey" data-user='{{item}}' bindtap='clickUser'>{{item.nickname}}</view>-->
+<!--<view class="text-gray text-sm flex">-->
+<!--<text class="text-cut">-->
+<!--<text class="margin-right-xs" data-user='{{item}}' bindtap='clickUser'></text> {{item.profile}}-->
+<!--</text>-->
+<!--</view>-->
+<!--</view>-->
+<!--<view class="action">-->
+<!--<form  bindsubmit="{{item.focus ==false?'attent':'unAttent'}}"  report-submit='true'>-->
+<!--<button  form-type='submit' id="{{item.id}}" data-index="{{index}}" class="cu-btn round line-green button-hover" style='font-size:24rpx;padding:0 19rpx;'>{{item.focus == false?'关注':'取消关注'}}</button>-->
+<!--</form>-->
+<!--</view>-->
+<!--</view>-->
 
 <!--</view>-->

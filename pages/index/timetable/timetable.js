@@ -207,7 +207,7 @@ Page({
     */
     setSameColor() {
         let temp = storage.get("colorObj", null);
-        if (!temp) {
+        if (temp) {
             this.setData({
                 colorObj: temp
             });
@@ -256,7 +256,12 @@ Page({
     setWeeklyDate() {
         let WeeklyDate = this.data.WeeklyDate;
         // let wholeSemesterDays = wx.getStorageSync('wholeSemesterDays');
-        let wholeSemesterDays = storage.get("wholeSemesterDays", []);
+        let wholeSemesterDays = storage.get("wholeSemesterDays", null);
+        if (!wholeSemesterDays){
+            this.getTermDay();
+            wholeSemesterDays = storage.get("wholeSemesterDays", null);
+        }
+        console.info(wholeSemesterDays);
 
         let month = new Date().getMonth() + 1;
         let day = new Date().getDate();
@@ -285,7 +290,8 @@ Page({
     */
     getTermDay() {
         let temp = storage.get("wholeSemesterDays", null);
-        if (temp !== null) {
+        if (temp) {
+            console.info(temp);
             return;
         }
         let that = this;
