@@ -32,3 +32,6 @@
   width: 250rpx;
   height: 250rpx;
 }
+.text-xl {
+  line-height: 900;
+}

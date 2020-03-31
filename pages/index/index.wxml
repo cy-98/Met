@@ -6,8 +6,7 @@
         class="screen-swiper square-dot"
         indicator-dots="true"
         circular="true" autoplay="true"
-        interval="5000" duration="500"
-        bindchange="cardSwiper">
+        interval="5000" duration="500">
     <swiper-item wx:for="{{swiperList}}" wx:key bindtap="bannerClick" data-url="{{item.path}}">
         <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
         <!--<image src="{{item.image}}"  mode="aspectFill"></image>-->
