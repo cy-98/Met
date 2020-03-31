@@ -57,26 +57,34 @@ export default class VoiceManager extends FileManager{
             this._startPlayVoice(dataset);
             let localPath = dataset.voicePath;//优先读取本地路径，可能不存在此文件
 
-            this._myPlayVoice(localPath, dataset, function () {
-                console.log('成功读取了本地语音');
-            }, () => {
-                console.log('读取本地语音文件失败，一般情况下是本地没有该文件，需要从服务器下载');
+            const innerAudioContext = wx.createInnerAudioContext();
+            innerAudioContext.src = localPath;
+            innerAudioContext.autoplay = true;
+            innerAudioContext.onEnded(() => {
+                console.info("播放成功了");
+                this.stopAllVoicePlay();
+            })
+            innerAudioContext.onError(() => {
                 wx.downloadFile({
                     url: dataset.voicePath,
                     success: res => {
                         console.log('下载语音成功', res);
-                        this.__playVoice({
-                            filePath: res.tempFilePath,
-                            success: () => {
-                                this.stopAllVoicePlay();
-                            },
-                            fail: (res) => {
-                                console.log('播放失败了', res);
-                            }
-                        });
+                        innerAudioContext.src = res.tempFilePath;
+                        innerAudioContext.play();
+                        innerAudioContext.onEnded(() => {
+                            console.info("播放结束了");
+                            this.stopAllVoicePlay();
+                        })
                     }
                 });
-            });
+            })
+
+            // this._myPlayVoice(localPath, dataset, function () {
+            //     console.log('成功读取了本地语音');
+            // }, () => {
+            //     console.log('读取本地语音文件失败，一般情况下是本地没有该文件，需要从服务器下载');
+            //
+            // });
         }
     }
 

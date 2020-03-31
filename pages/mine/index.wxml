@@ -29,9 +29,8 @@
     </view>
 
 
-    <view class="padding flex text-center text-grey bg-white shadow-warp" data-url="/pages/mine/user/fans"
-          bindtap="nav">
-        <view class="flex flex-sub flex-direction solid-right">
+    <view class="padding flex text-center text-grey bg-white shadow-warp" >
+        <view class="flex flex-sub flex-direction solid-right" data-url="/pages/mine/user/fans" bindtap="nav">
             <view class="text-sm text-orange">{{person.fansNum}}</view>
             <view class="margin-top-xs text-sm">粉丝</view>
         </view>
