@@ -2,7 +2,7 @@
 
 
 
-<scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+<!--<scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">-->
 
     <view class="cu-custom" style="height:{{CustomBar}}px">
         <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
@@ -45,4 +45,4 @@
 
     <view wx:if="{{totalPage <= page}}" class="cu-load over padding-top"></view>
 
-</scroll-view>
+<!--</scroll-view>-->
