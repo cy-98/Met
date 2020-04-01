@@ -33,7 +33,8 @@ Page({
         bottom: 0,
         userInfo: null,
         scrollTop: 0,
-        unreadNum: 0
+        unreadNum: 0,
+        busRecEventId: 0
     },
     chatInputBindFocusEvent: (e) => {
         console.log('1')
@@ -89,7 +90,7 @@ Page({
             unreadNum
         });
 
-        bus.on('ReceiveMsg', msg => {
+        let busRecEventId = bus.on('ReceiveMsg', msg => {
             console.info("接受到消息:" + msg);
 
             console.info("播放提示音");
@@ -121,6 +122,10 @@ Page({
             }
 
 
+        });
+
+        this.setData({
+            busRecEventId
         });
 
 
@@ -156,8 +161,6 @@ Page({
                     that.setData({
                         scrollTop: (res[0].bottom + res[0].height + res[0].top) * 1000
                     })
-                    // res[0].top       // #the-id节点的上边界坐标
-                    // res[1].scrollTop // 显示区域的竖直滚动位置
                 })
 
             }
@@ -337,7 +340,8 @@ Page({
         network.readChatMsg(this.data.userInfo.id);
         console.info("设置已读消息");
         bus.emit('ReadMsg', this.data.userInfo.id);
-
+        console.info("去除订阅");
+        bus.remove('ReceiveMsg', this.data.busRecEventId);
     }
 
 });

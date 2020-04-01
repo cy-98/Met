@@ -35,6 +35,23 @@ Page({
             console.info(msg);
         });
 
+        bus.on('UpdateMsgList', () => {
+            console.info("更新列表页数据");
+            // getApp().checkUser();
+            const app = getApp();
+            // app.checkUserStuId();
+
+            this.setData({
+                conversations: app.globalData.conversations,
+                unReadMsg: app.globalData.unreadMsgNum,
+                unReadNotice: app.globalData.unreadNoticeNum,
+                lastNotice: app.globalData.lastNotice,
+                contents: app.globalData.notification
+            });
+            // 当前页面没有tabbar的时候不能更新 badge
+            app.updateBadge();
+        });
+
         //获取推荐的人
         network.getRecommend({
             success: (res) => {
@@ -57,12 +74,9 @@ Page({
         });
 
 
-
-
         this.getScrollWidth();
 
     },
-
 
 
     getScrollWidth: function () {
@@ -93,8 +107,10 @@ Page({
      */
     // 这个是消息回调接口 当前是消息列表 如果获取消息 会进行一系列的操作
     onShow() {
+
+
         // getApp().checkUser();
-        const  app = getApp();
+        const app = getApp();
         // app.checkUserStuId();
 
         this.setData({

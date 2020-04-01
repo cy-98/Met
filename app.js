@@ -209,7 +209,25 @@ App({
             // let currPage = pages[pages.length - 1];
             // console.info(pages, currPage.route);
             // console.info(msg);
+
+
+            console.info("接受到消息:" + msg);
+
+            console.info("播放提示音");
+            const innerAudioContext = wx.createInnerAudioContext();//新建一个createInnerAudioContext();
+            innerAudioContext.autoplay = true;//音频自动播放设置
+            innerAudioContext.src = '/audio/notice.mp3';//链接到音频的地址
+            innerAudioContext.onPlay(() => {
+            });//播放音效
+            innerAudioContext.onError((res) => {//打印错误
+                console.log(res.errMsg);//错误信息
+                console.log(res.errCode);//错误码
+            });
+
+
+
             let idx = -1;
+            this.globalData.unreadMsgNum += 1;
             for (let i = 0; i < this.globalData.conversations.length; i++) {
                 let con = this.globalData.conversations[i];
                 if (con.user.id === msg.srcId) {
@@ -226,6 +244,12 @@ App({
                 this.globalData.conversations.splice(idx, 1);
                 this.globalData.conversations.unshift(item);
             }
+            console.info("APP获取消息之后的数据", this.globalData.conversations);
+
+
+            // 通知列表页更新
+            bus.emit('UpdateMsgList');
+            this.updateBadge();
 
         });
 
@@ -265,7 +289,7 @@ App({
         });
 
         bus.on('ReadMsg', (userId) => {
-            console.info('已读消息');
+            console.info('APP已读消息');
             this.globalData.conversations.forEach(con => {
                 // if ()
                 if (con.user.id === userId){
@@ -303,23 +327,29 @@ App({
     },
 
     updateBadge: function(){
-        if (this.globalData.unreadMsgNum < 0){
-            this.globalData.unreadMsgNum = 0;
-        } else if (this.globalData.unreadNoticeNum < 0){
-            this.globalData.unreadNoticeNum = 0;
+
+        try {
+            if (this.globalData.unreadMsgNum < 0){
+                this.globalData.unreadMsgNum = 0;
+            } else if (this.globalData.unreadNoticeNum < 0){
+                this.globalData.unreadNoticeNum = 0;
+            }
+            let tmp = this.globalData.unreadMsgNum + this.globalData.unreadNoticeNum;
+            console.info("当前的badge为" + tmp);
+            if (tmp > 0) {
+                wx.setTabBarBadge({
+                    index: 2,
+                    text: '' + (tmp),
+                })
+            }else{
+                wx.removeTabBarBadge({
+                    index: 2
+                })
+            }
+        }catch (e) {
+            console.info("更新badge失败")
         }
-        let tmp = this.globalData.unreadMsgNum + this.globalData.unreadNoticeNum;
-        console.info("当前的badge为" + tmp);
-        if (tmp > 0) {
-            wx.setTabBarBadge({
-                index: 2,
-                text: '' + (tmp),
-            })
-        }else{
-            wx.removeTabBarBadge({
-                index: 2
-            })
-        }
+
     },
 
     getConversation: function () {
@@ -404,4 +434,5 @@ App({
             });
         }
     }
+
 });
