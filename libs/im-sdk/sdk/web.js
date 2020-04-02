@@ -1,6 +1,7 @@
 import IIMHandler from "../interface/i-im-handler";
 
 import bus from '../../../utils/bus.js'
+import {CONFIG} from "../../../utils/config"
 
 
 export default class Web extends IIMHandler {
@@ -63,9 +64,9 @@ export default class Web extends IIMHandler {
         function connect() {
             let token = wx.getStorageSync("token");
             console.info(token);
-            if (token){
+            if (token) {
                 wx.connectSocket({
-                    url: "wss://met.chpz527.cn/im?token=" + wx.getStorageSync("token"),
+                    url: CONFIG.WS_BASE_URL + "im?token=" + wx.getStorageSync("token"),
                     // url: "ws://127.0.0.1:8888/im?token=" + wx.getStorageSync("token"),
                     success: res => {
                         console.info(res);
@@ -119,7 +120,7 @@ export default class Web extends IIMHandler {
         wx.onSocketClose(function (res) {
             console.log("WebSocket 连接关闭");
             socketConnected = false;
-            if (reconnect){
+            if (reconnect) {
                 setTimeout(() => {
                     connect();
                 }, 2000)
@@ -186,9 +187,6 @@ export default class Web extends IIMHandler {
     }
 
 
-
-
-
     /**
      * 创建WebSocket连接
      * 如：this.imWebSocket = new IMWebSocket();
@@ -202,7 +200,7 @@ export default class Web extends IIMHandler {
 
         console.info(options);
         this._app = options.app;
-        if (this._app.globalData.socketClient){
+        if (this._app.globalData.socketClient) {
             console.info("不需要重新注册了已经有了");
             return;
         } else {

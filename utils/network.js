@@ -1,4 +1,6 @@
 let util = require("util.js");
+import {CONFIG} from 'config'
+console.info(CONFIG);
 
 //updateUserInfo getUserInfo 是设置界面的个人信息获取和保存
 function updateUserInfo({
@@ -244,8 +246,8 @@ function getOtherQuestion({userId, success, fail}) {
 
 function getTimeTable({success, fail}) {
     util.getReq("timetable", {
-        year: 2019,
-        term: 2
+        year: CONFIG.SCHOOL_YEAR,
+        term: CONFIG.SCHOOL_TERM
     }, res => {
         console.info(res);
         if (res.code === 200) {
@@ -259,8 +261,8 @@ function getTimeTable({success, fail}) {
 
 function getGrade({success, fail}) {
     util.getReq("grade", {
-        year: 2019,
-        term: 2
+        year: CONFIG.SCHOOL_YEAR,
+        term: CONFIG.SCHOOL_TERM
     }, res => {
         console.info(res);
         if (res.code === 200) {
@@ -274,8 +276,8 @@ function getGrade({success, fail}) {
 
 function getExam({success, fail}) {
     util.getReq("exam", {
-        year: 2019,
-        term: 2
+        year: CONFIG.SCHOOL_YEAR,
+        term: CONFIG.SCHOOL_TERM
     }, res => {
         console.info(res);
         if (res.code === 200) {
@@ -289,8 +291,8 @@ function getExam({success, fail}) {
 
 function getUniAll({success, fail}) {
     util.getReq("school/uni/all", {
-        year: 2019,
-        term: 2
+        year: CONFIG.SCHOOL_YEAR,
+        term: CONFIG.SCHOOL_TERM
     }, res => {
         console.info(res);
         if (res.code === 200) {
@@ -440,7 +442,7 @@ function getMessages({success, fail}) {
     });
 }
 
-function searchUser({param, seccess, fail}) {
+function searchUser({param, success, fail}) {
     param = param + '';
     util.req("search/user", param, res => {
         console.log(res)

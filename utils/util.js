@@ -1,3 +1,5 @@
+import {CONFIG} from "config";
+
 const crypto = require("des");
 const formatTime = date => {
     const year = date.getFullYear()
@@ -25,13 +27,13 @@ const formatNumber = n => {
     n = n.toString()
     return n[1] ? n : '0' + n
 }
-let rootUrl = "https://met.chpz527.cn/";
+// let rootUrl = "https://met.chpz527.cn/";
 //
 // let rootUrl = "http://127.0.0.1:8888/";
 
 function req(url, data, su, fa, de = false) {
     wx.request({
-        url: rootUrl + url,
+        url: CONFIG.HTTP_BASE_URL + url,
         data: data,
         method: 'post',
         header: {
@@ -61,9 +63,9 @@ function req(url, data, su, fa, de = false) {
 }
 
 
-function getReq(url, data, su, fa, de=false) {
+function getReq(url, data, su, fa, de = false) {
     wx.request({
-        url: rootUrl + url,
+        url: CONFIG.HTTP_BASE_URL + url,
         data: data,
         method: 'get',
         header: {
@@ -79,7 +81,7 @@ function getReq(url, data, su, fa, de=false) {
                     return typeof su == "function" && su(res.data)
                 }
                 return typeof su == "function" && su(res.data)
-            }else {
+            } else {
                 showError(res.data.msg);
                 return typeof fa == "function" && fa(res.data)
             }
@@ -95,7 +97,7 @@ function getReq(url, data, su, fa, de=false) {
 
 function deleteReq(url, data, su, fa) {
     wx.request({
-        url: rootUrl + url,
+        url: CONFIG.HTTP_BASE_URL + url,
         data: data,
         method: 'delete',
         header: {
@@ -132,6 +134,6 @@ module.exports = {
     getReq: getReq,
     req: req,
     deleteReq: deleteReq,
-    rootUrl: rootUrl,
+    rootUrl: CONFIG.HTTP_BASE_URL,
     decrypt: decrypt
 }
