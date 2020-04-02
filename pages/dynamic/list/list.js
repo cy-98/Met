@@ -267,7 +267,8 @@ Page({
         if (this.data.loading) return;
         console.log('刷新');
         this.setData({
-            currType: 'recommend'
+            currType: 'recommend',
+            page: 1
         });
         // 标题栏显示刷新图标，转圈圈
         wx.showNavigationBarLoading();
@@ -282,7 +283,7 @@ Page({
     onReachBottom: function () {
         let pages = this.data.page + 1;
         console.info(pages);
-        if (this.data.loading || this.data.totalPage <= pages) return;
+        if (this.data.loading || this.data.totalPage < pages) return;
         this.setData({
             currType: 'recommend'
         });
@@ -291,10 +292,11 @@ Page({
         wx.showLoading({
             title: '加载中....',
         });
-        this.getRecommendDynamic(pages, 5);
         this.setData({
-            pages: pages
+            page: pages,
         })
+        this.getRecommendDynamic(pages, 5);
+
     },
 
     /**
