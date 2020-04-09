@@ -12,6 +12,7 @@ import {
 
 let lastTime = 0;
 import bus from "../../utils/bus.js"
+const  app = getApp();
 
 /**
  * 聊天页面
@@ -203,9 +204,11 @@ Page({
         that.voiceButton();
     },
     textButton() {
+
         chatInput.setTextMessageListener((e) => {
             let content = e.detail.value;
             console.info("发送消息:" + content);
+            app.subMsg();
 
             this.msgManager.sendMsg({
                 type: IMOperator.TextType,

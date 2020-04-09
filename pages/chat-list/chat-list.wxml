@@ -67,7 +67,10 @@
         <view class="chat-item-content-super-style">
             <view class="chat-item-name-style">{{item.user.nickname}}</view>
             <!--<image src="./../../image/chat/send_fail.png" style="width: 28rpx;height: 28rpx;margin-right: 6rpx;"/>-->
-            <text class="chat-item-content-style">{{ item.lastRecord.msgType == 'text'?item.lastRecord.content:'文件'}}</text>
+            <text wx:if="{{item.lastRecord.msgType == 'text'}}" class="chat-item-content-style">{{item.lastRecord.content}}</text>
+            <text wx:if="{{item.lastRecord.msgType == 'voice'}}" class="chat-item-content-style">[语音]</text>
+            <text wx:if="{{item.lastRecord.msgType == 'image'}}" class="chat-item-content-style">[图片]</text>
+
         </view>
         <view class="chat-item-status-super-style">
             <view class="chat-item-time-style">{{item.createTime}}</view>
