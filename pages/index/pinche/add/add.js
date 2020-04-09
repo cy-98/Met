@@ -9,9 +9,9 @@ Page({
     tel:'',
     start:'',
     destination:'',
-    date: new Date().getFullYear() + "-" + new Date().getMonth()+ "-" + new Date().getDate(),
+    date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1)+ "-" + new Date().getDate(),
     setout: new Date().getHours() + ":" + new Date().getMinutes(),
-    leave:'',
+    leave:3,
     content:'准时 不赖账',
 
   },
@@ -76,7 +76,7 @@ Page({
         title: '所填信息不能为空',
       })
       return
-    } 
+    }
     let context = {
       departure : this.data.start,
       destination : this.data.destination,
@@ -97,7 +97,7 @@ Page({
           title: '时间好像晚于今天哦，不会是要时空穿梭吧',
         })
       }})
-  },  
+  },
   onLoad: function (options) {
     let that = this
     wx.getStorage({

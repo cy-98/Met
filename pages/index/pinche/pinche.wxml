@@ -1,22 +1,18 @@
-<import src="../../../modules/pinche/pinche.wxml" />
+<import src="../../../modules/pinche/pinche.wxml"/>
 <cu-custom bgColor="bg-gradual-green" isCustom="{{true}}">
-  <view bindtap="back">返回</view>
-  <view slot="content">拼车</view>
+    <view bindtap="back">返回</view>
+    <view slot="content">拼车</view>
 </cu-custom>
 <view class="cu-form-group head">
-<button class="cu-btn bg-yellow"
-  bindtap="toMypinche"
->我的拼车</button>
-<button bindtap="toMyAppointment" class="cu-btn bg-green">我的预约</button>
-<button 
-  bindtap="newPinche"
-class="cu-btn bg-blue" >新建拼车</button>
+    <button class="cu-btn bg-yellow" bindtap="toMypinche">我的拼车</button>
+    <button bindtap="toMyAppointment" class="cu-btn bg-green">我的预约</button>
+    <button bindtap="newPinche" class="cu-btn bg-blue">我要拼车</button>
 </view>
-<scroll-view 
+<scroll-view
         scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscroll="scrollbot">
-      <view  wx:for="{{carPool}}" >
+    <view wx:for="{{carPool}}">
         <view data-item="{{item}}">
-          <template is="pinche" data="{{...item}}"></template>
+            <template is="pinche" data="{{...item}}"></template>
         </view>
-      </view>
-    </scroll-view>
+    </view>
+</scroll-view>
