@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "会话列表",
-  "navigationBarTextStyle": "black"
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+
 }

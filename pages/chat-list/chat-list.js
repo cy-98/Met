@@ -6,6 +6,7 @@ import {
 const network = require('../../utils/network.js');
 import bus from '../../utils/bus.js';
 
+const app = getApp();
 /**
  * 会话列表页面
  */
@@ -30,6 +31,13 @@ Page({
      */
     onLoad(options) {
 
+        // wx.requestSubscribeMessage({
+        //     tmplIds: ['49RBNKY_mrxdjnYgdjrUxhXA_z2ZeJLuO_U1KlG_f_M'], // 此处可填写多个模板 ID，但低版本微信不兼容只能授权一个
+        //     success(res) {
+        //         console.log('已授权接收订阅消息')
+        //     }
+        // });
+
         bus.on('ReceiveMsg', (msg) => {
             console.info("在消息列表页获取消息");
             console.info(msg);
@@ -38,7 +46,6 @@ Page({
         bus.on('UpdateMsgList', () => {
             console.info("更新列表页数据");
             // getApp().checkUser();
-            const app = getApp();
             // app.checkUserStuId();
 
             this.setData({
@@ -101,6 +108,19 @@ Page({
         wx.navigateTo({
             url: `../chat/chat?friend=${JSON.stringify(item)}`
         });
+
+        console.info("wx订阅消息发送");
+        wx.requestSubscribeMessage({
+            tmplIds: ['49RBNKY_mrxdjnYgdjrUxhXA_z2ZeJLuO_U1KlG_f_M'],
+            success(res) {
+                console.info("wx订阅消息发送成功");
+                console.info(res);
+            },
+            fail(err) {
+                console.info(err);
+            }
+        })
+
     },
     /**
      * 生命周期函数--监听页面显示
@@ -136,6 +156,18 @@ Page({
             complete: function (res) {
             },
         })
+
+        console.info("wx订阅消息发送");
+        wx.requestSubscribeMessage({
+            tmplIds: ['49RBNKY_mrxdjnYgdjrUxhXA_z2ZeJLuO_U1KlG_f_M'],
+            success(res) {
+                console.info("wx订阅消息发送成功");
+                console.info(res);
+            },
+            fail(err) {
+                console.info(err);
+            }
+        })
     },
 
     friendsClick: () => {
@@ -152,6 +184,7 @@ Page({
         wx.navigateTo({
             url: e.currentTarget.dataset.url
         });
+        app.subMsg();
     },
     conversationClick: function (res) {
         console.info(res);
@@ -159,5 +192,22 @@ Page({
         wx.navigateTo({
             url: '/pages/chat/chat?userId=' + con.user.id,
         })
+    },
+    onPullDownRefresh: function () {
+
+        // app.checkUserStuId();
+        app.getConversation({
+            success: () => {
+                this.setData({
+                    conversations: app.globalData.conversations,
+                    unReadMsg: app.globalData.unreadMsgNum,
+                    unReadNotice: app.globalData.unreadNoticeNum,
+                    lastNotice: app.globalData.lastNotice,
+                    contents: app.globalData.notification
+                });
+            }
+        });
+
+
     }
 });

@@ -352,7 +352,7 @@ App({
 
     },
 
-    getConversation: function () {
+    getConversation: function (success) {
         network.getConversion({
             success: res => {
                 let unread = 0;
@@ -378,6 +378,7 @@ App({
                         text: '' + (unread),
                     })
                 }
+                success && success()
             }
         })
     },
@@ -433,6 +434,33 @@ App({
                 }
             });
         }
+    },
+    subMsg: function () {
+        console.info("wx订阅消息发送");
+        wx.requestSubscribeMessage({
+            tmplIds: ['49RBNKY_mrxdjnYgdjrUxhXA_z2ZeJLuO_U1KlG_f_M'],
+            success:(res) => {
+                console.info("wx订阅消息发送成功");
+                console.info(res);
+                if (res["49RBNKY_mrxdjnYgdjrUxhXA_z2ZeJLuO_U1KlG_f_M"]!== "accept"){
+                    console.info("订阅授权取消");
+                    wx.showModal({
+                        title:"确定不接受通知吗",
+                        content: "消息用于提醒用户关注评论回复消息提醒等。",
+                        confirmText: "接受消息",
+                        success: res1 => {
+                            if (res1.confirm){
+                                this.subMsg();
+                            }
+                        }
+                    });
+                }
+            },
+            fail(err) {
+                console.info(err);
+
+            }
+        })
     }
 
 });
