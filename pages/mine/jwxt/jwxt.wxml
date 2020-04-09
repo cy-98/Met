@@ -17,7 +17,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">密码</view>
-    <input placeholder="请输入教务系统密码"  bindinput="bindPasswordInput" value='{{password}}' type="password"></input>
+    <input placeholder="请输入统一认证密码(默认身份证后六位)"  bindinput="bindPasswordInput" value='{{password}}' type="password"></input>
   </view>
   <view class="margin-tb-sm text-center">
     <button form-type="submit" class='margin-tb-sm lg round bg-green shadow button-hover' role="button">提交</button>

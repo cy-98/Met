@@ -98,9 +98,12 @@ Page({
 
 
     back() {
-        wx.navigateBack({
-            delta: 1
+        wx.switchTab({
+            url: '/pages/index/index'
         })
+        // wx.navigateBack({
+        //     delta: 1
+        // })
     },
     /*
       navH 获取不同手机系统最上部电量一栏的导航高度,在 app.js 中有相关代码

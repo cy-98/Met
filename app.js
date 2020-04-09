@@ -324,6 +324,7 @@ App({
                 this.globalData.navHeight = e.statusBarHeight;
             }
         });
+
     },
 
     updateBadge: function(){

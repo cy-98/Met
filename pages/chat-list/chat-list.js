@@ -196,8 +196,7 @@ Page({
     onPullDownRefresh: function () {
 
         // app.checkUserStuId();
-        app.getConversation({
-            success: () => {
+        app.getConversation(() => {
                 this.setData({
                     conversations: app.globalData.conversations,
                     unReadMsg: app.globalData.unreadMsgNum,
@@ -206,7 +205,7 @@ Page({
                     contents: app.globalData.notification
                 });
             }
-        });
+        );
 
 
     }

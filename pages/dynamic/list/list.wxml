@@ -1,9 +1,6 @@
 <import src="../../../modules/dynamic/dynamic.wxml"/>
 
-
-
-<!--<scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">-->
-
+<view wx:if="{{version == '1.0.1'}}">
     <view class="cu-custom" style="height:{{CustomBar}}px">
         <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
             <view class="action border-custom" wx:if="{{isCustom}}"
@@ -45,4 +42,7 @@
 
     <view wx:if="{{totalPage <= page}}" class="cu-load over padding-top"></view>
 
-<!--</scroll-view>-->
+</view>
+
+
+

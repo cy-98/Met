@@ -151,6 +151,19 @@ Page({
                 let currWeek = res.data.week + 1;
                 storage.put("currWeek", currWeek, 24 * 60 * 60);
                 storage.put("openDate", res.data.openDate, 24 * 60 * 60);
+                storage.put("version", res.data.version);
+
+
+                if (res.data.version === "1.1.0"){
+                    wx.setTabBarItem({
+                        index: 1,
+                        text: '课表',
+                        iconPath: '/images/icon/shipin.png',
+                        selectedIconPath: '/images/icon/shipin.png',
+                    });
+                }
+
+
                 // wx.setStorageSync("currWeek", currWeek);
                 // wx.setStorageSync("openDate", res.data.openDate);
                 console.info("当前周数" + currWeek);

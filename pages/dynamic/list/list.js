@@ -71,13 +71,18 @@ Page({
     },
     onShow: function(options){
         getApp().updateBadge();
+        if (this.data.version === "1.1.0"){
+            wx.navigateTo({
+                url: "/pages/index/timetable/timetable"
+            })
+        }
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var that = this
+        var that = this;
         wx.getSystemInfo({
             success: function (res) {
                 that.setData({
@@ -88,6 +93,15 @@ Page({
         wx.showLoading({
             title: '加载中....',
         });
+
+        const version = wx.getStorageSync("version");
+        this.setData({
+            version
+        });
+
+
+
+
         // this.getFollowDynamic(1,10);
         this.getRecommendDynamic(1, 5);
         // this.getTypeDynamic(0,1,10);
