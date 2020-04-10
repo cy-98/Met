@@ -66,6 +66,15 @@ Page({
                 let loanInfo = JSON.parse(res.data.loanInfo);
                 console.info(loanInfo);
                 if (loanInfo.success) {
+                    loanInfo.data.searchResult.forEach((item) => {
+                       let normReturnDate = new Date(item.normReturnDate);
+                       if (normReturnDate.getTime() < new Date().getTime()){
+                           item.normReturn = false;
+                       } else {
+                           item.normReturn = true;
+                       }
+                    });
+
                     this.setData({
                         loanInfo: loanInfo.data.searchResult
                     })
@@ -83,6 +92,32 @@ Page({
 
             }
         })
+    },
+
+    renewBook: function(e){
+      console.info(e);
+      let loanId = e.currentTarget.dataset.loanId;
+      console.info(loanId);
+      network.renewBook({
+          bookId: loanId,
+          success: res => {
+              console.info(res);
+              const result = JSON.parse(res.data);
+              if (result.success){
+                  wx.showToast({
+                      title: "续借成功"
+                  })
+              } else {
+                  wx.showToast({
+                      title: "续借失败",
+                      icon: "none"
+                  })
+              }
+          }, fail: err => {
+              console.info(err);
+          }
+      })
+
     },
 
 

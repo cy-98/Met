@@ -736,7 +736,25 @@ function findBook({name, success, fail}) {
     }, true);
 }
 
+function renewBook({bookId, success, fail}) {
+    util.req("school/uni/lib/renewBook", {
+        bookId: bookId
+    }, res => {
+        console.info(res);
+        if (res.code === 200) {
+            success && success(res);
+        } else {
+            fail && fail(res);
+        }
+    }, err => {
+
+    }, true);
+}
+
+
+
 module.exports = {
+    renewBook: renewBook,
     updateUserInfo: updateUserInfo,
     getUserInfo: getUserInfo,
     addTag: addTag,
