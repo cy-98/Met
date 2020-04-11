@@ -1,6 +1,6 @@
 <import src="../../../modules/dynamic/dynamic.wxml"/>
 
-<view wx:if="{{version != '1.0.1'}}">
+<view wx:if="{{version != currVersion}}">
     <view class="cu-custom" style="height:{{CustomBar}}px">
         <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
             <view class="action border-custom" wx:if="{{isCustom}}"

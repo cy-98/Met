@@ -1,6 +1,7 @@
 // pages/dynamic/list.js
 var network = require("../../../utils/network.js");
 import dynamic from '../../../modules/dynamic/dynamic.js';
+import {CONFIG} from "../../../utils/config";
 
 let app = getApp();
 Page({
@@ -35,7 +36,7 @@ Page({
         });
 
     },
-    searchDynamic: function(e){
+    searchDynamic: function (e) {
         console.info(e);
         wx.showLoading({
             title: '搜索中'
@@ -43,8 +44,9 @@ Page({
         this.setData({
             currType: 'search'
         });
-        network.searchDynamic({keyword: e.detail.value, success: res => {
-            console.info(res);
+        network.searchDynamic({
+            keyword: e.detail.value, success: res => {
+                console.info(res);
                 wx.hideLoading();
 
                 res.data.data.forEach(item => {
@@ -67,11 +69,15 @@ Page({
                 });
 
 
-            }})
+            }
+        })
     },
-    onShow: function(options){
+    onShow: function (options) {
         getApp().updateBadge();
-        if (this.data.version === "1.1.0"){
+        this.setData({
+            currVersion: CONFIG.VERSION
+        })
+        if (this.data.version === CONFIG.VERSION) {
             wx.navigateTo({
                 url: "/pages/index/timetable/timetable"
             })
@@ -98,8 +104,6 @@ Page({
         this.setData({
             version
         });
-
-
 
 
         // this.getFollowDynamic(1,10);

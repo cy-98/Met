@@ -10,12 +10,16 @@
                 <view class="book-name">{{item.title}}</view>
                 <view class="book-time">到期时间: {{item.normReturnDate}}</view>
             </view>
-            <view wx:if="{{!item.normReturn}}">
+            <view wx:if="{{item.normReturn}}">
                 <button data-loanId="{{item.loanId}}" bindtap="renewBook" class="cu-btn radius bg-blue">续借</button>
             </view>
             <view wx:else>
                 <button class="cu-btn radius bg-red" disabled>已过期</button>
             </view>
+        </view>
+
+        <view wx:if="{{loanInfo.length == 0}}">
+            <view class="cu-load bg-grey over"></view>
         </view>
 
 

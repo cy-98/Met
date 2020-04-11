@@ -15,7 +15,8 @@ if ("dev" === ENV) {
         HTTP_BASE_URL: "https://met.chpz527.cn/",
         WS_BASE_URL: "wss://met.chpz527.cn/",
         SCHOOL_TERM: "2",
-        SCHOOL_YEAR: "2019"
+        SCHOOL_YEAR: "2019",
+        VERSION: "2.0.0"
     }
 }
 

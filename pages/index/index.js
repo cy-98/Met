@@ -4,7 +4,7 @@ var qqmapsdk;
 import bus from '../../utils/bus.js'
 
 let storage = require("../../utils/storage");
-
+import {CONFIG} from "../../utils/config";
 
 Page({
     data: {
@@ -154,7 +154,7 @@ Page({
                 storage.put("version", res.data.version);
 
 
-                if (res.data.version === "1.1.0"){
+                if (res.data.version === CONFIG.VERSION){
                     wx.setTabBarItem({
                         index: 1,
                         text: '课表',
